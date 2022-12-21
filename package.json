@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@next/font": "^13.0.7",
+    "@next/swc-darwin-x64": "^13.0.7",
+    "jquery": "^3.6.3",
     "next": "latest",
     "react": "18.2.0",
     "react-dom": "18.2.0"
