@@ -57,7 +57,8 @@ export default function About() {
           mb={2}
         >
           <Badge m={1}>Entrepreneur</Badge>
-          <Badge m={1}>Preseverant</Badge>
+          <Badge m={1}>Perseverant
+            </Badge>
           <Badge m={1}>Optimistic</Badge>
           <Badge m={1}>Full-Stack Developer</Badge>
           <Badge m={1}>Gentle parent</Badge>
