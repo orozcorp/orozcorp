@@ -10,7 +10,7 @@ export default function About() {
         backgroundColor: "#b2eee6",
         alignItems: "flex-start",
         flexFlow: ["column nowrap", "row wrap"],
-        borderRadius: ["0%", "0% 100% 0% 100% / 69% 0% 100% 31% "],
+        borderRadius: ["0", "0% 100% 0% 100% / 69% 0% 100% 31% "],
       }}
       p={2}
     >

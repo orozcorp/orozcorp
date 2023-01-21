@@ -23,11 +23,12 @@ export default function Stacks() {
           position: ["relative", "sticky"],
           top: "50%",
           flex: 1,
+          textAlign: "center",
         }}
       >
         Stacks and Skills
       </Heading>
-      <Box mt={6} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
+      <Box mt={[2, 6]} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
         <Heading as="h2" sx={{ color: "#385a7c", textAlign: "center" }}>
           Some of the stacks, skills, languages, and frameworks I am fluid in
         </Heading>
@@ -52,7 +53,7 @@ export default function Stacks() {
               mb={2}
               sx={{
                 flexFlow: "row wrap",
-                justifyContent: "space-between",
+                justifyContent: ["center", "space-between"],
                 alignItems: "center",
                 alignContent: "center",
               }}
@@ -100,7 +101,7 @@ export default function Stacks() {
               mb={2}
               sx={{
                 flexFlow: "row wrap",
-                justifyContent: "space-between",
+                justifyContent: ["center", "space-between"],
                 alignItems: "center",
                 alignContent: "center",
               }}
@@ -133,7 +134,7 @@ export default function Stacks() {
               flexFlow: "column nowrap",
               justifyContent: "center",
               alignContent: "center",
-              alignItems: "space-between",
+              alignItems: ["center", "space-between"],
               width: "100%",
               textAlign: "center",
             }}
@@ -148,7 +149,7 @@ export default function Stacks() {
               mb={2}
               sx={{
                 flexFlow: "row wrap",
-                justifyContent: "space-between",
+                justifyContent: ["center", "space-between"],
                 alignItems: "center",
                 alignContent: "center",
               }}

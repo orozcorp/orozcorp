@@ -36,11 +36,11 @@ export default function Navbar() {
             alignItems: "flex-end",
           }}
         >
-          <Heading as="h1" sx={{ color: "white", fontSize: "30px" }}>
+          <Heading ml={2} as="h1" sx={{ color: "white", fontSize: "30px" }}>
             Orozcorp
           </Heading>
         </Flex>
-        {!toggled && size?.width > 600 && (
+        {!toggled && size?.width > 700 && (
           <Flex
             ml={4}
             sx={{
