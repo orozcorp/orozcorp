@@ -1,4 +1,5 @@
 import { Box, Flex, Heading, Text, Badge } from "@theme-ui/components";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -26,9 +27,25 @@ export default function About() {
         About me!
       </Heading>
       <Box ml={[1, 4]} sx={{ flex: 1 }} mr={2} pr={3}>
-        <Heading as="h2" sx={{ color: "#385a7c" }} mt={2} mb={2}>
-          Eduardo Orozco Mendoza
-        </Heading>
+        <Flex
+          mt={2}
+          mb={2}
+          sx={{
+            flexFlow: "row wrap",
+            justifyContent: "flex-start",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Image
+            src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg"
+            height={100}
+            width={70}
+          />
+          <Heading as="h2" sx={{ color: "#385a7c" }} mt={3}>
+            Eduardo Orozco Mendoza
+          </Heading>
+        </Flex>
         <Flex
           sx={{
             flexFlow: "row wrap",

@@ -1,14 +1,21 @@
-import { Box, Text } from "@theme-ui/components";
+import { Flex, Text } from "@theme-ui/components";
 import Link from "next/link";
 export default function LinksNotSession() {
   return (
     <>
-      <Box mt={3}>
+      <Flex
+        mt={3}
+        sx={{
+          flexFlow: "column nowrap",
+          height: "40%",
+          justifyContent: "space-around",
+          alignContent: "center",
+          alignItems: "center",
+        }}
+      >
         <Link
           href="#About"
           style={{
-            marginTop: "15px",
-            marginBottom: "15px",
             textDecoration: "none",
           }}
         >
@@ -16,7 +23,7 @@ export default function LinksNotSession() {
             sx={{
               color: "white",
               textDecoration: "none",
-              fontSize: "15px",
+              fontSize: "25px",
             }}
           >
             About
@@ -26,8 +33,6 @@ export default function LinksNotSession() {
         <Link
           href="#Portfolio"
           style={{
-            marginTop: "15px",
-            marginBottom: "15px",
             textDecoration: "none",
           }}
         >
@@ -35,7 +40,7 @@ export default function LinksNotSession() {
             sx={{
               color: "white",
               textDecoration: "none",
-              fontSize: "15px",
+              fontSize: "25px",
             }}
           >
             Portfolio
@@ -44,8 +49,6 @@ export default function LinksNotSession() {
         <Link
           href="#StacksAndSkills"
           style={{
-            marginTop: "15px",
-            marginBottom: "15px",
             textDecoration: "none",
           }}
         >
@@ -54,7 +57,7 @@ export default function LinksNotSession() {
               color: "white",
               textDecoration: "none",
 
-              fontSize: "15px",
+              fontSize: "25px",
             }}
           >
             Stacks and Skills
@@ -63,8 +66,6 @@ export default function LinksNotSession() {
         <Link
           href="#Contact"
           style={{
-            marginTop: "15px",
-            marginBottom: "15px",
             textDecoration: "none",
           }}
         >
@@ -72,13 +73,13 @@ export default function LinksNotSession() {
             sx={{
               color: "white",
               textDecoration: "none",
-              fontSize: "15px",
+              fontSize: "25px",
             }}
           >
             Contact
           </Text>
         </Link>
-      </Box>
+      </Flex>
     </>
   );
 }
