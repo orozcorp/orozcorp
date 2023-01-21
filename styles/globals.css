@@ -1,3 +1,291 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+
+/*
+  3. Allow percentage-based heights in the application
+*/
+html,
+body {
+  height: 100%;
+}
+
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/*
+  6. Improve media defaults
+*/
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/*
+  7. Remove built-in form typography styles
+*/
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/*
+  8. Avoid text overflows
+*/
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+
+.btnSidebar {
+  background-color: #a80303;
+  border-style: none;
+  color: #fff;
+}
+
+.helloUser {
+  color: #111;
+  font-size: 10px;
+  padding: 8px 8px 8px 32px;
+  text-align: center;
+}
+
+.sidenav {
+  display: 'flex';
+  flex-flow: 'column nowrap';
+  justify-content: 'center';
+  align-items: 'center';
+  align-content: 'center';
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 80px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 12px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #800000;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 30;
+  right: 0px;
+  font-size: 36px;
+  /* margin-left: 50px; */
+}
+
+.sideNavMoved {
+  height: 100%;
+  width: 100vw;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 80px;
+}
+
+.sideNavMoved a {
+  text-decoration: none;
+  font-size: 18px;
+  color: #fff;
+  display: block;
+  transition: 0.3s;
+  text-align: center;
+}
+
+.sideNavMoved a:hover {
+  color: #800000;
+}
+
+.sideNavMoved .closebtn {
+  position: absolute;
+  top: 30;
+  right: 25px;
+  font-size: 36px;
+  /* margin-left: 50px; */
+}
+
+.main {
+  transition: margin-left 0.5s;
+  padding: 16px;
+}
+
+.mainMoved {
+  transition: margin-left 0.5s;
+  padding: 16px;
+  margin-left: 250px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav a {
+    font-size: 18px;
+  }
+
+  .sideNavMoved {
+    padding-top: 15px;
+  }
+
+  .sideNavMoved a {
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .sideNavMoved {
+    width: 100vw;
+  }
+}
+
+input,
+
+table {
+  border-collapse: collapse;
+}
+
+td,
+th {
+  border: 1px solid #000;
+  text-align: center;
+  height: fit-content;
+  width: fit-content;
+  padding: -15px
+}
+
+.modalClosed {
+  display: none;
+  /* Hidden by default */
+}
+
+.modalOpen {
+  display: block;
+  position: fixed;
+  /* Stay in place */
+  border-radius: 5px;
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0);
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+}
+
+
+
+.scale-in-center {
+  -webkit-animation: scale-in-center 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  animation: scale-in-center 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+}
+
+@-webkit-keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes scale-in-center {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+table {
+  border-spacing: 0.5rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  padding: 10px;
+  text-align: left;
+}
+
+td {
+  border-bottom: 0.5px solid #000;
+}

@@ -1,0 +1,52 @@
+import EmailProvider from "next-auth/providers/email";
+import NextAuth from "next-auth";
+import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+import clientPromise from "../../../lib/mongoPromise";
+import { connectToDatabase } from "../../../lib/mongodb";
+
+const options = {
+  providers: [
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+    }),
+  ],
+  adapter: MongoDBAdapter(clientPromise),
+  theme: {
+    colorScheme: "dark",
+    brandColor: "#008080",
+    // logo: "https://res.cloudinary.com/dthb0w8uh/image/upload/v1621895887/KUMBHAKA/TIEMPO_YOGA_LOGO_p8zox7.svg",
+    buttonText: "#fff",
+  },
+  callbacks: {
+    async signIn({ user }) {
+      const { db } = await connectToDatabase();
+      const existe = await db
+        .collection("users")
+        .findOne({ email: user?.email });
+      if (existe) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    async session({ session, user, token }) {
+      const { db } = await connectToDatabase();
+      const userInfo = await db
+        .collection("users")
+        .findOne({ email: user?.email });
+      if (userInfo) {
+        session.roles = userInfo.profile.roles;
+        session.user.id = userInfo._id;
+        session.user.oldId = userInfo.oldId;
+        session.user.name = `${userInfo.profile.nombre} ${userInfo.profile.apellido}`;
+        session.saldo = userInfo.saldo;
+        session.membership = userInfo.profile.membership;
+        return session;
+      }
+      return {};
+    },
+  },
+};
+
+export default (req, res) => NextAuth(req, res, options);
