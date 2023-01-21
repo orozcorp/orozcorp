@@ -27,7 +27,7 @@ export default function Stacks() {
       >
         Stacks and Skills
       </Heading>
-      <Box mt={4} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
+      <Box mt={6} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
         <Heading as="h2" sx={{ color: "#385a7c", textAlign: "center" }}>
           Some of the stacks, skills, languages, and frameworks I am fluid in
         </Heading>

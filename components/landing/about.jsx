@@ -13,7 +13,6 @@ export default function About() {
         borderRadius: ["0%", "0% 100% 0% 100% / 69% 0% 100% 31% "],
       }}
       p={2}
-      pb={5}
     >
       <Heading
         as="h1"
@@ -28,8 +27,8 @@ export default function About() {
       >
         About me!
       </Heading>
-      <Box ml={[1, 4]} sx={{ flex: 1 }}>
-        <Heading as="h2" sx={{ color: "#385a7c" }}>
+      <Box ml={[1, 4]} sx={{ flex: 1 }} mr={2} pr={3}>
+        <Heading as="h2" sx={{ color: "#385a7c" }} mt={2} mb={2}>
           Eduardo Orozco Mendoza
         </Heading>
         <Flex
@@ -39,6 +38,7 @@ export default function About() {
             alignContent: "center",
             alignItems: "center",
           }}
+          mb={2}
         >
           <Badge m={1}>Entrepreneur</Badge>
           <Badge m={1}>Preseverant</Badge>
@@ -46,48 +46,94 @@ export default function About() {
           <Badge m={1}>Full-Stack Developer</Badge>
           <Badge m={1}>Gentle parent</Badge>
         </Flex>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          consectetur odio sed aliquet lacinia. Nam non tempor justo. Curabitur
-          tempus sagittis nisi in dapibus. Sed interdum ultrices laoreet. Duis
-          fermentum turpis nunc, eget rutrum libero consectetur non. Cras
-          lacinia, nisl eu eleifend volutpat, erat quam maximus nisi, et ornare
-          enim libero id dui. Donec mollis magna ac leo volutpat, eget elementum
-          eros rhoncus. In ornare venenatis pulvinar. Maecenas urna dui, rutrum
-          sed condimentum sit amet, laoreet nec ligula. Donec vel pretium lacus.
-          Nullam efficitur leo mollis, pellentesque orci sed, feugiat mi. Duis
-          cursus quis ipsum vel pulvinar. Nunc a fermentum nibh, sit amet
-          aliquam lectus. Nullam eu vulputate mauris. Aenean felis turpis,
-          convallis quis posuere vitae, volutpat in augue. Duis laoreet, est eu
-          ullamcorper bibendum, ante augue venenatis dui, consequat pharetra
-          massa orci sit amet justo. Suspendisse blandit dolor id orci commodo
-          ultricies. Sed convallis, nisi vel accumsan posuere, ipsum magna
-          suscipit eros, sit amet gravida felis nisl ac sapien. Donec accumsan
-          sed lacus eu gravida. Sed tincidunt leo eget tempor blandit. Vivamus
-          in nibh ut orci facilisis elementum. Fusce euismod pharetra odio, non
-          auctor felis fermentum et. Fusce vel luctus sapien. Morbi ac suscipit
-          felis, sed ornare turpis. Donec hendrerit arcu ac dui faucibus tempus.
-          Nam nec arcu ut mauris consequat commodo et id metus. Curabitur
-          commodo enim quam, in imperdiet elit feugiat a. Nunc vulputate
-          scelerisque elit at euismod. Nam eget facilisis ipsum. Vivamus vel
-          tellus vitae justo consectetur volutpat. Phasellus euismod, erat non
-          semper rutrum, justo sapien ullamcorper odio, porttitor eleifend nisi
-          velit eu magna. Quisque tempus enim ac sapien rhoncus, vel rutrum eros
-          dapibus. Orci varius natoque penatibus et magnis dis parturient
-          montes, nascetur ridiculus mus. Suspendisse nec ornare sapien.
-          Praesent arcu elit, ornare a ante et, lacinia venenatis leo. Etiam
-          tempus nisl leo, ut suscipit felis vehicula non. Fusce in leo eu
-          tellus commodo accumsan. Nulla eleifend scelerisque quam, vitae
-          egestas purus viverra sed. Pellentesque semper elementum nulla nec
-          ullamcorper. Phasellus eleifend et lorem ac dapibus. Nulla blandit
-          velit nec augue consectetur, id rutrum nunc egestas. Aliquam erat
-          volutpat. Donec laoreet nisi nec felis tincidunt, eu vulputate quam
-          accumsan. Fusce suscipit viverra suscipit. Suspendisse tincidunt
-          ullamcorper odio sed fringilla. Nullam interdum, lorem vel accumsan
-          lacinia, enim enim condimentum enim, sed ornare enim mi vel mauris.
-          Duis quis consequat eros. Curabitur pulvinar consequat vehicula. Sed
-          ipsum velit, cursus ut nulla sit amet, bibendum posuere enim.
-        </Text>
+        <Box mt={2} mb={2}>
+          <Heading as="h3" sx={{ color: "#385a7c" }}>
+            Profile
+          </Heading>
+          <Text>
+            Chief Operating Officer with a demonstrated history of working in
+            the consumer services industry. Skilled in Operations Management,
+            Full-Stack Development, Data Analytics, Project Management, and
+            Business Development. Strong operations professional with a
+            Bachelor's degree focused in Entrepreneurship/Entrepreneurial
+            Studies from ITESM CSF.
+          </Text>
+        </Box>
+        <Box mt={2} mb={3}>
+          <Heading as="h3" sx={{ color: "#385a7c" }} mb={3}>
+            Experience
+          </Heading>
+          <Box mt={2} mb={2}>
+            <Heading as="h4">
+              Chief Operational Officer - Ormen World Wide — Jan 2012 to present
+            </Heading>
+            <Text>
+              After graduating from college, I wanted to pay my father back for
+              all those years of hard work. So I started working with him, in a
+              new clothing company. I started out as a simple storage boy, and
+              then, I started moving up the chain, going through every single
+              position available. I learned how the company worked through and
+              through, every single detail, from accessory storage capabilities
+              up to managing the entire production line and finances. I
+              personally coordinate a team of 20 suppliers and 10 staff members.
+              On top of all that, I got tired of using the same ERP system. It
+              was simply not built for the kind of operations we needed. So I
+              decided to create one from scratch. We started from the production
+              point of view, where we could start consolidating all the
+              supplies, and fabrics, then coordinating the suppliers, and the
+              production process. Then we started migrating the POS system and
+              finally the CRM. After 5 years of continuous work, I can say this
+              is one of my top achievments.
+            </Text>
+          </Box>
+          <Box mt={2} mb={2}>
+            <Heading as="h4">
+              Co-Founder - Club AC adiestramiento canino -Jan 2019 - present
+            </Heading>
+            <Text>
+              My brother, one of the top dog trainers in México, suddenly lost
+              his job. There was only one alternative...to start a venture
+              together. I invested 20,000usd to create the best dog training
+              facilities in México. I currently check the finances, and update a
+              custom-made ERP. This ERP, is for booking a spot in the dog
+              training sessions, track payments, check memberships, update dog
+              status, add courses, and update dog status.
+            </Text>
+          </Box>
+          <Box mt={2} mb={2}>
+            <Heading as="h4">
+              Full Stack Developer - Gym Juice Yoga - June 2019 - present
+            </Heading>
+            <Text>
+              Gym Juice Yoga, a gym dedicated to top athletes from all over
+              México was in need of an entire ERP system. We worked together to
+              develop a web app, where admins could manage memberships, take
+              attendance, track athlete progress, track payments. In one point
+              in the pandemic, it had an integration with Vimeo for online
+              events. It was also linked to Stripe to manage recurrent payments.
+              This project initially started with Meteor JS, Blaze, Node and
+              Mongo. As I grew as a developer we migrated to React JS, Next JS ,
+              Apollo, Graph QL, and Mongo. Right now we are waiting for the
+              designer to deliver the landing page.
+            </Text>
+          </Box>
+          <Box mt={2} mb={2}>
+            <Heading as="h4">
+              Full Stack Developer - Kumbhaka Coyoacan - January 2018 - present
+            </Heading>
+            <Text>
+              Kumbhaka, one of the best yoga studios in México city, needed an
+              entire ERP system. So I created from scratch their platform. They
+              can create classes, take attendance, users can register to
+              specific classes, handle memberships, payments, reports, and in
+              one point in time a Stripe integration. This project initially
+              started with Meteor JS, Blaze, Node and Mongo. As I grew as a
+              developer we migrated to React JS, Next JS , Apollo, Graph QL, and
+              Mongo. Right now we are waiting for the designer to deliver the
+              landing page.
+            </Text>
+          </Box>
+        </Box>
       </Box>
     </Flex>
   );
