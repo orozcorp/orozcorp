@@ -25,6 +25,7 @@ export default function Portfolio() {
       >
         Portfolio
       </Heading>
+      <Box ml={[1, 4]} sx={{ flex: 1 }} mr={2} pr={3}></Box>
     </Flex>
   );
 }
