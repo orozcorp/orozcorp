@@ -4,6 +4,7 @@ import { Box, Heading, Flex } from "@theme-ui/components";
 export default function Portfolio() {
   return (
     <Flex
+      id="Portfolio"
       p={2}
       mb={5}
       sx={{

@@ -17,6 +17,10 @@ export default {
     monospace: "Menlo, monospace",
   },
   badges: {
+    primary: {
+      bg: "primary",
+      color: "white",
+    },
     secondary: {
       bg: "secondary",
       color: "white",

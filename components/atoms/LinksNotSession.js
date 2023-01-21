@@ -5,7 +5,7 @@ export default function LinksNotSession() {
     <>
       <Box mt={3}>
         <Link
-          href="/About"
+          href="#About"
           style={{
             marginTop: "15px",
             marginBottom: "15px",
@@ -24,7 +24,7 @@ export default function LinksNotSession() {
         </Link>
 
         <Link
-          href="/Portfolio"
+          href="#Portfolio"
           style={{
             marginTop: "15px",
             marginBottom: "15px",
@@ -42,7 +42,7 @@ export default function LinksNotSession() {
           </Text>
         </Link>
         <Link
-          href="/StacksAndSkills"
+          href="#StacksAndSkills"
           style={{
             marginTop: "15px",
             marginBottom: "15px",
@@ -61,7 +61,7 @@ export default function LinksNotSession() {
           </Text>
         </Link>
         <Link
-          href="/Contact"
+          href="#Contact"
           style={{
             marginTop: "15px",
             marginBottom: "15px",

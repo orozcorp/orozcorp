@@ -1,10 +1,11 @@
-import { Box, Flex, Heading, Text } from "@theme-ui/components";
+import { Box, Flex, Heading, Text, Badge } from "@theme-ui/components";
 import useWindowSize from "../hooks/useWindowSize";
 
 export default function About() {
   const size = useWindowSize();
   return (
     <Flex
+      id="About"
       sx={{
         backgroundColor: "#b2eee6",
         alignItems: "flex-start",
@@ -31,6 +32,20 @@ export default function About() {
         <Heading as="h2" sx={{ color: "#385a7c" }}>
           Eduardo Orozco Mendoza
         </Heading>
+        <Flex
+          sx={{
+            flexFlow: "row wrap",
+            justifyContent: "flex-start",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Badge m={1}>Entrepreneur</Badge>
+          <Badge m={1}>Preseverant</Badge>
+          <Badge m={1}>Optimistic</Badge>
+          <Badge m={1}>Full-Stack Developer</Badge>
+          <Badge m={1}>Gentle parent</Badge>
+        </Flex>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
           consectetur odio sed aliquet lacinia. Nam non tempor justo. Curabitur

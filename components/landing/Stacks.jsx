@@ -1,8 +1,10 @@
 import { Box, Flex, Heading, Text } from "@theme-ui/components";
+import Image from "next/image";
 import useWindowSize from "../hooks/useWindowSize";
 export default function Stacks() {
   return (
     <Flex
+      id="StacksAndSkills"
       sx={{
         backgroundColor: "#b2eee6",
         alignItems: "flex-start",
@@ -25,52 +27,156 @@ export default function Stacks() {
       >
         Stacks and Skills
       </Heading>
-      <Box mt={4} ml={[1, 4]} sx={{ flex: 1 }}>
-        <Heading as="h2" sx={{ color: "#385a7c" }}>
-          Eduardo Orozco Mendoza
+      <Box mt={4} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
+        <Heading as="h2" sx={{ color: "#385a7c", textAlign: "center" }}>
+          Some of the stacks, skills, languages, and frameworks I am fluid in
         </Heading>
-        <Text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-          consectetur odio sed aliquet lacinia. Nam non tempor justo. Curabitur
-          tempus sagittis nisi in dapibus. Sed interdum ultrices laoreet. Duis
-          fermentum turpis nunc, eget rutrum libero consectetur non. Cras
-          lacinia, nisl eu eleifend volutpat, erat quam maximus nisi, et ornare
-          enim libero id dui. Donec mollis magna ac leo volutpat, eget elementum
-          eros rhoncus. In ornare venenatis pulvinar. Maecenas urna dui, rutrum
-          sed condimentum sit amet, laoreet nec ligula. Donec vel pretium lacus.
-          Nullam efficitur leo mollis, pellentesque orci sed, feugiat mi. Duis
-          cursus quis ipsum vel pulvinar. Nunc a fermentum nibh, sit amet
-          aliquam lectus. Nullam eu vulputate mauris. Aenean felis turpis,
-          convallis quis posuere vitae, volutpat in augue. Duis laoreet, est eu
-          ullamcorper bibendum, ante augue venenatis dui, consequat pharetra
-          massa orci sit amet justo. Suspendisse blandit dolor id orci commodo
-          ultricies. Sed convallis, nisi vel accumsan posuere, ipsum magna
-          suscipit eros, sit amet gravida felis nisl ac sapien. Donec accumsan
-          sed lacus eu gravida. Sed tincidunt leo eget tempor blandit. Vivamus
-          in nibh ut orci facilisis elementum. Fusce euismod pharetra odio, non
-          auctor felis fermentum et. Fusce vel luctus sapien. Morbi ac suscipit
-          felis, sed ornare turpis. Donec hendrerit arcu ac dui faucibus tempus.
-          Nam nec arcu ut mauris consequat commodo et id metus. Curabitur
-          commodo enim quam, in imperdiet elit feugiat a. Nunc vulputate
-          scelerisque elit at euismod. Nam eget facilisis ipsum. Vivamus vel
-          tellus vitae justo consectetur volutpat. Phasellus euismod, erat non
-          semper rutrum, justo sapien ullamcorper odio, porttitor eleifend nisi
-          velit eu magna. Quisque tempus enim ac sapien rhoncus, vel rutrum eros
-          dapibus. Orci varius natoque penatibus et magnis dis parturient
-          montes, nascetur ridiculus mus. Suspendisse nec ornare sapien.
-          Praesent arcu elit, ornare a ante et, lacinia venenatis leo. Etiam
-          tempus nisl leo, ut suscipit felis vehicula non. Fusce in leo eu
-          tellus commodo accumsan. Nulla eleifend scelerisque quam, vitae
-          egestas purus viverra sed. Pellentesque semper elementum nulla nec
-          ullamcorper. Phasellus eleifend et lorem ac dapibus. Nulla blandit
-          velit nec augue consectetur, id rutrum nunc egestas. Aliquam erat
-          volutpat. Donec laoreet nisi nec felis tincidunt, eu vulputate quam
-          accumsan. Fusce suscipit viverra suscipit. Suspendisse tincidunt
-          ullamcorper odio sed fringilla. Nullam interdum, lorem vel accumsan
-          lacinia, enim enim condimentum enim, sed ornare enim mi vel mauris.
-          Duis quis consequat eros. Curabitur pulvinar consequat vehicula. Sed
-          ipsum velit, cursus ut nulla sit amet, bibendum posuere enim.
-        </Text>
+        <Box mt={4}>
+          <Flex
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "space-between",
+              width: "100%",
+              textAlign: "center",
+            }}
+            mt={4}
+            mb={4}
+          >
+            <Heading as="h3" sx={{ color: "#385a7c" }}>
+              Starter Kit
+            </Heading>
+            <Flex
+              mt={2}
+              mb={2}
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/html-1.svg"
+                width={100}
+                height={100}
+                alt="html 5"
+              />
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/icons8-css3.svg"
+                width={100}
+                height={100}
+                alt="CSS"
+              />
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/icons8-javascript.svg"
+                width={100}
+                height={100}
+                alt="Javascript"
+              />
+            </Flex>
+            <Text sx={{ color: "#385a7c" }}>
+              Every web developer must start and master the basic 3
+            </Text>
+          </Flex>
+          <Flex
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "space-between",
+              width: "100%",
+              textAlign: "center",
+            }}
+            mt={4}
+            mb={4}
+          >
+            <Heading as="h3" sx={{ color: "#385a7c" }}>
+              Fullstack beginners road
+            </Heading>
+            <Flex
+              mt={2}
+              mb={2}
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/icons8-node-js.svg"
+                width={100}
+                height={100}
+                alt="Node"
+              />
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/MongoDB_Logo.svg"
+                width={200}
+                height={100}
+                alt="Mongo"
+              />
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/meteor-icon.svg"
+                width={100}
+                height={100}
+                alt="Meteor js"
+              />
+            </Flex>
+            <Text sx={{ color: "#385a7c" }}>
+              Using servers and NoSQL, with the best beginners framework
+            </Text>
+          </Flex>
+          <Flex
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "center",
+              alignContent: "center",
+              alignItems: "space-between",
+              width: "100%",
+              textAlign: "center",
+            }}
+            mt={4}
+            mb={4}
+          >
+            <Heading as="h3" sx={{ color: "#385a7c" }}>
+              Starting to get serious
+            </Heading>
+            <Flex
+              mt={2}
+              mb={2}
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/icons8-graphql-144.svg"
+                width={100}
+                height={100}
+                alt="Graph QL"
+              />
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/apollo-graphql-1.svg"
+                width={200}
+                height={100}
+                alt="Apollo"
+              />
+              <Image
+                src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Nextjs-logo.svg"
+                width={200}
+                height={100}
+                alt="Next JS"
+              />
+            </Flex>
+            <Text sx={{ color: "#385a7c" }}>
+              Starting serverless , SSR, with out leaving the nest
+            </Text>
+          </Flex>
+        </Box>
       </Box>
     </Flex>
   );

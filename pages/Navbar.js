@@ -51,7 +51,7 @@ export default function Navbar() {
             }}
           >
             <Link
-              href="/About"
+              href="#About"
               style={{
                 marginTop: "15px",
                 marginBottom: "15px",
@@ -70,7 +70,7 @@ export default function Navbar() {
             </Link>
 
             <Link
-              href="/Portfolio"
+              href="#Portfolio"
               style={{
                 marginTop: "15px",
                 marginBottom: "15px",
@@ -88,7 +88,7 @@ export default function Navbar() {
               </Text>
             </Link>
             <Link
-              href="/StacksAndSkills"
+              href="#StacksAndSkills"
               style={{
                 marginTop: "15px",
                 marginBottom: "15px",
@@ -107,7 +107,7 @@ export default function Navbar() {
               </Text>
             </Link>
             <Link
-              href="/Contact"
+              href="#Contact"
               style={{
                 marginTop: "15px",
                 marginBottom: "15px",
