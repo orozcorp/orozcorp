@@ -1,6 +1,5 @@
 import { Box, Flex, Heading, Text } from "@theme-ui/components";
 import Image from "next/image";
-import useWindowSize from "../hooks/useWindowSize";
 export default function Stacks() {
   return (
     <Flex

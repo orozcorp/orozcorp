@@ -1,8 +1,6 @@
 import { Box, Flex, Heading, Text, Badge } from "@theme-ui/components";
-import useWindowSize from "../hooks/useWindowSize";
 
 export default function About() {
-  const size = useWindowSize();
   return (
     <Flex
       id="About"

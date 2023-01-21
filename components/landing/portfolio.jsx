@@ -1,4 +1,3 @@
-"use client";
 import { Box, Heading, Flex } from "@theme-ui/components";
 
 export default function Portfolio() {
