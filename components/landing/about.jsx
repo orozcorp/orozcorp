@@ -41,6 +41,7 @@ export default function About() {
             src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg"
             height={100}
             width={70}
+            alt="orozcorp logo"
           />
           <Heading as="h2" sx={{ color: "#385a7c" }} mt={3}>
             Eduardo Orozco Mendoza

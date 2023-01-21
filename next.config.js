@@ -7,6 +7,10 @@ module.exports = {
     config.resolve.alias["@"] = path.resolve(__dirname);
     return config;
   },
+  i18n: {
+    locales: ["en"],
+    defaultLocale: "en",
+  },
   images: {
     domains: [
       "stgfinal.s3.amazonaws.com",
