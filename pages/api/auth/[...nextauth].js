@@ -15,7 +15,7 @@ const options = {
   theme: {
     colorScheme: "dark",
     brandColor: "#008080",
-    // logo: "https://res.cloudinary.com/dthb0w8uh/image/upload/v1621895887/KUMBHAKA/TIEMPO_YOGA_LOGO_p8zox7.svg",
+    logo: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
     buttonText: "#fff",
   },
   callbacks: {
@@ -38,10 +38,7 @@ const options = {
       if (userInfo) {
         session.roles = userInfo.profile.roles;
         session.user.id = userInfo._id;
-        session.user.oldId = userInfo.oldId;
         session.user.name = `${userInfo.profile.nombre} ${userInfo.profile.apellido}`;
-        session.saldo = userInfo.saldo;
-        session.membership = userInfo.profile.membership;
         return session;
       }
       return {};
