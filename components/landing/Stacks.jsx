@@ -1,5 +1,6 @@
 import { Box, Flex, Heading, Text } from "@theme-ui/components";
 import Image from "next/image";
+import { rgbDataURL } from "../../lib/helpers/blur";
 export default function Stacks() {
   return (
     <Flex
@@ -62,18 +63,27 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="html 5"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
               <Image
                 src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/icons8-css3.svg"
                 width={100}
                 height={100}
                 alt="CSS"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
               <Image
                 src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/icons8-javascript.svg"
                 width={100}
                 height={100}
                 alt="Javascript"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
             </Flex>
             <Text sx={{ color: "#385a7c" }}>
@@ -110,18 +120,27 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="Node"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
               <Image
                 src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/MongoDB_Logo.svg"
                 width={200}
                 height={100}
                 alt="Mongo"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
               <Image
                 src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/meteor-icon.svg"
                 width={100}
                 height={100}
                 alt="Meteor js"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
             </Flex>
             <Text sx={{ color: "#385a7c" }}>
@@ -158,18 +177,27 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="Graph QL"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
               <Image
                 src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/apollo-graphql-1.svg"
                 width={200}
                 height={100}
                 alt="Apollo"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
               <Image
                 src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Nextjs-logo.svg"
                 width={200}
                 height={100}
                 alt="Next JS"
+                style={{ maxWidth: "100%", height: "auto" }}
+                placeholder="blur"
+                blurDataURL={rgbDataURL(178, 238, 230)}
               />
             </Flex>
             <Text sx={{ color: "#385a7c" }}>

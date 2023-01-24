@@ -13,7 +13,7 @@ const options = {
   ],
   adapter: MongoDBAdapter(clientPromise),
   theme: {
-    colorScheme: "dark",
+    colorScheme: "ligth",
     brandColor: "#008080",
     logo: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
     buttonText: "#fff",
@@ -39,11 +39,11 @@ const options = {
         session.roles = userInfo.profile.roles;
         session.user.id = userInfo._id;
         session.user.name = `${userInfo.profile.nombre} ${userInfo.profile.apellido}`;
+        session.user.photo = userInfo.profile.picture;
         return session;
       }
       return {};
     },
   },
 };
-
 export default (req, res) => NextAuth(req, res, options);

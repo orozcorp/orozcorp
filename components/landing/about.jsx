@@ -1,6 +1,6 @@
 import { Box, Flex, Heading, Text, Badge } from "@theme-ui/components";
 import Image from "next/image";
-
+import { rgbDataURL } from "../../lib/helpers/blur";
 export default function About() {
   return (
     <Flex
@@ -42,6 +42,9 @@ export default function About() {
             height={100}
             width={70}
             alt="orozcorp logo"
+            style={{ maxWidth: "100%", height: "auto" }}
+            placeholder="blur"
+            blurDataURL={rgbDataURL(178, 238, 230)}
           />
           <Heading as="h2" sx={{ color: "#385a7c" }} mt={3}>
             Eduardo Orozco Mendoza
@@ -57,8 +60,7 @@ export default function About() {
           mb={2}
         >
           <Badge m={1}>Entrepreneur</Badge>
-          <Badge m={1}>Perseverant
-            </Badge>
+          <Badge m={1}>Perseverant</Badge>
           <Badge m={1}>Optimistic</Badge>
           <Badge m={1}>Full-Stack Developer</Badge>
           <Badge m={1}>Gentle parent</Badge>
