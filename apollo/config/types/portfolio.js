@@ -2,15 +2,15 @@ import { gql } from "@apollo/client";
 
 export const portfolio = gql`
   enum AllowedTec {
-    html5
-    css
-    js
-    node
-    mongo
-    meteor
-    apollo
-    graphQL
-    nextJS
+    HTML
+    CSS
+    JS
+    Node
+    Mongo
+    Meteor
+    Apollo
+    GraphQL
+    NextJs
   }
   type ImagesPortfolio {
     _id: ID!
@@ -20,16 +20,16 @@ export const portfolio = gql`
   type Portfolio {
     _id: ID!
     projectName: String!
+    description: String!
     startDate: Date!
     endDate: Date
     website: String!
     tecUsed: [AllowedTec]
-    mainImage: ImagesPortfolio
-    description: String!
-    images: [ImagesPortfolio!]
     designBy: String!
     client: String!
     show: Boolean
+    mainImage: ImagesPortfolio
+    images: [ImagesPortfolio!]
   }
   input InputImagesPortfolio {
     _id: ID!
