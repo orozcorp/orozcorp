@@ -43,8 +43,7 @@ export const portfolio = gql`
     website: String!
     tecUsed: [AllowedTec]
     description: String!
-    mainImage: InputImagesPortfolio
-    images: [InputImagesPortfolio!]
+    mainImage: InputImagesPortfolio!
     designBy: String!
     client: String!
   }

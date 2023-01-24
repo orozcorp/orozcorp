@@ -8,10 +8,11 @@ const ProgressBar = ({ completed }) => {
   const fillerStyles = {
     height: "100%",
     width: `${completed}%`,
-    backgroundColor: "#a80303",
+    backgroundColor: "#008080",
     borderRadius: "inherit",
     textAlign: "right",
   };
+
   const labelStyles = {
     padding: 5,
     marginLeft: "10px",

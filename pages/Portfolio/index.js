@@ -6,6 +6,8 @@ import { uniqueId } from "lodash";
 import Image from "next/image";
 import { rgbDataURL } from "../../lib/helpers/blur";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import AddPortfolio from "./AddPortfolio";
+import { useState } from "react";
 const QUERY = gql`
   query Query {
     listPortfolio {
@@ -28,10 +30,14 @@ const QUERY = gql`
 export default function PortfolioMain() {
   const { data } = useQuery(QUERY);
   const portfolio = (data && data.listPortfolio) || [];
+  const [display, setDisplay] = useState("none");
   return (
     <AdminContainer>
+      <AddPortfolio display={display} setDisplay={setDisplay} />
       <Heading as="h1">Portfolio</Heading>
-      <Button mb={3}>Add Portfolio</Button>
+      <Button mb={3} onClick={() => setDisplay("box")}>
+        Add Portfolio
+      </Button>
       <Box sx={{ overflowX: "auto" }}>
         <table>
           <thead>

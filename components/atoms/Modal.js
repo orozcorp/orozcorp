@@ -7,7 +7,7 @@ export default function Modal({ children, display, setDisplay }) {
         display: display,
         position: "fixed",
         zIndex: "999",
-        paddingTop: "100px",
+        paddingTop: "50px",
         left: "0",
         top: "0",
         width: "100%",
@@ -23,7 +23,8 @@ export default function Modal({ children, display, setDisplay }) {
           margin: "auto",
           padding: "20px",
           border: "1px solid #888",
-          width: "80%",
+          width: "90%",
+          borderRadius: "2%",
         }}
       >
         <span
