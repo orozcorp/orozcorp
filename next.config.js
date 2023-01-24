@@ -21,8 +21,7 @@ module.exports = {
     ],
     unoptimized: false,
   },
-  
-  
+
   async headers() {
     return [
       {
@@ -43,16 +42,15 @@ module.exports = {
         ],
       },
       {
-          source: "/:all*(svg|jpg|png)",
-          locale: false,
-          headers: [
-            {
-              key: "Cache-Control",
-              value: "public, max-age=9999999999, immutable",
-            },
-          ],
-        },
-      
+        source: "/:all*(svg|jpg|png)",
+        locale: false,
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=9999999999, immutable",
+          },
+        ],
+      },
     ];
   },
   swcMinify: true,
@@ -60,5 +58,13 @@ module.exports = {
   env: {
     BASE_URL: dev ? "http://localhost:3000/" : "https://www.orozcorp.live/",
     DB_URI: process.env.DB_URI,
+  },
+  modularizeImports: {
+    lodash: {
+      transform: "lodash/{{member}}",
+    },
+    "react-icons": {
+      transform: "react-icons/{{member}}",
+    },
   },
 };
