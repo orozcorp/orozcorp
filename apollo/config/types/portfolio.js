@@ -8,6 +8,7 @@ export const portfolio = gql`
     Node
     Mongo
     Meteor
+    ReactJs
     Apollo
     GraphQL
     NextJs
@@ -40,6 +41,7 @@ export const portfolio = gql`
     _id: ID!
     startDate: Date!
     endDate: Date
+    projectName: String!
     website: String!
     tecUsed: [AllowedTec]
     description: String!

@@ -6,7 +6,7 @@ export default {
     background: "#fff",
     primary: "#385a7c",
     secondary: "#008080",
-    pink: "#000000",
+    pink: "#f26363",
     muted: "#EAE9EA",
     yellow: "#797A79",
   },
@@ -52,7 +52,7 @@ export default {
       right: "10px",
     },
     blue: {
-      backgroundColor: "blue",
+      backgroundColor: "primary",
       position: "absolute",
       top: "80px",
       boxShadow: "0px 6px 15px 0px rgba(0, 0, 0, 0.25)",

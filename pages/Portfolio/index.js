@@ -33,7 +33,7 @@ export default function PortfolioMain() {
   const [display, setDisplay] = useState("none");
   return (
     <AdminContainer>
-      <AddPortfolio display={display} setDisplay={setDisplay} />
+      <AddPortfolio display={display} setDisplay={setDisplay} query={QUERY} />
       <Heading as="h1">Portfolio</Heading>
       <Button mb={3} onClick={() => setDisplay("box")}>
         Add Portfolio

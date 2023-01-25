@@ -1,3 +1,4 @@
+import { S3Up } from "s3up-server";
 export const uploadsResolver = {
   Mutation: {
     signFile: async (root, { key }, ctx) => {

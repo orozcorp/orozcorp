@@ -16,6 +16,7 @@ import { v4 as uuidv4 } from "uuid";
 import ProgressBar from "../../components/atoms/ProgressBar";
 import { useGlobalData } from "../../components/context/GlobalContext";
 import { gql, useMutation } from "@apollo/client";
+import { uploadFiles } from "s3up-client";
 const SIGN_UPLOAD = gql`
   mutation Mutation($key: String!) {
     signFile(key: $key) {
@@ -32,8 +33,18 @@ const SIGN_UPLOAD = gql`
     }
   }
 `;
-export default function AddPortfolio({ display, setDisplay }) {
+const INSERT_MUTATION = gql`
+  mutation InsertPortfolio($input: InputPortfolio) {
+    insertPortfolio(input: $input) {
+      code
+      message
+      success
+    }
+  }
+`;
+export default function AddPortfolio({ display, setDisplay, query }) {
   const initial = {
+    projectName: "",
     startDate: new Date(),
     endDate: new Date(),
     website: "",
@@ -44,7 +55,6 @@ export default function AddPortfolio({ display, setDisplay }) {
       photo: "",
       description: "",
     },
-    images: [],
     designBy: "",
     client: "",
   };
@@ -53,7 +63,7 @@ export default function AddPortfolio({ display, setDisplay }) {
   const [percent, setPercent] = useState(0);
   const { setAlert } = useGlobalData();
   const [descripcionFoto, setDescripcionFoto] = useState("");
-  const [foto, setFoto] = useState({});
+  const [mainImage, setMainImage] = useState({});
   const [key, setKey] = useState("");
   const [signUpload] = useMutation(SIGN_UPLOAD, { variables: { key } });
   async function Sign() {
@@ -86,7 +96,7 @@ export default function AddPortfolio({ display, setDisplay }) {
     uploadFiles(inputFile.current.files, {
       signer: Sign,
       onProgress: (state) => {
-        setFoto({
+        setMainImage({
           _id: uuidv4(),
           photo: state.list[0].url,
           description: descripcionFoto,
@@ -96,6 +106,34 @@ export default function AddPortfolio({ display, setDisplay }) {
     });
   }
   //!DONE UPLOAD
+  //* Insert of the actual portfolio
+  const [insert, { loading }] = useMutation(INSERT_MUTATION, {
+    variables: {
+      input: {
+        ...values,
+        startDate: new Date(values.startDate),
+        endDate: new Date(values.endDate),
+        tecUsed: values.tecUsed.map((val) => val.value),
+        mainImage,
+        _id: uuidv4(),
+      },
+    },
+    onCompleted: () => {
+      setValues(initial);
+      setMainImage({});
+      setDisplay("none");
+    },
+    onError: (err) => {
+      setAlert({
+        message: err.message,
+        display: "box",
+        variant: "orange",
+      });
+      console.log(err.message);
+    },
+    refetchQueries: [{ query }],
+    awaitRefetchQueries: true,
+  });
 
   return (
     <Modal display={display} setDisplay={setDisplay}>
@@ -106,6 +144,19 @@ export default function AddPortfolio({ display, setDisplay }) {
           justifyContent: "flex-start",
           alignContent: "center",
           alignItems: "center",
+        }}
+        as="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log({
+            ...values,
+            startDate: new Date(values.startDate),
+            endDate: new Date(values.endDate),
+            tecUsed: values.tecUsed.map((val) => val.value),
+            mainImage,
+            _id: uuidv4(),
+          });
+          insert();
         }}
       >
         <Box sx={{ width: "100%" }}>
@@ -186,7 +237,7 @@ export default function AddPortfolio({ display, setDisplay }) {
               onChange={(e) =>
                 setValues({
                   ...values,
-                  website: e.currentTarget.value.toUpperCase(),
+                  website: e.currentTarget.value,
                 })
               }
             />
@@ -227,7 +278,7 @@ export default function AddPortfolio({ display, setDisplay }) {
             <Label m={1}>Client</Label>
             <Input
               type="text"
-              value={values.designBy}
+              value={values.client}
               onChange={(e) =>
                 setValues({
                   ...values,
@@ -270,7 +321,9 @@ export default function AddPortfolio({ display, setDisplay }) {
             </Box>
           )}
         </Flex>
-        <Button>Guardar</Button>
+        <Button type="submit" disabled={loading}>
+          Guardar
+        </Button>
       </Flex>
     </Modal>
   );
