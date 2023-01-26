@@ -13,6 +13,7 @@ export default function PortfolioSingle({ portfolio }) {
         justifyContent: "center",
         alignContent: "center",
         alignItems: "center",
+        width: ["300px", "400px"],
       }}
     >
       <Heading as="h2">{portfolio.client}</Heading>

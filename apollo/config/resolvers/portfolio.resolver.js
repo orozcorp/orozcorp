@@ -19,10 +19,12 @@ export const portFolioResolvers = {
     },
   },
   Query: {
-    listPortfolio: async (root, args, { db }) => {
+    listPortfolio: async (root, { offset, limit }, { db }) => {
       return await db
         .collection("Portfolio")
         .find({}, { sort: { startDate: -1 } })
+        .skip(offset)
+        .limit(limit)
         .toArray();
     },
   },
