@@ -10,7 +10,7 @@ export default withApollo(
       ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
       link: createHttpLink({
         uri: process.env.NEXT_PUBLIC_ROOT_URL
-          ? `https://www.orozcorp.live/api`
+          ? `https://orozcorp.live/api`
           : "http://localhost:3000/api",
         credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
         headers,
