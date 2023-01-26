@@ -131,7 +131,7 @@ export default function AddPortfolio({ display, setDisplay, query }) {
       });
       console.log(err.message);
     },
-    refetchQueries: [{ query }],
+    refetchQueries: [{ query, variables: { offset: 0, limit: 99 } }],
     awaitRefetchQueries: true,
   });
 

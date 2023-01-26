@@ -1,5 +1,5 @@
 import { AdminContainer } from "../../components/context/AdminContext";
-import { Heading, Button, Badge, Box } from "@theme-ui/components";
+import { Heading, Button, Badge, Box, Spinner } from "@theme-ui/components";
 import { gql, useQuery } from "@apollo/client";
 import { format_date_month } from "../../lib/helpers/formatters";
 import { uniqueId } from "lodash";
@@ -9,26 +9,26 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import AddPortfolio from "./AddPortfolio";
 import { useState } from "react";
 const QUERY = gql`
-  query Query {
-    listPortfolio {
-      tecUsed
+  query ListPortfolio($offset: Int!, $limit: Int!) {
+    listPortfolio(offset: $offset, limit: $limit) {
       _id
       client
+      projectName
       description
-      endDate
       mainImage {
         _id
         photo
       }
-      show
       startDate
       website
-      projectName
+      tecUsed
     }
   }
 `;
 export default function PortfolioMain() {
-  const { data } = useQuery(QUERY);
+  const { data } = useQuery(QUERY, {
+    variables: { offset: 0, limit: 99 },
+  });
   const portfolio = (data && data.listPortfolio) || [];
   const [display, setDisplay] = useState("none");
   return (

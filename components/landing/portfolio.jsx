@@ -1,4 +1,4 @@
-import { Box, Heading, Flex } from "@theme-ui/components";
+import { Box, Heading, Flex, Spinner } from "@theme-ui/components";
 import { gql, useQuery } from "@apollo/client";
 import PortfolioSingle from "./PortfolioSingle";
 import useWindowSize from "../hooks/useWindowSize";
@@ -24,7 +24,7 @@ export default function Portfolio() {
   const size = useWindowSize();
   const limit = size.width > 800 ? 2 : 1;
   const [offset, setOffset] = useState(0);
-  const { data } = useQuery(QUERY, { variables: { offset, limit } });
+  const { data, loading } = useQuery(QUERY, { variables: { offset, limit } });
   const portfolio = (data && data.listPortfolio) || [];
   return (
     <Flex
@@ -49,6 +49,7 @@ export default function Portfolio() {
           position: ["relative", "relative", "sticky"],
           top: ["0%", "0%", "50%"],
           flex: 1,
+          wordBreak: "keep-all",
         }}
       >
         Portfolio
@@ -58,35 +59,46 @@ export default function Portfolio() {
         ml={[1, 4]}
         sx={{
           flex: 2,
-          flexFlow: "row wrap",
-          justifyContent: "space-between",
+          flexFlow: "row nowrap",
+          justifyContent: "flex-start",
           alignContent: "center",
-          alignItems: "center",
+          alignItems: "stretch",
         }}
         mr={[0, 4]}
         p={2}
       >
-        <Flex
-          mb={2}
-          sx={{
-            flexFlow: ["row nowrap"],
-            justifyContent: "flex-start",
-            alignContent: "center",
-            alignItems: "stretch",
-          }}
-        >
-          <AiOutlineArrowLeft
-            style={{ alignSelf: "center", color: "#008080", fontSize: "30px" }}
-            onClick={() => setOffset(offset - 1)}
-          />
-          {portfolio.map((val) => (
-            <PortfolioSingle key={val._id} portfolio={val} />
-          ))}
-          <AiOutlineArrowRight
-            style={{ alignSelf: "center", color: "#008080", fontSize: "30px" }}
-            onClick={() => setOffset(offset + 1)}
-          />
-        </Flex>
+        <AiOutlineArrowLeft
+          style={{ alignSelf: "center", color: "#008080", fontSize: "90px" }}
+          onClick={() => setOffset(offset > 0 ? offset - 1 : 0)}
+        />
+        {loading && (
+          <Flex
+            m={2}
+            p={2}
+            variant="styles.boxGlass"
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "flex-start",
+              alignContent: "center",
+              alignItems: "center",
+              width: ["300px", "400px"],
+              height: "300px",
+            }}
+          >
+            <Box sx={{ width: "300px", height: "400px" }}>
+              <Spinner />
+            </Box>
+          </Flex>
+        )}
+
+        {portfolio.map((val) => (
+          <PortfolioSingle key={val._id} portfolio={val} />
+        ))}
+
+        <AiOutlineArrowRight
+          style={{ alignSelf: "center", color: "#008080", fontSize: "90px" }}
+          onClick={() => setOffset(offset + 1)}
+        />
       </Flex>
     </Flex>
   );

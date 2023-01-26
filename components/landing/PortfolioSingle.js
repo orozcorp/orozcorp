@@ -10,13 +10,15 @@ export default function PortfolioSingle({ portfolio }) {
       variant="styles.boxGlass"
       sx={{
         flexFlow: "column nowrap",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignContent: "center",
         alignItems: "center",
         width: ["300px", "400px"],
       }}
     >
-      <Heading as="h2">{portfolio.client}</Heading>
+      <Heading as="h2" mb={2}>
+        {portfolio.client}
+      </Heading>
       <Image
         src={portfolio.mainImage.photo}
         width={300}
