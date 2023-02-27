@@ -44,6 +44,20 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           </ThemeProvider>
         </ApolloProvider>
       </SessionProvider>
+      <>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-H6EDP81J4D"
+          strategy="lazyOnload"
+        />
+        <Script id="google-analytics" strategy="lazyOnload">
+          {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-H6EDP81J4D');
+        `}
+        </Script>
+      </>
     </>
   );
 });
