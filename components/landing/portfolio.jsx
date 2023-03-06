@@ -1,6 +1,8 @@
-import { Box, Heading, Flex, Spinner } from "@theme-ui/components";
+import { Heading, Flex, Box } from "@theme-ui/components";
 import { gql, useQuery } from "@apollo/client";
+import { Parallax } from "@react-spring/parallax";
 import PortfolioSingle from "./PortfolioSingle";
+import { useRef } from "react";
 const QUERY = gql`
   query ListPortfolio {
     listPortfolio {
@@ -20,13 +22,20 @@ const QUERY = gql`
 export default function Portfolio() {
   const { data, loading } = useQuery(QUERY);
   const portfolio = (data && data.listPortfolio) || [];
+  const parallax = useRef(null);
+  const scroll = (to) => {
+    if (to === portfolio.length - 1 && parallax.current) {
+      return parallax.current.scrollTo(0);
+    }
+    if (parallax.current) {
+      return parallax.current.scrollTo(to + 1);
+    }
+  };
   return (
     <Flex
       id="Portfolio"
       p={2}
-      mb={5}
       sx={{
-        height: "auto",
         width: "100vw",
         alignItems: "flex-start",
         flexFlow: "column nowrap",
@@ -46,8 +55,8 @@ export default function Portfolio() {
       >
         Portfolio
       </Heading>
-      <Flex
-        my={4}
+      <Box
+        mt={4}
         sx={{
           width: "100vw",
           flexFlow: "row wrap",
@@ -57,10 +66,17 @@ export default function Portfolio() {
         }}
         p={2}
       >
-        {portfolio.map((val) => (
-          <PortfolioSingle key={val._id} portfolio={val} />
-        ))}
-      </Flex>
+        <Parallax ref={parallax} pages={4} horizontal>
+          {portfolio.map((val, index) => (
+            <PortfolioSingle
+              key={val._id}
+              portfolio={val}
+              offset={index}
+              onClick={() => scroll(index)}
+            />
+          ))}
+        </Parallax>
+      </Box>
     </Flex>
   );
 }

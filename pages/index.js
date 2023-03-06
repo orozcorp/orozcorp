@@ -6,8 +6,8 @@ export default function index() {
   return (
     <>
       <About />
-      <Portfolio />
       <Stacks />
+      <Portfolio />
     </>
   );
 }
