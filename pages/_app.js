@@ -10,6 +10,7 @@ import { GlobalContainer } from "../components/context/GlobalContext";
 import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import Head from "next/head";
+import Script from "next/script";
 const customFont = Catamaran({
   display: "swap",
   subsets: ["latin"],
