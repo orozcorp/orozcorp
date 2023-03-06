@@ -23,6 +23,7 @@ export default function PortfolioSingle({ portfolio }) {
         src={portfolio.mainImage.photo}
         width={300}
         height={200}
+        priority
         alt={portfolio.client}
         style={{ maxWidth: "100%", height: "auto" }}
         placeholder="blur"
