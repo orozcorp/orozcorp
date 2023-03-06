@@ -6,7 +6,7 @@ export default function Stacks() {
     <Flex
       id="StacksAndSkills"
       sx={{
-        backgroundColor: "#b2eee6",
+        backgroundColor: "#E4DFDA",
         alignItems: "flex-start",
         flexFlow: ["column nowrap", "row wrap"],
         borderRadius: ["0%", "0% 100% 0% 100% / 100% 25% 75% 0% "],

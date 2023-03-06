@@ -3,7 +3,6 @@ import { gql, useQuery } from "@apollo/client";
 import PortfolioSingle from "./PortfolioSingle";
 import useWindowSize from "../hooks/useWindowSize";
 import { useState } from "react";
-import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 const QUERY = gql`
   query ListPortfolio {
     listPortfolio {
@@ -31,7 +30,7 @@ export default function Portfolio() {
       id="Portfolio"
       p={2}
       sx={{
-        height: "auto",
+        height: "100%",
         alignItems: "flex-start",
         flexFlow: ["column nowrap", "row wrap"],
         justifyContent: ["center", "flex-start"],
@@ -59,10 +58,9 @@ export default function Portfolio() {
         sx={{
           flex: 2,
           flexFlow: "row wrap",
-          justifyContent: "flex-start",
+          justifyContent: "center",
           alignContent: "center",
           alignItems: "stretch",
-          maxHeight: "100vh",
         }}
         mr={[0, 4]}
         p={2}

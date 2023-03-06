@@ -64,6 +64,23 @@ export default function LinksNotSession() {
           </Text>
         </Link>
         <Link
+          href="#Services"
+          style={{
+            textDecoration: "none",
+          }}
+        >
+          <Text
+            sx={{
+              color: "white",
+              textDecoration: "none",
+
+              fontSize: "25px",
+            }}
+          >
+            Services
+          </Text>
+        </Link>
+        <Link
           href="#Contact"
           style={{
             textDecoration: "none",

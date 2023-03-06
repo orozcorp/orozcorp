@@ -1,7 +1,6 @@
 "use client";
 import { useState } from "react";
 import { Flex, Spinner, Button, Heading, Text } from "@theme-ui/components";
-import Image from "next/image";
 import Menu from "../components/atoms/Menu";
 import LateralMenu from "../components/atoms/LateralMenu";
 import useWindowSize from "../components/hooks/useWindowSize";
@@ -18,7 +17,7 @@ export default function Navbar() {
         justifyContent: "space-between",
         alignContent: "center",
         alignItems: "center",
-        backgroundColor: "#008080",
+        backgroundColor: "#4281A4",
         width: "100%",
       }}
     >
@@ -47,7 +46,7 @@ export default function Navbar() {
               alignSelf: "center",
               flexFlow: "row wrap",
               justifyContent: "space-between",
-              width: "300px",
+              width: "450px",
             }}
           >
             <Link
@@ -68,7 +67,6 @@ export default function Navbar() {
                 About
               </Text>
             </Link>
-
             <Link
               href="#Portfolio"
               style={{
@@ -88,6 +86,24 @@ export default function Navbar() {
               </Text>
             </Link>
             <Link
+              href="#About"
+              style={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                textDecoration: "none",
+              }}
+            >
+              <Text
+                sx={{
+                  color: "white",
+                  textDecoration: "none",
+                  fontSize: "15px",
+                }}
+              >
+                About
+              </Text>
+            </Link>
+            <Link
               href="#StacksAndSkills"
               style={{
                 marginTop: "15px",
@@ -104,6 +120,25 @@ export default function Navbar() {
                 }}
               >
                 Stacks and Skills
+              </Text>
+            </Link>
+            <Link
+              href="#Services"
+              style={{
+                marginTop: "15px",
+                marginBottom: "15px",
+                textDecoration: "none",
+              }}
+            >
+              <Text
+                sx={{
+                  color: "white",
+                  textDecoration: "none",
+
+                  fontSize: "15px",
+                }}
+              >
+                Services
               </Text>
             </Link>
             <Link
@@ -136,7 +171,7 @@ export default function Navbar() {
         mr={2}
       >
         {!session && status !== "loading" && (
-          <Button onClick={signIn} m={1} sx={{ backgroundColor: "#008080" }}>
+          <Button onClick={signIn} m={1} sx={{ backgroundColor: "#4281A4" }}>
             Sign In
           </Button>
         )}

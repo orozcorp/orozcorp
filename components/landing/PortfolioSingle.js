@@ -1,10 +1,8 @@
 import { Flex, Heading, Badge, Text, Box } from "@theme-ui/components";
 import Image from "next/image";
 import { rgbDataURL } from "../../lib/helpers/blur";
-import { ParallaxLayer } from "@react-spring/parallax";
 import useWindowSize from "../hooks/useWindowSize";
-export default function PortfolioSingle({ offset, onClick, portfolio }) {
-  const size = useWindowSize();
+export default function PortfolioSingle({ portfolio }) {
   return (
     <Flex
       m={2}
