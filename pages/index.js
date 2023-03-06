@@ -1,4 +1,5 @@
 import About from "../components/landing/about";
+import Contact from "../components/landing/Contact";
 import Portfolio from "../components/landing/portfolio";
 import Stacks from "../components/landing/Stacks";
 
@@ -6,7 +7,10 @@ export default function index() {
   return (
     <>
       <About />
+
       <Stacks />
+
+      <Contact />
       <Portfolio />
     </>
   );

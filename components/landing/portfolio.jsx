@@ -37,9 +37,10 @@ export default function Portfolio() {
       p={2}
       sx={{
         width: "100vw",
+        height: "100vh",
         alignItems: "flex-start",
         flexFlow: "column nowrap",
-        justifyContent: "center",
+        justifyContent: "flex-start",
         alignContent: "center",
         alignItems: "center",
       }}
@@ -63,6 +64,7 @@ export default function Portfolio() {
           justifyContent: "center",
           alignContent: "center",
           alignItems: "stretch",
+          maxHeight: "100vh",
         }}
         p={2}
       >

@@ -62,7 +62,6 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="html 5"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -71,7 +70,6 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="CSS"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -80,7 +78,6 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="Javascript"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -119,7 +116,6 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="Node"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -128,7 +124,6 @@ export default function Stacks() {
                 width={200}
                 height={100}
                 alt="Mongo"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -137,7 +132,6 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="Meteor js"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -176,7 +170,6 @@ export default function Stacks() {
                 width={100}
                 height={100}
                 alt="Graph QL"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -185,7 +178,6 @@ export default function Stacks() {
                 width={200}
                 height={100}
                 alt="Apollo"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
@@ -194,7 +186,6 @@ export default function Stacks() {
                 width={200}
                 height={100}
                 alt="Next JS"
-                style={{ maxWidth: "100%", height: "auto" }}
                 placeholder="blur"
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
