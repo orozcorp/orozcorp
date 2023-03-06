@@ -76,7 +76,7 @@ export default function Services() {
             sx={{ fontSize: "24px", color: "#385a7c", textAlign: "center" }}
             as="h2"
           >
-            Personalized eccomerce
+            Personalized ecommerce
           </Heading>
         </Box>
       </Flex>
