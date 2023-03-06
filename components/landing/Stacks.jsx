@@ -12,7 +12,6 @@ export default function Stacks() {
         borderRadius: ["0%", "0% 100% 0% 100% / 100% 25% 75% 0% "],
       }}
       p={2}
-      pb={5}
     >
       <Heading
         as="h1"

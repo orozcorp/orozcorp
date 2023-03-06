@@ -54,6 +54,6 @@ export const portfolio = gql`
     insertPortfolio(input: InputPortfolio): GeneralResponse!
   }
   type Query {
-    listPortfolio(offset: Int!, limit: Int!): [Portfolio]
+    listPortfolio: [Portfolio]
   }
 `;

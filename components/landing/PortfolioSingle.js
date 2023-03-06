@@ -13,7 +13,7 @@ export default function PortfolioSingle({ portfolio }) {
         justifyContent: "flex-start",
         alignContent: "center",
         alignItems: "center",
-        width: ["300px", "400px"],
+        width: "300px",
       }}
     >
       <Heading as="h2" mb={2}>

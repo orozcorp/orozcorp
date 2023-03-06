@@ -19,13 +19,10 @@ export const portFolioResolvers = {
     },
   },
   Query: {
-    listPortfolio: async (root, { offset, limit }, { db }) => {
-      const limitOffset = await db.collection("Portfolio").count();
+    listPortfolio: async (root, args, { db }) => {
       return await db
         .collection("Portfolio")
         .find({}, { sort: { startDate: -1 } })
-        .skip(offset < limitOffset ? offset : 0)
-        .limit(limit)
         .toArray();
     },
   },
