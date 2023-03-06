@@ -1,8 +1,9 @@
 import { Heading, Flex, Box } from "@theme-ui/components";
 import { gql, useQuery } from "@apollo/client";
-import { Parallax } from "@react-spring/parallax";
 import PortfolioSingle from "./PortfolioSingle";
-import { useRef } from "react";
+import useWindowSize from "../hooks/useWindowSize";
+import { useState } from "react";
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 const QUERY = gql`
   query ListPortfolio {
     listPortfolio {
@@ -20,29 +21,22 @@ const QUERY = gql`
   }
 `;
 export default function Portfolio() {
-  const { data, loading } = useQuery(QUERY);
+  const size = useWindowSize();
+  const limit = size.width > 800 ? 2 : 1;
+  const [offset, setOffset] = useState(0);
+  const { data, loading } = useQuery(QUERY, { variables: { offset, limit } });
   const portfolio = (data && data.listPortfolio) || [];
-  const parallax = useRef(null);
-  const scroll = (to) => {
-    if (to === portfolio.length - 1 && parallax.current) {
-      return parallax.current.scrollTo(0);
-    }
-    if (parallax.current) {
-      return parallax.current.scrollTo(to + 1);
-    }
-  };
   return (
     <Flex
       id="Portfolio"
       p={2}
       sx={{
-        width: "100vw",
-        height: "100vh",
+        height: "auto",
         alignItems: "flex-start",
-        flexFlow: "column nowrap",
-        justifyContent: "flex-start",
-        alignContent: "center",
-        alignItems: "center",
+        flexFlow: ["column nowrap", "row wrap"],
+        justifyContent: ["center", "flex-start"],
+        alignContent: ["center", "flex-start"],
+        alignItems: ["center", "flex-start"],
       }}
     >
       <Heading
@@ -51,34 +45,32 @@ export default function Portfolio() {
         sx={{
           color: "#385a7c",
           fontSize: "60px",
+          position: ["relative", "relative", "sticky"],
+          top: ["0%", "0%", "50%"],
+          flex: 1,
           wordBreak: "keep-all",
         }}
       >
         Portfolio
       </Heading>
-      <Box
-        mt={4}
+      <Flex
+        mt={[1, 4]}
+        ml={[1, 4]}
         sx={{
-          width: "100vw",
+          flex: 2,
           flexFlow: "row wrap",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignContent: "center",
           alignItems: "stretch",
           maxHeight: "100vh",
         }}
+        mr={[0, 4]}
         p={2}
       >
-        <Parallax ref={parallax} pages={4} horizontal>
-          {portfolio.map((val, index) => (
-            <PortfolioSingle
-              key={val._id}
-              portfolio={val}
-              offset={index}
-              onClick={() => scroll(index)}
-            />
-          ))}
-        </Parallax>
-      </Box>
+        {portfolio.map((val) => (
+          <PortfolioSingle key={val._id} portfolio={val} />
+        ))}
+      </Flex>
     </Flex>
   );
 }
