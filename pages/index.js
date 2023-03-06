@@ -11,31 +11,21 @@ export default function index() {
       <LocalBusinessJsonLd
         type="Consulting Firm"
         id="https://www.orozcorp.live"
-        name="Dave's Department Store"
-        description="Dave's latest department store in San Jose, now open"
+        name="Orozcorp"
+        description="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
         url="http://www.example.com/store-locator/sl/San-Jose-Westgate-Store/1427"
-        telephone="+14088717984"
+        telephone="+525536554893"
         address={{
-          streetAddress: "1600 Saratoga Ave",
-          addressLocality: "San Jose",
-          addressRegion: "CA",
-          postalCode: "95129",
-          addressCountry: "US",
-        }}
-        geo={{
-          latitude: "37.293058",
-          longitude: "-121.988331",
+          streetAddress: "General Miguel Aleman 32 loc d",
+          addressLocality: "Col Centro Del Cuauhtemoc",
+          addressRegion: "CDMX",
+          postalCode: "06000",
+          addressCountry: "MX",
         }}
         images={[
-          "https://example.com/photos/1x1/photo.jpg",
-          "https://example.com/photos/4x3/photo.jpg",
-          "https://example.com/photos/16x9/photo.jpg",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
         ]}
-        sameAs={[
-          "www.company-website-url1.dev",
-          "www.company-website-url2.dev",
-          "www.company-website-url3.dev",
-        ]}
+        sameAs={["www.orozcorp.live"]}
         openingHours={[
           {
             opens: "08:00",
@@ -49,42 +39,24 @@ export default function index() {
               "Saturday",
             ],
             validFrom: "2019-12-23",
-            validThrough: "2020-04-02",
-          },
-          {
-            opens: "14:00",
-            closes: "20:00",
-            dayOfWeek: "Sunday",
-            validFrom: "2019-12-23",
-            validThrough: "2020-04-02",
+            validThrough: "2030-04-02",
           },
         ]}
         rating={{
-          ratingValue: "4.5",
-          ratingCount: "2",
+          ratingValue: "5",
+          ratingCount: "4",
         }}
         review={[
           {
-            author: "John Doe",
-            datePublished: "2006-05-04",
-            name: "A masterpiece of literature",
-            reviewBody:
-              "I really enjoyed this book. It captures the essential challenge people face as they try make sense of their lives and grow to adulthood.",
+            author: "Catalina Ley",
+            datePublished: "2023-03-01",
+            name: "Desarrollo rápido y eficiente",
+            reviewBody: "Desarrollo, fácil, eficiente y rápido",
             reviewRating: {
               bestRating: "5",
               worstRating: "1",
               reviewAspect: "Ambiance",
-              ratingValue: "4",
-            },
-          },
-          {
-            author: "Bob Smith",
-            datePublished: "2006-06-15",
-            name: "A good read.",
-            reviewBody:
-              "Catcher in the Rye is a fun book. It's a good book to read.",
-            reviewRating: {
-              ratingValue: "4",
+              ratingValue: "5",
             },
           },
         ]}
@@ -92,49 +64,15 @@ export default function index() {
           {
             priceSpecification: {
               type: "UnitPriceSpecification",
-              priceCurrency: "EUR",
-              price: "1000-10000",
+              priceCurrency: "MXN",
+              price: "10000-1000000",
             },
             itemOffered: {
-              name: "Motion Design Services",
-              description:
-                "We are the expert of animation and motion design productions.",
-            },
-          },
-          {
-            priceSpecification: {
-              type: "UnitPriceSpecification",
-              priceCurrency: "EUR",
-              price: "2000-10000",
-            },
-            itemOffered: {
-              name: "Branding Services",
-              description:
-                "Real footage is a powerful tool when it comes to show what the business is about. Can be used to present your company, show your factory, promote a product packshot, or just tell any story. It can help create emotional links with your audience by showing punchy images.",
+              name: "WebApp Creation",
+              description: "Web App Creation",
             },
           },
         ]}
-        areaServed={[
-          {
-            geoMidpoint: {
-              latitude: "41.108237",
-              longitude: "-80.642982",
-            },
-            geoRadius: "1000",
-          },
-          {
-            geoMidpoint: {
-              latitude: "51.108237",
-              longitude: "-80.642982",
-            },
-            geoRadius: "1000",
-          },
-        ]}
-        action={{
-          actionName: "potentialAction",
-          actionType: "ReviewAction",
-          target: "https://www.example.com/review/this/business",
-        }}
       />
       <About />
       <Portfolio />

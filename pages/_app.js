@@ -22,7 +22,10 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
     <>
       <Head>
         <title>Orozcorp</title>
-        <meta name="description" content="Orozcorp" />
+        <meta
+          name="description"
+          content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS "
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="fragment" content="!" />
