@@ -7,7 +7,7 @@ export default function Contact() {
       id="Contact"
       sx={{
         backgroundColor: "#E4DFDA",
-        alignItems: "flex-start",
+        alignItems:["center", "flex-start"],
         flexFlow: ["column nowrap", "row wrap"],
         borderRadius: ["0", "0% 100% 0% 100% / 69% 0% 100% 31% "],
       }}
