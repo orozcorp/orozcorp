@@ -46,14 +46,13 @@ export default function Navbar() {
               alignSelf: "center",
               flexFlow: "row wrap",
               justifyContent: "space-between",
-              width: "450px",
+              width: "auto",
             }}
           >
             <Link
               href="#About"
               style={{
-                marginTop: "15px",
-                marginBottom: "15px",
+                margin: "15px",
                 textDecoration: "none",
               }}
             >
@@ -61,7 +60,7 @@ export default function Navbar() {
                 sx={{
                   color: "white",
                   textDecoration: "none",
-                  fontSize: "15px",
+                  fontSize: "20px",
                   fontWeight: "bold",
                 }}
               >
@@ -71,8 +70,7 @@ export default function Navbar() {
             <Link
               href="#Portfolio"
               style={{
-                marginTop: "15px",
-                marginBottom: "15px",
+                margin: "15px",
                 textDecoration: "none",
               }}
             >
@@ -80,7 +78,7 @@ export default function Navbar() {
                 sx={{
                   color: "white",
                   textDecoration: "none",
-                  fontSize: "15px",
+                  fontSize: "20px",
                   fontWeight: "bold",
                 }}
               >
@@ -90,8 +88,7 @@ export default function Navbar() {
             <Link
               href="#About"
               style={{
-                marginTop: "15px",
-                marginBottom: "15px",
+                margin: "15px",
                 textDecoration: "none",
               }}
             >
@@ -99,7 +96,7 @@ export default function Navbar() {
                 sx={{
                   color: "white",
                   textDecoration: "none",
-                  fontSize: "15px",
+                  fontSize: "20px",
                   fontWeight: "bold",
                 }}
               >
@@ -109,8 +106,7 @@ export default function Navbar() {
             <Link
               href="#StacksAndSkills"
               style={{
-                marginTop: "15px",
-                marginBottom: "15px",
+                margin: "15px",
                 textDecoration: "none",
               }}
             >
@@ -119,7 +115,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontWeight: "bold",
-                  fontSize: "15px",
+                  fontSize: "20px",
                 }}
               >
                 Stacks and Skills
@@ -128,8 +124,7 @@ export default function Navbar() {
             <Link
               href="#Services"
               style={{
-                marginTop: "15px",
-                marginBottom: "15px",
+                margin: "15px",
                 textDecoration: "none",
               }}
             >
@@ -138,7 +133,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontWeight: "bold",
-                  fontSize: "15px",
+                  fontSize: "20px",
                 }}
               >
                 Services
@@ -147,8 +142,7 @@ export default function Navbar() {
             <Link
               href="#Contact"
               style={{
-                marginTop: "15px",
-                marginBottom: "15px",
+                margin: "15px",
                 textDecoration: "none",
               }}
             >
@@ -156,7 +150,7 @@ export default function Navbar() {
                 sx={{
                   color: "white",
                   textDecoration: "none",
-                  fontSize: "15px",
+                  fontSize: "20px",
                   fontWeight: "bold",
                 }}
               >
