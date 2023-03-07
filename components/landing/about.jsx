@@ -12,7 +12,7 @@ export default function About() {
         borderRadius: ["0", "0% 100% 0% 100% / 69% 0% 100% 31% "],
       }}
       p={2}
-      pb={5}
+      pb={[2,5]}
     >
       <Heading
         as="h1"
