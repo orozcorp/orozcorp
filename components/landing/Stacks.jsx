@@ -4,15 +4,15 @@ import { rgbDataURL } from "../../lib/helpers/blur";
 export default function Stacks() {
   return (
     <Flex
-      id="StacksAndSkills"
+      id="Stacks"
       sx={{
         backgroundColor: "#E4DFDA",
-        alignItems:["center", "flex-start"],
+        alignItems: "center",
         flexFlow: ["column nowrap", "row wrap"],
-        borderRadius: ["0%", "0% 100% 0% 100% / 100% 25% 75% 0% "],
+        borderRadius: ["0", "0% 100% 0% 100% / 69% 0% 100% 31% "],
       }}
       p={2}
-      pb={5}
+      pb={[2,5]}
     >
       <Heading
         as="h1"
@@ -20,10 +20,7 @@ export default function Stacks() {
         sx={{
           color: "#385a7c",
           fontSize: "60px",
-          position: ["relative", "sticky"],
-          top: "50%",
           flex: 1,
-          
         }}
       >
         Stacks and Skills
