@@ -9,8 +9,8 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import AddPortfolio from "./AddPortfolio";
 import { useState } from "react";
 const QUERY = gql`
-  query ListPortfolio($offset: Int!, $limit: Int!) {
-    listPortfolio(offset: $offset, limit: $limit) {
+  query ListPortfolio {
+    listPortfolio {
       _id
       client
       projectName
@@ -26,9 +26,7 @@ const QUERY = gql`
   }
 `;
 export default function PortfolioMain() {
-  const { data } = useQuery(QUERY, {
-    variables: { offset: 0, limit: 99 },
-  });
+  const { data } = useQuery(QUERY);
   const portfolio = (data && data.listPortfolio) || [];
   const [display, setDisplay] = useState("none");
   return (
