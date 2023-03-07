@@ -4,7 +4,7 @@ import { rgbDataURL } from "../../lib/helpers/blur";
 export default function Stacks() {
   return (
     <Flex
-      id="Stacks"
+      id="StacksAndSkills"
       sx={{
         backgroundColor: "#E4DFDA",
         alignItems: "center",
