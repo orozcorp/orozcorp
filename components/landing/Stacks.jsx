@@ -1,18 +1,23 @@
 import { Box, Flex, Heading, Text } from "@theme-ui/components";
 import Image from "next/image";
 import { rgbDataURL } from "../../lib/helpers/blur";
+
 export default function Stacks() {
   return (
     <Flex
       id="StacksAndSkills"
       sx={{
         backgroundColor: "#E4DFDA",
-        alignItems: "center",
-        flexFlow: ["column nowrap", "row wrap"],
         borderRadius: ["0", "0% 100% 0% 100% / 69% 0% 100% 31% "],
+        height: "100%",
+        alignItems: "flex-start",
+        flexFlow: ["column nowrap", "row wrap"],
+        justifyContent: ["center", "flex-start"],
+        alignContent: ["center", "flex-start"],
+        alignItems: ["center", "flex-start"],
       }}
       p={2}
-      pb={[2,5]}
+      pb={[2, 5]}
     >
       <Heading
         as="h1"
@@ -20,15 +25,17 @@ export default function Stacks() {
         sx={{
           color: "#385a7c",
           fontSize: "60px",
+          position: ["relative", "relative", "sticky"],
+          top: ["0%", "0%", "50%"],
           flex: 1,
-          textAlign:["center", "justified"]
+          wordBreak: "keep-all",
         }}
       >
         Stacks and Skills
       </Heading>
-      <Box mt={[2, 6]} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
+      <Box mt={2} ml={[1, 4]} sx={{ flex: 1 }} mr={[0, 4]} p={2}>
         <Heading as="h2" sx={{ color: "#385a7c", textAlign: "center" }}>
-          Some of the stacks, skills, languages, and frameworks I am fluid in
+          Some of the stacks, languages, and frameworks I am fluid in
         </Heading>
         <Box mt={4}>
           <Flex
@@ -189,9 +196,7 @@ export default function Stacks() {
                 blurDataURL={rgbDataURL(178, 238, 230)}
               />
             </Flex>
-            <Text sx={{ color: "#385a7c" }}>
-              Starting serverless , SSR, with out leaving the nest
-            </Text>
+            <Text sx={{ color: "#385a7c" }}>Starting Serverless</Text>
           </Flex>
         </Box>
       </Box>

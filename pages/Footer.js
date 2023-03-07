@@ -9,7 +9,7 @@ export default function Footer() {
         position: "fixed",
         left: 0,
         bottom: 0,
-        backgroundColor: "#4281A4",
+        backgroundColor: "#385a7c",
         width: "100%",
       }}
       p={2}

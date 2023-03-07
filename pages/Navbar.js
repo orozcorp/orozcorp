@@ -17,7 +17,7 @@ export default function Navbar() {
         justifyContent: "space-between",
         alignContent: "center",
         alignItems: "center",
-        backgroundColor: "#4281A4",
+        backgroundColor: "#385a7c",
         width: "100%",
       }}
     >
@@ -62,6 +62,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontSize: "15px",
+                  fontWeight: "bold",
                 }}
               >
                 About
@@ -80,6 +81,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontSize: "15px",
+                  fontWeight: "bold",
                 }}
               >
                 Portfolio
@@ -98,6 +100,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontSize: "15px",
+                  fontWeight: "bold",
                 }}
               >
                 About
@@ -115,7 +118,7 @@ export default function Navbar() {
                 sx={{
                   color: "white",
                   textDecoration: "none",
-
+                  fontWeight: "bold",
                   fontSize: "15px",
                 }}
               >
@@ -134,7 +137,7 @@ export default function Navbar() {
                 sx={{
                   color: "white",
                   textDecoration: "none",
-
+                  fontWeight: "bold",
                   fontSize: "15px",
                 }}
               >
@@ -154,6 +157,7 @@ export default function Navbar() {
                   color: "white",
                   textDecoration: "none",
                   fontSize: "15px",
+                  fontWeight: "bold",
                 }}
               >
                 Contact
@@ -171,7 +175,7 @@ export default function Navbar() {
         mr={2}
       >
         {!session && status !== "loading" && (
-          <Button onClick={signIn} m={1} sx={{ backgroundColor: "#4281A4" }}>
+          <Button onClick={signIn} m={1} sx={{ backgroundColor: "#385a7c" }}>
             Sign In
           </Button>
         )}

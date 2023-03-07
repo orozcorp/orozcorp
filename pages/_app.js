@@ -2,7 +2,7 @@ import theme from "../src/layout/theme";
 import { ThemeProvider } from "theme-ui";
 
 import Navbar from "./Navbar";
-import { Catamaran } from "@next/font/google";
+import { Catamaran } from "next/font/google";
 import Footer from "./Footer";
 import { ApolloProvider } from "@apollo/client";
 import withApolloClient from "../apollo/config/withApolloClient";

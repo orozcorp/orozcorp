@@ -6,10 +6,10 @@ export default function Contact() {
     <Flex
       id="Contact"
       sx={{
-        backgroundColor: "#E4DFDA",
-        alignItems:["center", "flex-start"],
         flexFlow: ["column nowrap", "row wrap"],
-        borderRadius: ["0", "0% 100% 0% 100% / 69% 0% 100% 31% "],
+        alignItems: ["center", "flex-start"],
+        justifyContent: ["center", "flex-start"],
+        alignContent: ["center", "flex-start"],
       }}
       p={2}
       pb={4}
@@ -37,7 +37,7 @@ export default function Contact() {
           Contact me
         </a>
       </Heading>
-      <Box ml={[1, 4]} sx={{ flex: 1 }} mr={2} pr={3} mt={3}>
+      <Box sx={{ flex: 1 }} mt={3}>
         <Box variant="styles.boxGlass" p={2} m={2}>
           <Heading
             my={3}

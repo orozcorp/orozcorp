@@ -199,18 +199,7 @@ h6 {
 
 input,
 
-table {
-  border-collapse: collapse;
-}
 
-td,
-th {
-  border: 1px solid #000;
-  text-align: center;
-  height: fit-content;
-  width: fit-content;
-  padding: -15px
-}
 
 .modalClosed {
   display: none;
@@ -242,37 +231,14 @@ th {
 
 
 
-.scale-in-center {
-  -webkit-animation: scale-in-center 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-  animation: scale-in-center 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
-}
 
-@-webkit-keyframes scale-in-center {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
-@keyframes scale-in-center {
-  0% {
-    -webkit-transform: scale(0);
-    transform: scale(0);
-    opacity: 1;
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-    opacity: 1;
-  }
+td,
+th {
+  border: 1px solid #000;
+  text-align: center;
+  height: fit-content;
+  width: fit-content;
+  padding: -15px
 }
 
 table {

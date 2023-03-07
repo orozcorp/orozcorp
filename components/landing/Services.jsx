@@ -1,15 +1,16 @@
-import { Box, Flex, Heading, Text } from "@theme-ui/components";
-import Image from "next/image";
-import { rgbDataURL } from "../../lib/helpers/blur";
+import { Flex, Heading } from "@theme-ui/components";
+import ServicesSingle from "./ServicesSingle";
 export default function Services() {
   return (
     <Flex
       id="Services"
       sx={{
-        backgroundColor: "#E4DFDA",
-        alignItems:["center", "flex-start"],
         flexFlow: "column nowrap",
         borderRadius: ["0%", "0% 100% 0% 100% / 100% 25% 75% 0% "],
+        backgroundColor: "#E4DFDA",
+        alignItems: ["center", "flex-start"],
+        justifyContent: ["center", "flex-start"],
+        alignContent: ["center", "flex-start"],
       }}
       p={2}
       pb={5}
@@ -25,54 +26,22 @@ export default function Services() {
       >
         Services
       </Heading>
-      <Box ml={[1, 4]} sx={{ flex: 1 }} mr={2} pr={3} mt={3}
+      <Flex
+        sx={{
+          flexFlow: "row wrap",
+          alignItems: "center",
+          justifyContent: "center",
+          alignContent: "center",
+        }}
+        mt={3}
       >
-        <Box variant="styles.boxGlass" p={2} m={2}>
-          <Heading
-            my={3}
-            sx={{ fontSize: "24px", color: "#385a7c", textAlign: "center" }}
-            as="h2"
-          >
-            Webapp Creation
-          </Heading>
-        </Box>
-        <Box variant="styles.boxGlass" p={2} m={2}>
-          <Heading
-            my={3}
-            sx={{ fontSize: "24px", color: "#385a7c", textAlign: "center" }}
-            as="h2"
-          >
-            Customized ERP
-          </Heading>
-        </Box>
-        <Box variant="styles.boxGlass" p={2} m={2}>
-          <Heading
-            my={3}
-            sx={{ fontSize: "24px", color: "#385a7c", textAlign: "center" }}
-            as="h2"
-          >
-            Entrepreneurship Consulting
-          </Heading>
-        </Box>
-        <Box variant="styles.boxGlass" p={2} m={2}>
-          <Heading
-            my={3}
-            sx={{ fontSize: "24px", color: "#385a7c", textAlign: "center" }}
-            as="h2"
-          >
-            Personalized webpage
-          </Heading>
-        </Box>
-        <Box variant="styles.boxGlass" p={2} m={2}>
-          <Heading
-            my={3}
-            sx={{ fontSize: "24px", color: "#385a7c", textAlign: "center" }}
-            as="h2"
-          >
-            Personalized ecommerce
-          </Heading>
-        </Box>
-      </Box>
+        <ServicesSingle service="Webapp Creation" />
+        <ServicesSingle service="Customized ERP" />
+        <ServicesSingle service="Entrepreneurship Consulting" />
+        <ServicesSingle service="Personalized webpage" />
+        <ServicesSingle service="Personalized ecommerce" />
+        <ServicesSingle service="Financial viability consultant" />
+      </Flex>
     </Flex>
   );
 }
