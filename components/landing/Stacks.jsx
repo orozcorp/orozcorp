@@ -7,7 +7,7 @@ export default function Stacks() {
       id="StacksAndSkills"
       sx={{
         backgroundColor: "#E4DFDA",
-        alignItems: "flex-start",
+        alignItems:["center", "flex-start"],
         flexFlow: ["column nowrap", "row wrap"],
         borderRadius: ["0%", "0% 100% 0% 100% / 100% 25% 75% 0% "],
       }}
