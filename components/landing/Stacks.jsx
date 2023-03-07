@@ -21,6 +21,7 @@ export default function Stacks() {
           color: "#385a7c",
           fontSize: "60px",
           flex: 1,
+          textAlign:["center", "justified"]
         }}
       >
         Stacks and Skills
