@@ -29,7 +29,7 @@ export default function About() {
         <Flex
           mt={2}
           mb={2}
-          pt={5}
+          pt={[1,5]}
           sx={{
             flexFlow: "row wrap",
             justifyContent: "flex-start",
