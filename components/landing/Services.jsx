@@ -25,14 +25,7 @@ export default function Services() {
       >
         Services
       </Heading>
-      <Flex
-        sx={{
-          flexFlow: "row wrap",
-          justifyContent: "space-between",
-          alignContent: "center",
-          alignItems: "stretch",
-          width: "100%",
-        }}
+      <Box ml={[1, 4]} sx={{ flex: 1 }} mr={2} pr={3} mt={3}
       >
         <Box variant="styles.boxGlass" p={2} m={2}>
           <Heading
@@ -79,7 +72,7 @@ export default function Services() {
             Personalized ecommerce
           </Heading>
         </Box>
-      </Flex>
+      </Box>
     </Flex>
   );
 }
