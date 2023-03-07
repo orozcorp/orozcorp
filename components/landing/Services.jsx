@@ -30,7 +30,7 @@ export default function Services() {
           flexFlow: "row wrap",
           justifyContent: "space-between",
           alignContent: "center",
-          alignItems: "center",
+          alignItems: "stretch",
           width: "100%",
         }}
       >
