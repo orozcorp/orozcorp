@@ -7,7 +7,7 @@ export default function Services() {
       id="Services"
       sx={{
         backgroundColor: "#E4DFDA",
-        alignItems: "flex-start",
+        alignItems:["center", "flex-start"],
         flexFlow: "column nowrap",
         borderRadius: ["0%", "0% 100% 0% 100% / 100% 25% 75% 0% "],
       }}
