@@ -23,7 +23,7 @@ export default function Stacks() {
           position: ["relative", "sticky"],
           top: "50%",
           flex: 1,
-          textAlign: "left",
+          
         }}
       >
         Stacks and Skills
