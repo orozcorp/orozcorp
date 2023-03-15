@@ -1,13 +1,14 @@
 import { LocalBusinessJsonLd } from "next-seo";
-import About from "../components/landing/about";
-import Contact from "../components/landing/Contact";
-import Portfolio from "../components/landing/portfolio";
-import Services from "../components/landing/Services";
-import Stacks from "../components/landing/Stacks";
+import { Box } from "@theme-ui/components";
+import Contactanos from "../components/landing/Contactanos";
+import Resenas from "../components/landing/Resenas";
+import Section1 from "../components/landing/Section1";
+import Section2 from "../components/landing/Section2";
+import Section3 from "../components/landing/Section3";
 
 export default function index() {
   return (
-    <>
+    <Box sx={{ height: "100%", marginBottom: "200px" }}>
       <LocalBusinessJsonLd
         type="Consulting Firm"
         id="https://www.orozcorp.live"
@@ -74,12 +75,12 @@ export default function index() {
           },
         ]}
       />
-      <About />
-      <Portfolio />
-      <Stacks />
-      <Contact />
-      <Services />
-    </>
+      <Section1 />
+      <Section2 />
+      <Section3 />
+      <Resenas />
+      <Contactanos />
+    </Box>
   );
 }
 

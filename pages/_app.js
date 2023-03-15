@@ -2,7 +2,7 @@ import theme from "../src/layout/theme";
 import { ThemeProvider } from "theme-ui";
 
 import Navbar from "./Navbar";
-import { Catamaran } from "next/font/google";
+import { Inter } from "next/font/google";
 import Footer from "./Footer";
 import { ApolloProvider } from "@apollo/client";
 import withApolloClient from "../apollo/config/withApolloClient";
@@ -11,7 +11,7 @@ import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import Head from "next/head";
 import Script from "next/script";
-const customFont = Catamaran({
+const customFont = Inter({
   display: "swap",
   subsets: ["latin"],
   weight: ["400", "700"],

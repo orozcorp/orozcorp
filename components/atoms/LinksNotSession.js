@@ -13,7 +13,7 @@ export default function LinksNotSession() {
           alignItems: "center",
         }}
       >
-        <Link
+        {/* <Link
           href="#About"
           style={{
             textDecoration: "none",
@@ -95,7 +95,7 @@ export default function LinksNotSession() {
           >
             Contact
           </Text>
-        </Link>
+        </Link> */}
       </Flex>
     </>
   );

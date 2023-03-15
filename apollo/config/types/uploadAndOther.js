@@ -17,5 +17,11 @@ export const uploadSchema = gql`
   type Mutation {
     "signFile for upload"
     signFile(key: String!): ResponseSigner!
+    "send Contact"
+    sendContact(
+      email: String!
+      name: String!
+      message: String!
+    ): GeneralResponseDataString!
   }
 `;

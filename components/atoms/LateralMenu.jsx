@@ -13,7 +13,7 @@ function LateralMenu({ toggled, setToggled, session }) {
         flexFlow: "column nowrap",
         alignContent: "center",
         alignItems: "center",
-        backgroundColor: "#48A9A6",
+        backgroundColor: "#121212",
         height: "100%",
       }}
       onClick={() => setToggled(!toggled)}

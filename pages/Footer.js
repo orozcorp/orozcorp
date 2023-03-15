@@ -6,10 +6,7 @@ export default function Footer() {
   return (
     <Flex
       sx={{
-        position: "fixed",
-        left: 0,
-        bottom: 0,
-        backgroundColor: "#385a7c",
+        backgroundColor: "#121212",
         width: "100%",
       }}
       p={2}

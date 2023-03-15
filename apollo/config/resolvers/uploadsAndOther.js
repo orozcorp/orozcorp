@@ -1,6 +1,25 @@
 import { S3Up } from "s3up-server";
 export const uploadsResolver = {
   Mutation: {
+    sendContact: async (root, { email, name, message }, { db }) => {
+      try {
+        const input = { email, name, message, status: "Not checked" };
+        const insert = await db.collection("Prospectos").insertOne(input);
+        return {
+          code: 200,
+          success: true,
+          message: `Se ingreso `,
+          data: insert.insertedId,
+        };
+      } catch (error) {
+        console.log(error);
+        return {
+          code: error.extensions.response.status,
+          success: false,
+          message: error.extensions.response.body,
+        };
+      }
+    },
     signFile: async (root, { key }, ctx) => {
       const s3Up = new S3Up({
         accessKeyId: process.env.S3_ACCESSKEYID,
