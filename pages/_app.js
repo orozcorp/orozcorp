@@ -26,6 +26,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           name="description"
           content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS "
         />
+        <meta property="og:image" content="https://localhost:3000/api/og" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="fragment" content="!" />
