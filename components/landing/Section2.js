@@ -35,14 +35,10 @@ export default function Section2() {
             border: "1px solid #c9c9c9",
           }}
         >
-          <Text mb={2} sx={{ color: "#b3b3b3", fontSize: ["18px", "24px"] }}>
+          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             1 a 3 semanas
           </Text>
-          <Heading
-            mb={2}
-            as="h3"
-            sx={{ color: "#000", fontSize: ["24px", "36px"] }}
-          >
+          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Descubrimiento
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
@@ -59,14 +55,10 @@ export default function Section2() {
             border: "1px solid #c9c9c9",
           }}
         >
-          <Text mb={2} sx={{ color: "#b3b3b3", fontSize: ["18px", "24px"] }}>
+          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             3 a 5 semanas
           </Text>
-          <Heading
-            mb={2}
-            as="h3"
-            sx={{ color: "#000", fontSize: ["24px", "36px"] }}
-          >
+          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Diseño relampago
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
@@ -84,14 +76,10 @@ export default function Section2() {
             border: "1px solid #c9c9c9",
           }}
         >
-          <Text mb={2} sx={{ color: "#b3b3b3", fontSize: ["18px", "24px"] }}>
+          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             12 a 20 semanas
           </Text>
-          <Heading
-            mb={2}
-            as="h3"
-            sx={{ color: "#000", fontSize: ["24px", "36px"] }}
-          >
+          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Versión 1
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
@@ -108,14 +96,10 @@ export default function Section2() {
             border: "1px solid #c9c9c9",
           }}
         >
-          <Text mb={2} sx={{ color: "#b3b3b3", fontSize: ["18px", "24px"] }}>
+          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             contratos de 3 a 12 meses
           </Text>
-          <Heading
-            mb={2}
-            as="h3"
-            sx={{ color: "#000", fontSize: ["24px", "36px"] }}
-          >
+          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Equipo de desarrollo
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
@@ -132,14 +116,10 @@ export default function Section2() {
             border: "1px solid #c9c9c9",
           }}
         >
-          <Text mb={2} sx={{ color: "#b3b3b3", fontSize: ["18px", "24px"] }}>
+          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             anualmente
           </Text>
-          <Heading
-            mb={2}
-            as="h3"
-            sx={{ color: "#000", fontSize: ["24px", "36px"] }}
-          >
+          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Mantenimiento y soporte
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>

@@ -99,6 +99,7 @@ export default function Contactanos() {
                 <Input
                   type="text"
                   value={values.name}
+                  aria-label="name"
                   onChange={(e) =>
                     setValues({
                       ...values,
@@ -112,6 +113,7 @@ export default function Contactanos() {
                 <Input
                   type="email"
                   value={values.email}
+                  aria-label="email"
                   onChange={(e) =>
                     setValues({
                       ...values,
@@ -125,6 +127,7 @@ export default function Contactanos() {
               <Label>Mensaje</Label>
               <Textarea
                 value={values.message}
+                aria-label="message"
                 onChange={(e) =>
                   setValues({ ...values, message: e.currentTarget.value })
                 }

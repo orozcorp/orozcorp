@@ -12,7 +12,7 @@ export default function Section3() {
         alignItems: "flex-start",
       }}
     >
-      <Heading as="h1" sx={{ fontSize: "36px", color: "#b3b3b3" }}>
+      <Heading as="h1" sx={{ fontSize: "36px", color: "#4a4a4a" }}>
         Habilidades y capacidades
       </Heading>
       <Heading
