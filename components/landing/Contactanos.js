@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Flex, Heading, Label, Input, Button, Textarea, Box } from "theme-ui";
 import { useGlobalData } from "../context/GlobalContext";
 import useLocalStorage from "../hooks/useLocalData";
@@ -16,6 +16,7 @@ const MUTATION = gql`
 `;
 
 export default function Contactanos() {
+  const [enviadoMensaje, setEnviadoMensaje] = useState(false);
   const [sentMessage, setSentMessage] = useLocalStorage("sentMessage", false);
   const [sentMessageId, setSentMessageID] = useLocalStorage(
     "setMessageId",
@@ -26,6 +27,12 @@ export default function Contactanos() {
     email: "",
     message: "",
   };
+  useEffect(() => {
+    if (!sentMessage) {
+      return;
+    }
+    setEnviadoMensaje(true);
+  }, [sentMessage]);
   const [values, setValues] = useState(initial);
   const { setAlert } = useGlobalData();
   const [sendReport, { loading }] = useMutation(MUTATION, {
@@ -52,7 +59,7 @@ export default function Contactanos() {
         alignItems: "center",
       }}
     >
-      {sentMessage ? (
+      {enviadoMensaje ? (
         <Heading
           mt={4}
           mb={2}
@@ -87,7 +94,7 @@ export default function Contactanos() {
             }}
           >
             <Flex sx={{ flexFlow: "row wrap" }}>
-              <Box sx={{ width: "200px" }} m={2}>
+              <Box sx={{ width: ["100%", "200px"] }} m={2}>
                 <Label>Nombre</Label>
                 <Input
                   type="text"
@@ -100,7 +107,7 @@ export default function Contactanos() {
                   }
                 />
               </Box>
-              <Box sx={{ width: "200px" }} m={2}>
+              <Box sx={{ width: ["100%", "200px"] }} m={2}>
                 <Label>Email</Label>
                 <Input
                   type="email"
@@ -114,7 +121,7 @@ export default function Contactanos() {
                 />
               </Box>
             </Flex>
-            <Box sx={{ width: "400px" }} m={2}>
+            <Box sx={{ width: ["100%", "400px"] }} m={2}>
               <Label>Mensaje</Label>
               <Textarea
                 value={values.message}
