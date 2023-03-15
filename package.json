@@ -13,6 +13,7 @@
     "@emotion/react": "^11.10.5",
     "@mdx-js/react": "1",
     "@next-auth/mongodb-adapter": "^1.1.1",
+    "@vercel/og": "^0.4.0",
     "eslint-config-next": "^13.2.4",
     "graphql": "^16.6.0",
     "isomorphic-unfetch": "^4.0.2",
