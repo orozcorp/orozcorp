@@ -21,7 +21,10 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
   return (
     <>
       <Head>
-        <title>Orozcorp</title>
+        <title>
+          Orozcorp | crea tu webapp, ecommerce, catalogo , o landing con riesgo
+          mínimo
+        </title>
         <meta
           name="description"
           content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS, Finanzas, Logística "
