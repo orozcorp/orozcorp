@@ -50,8 +50,7 @@ export default function Section0() {
         </Flex>
         <Flex my={2} sx={{ width: ["100%", "60%"] }}>
           <Heading as="h2" sx={{ color: "#4a4a4a", textAlign: "center" }}>
-            Nos aliamos con las personas / empresas / amigos para ayudarlos a
-            realizar su proyecto digital.
+            Tu lo imaginas, nosotros lo creamos
           </Heading>
         </Flex>
         <Box my={3} p={3} sx={{ backgroundColor: "#910000", borderRadius:"20px", fontSize: "24px" }}>
