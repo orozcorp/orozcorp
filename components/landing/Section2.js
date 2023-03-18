@@ -36,9 +36,6 @@ export default function Section2() {
           }}
           variant="styles.neumorphsim"
         >
-          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
-            1 a 3 semanas
-          </Text>
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Descubrimiento
           </Heading>
@@ -56,9 +53,6 @@ export default function Section2() {
           }}
           variant="styles.neumorphsim"
         >
-          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
-            3 a 5 semanas
-          </Text>
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Diseño relampago
           </Heading>
@@ -77,9 +71,6 @@ export default function Section2() {
           }}
           variant="styles.neumorphsim"
         >
-          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
-            12 a 20 semanas
-          </Text>
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Versión 1
           </Heading>
@@ -97,9 +88,6 @@ export default function Section2() {
           }}
           variant="styles.neumorphsim"
         >
-          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
-            contratos de 3 a 12 meses
-          </Text>
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Equipo de desarrollo
           </Heading>
@@ -117,9 +105,6 @@ export default function Section2() {
           }}
           variant="styles.neumorphsim"
         >
-          <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
-            anualmente
-          </Text>
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Mantenimiento y soporte
           </Heading>
