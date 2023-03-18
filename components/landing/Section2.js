@@ -4,6 +4,7 @@ export default function Section2() {
   return (
     <Flex
       mt={4}
+      id="crearProductos"
       sx={{
         flexFlow: "column nowrap",
         justifyContent: "center",
@@ -32,7 +33,7 @@ export default function Section2() {
           p={[2, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "1px solid #c9c9c9",
+            border: "2px solid #910000",
           }}
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
@@ -52,7 +53,7 @@ export default function Section2() {
           p={[2, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "1px solid #c9c9c9",
+            border: "2px solid #910000",
           }}
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
@@ -73,7 +74,7 @@ export default function Section2() {
           p={[2, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "1px solid #c9c9c9",
+            border: "2px solid #910000",
           }}
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
@@ -93,7 +94,7 @@ export default function Section2() {
           p={[2, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "1px solid #c9c9c9",
+            border: "2px solid #910000",
           }}
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
@@ -113,7 +114,7 @@ export default function Section2() {
           p={[2, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "1px solid #c9c9c9",
+            border: "2px solid #910000",
           }}
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>

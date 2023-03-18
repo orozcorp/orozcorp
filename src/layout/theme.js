@@ -160,6 +160,7 @@ export default {
       bg: "primary",
       "&:hover": {
         bg: "text",
+        color: "white",
       },
       "&:disabled": {
         bg: "#797A79",

@@ -24,7 +24,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
         <title>Orozcorp</title>
         <meta
           name="description"
-          content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS "
+          content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS, Finanzas, Logística "
         />
         <meta property="og:image" content="https://www.orozcorp.live/api/og" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

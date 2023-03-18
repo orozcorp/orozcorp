@@ -53,7 +53,8 @@ export default function Section3() {
             <li>Estrategia de Producto</li>
             <li>Descubrimiento de Clientes</li>
             <li>Investigación de usuario</li>
-            <li>Auditoría de código</li>
+            <li>Valoraciones Financieras</li>
+            <li>Análisis de Business Plan</li>
           </ul>
         </Box>
         <Box m={2} sx={{ width: ["100%", "400px", "400px"] }}>

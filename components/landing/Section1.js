@@ -9,7 +9,7 @@ export default function Section1() {
         backgroundColor: "#121212",
         flexFlow: "column nowrap",
       }}
-      pb={4}
+      py={5}
     >
       <Flex
         sx={{
@@ -18,41 +18,30 @@ export default function Section1() {
           alignContent: "center",
           alignItems: "center",
         }}
-        p={3}
+        py={3}
         mb={3}
       >
-        <Heading
-          as="h1"
-          sx={{
-            fontSize: ["60px", "100px", "200px"],
-            color: "#000",
-            textAlign: "center",
-          }}
-        >
-          OROZCORP
-        </Heading>
         <Heading
           as="h2"
           sx={{
             fontSize: ["25px", "40px", "72px"],
-            marginTop: ["-20px", "-50px"],
           }}
         >
           <ReactRotatingText
-            items={["15 años de experiencia", "Emprendedor serial"]}
+            items={["15 años de experiencia", "Emprendedores seriales"]}
             color="#fff"
           />
         </Heading>
         <Heading as="h2" sx={{ fontSize: ["25px", "40px", "72px"] }}>
           <ReactRotatingText
-            items={["Javascript", "React JS", "ITESM"]}
+            items={["Javascript", "React JS", "GraphQL"]}
             color="#fff"
           />
         </Heading>
 
         <Heading as="h2" sx={{ fontSize: ["25px", "40px", "72px"] }}>
           <ReactRotatingText
-            items={["GraphQL", "Apollo", "LCDE", "NodeJs"]}
+            items={["GraphQL", "Apollo", "Serverless", "NodeJs"]}
             color="#fff"
           />
         </Heading>
@@ -74,9 +63,9 @@ export default function Section1() {
             textAlign: "left",
           }}
         >
-          Te ayudamos a resolver tus problemas empresariales, digitales, y de
-          mercadotecnia con el menor riesgo posible y mayor impacto para tu
-          negocio.
+          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. A través
+          de nuestro proceso, logramos que emprendas, o mejores tu sitio con el
+          menor riesgo y mayor impacto.
         </Heading>
         <Heading
           as="h2"
@@ -84,21 +73,6 @@ export default function Section1() {
           sx={{ fontSize: ["25px", "40px", "72px"], color: "#fff" }}
         >
           Reduce el riesgo en cada paso.
-        </Heading>
-        <Heading
-          as="h2"
-          my={3}
-          sx={{
-            fontSize: ["20px", "36px"],
-            color: "#B0B0B0",
-            width: "70%",
-            textAlign: "left",
-          }}
-        >
-          Las nuevas ideas , están plagadas de inciertos, enigmas, y riesgo
-          desde un inicio. Nuestra metodología te ayudará a resolver tus dudas
-          desde un inicio, para agregar valor a tu negocio con la menor cantidad
-          de inversión.
         </Heading>
       </Box>
       <Heading

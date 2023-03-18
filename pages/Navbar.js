@@ -17,7 +17,7 @@ export default function Navbar() {
         justifyContent: "space-between",
         alignContent: "center",
         alignItems: "center",
-        backgroundColor: "#121212",
+        backgroundColor: "#fff",
         width: "100%",
       }}
     >
@@ -35,7 +35,7 @@ export default function Navbar() {
             alignItems: "flex-end",
           }}
         >
-          <Heading ml={2} as="h1" sx={{ color: "white", fontSize: "30px" }}>
+          <Heading ml={2} as="h1" sx={{ color: "#000", fontSize: "30px" }}>
             Orozcorp
           </Heading>
         </Flex>
@@ -169,12 +169,16 @@ export default function Navbar() {
         mr={2}
       >
         {!session && status !== "loading" && (
-          <Button onClick={signIn} m={1} sx={{ backgroundColor: "#121212" }}>
+          <Button
+            onClick={signIn}
+            m={1}
+            sx={{ backgroundColor: "#fff", color: "#000" }}
+          >
             Sign In
           </Button>
         )}
         {/* <Menu toggled={toggled} setToggled={setToggled} /> */}
-        {status === "loading" && <Spinner variant="styles.spinnerWhite" />}
+        {status === "loading" && <Spinner />}
       </Flex>
     </Flex>
   );

@@ -5,6 +5,7 @@ import Resenas from "../components/landing/Resenas";
 import Section1 from "../components/landing/Section1";
 import Section2 from "../components/landing/Section2";
 import Section3 from "../components/landing/Section3";
+import Section0 from "../components/landing/Section0";
 
 export default function index() {
   return (
@@ -75,6 +76,7 @@ export default function index() {
           },
         ]}
       />
+      <Section0 />
       <Section1 />
       <Section2 />
       <Section3 />
