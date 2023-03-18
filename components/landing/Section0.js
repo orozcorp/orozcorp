@@ -59,7 +59,7 @@ export default function Section0() {
             href="#crearProductos"
             style={{
               textDecoration: "none",
-              color: "#fff",
+              color: "#fff", borderRadius:"12px"
             }}
           >
             Averigua cómo
