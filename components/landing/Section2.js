@@ -17,7 +17,7 @@ export default function Section2() {
         sx={{ fontSize: ["30px", "48px"], textAlign: "center", width: "60%" }}
         my={3}
       >
-        Crear productos digitales es toda una travesía. Viajemos de la mano.
+        ¡Prepárate para aterrizar tu idea con nuestro método infalible!
       </Heading>
       <Flex
         my={3}
