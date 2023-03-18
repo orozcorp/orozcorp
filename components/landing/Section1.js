@@ -150,7 +150,7 @@ export default function Section1() {
               textAlign: "center",
             }}
           >
-            Reduce Riesgo
+            Incrementa Valor
           </Heading>
           <Heading
             as="h3"
