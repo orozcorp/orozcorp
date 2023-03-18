@@ -63,9 +63,8 @@ export default function Section1() {
             textAlign: "left",
           }}
         >
-          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. A través
-          de nuestro proceso, logramos que emprendas, o mejores tu sitio con el
-          menor riesgo y mayor impacto.
+          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos que emprendas, o mejores tu sitio con el
+           mayor facilidad e impacto.
         </Heading>
         <Heading
           as="h2"
