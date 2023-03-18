@@ -71,7 +71,7 @@ export default function Section1() {
           my={4}
           sx={{ fontSize: ["25px", "40px", "72px"], color: "#fff" }}
         >
-          Reduce el riesgo en cada paso.
+          Aumenta la eficiencia en cada paso.
         </Heading>
       </Box>
       <Heading
