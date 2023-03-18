@@ -54,12 +54,12 @@ export default function Section0() {
             realizar su proyecto digital.
           </Heading>
         </Flex>
-        <Box my={3} p={3} sx={{ backgroundColor: "#910000", fontSize: "24px" }}>
+        <Box my={3} p={3} sx={{ backgroundColor: "#910000", borderRadius:"20px", fontSize: "24px" }}>
           <Link
             href="#crearProductos"
             style={{
               textDecoration: "none",
-              color: "#fff", borderRadius:"12px"
+              color: "#fff"
             }}
           >
             Averigua cómo
