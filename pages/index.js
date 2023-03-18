@@ -1,11 +1,14 @@
 import { LocalBusinessJsonLd } from "next-seo";
 import { Box } from "@theme-ui/components";
-import Contactanos from "../components/landing/Contactanos";
-import Resenas from "../components/landing/Resenas";
-import Section1 from "../components/landing/Section1";
-import Section2 from "../components/landing/Section2";
-import Section3 from "../components/landing/Section3";
-import Section0 from "../components/landing/Section0";
+
+import dynamic from "next/dynamic";
+
+const Contactanos = dynamic(() => import("../components/landing/Contactanos"));
+const Resenas = dynamic(() => import("../components/landing/Resenas"));
+const Section1 = dynamic(() => import("../components/landing/Section1"));
+const Section2 = dynamic(() => import("../components/landing/Section2"));
+const Section3 = dynamic(() => import("../components/landing/Section3"));
+const Section0 = dynamic(() => import("../components/landing/Section0"));
 
 export default function index() {
   return (

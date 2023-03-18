@@ -23,18 +23,18 @@ export default function Section2() {
         my={3}
         sx={{
           flexFlow: "row wrap",
-          justifyContent: "center",
+          justifyContent: "space-around",
           alignContent: "center",
           alignItems: "stretch",
         }}
       >
         <Box
           m={2}
-          p={[2, 3]}
+          p={[4, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "2px solid #910000",
           }}
+          variant="styles.neumorphsim"
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             1 a 3 semanas
@@ -50,11 +50,11 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[2, 3]}
+          p={[4, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "2px solid #910000",
           }}
+          variant="styles.neumorphsim"
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             3 a 5 semanas
@@ -71,11 +71,11 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[2, 3]}
+          p={[4, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "2px solid #910000",
           }}
+          variant="styles.neumorphsim"
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             12 a 20 semanas
@@ -91,11 +91,11 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[2, 3]}
+          p={[4, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "2px solid #910000",
           }}
+          variant="styles.neumorphsim"
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             contratos de 3 a 12 meses
@@ -111,11 +111,11 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[2, 3]}
+          p={[4, 3]}
           sx={{
             width: ["100%", "400px", "500px"],
-            border: "2px solid #910000",
           }}
+          variant="styles.neumorphsim"
         >
           <Text mb={2} sx={{ color: "#4a4a4a", fontSize: ["18px", "24px"] }}>
             anualmente

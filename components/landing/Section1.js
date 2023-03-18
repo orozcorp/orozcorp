@@ -105,6 +105,7 @@ export default function Section1() {
             alignItems: "center",
             alignContent: "center",
           }}
+          variant="styles.boxGlass"
         >
           <Heading
             as="h3"
@@ -115,7 +116,7 @@ export default function Section1() {
               textAlign: "center",
             }}
           >
-            Define Problema
+            Define Proyecto
           </Heading>
           <Heading
             as="h3"
@@ -139,6 +140,7 @@ export default function Section1() {
             alignItems: "center",
             alignContent: "center",
           }}
+          variant="styles.boxGlass"
         >
           <Heading
             mt={2}
@@ -173,6 +175,7 @@ export default function Section1() {
             alignItems: "center",
             alignContent: "center",
           }}
+          variant="styles.boxGlass"
         >
           <Heading
             mt={2}

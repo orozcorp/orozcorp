@@ -301,6 +301,12 @@ export default {
       borderRadius: "10px",
       border: "1px solid rgba( 255, 255, 255, 0.18 )",
     },
+    neumorphsim: {
+      padding: "86px",
+      borderRadius: "43px",
+      background: "#fff",
+      boxShadow: "-21px -21px 42px #b8b8b8, 21px 21px 42px #ffffff",
+    },
     h1: {
       color: "text",
       fontFamily: "heading",
