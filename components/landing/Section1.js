@@ -63,7 +63,7 @@ export default function Section1() {
             textAlign: "left",
           }}
         >
-          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos que emprendas, o mejores tu sitio con el
+          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos que emprendas, o mejores tu sitio con la
            mayor facilidad e impacto.
         </Heading>
         <Heading
