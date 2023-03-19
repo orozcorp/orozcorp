@@ -97,7 +97,7 @@ export default function Section1() {
           m={2}
           sx={{
             flexFlow: "column nowrap",
-            height: "430px",
+            height: "150px",
             width: "320px",
             backgroundColor: "#232323",
             justifyContent: "space-between",
@@ -132,7 +132,7 @@ export default function Section1() {
           m={2}
           sx={{
             flexFlow: "column nowrap",
-            height: "430px",
+            height: "150px",
             width: "320px",
             backgroundColor: "#232323",
             justifyContent: "space-between",
@@ -167,7 +167,7 @@ export default function Section1() {
           m={2}
           sx={{
             flexFlow: "column nowrap",
-            height: "430px",
+            height: "150px",
             width: "320px",
             backgroundColor: "#232323",
             justifyContent: "space-between",
