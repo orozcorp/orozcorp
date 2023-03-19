@@ -93,47 +93,48 @@ export default function Section1() {
           alignItems: "center",
         }}
       >
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            height: "400px",
-            width: "320px",
-            position:"relative",
-            backgroundColor: "#232323",
-            justifyContent: "space-between",
-            alignItems: "center",
-            alignContent: "center",
-          }}
-          variant="styles.boxGlass"
-        >
-          <Heading
-            as="h3"
-            mt={2}
-            sx={{
-              color: "#fff",
-              fontSize: "48px",
-              textAlign: "center",
-              zIndex:999,
-            }}
-          >
-            Define Proyecto
-          </Heading>
-          <Heading
-            as="h3"
-            sx={{
-              color: "#414141",
-              fontSize: "144px",
-              textAlign: "center",
-              position: "absolute",
-              top:"50%",
-              left:"50%",
-              zIndex:0
-            }}
-          >
-            1
-          </Heading>
-        </Flex>
+      <Flex
+  m={2}
+  sx={{
+    flexFlow: "column nowrap",
+    height: "400px",
+    width: "320px",
+    position:"relative",
+    backgroundColor: "#232323",
+    justifyContent: "space-between",
+    alignItems: "center",
+    alignContent: "center",
+  }}
+  variant="styles.boxGlass"
+>
+  <Heading
+    as="h3"
+    mt={2}
+    sx={{
+      color: "#fff",
+      fontSize: "48px",
+      textAlign: "center",
+      zIndex:999,
+    }}
+  >
+    Define Proyecto
+  </Heading>
+  <Heading
+    as="h3"
+    sx={{
+      color: "#414141",
+      fontSize: "144px",
+      textAlign: "center",
+      position: "absolute",
+      top:"50%",
+      left:"50%",
+      zIndex:-1
+    }}
+  >
+    1
+  </Heading>
+</Flex>
+
         <Flex
           m={2}
           sx={{
