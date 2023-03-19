@@ -122,13 +122,13 @@ export default function Section1() {
   <Heading
     as="h3"
     sx={{
+   position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
       color: "#414141",
       fontSize: "144px",
-      textAlign: "center",
-      position: "absolute",
-      top:"50%",
-      left:"50%",
-      zIndex:-1
+      zIndex: -1,
     }}
   >
     1
