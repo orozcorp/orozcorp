@@ -125,7 +125,7 @@ export default function Contactanos() {
                 />
               </Box>
             </Flex>
-            <Box sx={{ width: ["100%", "400px"] }} m={2}>
+            <Box sx={{ width: ["90%", "400px"] }} m={2}>
               <Label>Mensaje</Label>
               <Textarea
               p={[2,0]}
