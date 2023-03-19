@@ -114,6 +114,7 @@ export default function Section1() {
               color: "#fff",
               fontSize: "48px",
               textAlign: "center",
+              zIndex:999,
             }}
           >
             Define Proyecto
@@ -124,6 +125,10 @@ export default function Section1() {
               color: "#414141",
               fontSize: "144px",
               textAlign: "center",
+              position: "absolute",
+              top:50,
+              left:50,
+              zIndex:0
             }}
           >
             1
@@ -150,6 +155,7 @@ export default function Section1() {
               color: "#fff",
               fontSize: "48px",
               textAlign: "center",
+              zIndex:999,
             }}
           >
             Incrementa Valor
@@ -160,6 +166,10 @@ export default function Section1() {
               color: "#414141",
               fontSize: "144px",
               textAlign: "center",
+              position: "absolute",
+              top:50,
+              left:50,
+              zIndex:0,
             }}
           >
             2
@@ -186,6 +196,7 @@ export default function Section1() {
               color: "#fff",
               fontSize: "48px",
               textAlign: "center",
+              zIndex:999,
             }}
           >
             Genera Resultados
@@ -196,6 +207,10 @@ export default function Section1() {
               color: "#414141",
               fontSize: "144px",
               textAlign: "center",
+              position: "absolute",
+              top:50,
+              left:50,
+              zIndex:0,
             }}
           >
             3
