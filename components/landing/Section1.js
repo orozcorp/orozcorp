@@ -41,7 +41,7 @@ export default function Section1() {
 
         <Heading as="h2" sx={{ fontSize: ["25px", "40px", "72px"] }}>
           <ReactRotatingText
-            items={["GraphQL", "Apollo", "Serverless", "NodeJs"]}
+            items={["Apollo", "Serverless", "NodeJs"]}
             color="#fff"
           />
         </Heading>
