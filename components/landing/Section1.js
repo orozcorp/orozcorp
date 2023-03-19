@@ -127,7 +127,7 @@ export default function Section1() {
       left: "50%",
       transform: "translate(-50%, -50%)",
       color: "#414141",
-      fontSize: "200px",
+      fontSize: "300px",
       zIndex: -1,
     }}
   >
@@ -137,16 +137,16 @@ export default function Section1() {
 
         <Flex
           m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            height: "400px",
-            position:"relative",
-            width: "320px",
-            backgroundColor: "#232323",
-            justifyContent: "space-between",
-            alignItems: "center",
-            alignContent: "center",
-          }}
+  sx={{
+    flexFlow: "column nowrap",
+    height: "300px",
+    width: "320px",
+    position:"relative",
+    backgroundColor: "#232323",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+  }}
           variant="styles.boxGlass"
         >
           <Heading
@@ -164,30 +164,30 @@ export default function Section1() {
           <Heading
             as="h3"
             sx={{
-              color: "#414141",
-              fontSize: "144px",
-              textAlign: "center",
-              position: "absolute",
-              top:"50%",
-              left:"50%",
-              zIndex:0,
-            }}
+   position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      color: "#414141",
+      fontSize: "300px",
+      zIndex: -1,
+    }}
           >
             2
           </Heading>
         </Flex>
         <Flex
           m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            height: "400px",
-            position:"relative",
-            width: "320px",
-            backgroundColor: "#232323",
-            justifyContent: "space-between",
-            alignItems: "center",
-            alignContent: "center",
-          }}
+  sx={{
+    flexFlow: "column nowrap",
+    height: "300px",
+    width: "320px",
+    position:"relative",
+    backgroundColor: "#232323",
+    justifyContent: "center",
+    alignItems: "center",
+    alignContent: "center",
+  }}
           variant="styles.boxGlass"
         >
           <Heading
@@ -205,14 +205,14 @@ export default function Section1() {
           <Heading
             as="h3"
             sx={{
-              color: "#414141",
-              fontSize: "144px",
-              textAlign: "center",
-              position: "absolute",
-              top:"50%",
-              left:"50%",
-              zIndex:0,
-            }}
+   position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+      color: "#414141",
+      fontSize: "300px",
+      zIndex: -1,
+    }}
           >
             3
           </Heading>
