@@ -85,7 +85,7 @@ export default function Contactanos() {
               width: ["100%", "60%"],
               flexFlow: "column nowrap",
               justifyContent: "center",
-              alignContent: "stretch",
+              alignContent: ["center","stretch"],
               alignItems: "center",
             }}
             onSubmit={(e) => {
