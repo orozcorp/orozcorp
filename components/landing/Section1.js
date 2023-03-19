@@ -109,7 +109,6 @@ export default function Section1() {
 >
   <Heading
     as="h3"
-    mt={2}
     sx={{
       color: "#fff",
       fontSize: "48px",
@@ -150,7 +149,7 @@ export default function Section1() {
           variant="styles.boxGlass"
         >
           <Heading
-            mt={2}
+            
             as="h3"
             sx={{
               color: "#fff",
@@ -191,7 +190,7 @@ export default function Section1() {
           variant="styles.boxGlass"
         >
           <Heading
-            mt={2}
+          ssse
             as="h3"
             sx={{
               color: "#fff",
