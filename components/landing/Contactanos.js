@@ -97,6 +97,7 @@ export default function Contactanos() {
               <Box sx={{ width: ["100%", "200px"] }} m={2}>
                 <Label>Nombre</Label>
                 <Input
+                sx={{ width: ["100%", "200px"] }}
                   type="text"
                   value={values.name}
                   aria-label="name"
@@ -111,6 +112,7 @@ export default function Contactanos() {
               <Box sx={{ width: ["100%", "200px"] }} m={2}>
                 <Label>Email</Label>
                 <Input
+                sx={{ width: ["100%", "200px"] }}
                   type="email"
                   value={values.email}
                   aria-label="email"
@@ -123,9 +125,10 @@ export default function Contactanos() {
                 />
               </Box>
             </Flex>
-            <Box sx={{ width: ["100%", "400px"] }} m={2}>
+            <Box sx={{ width: ["100%", "200px"] }} m={2}>
               <Label>Mensaje</Label>
               <Textarea
+              sx={{ width: ["100%", "200px"] }}
                 value={values.message}
                 aria-label="message"
                 onChange={(e) =>
