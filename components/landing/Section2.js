@@ -30,7 +30,7 @@ export default function Section2() {
       >
         <Box
           m={2}
-          p={[4, 3]}
+          p={2}
           sx={{
             width: ["100%", "400px", "500px"],
           }}
@@ -47,7 +47,7 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[4, 3]}
+          p={2}
           sx={{
             width: ["100%", "400px", "500px"],
           }}
@@ -65,7 +65,7 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[4, 3]}
+          p={2}
           sx={{
             width: ["100%", "400px", "500px"],
           }}
@@ -82,7 +82,7 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[4, 3]}
+          p={2}
           sx={{
             width: ["100%", "400px", "500px"],
           }}
@@ -99,7 +99,7 @@ export default function Section2() {
         </Box>
         <Box
           m={2}
-          p={[4, 3]}
+          p={2}
           sx={{
             width: ["100%", "400px", "500px"],
           }}
