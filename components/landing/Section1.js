@@ -126,8 +126,8 @@ export default function Section1() {
               fontSize: "144px",
               textAlign: "center",
               position: "absolute",
-              top:50,
-              left:50,
+              top:"50%",
+              left:"50%",
               zIndex:0
             }}
           >
@@ -167,8 +167,8 @@ export default function Section1() {
               fontSize: "144px",
               textAlign: "center",
               position: "absolute",
-              top:50,
-              left:50,
+              top:"50%",
+              left:"50%",
               zIndex:0,
             }}
           >
@@ -208,8 +208,8 @@ export default function Section1() {
               fontSize: "144px",
               textAlign: "center",
               position: "absolute",
-              top:50,
-              left:50,
+              top:"50%",
+              left:"50%",
               zIndex:0,
             }}
           >
