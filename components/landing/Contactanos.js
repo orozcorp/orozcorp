@@ -128,6 +128,7 @@ export default function Contactanos() {
             <Box sx={{ width: ["100%", "200px"] }} m={2}>
               <Label>Mensaje</Label>
               <Textarea
+              p={2}
               sx={{ width: ["100%", "200px"] }}
                 value={values.message}
                 aria-label="message"
