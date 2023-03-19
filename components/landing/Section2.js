@@ -34,7 +34,7 @@ export default function Section2() {
           sx={{
             width: ["100%", "400px", "500px"],
           }}
-          variant="styles.neumorphsim"
+          variant="styles.glassBox"
         >
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Descubrimiento
@@ -51,7 +51,7 @@ export default function Section2() {
           sx={{
             width: ["100%", "400px", "500px"],
           }}
-          variant="styles.neumorphsim"
+          variant="styles.glassBox"
         >
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Diseño relampago
@@ -69,7 +69,7 @@ export default function Section2() {
           sx={{
             width: ["100%", "400px", "500px"],
           }}
-          variant="styles.neumorphsim"
+          variant="styles.glassBox"
         >
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Versión 1
@@ -86,7 +86,7 @@ export default function Section2() {
           sx={{
             width: ["100%", "400px", "500px"],
           }}
-          variant="styles.neumorphsim"
+          variant="styles.glassBox"
         >
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Equipo de desarrollo
@@ -103,7 +103,7 @@ export default function Section2() {
           sx={{
             width: ["100%", "400px", "500px"],
           }}
-          variant="styles.neumorphsim"
+          variant="styles.glassBox"
         >
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
             Mantenimiento y soporte
