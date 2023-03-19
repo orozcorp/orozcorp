@@ -97,7 +97,7 @@ export default function Section1() {
   m={2}
   sx={{
     flexFlow: "column nowrap",
-    height: "400px",
+    height: "300px",
     width: "320px",
     position:"relative",
     backgroundColor: "#232323",
@@ -127,7 +127,7 @@ export default function Section1() {
       left: "50%",
       transform: "translate(-50%, -50%)",
       color: "#414141",
-      fontSize: "144px",
+      fontSize: "200px",
       zIndex: -1,
     }}
   >
