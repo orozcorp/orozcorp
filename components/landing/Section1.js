@@ -101,7 +101,7 @@ export default function Section1() {
     width: "320px",
     position:"relative",
     backgroundColor: "#232323",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     alignContent: "center",
   }}
