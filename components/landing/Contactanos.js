@@ -125,10 +125,10 @@ export default function Contactanos() {
                 />
               </Box>
             </Flex>
-            <Box sx={{ width: ["100%", "200px"] }} m={2}>
+            <Box sx={{ width: ["200px", "400px"] }} m={2}>
               <Label>Mensaje</Label>
               <Textarea
-              p={2}
+              p={[2,0]}
               sx={{ width: ["100%", "200px"] }}
                 value={values.message}
                 aria-label="message"
