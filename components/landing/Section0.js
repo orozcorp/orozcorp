@@ -43,22 +43,40 @@ export default function Section0() {
                 "tu ERP",
                 "tu CRM",
                 "tu Landing",
+                "tu Ecommerce",
               ]}
               color="#000"
             />
           </Heading>
         </Flex>
-        <Flex my={2} sx={{ width: ["100%", "60%"] }}>
+        <Flex
+          my={2}
+          sx={{
+            width: ["100%", "60%"],
+            flexFlow: "row wrap",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Heading as="h2" sx={{ color: "#4a4a4a", textAlign: "center" }}>
             Tu lo imaginas, nosotros lo creamos
           </Heading>
         </Flex>
-        <Box my={3} p={3} sx={{ backgroundColor: "#910000", borderRadius:"20px", fontSize: "24px" }}>
+        <Box
+          my={3}
+          p={3}
+          sx={{
+            backgroundColor: "#910000",
+            borderRadius: "20px",
+            fontSize: "24px",
+          }}
+        >
           <Link
             href="#crearProductos"
             style={{
               textDecoration: "none",
-              color: "#fff"
+              color: "#fff",
             }}
           >
             Averigua cómo

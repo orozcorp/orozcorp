@@ -40,10 +40,11 @@ const resenasClientes = [
 ];
 
 export default function Resenas() {
+  const resenasLength = resenasClientes.length - 1;
   const [resenaActive, setResenaActive] = useState(0);
   useEffect(() => {
     setTimeout(() => {
-      setResenaActive(resenasClientes.length - 1 ? 0 : resenaActive + 1);
+      setResenaActive(resenasLength === resenaActive ? 0 : resenaActive + 1);
     }, 4000);
   }, []);
   return (
@@ -61,7 +62,12 @@ export default function Resenas() {
       <Heading as="h1" my={4} sx={{ color: "#fff", fontSize: "48px" }}>
         Reseñas
       </Heading>
-      <ResenaSingle data={resenasClientes[resenaActive]} />
+      <ResenaSingle
+        data={resenasClientes[resenaActive]}
+        resenaActive={resenaActive}
+        setResenaActive={setResenaActive}
+        numResenas={resenasLength}
+      />
       <Flex
         sx={{
           flexFlow: "row wrap",

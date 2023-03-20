@@ -11,47 +11,6 @@ export default function Section1() {
       }}
       py={5}
     >
-      <Flex
-        sx={{
-          flexFlow: "column nowrap",
-          justifyContent: "center",
-          alignContent: "center",
-          alignItems: "center",
-        }}
-        py={3}
-        mb={3}
-      >
-        <Heading
-          as="h2"
-          sx={{
-            fontSize: ["25px", "40px", "72px"],
-          }}
-        >
-          <ReactRotatingText
-            items={["15 años de experiencia", "Emprendedores seriales"]}
-            color="#fff"
-          />
-        </Heading>
-        <Heading as="h2" sx={{ fontSize: ["25px", "40px", "72px"] }}>
-          <ReactRotatingText
-            items={["Javascript", "React JS", "GraphQL"]}
-            color="#fff"
-          />
-        </Heading>
-
-        <Heading as="h2" sx={{ fontSize: ["25px", "40px", "72px"] }}>
-          <ReactRotatingText
-            items={["Apollo", "Serverless", "NodeJs"]}
-            color="#fff"
-          />
-        </Heading>
-        <Heading as="h2" sx={{ fontSize: ["25px", "40px", "72px"] }}>
-          <ReactRotatingText
-            items={["Mongo", "Meteor", "Logísitica", "Finanzas"]}
-            color="#fff"
-          />
-        </Heading>
-      </Flex>
       <Box p={[2, 4, 5]}>
         <Heading
           as="h2"
@@ -63,8 +22,8 @@ export default function Section1() {
             textAlign: "left",
           }}
         >
-          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos que emprendas, o mejores tu sitio con la
-           mayor facilidad e impacto.
+          Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos
+          que emprendas, o mejores tu sitio con la mayor facilidad e impacto.
         </Heading>
         <Heading
           as="h2"
@@ -93,69 +52,68 @@ export default function Section1() {
           alignItems: "center",
         }}
       >
-      <Flex
-  m={2}
-  sx={{
-    flexFlow: "column nowrap",
-    height: "300px",
-    width: "320px",
-    position:"relative",
-    backgroundColor: "#232323",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-  }}
-  variant="styles.boxGlass"
->
-  <Heading
-    as="h3"
-    sx={{
-      color: "#fff",
-      fontSize: "48px",
-      textAlign: "center",
-      zIndex:999,
-    }}
-  >
-    Define Proyecto
-  </Heading>
-  <Heading
-    as="h3"
-    sx={{
-   position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      color: "#414141",
-      fontSize: "300px",
-      zIndex: -1,
-    }}
-  >
-    1
-  </Heading>
-</Flex>
-
         <Flex
           m={2}
-  sx={{
-    flexFlow: "column nowrap",
-    height: "300px",
-    width: "320px",
-    position:"relative",
-    backgroundColor: "#232323",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-  }}
-          variant="styles.boxGlass"
+          sx={{
+            flexFlow: "column nowrap",
+            height: "300px",
+            width: "320px",
+            position: "relative",
+            backgroundColor: "#232323",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "center",
+          }}
+          variant="styles.boxGlassBlackBG"
         >
           <Heading
-            
             as="h3"
             sx={{
               color: "#fff",
               fontSize: "48px",
               textAlign: "center",
-              zIndex:999,
+              zIndex: 999,
+            }}
+          >
+            Define Proyecto
+          </Heading>
+          <Heading
+            as="h3"
+            sx={{
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              color: "#414141",
+              fontSize: "300px",
+              zIndex: -1,
+            }}
+          >
+            1
+          </Heading>
+        </Flex>
+
+        <Flex
+          m={2}
+          sx={{
+            flexFlow: "column nowrap",
+            height: "300px",
+            width: "320px",
+            position: "relative",
+            backgroundColor: "#232323",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "center",
+          }}
+          variant="styles.boxGlassBlackBG"
+        >
+          <Heading
+            as="h3"
+            sx={{
+              color: "#fff",
+              fontSize: "48px",
+              textAlign: "center",
+              zIndex: 999,
             }}
           >
             Incrementa Valor
@@ -163,40 +121,40 @@ export default function Section1() {
           <Heading
             as="h3"
             sx={{
-   position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      color: "#414141",
-      fontSize: "300px",
-      zIndex: -1,
-    }}
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              color: "#414141",
+              fontSize: "300px",
+              zIndex: -1,
+            }}
           >
             2
           </Heading>
         </Flex>
         <Flex
           m={2}
-  sx={{
-    flexFlow: "column nowrap",
-    height: "300px",
-    width: "320px",
-    position:"relative",
-    backgroundColor: "#232323",
-    justifyContent: "center",
-    alignItems: "center",
-    alignContent: "center",
-  }}
-          variant="styles.boxGlass"
+          sx={{
+            flexFlow: "column nowrap",
+            height: "300px",
+            width: "320px",
+            position: "relative",
+            backgroundColor: "#232323",
+            justifyContent: "center",
+            alignItems: "center",
+            alignContent: "center",
+          }}
+          variant="styles.boxGlassBlackBG"
         >
           <Heading
-          ssse
+            ssse
             as="h3"
             sx={{
               color: "#fff",
               fontSize: "48px",
               textAlign: "center",
-              zIndex:999,
+              zIndex: 999,
             }}
           >
             Genera Resultados
@@ -204,14 +162,14 @@ export default function Section1() {
           <Heading
             as="h3"
             sx={{
-   position: "absolute",
-      top: "50%",
-      left: "50%",
-      transform: "translate(-50%, -50%)",
-      color: "#414141",
-      fontSize: "300px",
-      zIndex: -1,
-    }}
+              position: "absolute",
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              color: "#414141",
+              fontSize: "300px",
+              zIndex: -1,
+            }}
           >
             3
           </Heading>
