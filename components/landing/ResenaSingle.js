@@ -14,8 +14,6 @@ export default function ResenaSingle({ data }) {
         alignItems: "center",
         width: ["100%", "400px", "800px"],
       }}
-      onTouchStart={handleTouchStart}
-      onTouchMove={handleTouchMove}
     >
       <Heading
         as="h2"

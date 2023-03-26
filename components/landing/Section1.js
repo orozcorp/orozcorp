@@ -148,7 +148,6 @@ export default function Section1() {
           variant="styles.boxGlassBlackBG"
         >
           <Heading
-            ssse
             as="h3"
             sx={{
               color: "#fff",
