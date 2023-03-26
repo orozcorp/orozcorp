@@ -2,32 +2,7 @@ import { Flex, Heading, Text } from "@theme-ui/components";
 import Image from "next/image";
 import { useState } from "react";
 
-export default function ResenaSingle({
-  data,
-  resenaActive,
-  setResenaActive,
-  resenasLength,
-}) {
-  const [touchPosition, setTouchPosition] = useState(null);
-  const handleTouchStart = (e) => {
-    const touchDown = e.touches[0].clientX;
-    setTouchPosition(touchDown);
-  };
-  const handleTouchMove = (e) => {
-    const touchDown = touchPosition;
-    if (touchDown === null) {
-      return;
-    }
-    const currentTouch = e.touches[0].clientX;
-    const diff = touchDown - currentTouch;
-    if (diff > 5) {
-      setResenaActive(resenasLength === resenaActive ? 0 : resenaActive + 1);
-    }
-    if (diff < -5) {
-      setResenaActive(0 === resenaActive ? resenasLength : resenaActive - 1);
-    }
-    setTouchPosition(null);
-  };
+export default function ResenaSingle({ data }) {
   return (
     <Flex
       mb={4}

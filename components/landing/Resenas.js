@@ -62,12 +62,7 @@ export default function Resenas() {
       <Heading as="h1" my={4} sx={{ color: "#fff", fontSize: "48px" }}>
         Reseñas
       </Heading>
-      <ResenaSingle
-        data={resenasClientes[resenaActive]}
-        resenaActive={resenaActive}
-        setResenaActive={setResenaActive}
-        numResenas={resenasLength}
-      />
+      <ResenaSingle data={resenasClientes[resenaActive]} />
       <Flex
         sx={{
           flexFlow: "row wrap",
