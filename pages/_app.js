@@ -33,7 +33,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="fragment" content="!" />
         <meta charSet="utf-8" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SessionProvider session={pageProps?.session}>
