@@ -18,7 +18,7 @@ export default function index() {
         id="https://www.orozcorp.live"
         name="Orozcorp"
         description="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
-        url="http://www.example.com/store-locator/sl/San-Jose-Westgate-Store/1427"
+        url="http://www.orozcorp.live"
         telephone="+525536554893"
         address={{
           streetAddress: "General Miguel Aleman 32 loc d",
@@ -45,24 +45,6 @@ export default function index() {
             ],
             validFrom: "2019-12-23",
             validThrough: "2030-04-02",
-          },
-        ]}
-        rating={{
-          ratingValue: "5",
-          ratingCount: "4",
-        }}
-        review={[
-          {
-            author: "Catalina Ley",
-            datePublished: "2023-03-01",
-            name: "Desarrollo rápido y eficiente",
-            reviewBody: "Desarrollo, fácil, eficiente y rápido",
-            reviewRating: {
-              bestRating: "5",
-              worstRating: "1",
-              reviewAspect: "Ambiance",
-              ratingValue: "5",
-            },
           },
         ]}
         makesOffer={[
