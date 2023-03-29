@@ -22,8 +22,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
     <>
       <Head>
         <title>
-          Orozcorp | crea tu webapp, ecommerce, catalogo , o landing con riesgo
-          mínimo
+          Orozcorp | webapp, ecommerce, catalogo , landing
         </title>
         <meta
           name="description"
@@ -34,6 +33,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="fragment" content="!" />
         <meta charSet="utf-8" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SessionProvider session={pageProps?.session}>
