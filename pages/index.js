@@ -1,4 +1,4 @@
-import { LocalBusinessJsonLd } from "next-seo";
+import { LocalBusinessJsonLd, NextSeo } from "next-seo";
 import { Box } from "@theme-ui/components";
 
 import dynamic from "next/dynamic";
@@ -13,11 +13,35 @@ const Section0 = dynamic(() => import("../components/landing/Section0"));
 export default function index() {
   return (
     <Box sx={{ height: "100%", marginBottom: "200px" }}>
+      <NextSeo
+        title="Orozcorp"
+        description="Consultoria de webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
+        canonical="https://www.orozcorp.live/"
+        openGraph={{
+          url: "https://www.orozcorp.live",
+          title: "Orozcorp",
+          description:
+            "Consultoria de webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS",
+          images: [
+            {
+              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
+            },
+          ],
+          image:
+            "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
+          siteName: "Orozcorp",
+        }}
+        twitter={{
+          handle: "@orozcorp_io",
+          site: "@orozcorp_io",
+          cardType: "summary_large_image",
+        }}
+      />
       <LocalBusinessJsonLd
         type="Consulting Firm"
         id="https://www.orozcorp.live"
         name="Orozcorp"
-        description="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
+        description="webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
         url="http://www.orozcorp.live"
         telephone="+525536554893"
         address={{
