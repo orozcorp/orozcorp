@@ -8,7 +8,7 @@ export default function Menu({ toggled, setToggled }) {
       }}
     >
       <AiOutlineMenu
-        style={{ fontSize: "30px", color: "#fff" }}
+        style={{ fontSize: "30px", color: "#000" }}
         onClick={() => setToggled(!toggled)}
       />
     </div>

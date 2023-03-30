@@ -14,7 +14,7 @@ export default function LateralMenuAdmin() {
         }}
       >
         <Link
-          href="/Portfolio"
+          href="/InformacionMedica"
           style={{
             textDecoration: "none",
           }}
@@ -26,7 +26,7 @@ export default function LateralMenuAdmin() {
               fontSize: "25px",
             }}
           >
-            Portfolio
+            Información Médica
           </Text>
         </Link>
       </Flex>

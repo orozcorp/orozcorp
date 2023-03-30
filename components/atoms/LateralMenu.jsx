@@ -1,10 +1,9 @@
 import { Text, Flex } from "theme-ui";
 import { FaTimes } from "react-icons/fa";
 import { signOut } from "next-auth/react";
-import LinksNotSession from "./LinksNotSession";
 import LateralMenuAdmin from "./LateralMenuAdmin";
 function LateralMenu({ toggled, setToggled, session }) {
-  const userAdmin = session?.roles.includes("admin");
+  const userFamiliar = session?.roles.includes("familiar");
   return (
     <Flex
       className={toggled ? "sideNavMoved" : "sidenav"}
@@ -21,8 +20,7 @@ function LateralMenu({ toggled, setToggled, session }) {
       <FaTimes
         style={{ alignSelf: "left", marginBottom: "30px", color: "#fff" }}
       />
-      {!session && <LinksNotSession />}
-      {session && userAdmin && <LateralMenuAdmin />}
+      {session && userFamiliar && <LateralMenuAdmin />}
       {session && (
         <Text
           mt={3}

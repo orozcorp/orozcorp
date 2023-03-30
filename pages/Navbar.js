@@ -39,126 +39,6 @@ export default function Navbar() {
             Orozcorp
           </Heading>
         </Flex>
-        {/* {!toggled && size?.width > 700 && (
-          <Flex
-            ml={4}
-            sx={{
-              alignSelf: "center",
-              flexFlow: "row wrap",
-              justifyContent: "space-between",
-              width: "auto",
-            }}
-          >
-            <Link
-              href="#About"
-              style={{
-                margin: "15px",
-                textDecoration: "none",
-              }}
-            >
-              <Text
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                About
-              </Text>
-            </Link>
-            <Link
-              href="#Portfolio"
-              style={{
-                margin: "15px",
-                textDecoration: "none",
-              }}
-            >
-              <Text
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                Portfolio
-              </Text>
-            </Link>
-            <Link
-              href="#About"
-              style={{
-                margin: "15px",
-                textDecoration: "none",
-              }}
-            >
-              <Text
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                About
-              </Text>
-            </Link>
-            <Link
-              href="#StacksAndSkills"
-              style={{
-                margin: "15px",
-                textDecoration: "none",
-              }}
-            >
-              <Text
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontWeight: "bold",
-                  fontSize: "20px",
-                }}
-              >
-                Stacks and Skills
-              </Text>
-            </Link>
-            <Link
-              href="#Services"
-              style={{
-                margin: "15px",
-                textDecoration: "none",
-              }}
-            >
-              <Text
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontWeight: "bold",
-                  fontSize: "20px",
-                }}
-              >
-                Services
-              </Text>
-            </Link>
-            <Link
-              href="#Contact"
-              style={{
-                margin: "15px",
-                textDecoration: "none",
-              }}
-            >
-              <Text
-                sx={{
-                  color: "white",
-                  textDecoration: "none",
-                  fontSize: "20px",
-                  fontWeight: "bold",
-                }}
-              >
-                Contact
-              </Text>
-            </Link>
-          </Flex>
-        )} */}
       </Flex>
       <Flex
         sx={{
@@ -177,7 +57,7 @@ export default function Navbar() {
             Sign In
           </Button>
         )}
-        {/* <Menu toggled={toggled} setToggled={setToggled} /> */}
+        <Menu toggled={toggled} setToggled={setToggled} />
         {status === "loading" && <Spinner />}
       </Flex>
     </Flex>
