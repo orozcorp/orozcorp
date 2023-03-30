@@ -21,9 +21,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
   return (
     <>
       <Head>
-        <title>
-          Orozcorp | webapp, ecommerce, catalogo , landing
-        </title>
+        <title>Orozcorp | webapp, ecommerce, catalogo , landing</title>
         <meta
           name="description"
           content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS, Finanzas, Logística "
@@ -56,8 +54,9 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-H6EDP81J4D"
           strategy="lazyOnload"
+          async
         />
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script id="google-analytics" strategy="lazyOnload" async>
           {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
