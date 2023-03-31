@@ -7,6 +7,12 @@ export const usersSchema = gql`
     client
     familiar
   }
+  type Familia {
+    _id: ID!
+    nombre: String!
+    administradorName: String!
+    administradorId: ID!
+  }
   type Medicamentos {
     _id: ID!
     fechaInicio: Date!
@@ -29,10 +35,12 @@ export const usersSchema = gql`
     fechaNacimiento: Date
     peso: Float
     estatura: Float
+    tipoSangre: String
     alergias: [String]
     enfermedades: [String]
     medicamentos: [Medicamentos]
     medicos: [Medicos]
+    familias: [Familia]
   }
   type User {
     _id: ID!

@@ -40,6 +40,7 @@ const options = {
         session.user.id = userInfo._id;
         session.user.name = `${userInfo.profile.nombre} ${userInfo.profile.apellido}`;
         session.user.photo = userInfo.profile.picture;
+        session.user.familias = userInfo.profile.familias || [];
         return session;
       }
       return {};
