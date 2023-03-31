@@ -31,4 +31,26 @@ export const usersResolvers = {
       );
     },
   },
+  Mutation: {
+    insertUser: async (root, { input }, { db }) => {
+      const email = input.email;
+      delete input.email;
+      const user = { profile: { ...input }, createdAt: new Date(), email };
+      try {
+        const { insertedId } = await db.collection("users").insertOne(user);
+        return {
+          message: "Usuario creado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al crear usuario",
+          success: false,
+        };
+      }
+    },
+  },
 };

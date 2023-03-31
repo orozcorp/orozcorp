@@ -32,6 +32,7 @@ export const usersSchema = gql`
     picture: String
     caratulaSeguro: String
     tarjetaSeguro: String
+    fechaVencimientoSeguro: Date
     fechaNacimiento: Date
     peso: Float
     estatura: Float
@@ -42,11 +43,35 @@ export const usersSchema = gql`
     medicos: [Medicos]
     familias: [Familia]
   }
+  input FamiliaInput {
+    _id: ID!
+    nombre: String!
+    administradorName: String!
+    administradorId: ID!
+  }
+  input UserInput {
+    email: String!
+    name: String!
+    lastName: String!
+    roles: [AllowedRoles!]!
+    peso: Float!
+    estatura: Float!
+    alergias: [String]
+    enfermedades: [String]
+    familias: [FamiliaInput]
+    tipoSangre: String
+  }
   type User {
     _id: ID!
+    createdAt: Date!
+    email: String!
+    emailVerified: Date
     profile: UserProfile
   }
   type Query {
     getUserProfile(idUser: String!): User
+  }
+  type Mutation {
+    insertUser(input: UserInput!): GeneralResponse
   }
 `;

@@ -9,19 +9,41 @@ import {
   Textarea,
 } from "@theme-ui/components";
 import { useState } from "react";
+import { useSession } from "next-auth/react";
+import Select from "react-select";
+import { gql, useMutation } from "@apollo/client";
+import { useGlobalData } from "../../components/context/GlobalContext";
+
+const MUTATION = gql`
+  mutation Mutation($input: UserInput!) {
+    insertUser(input: $input) {
+      code
+      message
+      success
+    }
+  }
+`;
 
 export default function AgregarFamiliar({ display, setDisplay }) {
+  const { data: session, status } = useSession();
   const initialValues = {
     name: "",
     lastName: "",
+    email: "",
     roles: ["familiar"],
     peso: 0,
     estatura: 0,
-    alergias: [],
-    enfermedades: [],
+    alergias: "",
+    enfermedades: "",
     familias: [],
     tipoSangre: "",
   };
+  const familias = session?.user?.familias?.map((familia) => ({
+    value: familia._id,
+    label: familia.nombre,
+    administradorName: familia.administradorName,
+    administradorId: familia.administradorId,
+  }));
   const [values, setValues] = useState(initialValues);
   const makeOnChange =
     (fieldName) =>
@@ -30,18 +52,53 @@ export default function AgregarFamiliar({ display, setDisplay }) {
         ...values,
         [fieldName]: value.toUpperCase(),
       });
+  const { setAlert } = useGlobalData();
+  const [insertUser, { loading }] = useMutation(MUTATION, {
+    variables: {
+      input: {
+        ...values,
+        familias: values.familias.map((familia) => ({
+          _id: familia.value,
+          nombre: familia.label,
+          administradorName: familia.administradorName,
+          administradorId: familia.administradorId,
+        })),
+        peso: parseFloat(values.peso),
+        estatura: parseFloat(values.estatura),
+        alergias: values.alergias?.split(",").map((alergia) => alergia.trim()),
+        enfermedades: values.enfermedades
+          ?.split(",")
+          .map((enfermedad) => enfermedad.trim()),
+      },
+    },
+    onCompleted: ({}) => {
+      setValues(initialValues);
+    },
+    onError: (err) => {
+      setAlert({
+        message: err.message,
+        display: "box",
+        variant: "orange",
+      });
+    },
+  });
   return (
     <Modal display={display} setDisplay={setDisplay}>
       <Heading as="h2">Agregar familiar</Heading>
       <Flex
         sx={{
           flexFlow: "column nowrap",
-          justifyContent: "flex-start",
+          justifyContent: ["center", "center", "flex-start"],
           alignContent: "center",
-          alignItems: "baseline",
+          alignItems: ["center", "baseline"],
         }}
+        as="form"
         my={2}
         p={2}
+        onSubmit={(e) => {
+          e.preventDefault();
+          insertUser();
+        }}
       >
         <Flex sx={{ flexFlow: "row wrap" }}>
           <Box m={1}>
@@ -58,6 +115,14 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               type="text"
               value={values.lastName}
               onChange={makeOnChange("lastName")}
+            />
+          </Box>
+          <Box m={1}>
+            <Label>Email</Label>
+            <Input
+              type="text"
+              value={values.email}
+              onChange={makeOnChange("email")}
             />
           </Box>
           <Box m={1}>
@@ -134,7 +199,29 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               onChange={makeOnChange("enfermedad")}
             />
           </Box>
+          <Box m={1} sx={{ minWidth: "300px" }}>
+            <Label
+              sx={{
+                display: "flex",
+                flexFlow: "column nowrap",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+              mb={3}
+            >
+              Familias a incluir
+            </Label>
+            <Select
+              isMulti
+              options={familias}
+              value={values.familias}
+              onChange={(e) => setValues({ ...values, familias: e })}
+            />
+          </Box>
         </Flex>
+        <Button my={2} type="submit" disabled={loading}>
+          Agregar familiar
+        </Button>
       </Flex>
     </Modal>
   );
