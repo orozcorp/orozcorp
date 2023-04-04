@@ -24,6 +24,7 @@ export default function Modal({ children, display, setDisplay }) {
           padding: "20px",
           border: "1px solid #888",
           width: "90%",
+          maxWidth: "800px",
           borderRadius: "2%",
         }}
       >

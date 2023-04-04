@@ -6,6 +6,7 @@ export default {
     background: "#fff",
     primary: "#000",
     secondary: "#008080",
+    danger: "#b30018",
     pink: "#f26363",
     muted: "#EAE9EA",
     yellow: "#797A79",
@@ -59,92 +60,6 @@ export default {
       right: "10px",
     },
   },
-  images: {
-    productosDisp: {
-      width: ["150px", "250px"],
-      height: ["225px", "375px"],
-      objectFit: "cover",
-      border: "0.5px solid rgba(0,0,0, 0.1)",
-    },
-    logo: {
-      height: "40px",
-      width: "auto",
-    },
-    productosDispLG: {
-      width: "400px",
-      height: "600px",
-      objectFit: "cover",
-    },
-    productosDispSmall: {
-      width: "100px",
-      height: "200px",
-      objectFit: "cover",
-    },
-    colorSelectSmall: {
-      width: "60px",
-      height: "60px",
-      boxShadow: "3px 6px rgba(180,180,180, .2)",
-      borderRadius: "9999999px",
-      marginLeft: "4px",
-      marginRight: "4px",
-    },
-    colorSelectedSmall: {
-      width: "120px",
-      height: "120px",
-      boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.25)",
-      borderRadius: "9999999px",
-      border: "4px solid #ffffff;",
-    },
-    firma: {
-      width: "200px",
-      height: "100px",
-    },
-    instagramSmall: {
-      width: "300px",
-      height: "300px",
-      boxShadow: "3px 6px rgba(180,180,180, .2)",
-      margin: "10px",
-    },
-    tarjeta: {
-      width: "50px",
-      height: "50px",
-    },
-    fichaT: {
-      width: "900px",
-      height: "1200px",
-    },
-    smallColor: {
-      width: "40px",
-      height: "40px",
-      boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.25)",
-      borderRadius: "9999999px",
-      border: "1px solid #ffffff;",
-    },
-    smallColorSelected: {
-      width: "45px",
-      height: "45px",
-      boxShadow: "0px 1px 2px 0px rgba(0, 0, 0, 0.25)",
-      borderRadius: "9999999px",
-      border: "1px solid #8f0000",
-    },
-    tarjetaSM: {
-      width: "40px",
-      height: "50px",
-    },
-    tarjetaOxxo: {
-      width: "90px",
-      height: "50px",
-    },
-    stripe: {
-      width: "50px",
-      height: "50px",
-    },
-    avatar: {
-      width: 48,
-      height: 48,
-      borderRadius: 99999,
-    },
-  },
   text: {
     small: {
       fontSize: 1,
@@ -167,10 +82,12 @@ export default {
       },
     },
     danger: {
-      color: "background",
-      bg: "secondary",
+      color: "white",
+      bg: "danger",
       "&:hover": {
-        bg: "text",
+        bg: "transparent",
+        border: "1px solid #b30018",
+        color: "danger",
       },
       "&:disabled": {
         bg: "#797A79",

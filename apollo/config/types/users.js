@@ -7,6 +7,13 @@ export const usersSchema = gql`
     client
     familiar
   }
+  type BabyGrowth {
+    _id: ID!
+    user: ID!
+    fecha: Date!
+    peso: Float!
+    estatura: Float!
+  }
   type Familia {
     _id: ID!
     nombre: String!
@@ -41,6 +48,7 @@ export const usersSchema = gql`
     enfermedades: [String]
     medicamentos: [Medicamentos]
     medicos: [Medicos]
+    minor: Boolean
     familias: [Familia]
   }
   input FamiliaInput {
@@ -59,7 +67,13 @@ export const usersSchema = gql`
     alergias: [String]
     enfermedades: [String]
     familias: [FamiliaInput]
-    tipoSangre: String
+    tipoSangre: String!
+    fechaNacimiento: Date!
+  }
+  input SeguroInput {
+    caratulaSeguro: String!
+    tarjetaSeguro: String!
+    fechaVencimientoSeguro: Date!
   }
   type User {
     _id: ID!
@@ -70,8 +84,16 @@ export const usersSchema = gql`
   }
   type Query {
     getUserProfile(idUser: String!): User
+    getFamilyMembers(idFamilia: String): [User]
   }
   type Mutation {
-    insertUser(input: UserInput!): GeneralResponse
+    insertUser(input: UserInput!): GeneralResponse!
+    updateUserWeight(idUser: String!, peso: Float!): GeneralResponse!
+    updateUserWeightHeight(
+      idUser: String!
+      estatura: Float!
+      peso: Float!
+    ): GeneralResponse!
+    updateUserSeguro(idUser: String!, seguro: SeguroInput!): GeneralResponse!
   }
 `;

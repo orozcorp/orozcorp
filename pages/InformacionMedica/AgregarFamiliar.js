@@ -13,6 +13,7 @@ import { useSession } from "next-auth/react";
 import Select from "react-select";
 import { gql, useMutation } from "@apollo/client";
 import { useGlobalData } from "../../components/context/GlobalContext";
+import { dateInputFormat } from "../../lib/helpers/formatters";
 
 const MUTATION = gql`
   mutation Mutation($input: UserInput!) {
@@ -37,6 +38,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     enfermedades: "",
     familias: [],
     tipoSangre: "",
+    fechaNacimiento: new Date(),
   };
   const familias = session?.user?.familias?.map((familia) => ({
     value: familia._id,
@@ -123,6 +125,14 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               type="text"
               value={values.email}
               onChange={makeOnChange("email")}
+            />
+          </Box>
+          <Box m={1}>
+            <Label>Fecha de Nacimiento</Label>
+            <Input
+              type="date"
+              value={dateInputFormat(values.fechaNacimiento)}
+              onChange={makeOnChange("fechaNacimiento")}
             />
           </Box>
           <Box m={1}>

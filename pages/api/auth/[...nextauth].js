@@ -13,8 +13,8 @@ const options = {
   ],
   adapter: MongoDBAdapter(clientPromise),
   theme: {
-    colorScheme: "ligth",
-    brandColor: "#008080",
+    colorScheme: "light",
+    brandColor: "#000",
     logo: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
     buttonText: "#fff",
   },
@@ -38,7 +38,7 @@ const options = {
       if (userInfo) {
         session.roles = userInfo.profile.roles;
         session.user.id = userInfo._id;
-        session.user.name = `${userInfo.profile.nombre} ${userInfo.profile.apellido}`;
+        session.user.name = `${userInfo.profile.name} ${userInfo.profile.lastName}`;
         session.user.photo = userInfo.profile.picture;
         session.user.familias = userInfo.profile.familias || [];
         return session;
