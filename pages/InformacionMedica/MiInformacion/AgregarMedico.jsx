@@ -9,7 +9,7 @@ import {
   Text,
   Spinner,
 } from "@theme-ui/components";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Modal from "../../../components/atoms/Modal";
 import { useGlobalData } from "../../../components/context/GlobalContext";
 import NewMedico from "./NewMedico";
@@ -35,13 +35,16 @@ const ADD_MEDICO = gql`
 `;
 
 export default function AgregarMedico({ user, setDisplay, display, query }) {
-  const initialPaciente = {
-    _id: user._id,
-    nombre: user.name,
-    apellido: user.lastName,
-    familiaId: user.familiaId,
-    familiaName: user.familiaName,
-  };
+  const initialPaciente = useMemo(
+    () => ({
+      _id: user._id,
+      nombre: user.name,
+      apellido: user.lastName,
+      familiaId: user.familiaId,
+      familiaName: user.familiaName,
+    }),
+    [user]
+  );
   const newInitial = {
     nombre: "",
     apellido: "",
@@ -99,6 +102,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
         as="form"
         onSubmit={(e) => {
           e.preventDefault();
+          console.log("calling");
           addMedico();
         }}
         my={2}

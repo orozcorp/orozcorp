@@ -35,7 +35,7 @@ export default function Upload({ setFoto, location, user, heading, accept }) {
   const inputFile = useRef(null);
   function uploadImage() {
     const Ogfile = inputFile.current.files[0];
-    setKey(`orozcorp/${user._id}/${location}/${Date.now()}-${Ogfile.name}`);
+    setKey(`orozcorp/${user}/${location}/${Date.now()}-${Ogfile.name}`);
     uploadFiles(inputFile.current.files, {
       signer: Sign,
       onProgress: (state) => {

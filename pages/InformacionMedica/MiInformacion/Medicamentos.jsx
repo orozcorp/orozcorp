@@ -4,11 +4,7 @@ export default function Medicamentos({ user, miInfo }) {
   return (
     <Flex
       my={2}
-      sx={{
-        flexFlow: "column nowrap",
-        justifyContent: "flex-start",
-        alignItems: "flex-start",
-      }}
+      sx={{ flexFlow: "column nowrap", justifyContent: "flex-start" }}
     >
       <Flex
         my={1}
@@ -18,13 +14,15 @@ export default function Medicamentos({ user, miInfo }) {
           alignItems: "center",
         }}
       >
-        <Button variant="primary">Agregar Medicamento</Button>
-        <Button variant="outline" mx={2}>
+        <Button m={1} variant="primary">
+          Agregar Medicamento
+        </Button>
+        <Button m={1} variant="outline">
           Ver medicamentos anteriores
         </Button>
       </Flex>
-      <Box sx={{ overFlowX: "auto" }} my={2}>
-        <table>
+      <Box sx={{ overflowX: "auto" }} my={2}>
+        <table style={{ marginTop: "24px", marginBotton: "60px" }}>
           <thead>
             <tr>
               <th>Medicamento</th>

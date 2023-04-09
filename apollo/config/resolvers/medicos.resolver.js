@@ -4,19 +4,33 @@ export const medicosResolvers = {
       //Fix to use the $text operator
       return await db
         .collection("Medicos")
-        .find({ nombre: { $regex: nombre, $options: "i" } })
+        .find(
+          { $text: { $search: nombre } },
+          { score: { $meta: "textScore" }, limit: 10 }
+        )
+        .sort({ nombre: 1, apellido: 1 })
         .toArray();
     },
   },
   Mutation: {
     addMedico: async (root, { input, addNew }, { db }) => {
       try {
-        if (addNew && !input._id) {
+        if (!addNew && !input?._id) {
           const newMedico = await db.collection("Medicos").insertOne(input);
+          const medicosProfile = input;
+          delete medicosProfile.pacientes;
+          const addToFamilia = await db.collection("users").updateMany(
+            {
+              "profile.familias._id": input.pacientes[0].familiaId,
+            },
+            {
+              $push: { "profile.medicos": medicosProfile },
+            }
+          );
           return {
-            status: 200,
+            code: 200,
             message: "Médico agregado exitosamente",
-            data: newMedico.ops[0],
+            success: true,
           };
         } else {
           const { pacientes } = input;
@@ -24,17 +38,17 @@ export const medicosResolvers = {
             .collection("Medicos")
             .updateOne({ _id: input._id }, { $push: pacientes });
           return {
-            status: 200,
+            code: 200,
+            success: true,
             message: "Médico actualizado exitosamente",
-            data: updatedMedico.value,
           };
         }
       } catch (error) {
         console.log(error);
         return {
-          status: 400,
-          message: "Error al agregar médico",
-          data: error,
+          code: 400,
+          message: `Error al agregar médico: ${error}`,
+          success: false,
         };
       }
     },

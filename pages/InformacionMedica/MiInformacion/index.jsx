@@ -23,8 +23,8 @@ export default function MiInformacion() {
     value: null,
   });
   const [individual, setIndividual] = useState({
-    label: session?.user?.name,
-    value: session?.user?.id,
+    label: "Selecciona un miembro",
+    value: null,
   });
   const { data, loading, error } = useQuery(QUERY, {
     variables: { idFamilia: familia.value },
@@ -50,7 +50,7 @@ export default function MiInformacion() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <Flex m={2} p={2} sx={{ flexFlow: "column nowrap" }}>
+    <Flex sx={{ flexFlow: "column nowrap", paddingBottom: "200px" }}>
       <Flex
         sx={{
           flexFlow: "row wrap",
@@ -58,7 +58,7 @@ export default function MiInformacion() {
           alignItems: "center",
         }}
       >
-        <Box>
+        <Box m={2}>
           <Label>Selecciona Familia</Label>
           <Select
             options={families}
@@ -66,7 +66,7 @@ export default function MiInformacion() {
             onChange={(e) => setFamilia(e)}
           />
         </Box>
-        <Box>
+        <Box m={2}>
           <Label>Selecciona miembro</Label>
           <Select
             options={familyMembers}
@@ -75,7 +75,9 @@ export default function MiInformacion() {
           />
         </Box>
       </Flex>
-      {individual.value && <Informacion user={individual.value} />}
+      {individual.value && (
+        <Informacion user={individual.value} familia={familia} />
+      )}
     </Flex>
   );
 }

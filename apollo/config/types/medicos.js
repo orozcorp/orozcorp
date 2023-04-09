@@ -38,9 +38,10 @@ export const medicosSchema = gql`
   input MedicosInput {
     nombre: String!
     apellido: String!
-    telefonos: [String]
+    telefonos: [String]!
     especialidad: String!
-    direccion: String
+    direccion: String!
+    pacientes: [PacienteMedicoInput]!
   }
   type Query {
     getMedicos(nombre: String!): [Medicos]

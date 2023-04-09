@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { Flex, Heading, Text, Button } from "@theme-ui/components";
+import { Flex, Heading, Text, Button, Badge } from "@theme-ui/components";
 import { format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
 import { uniqueId } from "lodash";
@@ -65,12 +65,13 @@ function calculateAge(birthdate) {
   const months = (today.getMonth() + 12 - birthDate.getMonth()) % 12;
   return { years: age, months: months };
 }
-export default function Informacion({ user }) {
+export default function Informacion({ user, familia }) {
   const { data, loading, error } = useQuery(QUERY, {
     variables: { idUser: user },
   });
   const [display, setDisplay] = useState("");
-  const miInfo = data?.getUserProfile?.profile;
+  const miInfo = useMemo(() => data?.getUserProfile?.profile, [data]);
+
   const age = useMemo(
     () => calculateAge(miInfo?.fechaNacimiento),
     [miInfo?.fechaNacimiento]
@@ -79,7 +80,7 @@ export default function Informacion({ user }) {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
-    <Flex m={2} p={2} sx={{ flexFlow: "column nowrap" }}>
+    <Flex p={2} sx={{ flexFlow: "column nowrap" }}>
       <Flex
         my={2}
         sx={{
@@ -93,11 +94,17 @@ export default function Informacion({ user }) {
           <small style={{ margin: "12px" }}> Info </small>
         </Heading>
         {miInfo.minor ? (
-          <Button variant="outline">Agregar estatura y peso</Button>
+          <Button m={1} variant="outline">
+            Agregar estatura y peso
+          </Button>
         ) : (
-          <Button variant="outline">Agregar Peso</Button>
+          <Button m={1} variant="outline">
+            Agregar Peso
+          </Button>
         )}
-        <Button variant="outline">Editar informacion</Button>
+        <Button m={1} variant="outline">
+          Editar informacion
+        </Button>
       </Flex>
       <Flex my={2} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
         <Flex
@@ -208,9 +215,9 @@ export default function Informacion({ user }) {
           {miInfo.enfermedades?.length > 0 && (
             <>
               {miInfo.enfermedades.map((enfermedad) => (
-                <Text m={1} key={uniqueId()}>
+                <Badge m={1} key={uniqueId()}>
                   {enfermedad}
-                </Text>
+                </Badge>
               ))}
             </>
           )}
@@ -281,6 +288,7 @@ export default function Informacion({ user }) {
             user={data?.getUserProfile?._id}
             miInfo={miInfo}
             query={QUERY}
+            familia={familia}
           />
         ),
       }[display]?.()}

@@ -2,7 +2,7 @@ import { Button, Flex, Box } from "@theme-ui/components";
 import { useState } from "react";
 import AgregarMedico from "./AgregarMedico";
 
-export default function Medicos({ user, miInfo, query }) {
+export default function Medicos({ user, miInfo, query, familia }) {
   const [display, setDisplay] = useState("none");
   return (
     <>
@@ -12,6 +12,8 @@ export default function Medicos({ user, miInfo, query }) {
         user={{
           _id: user,
           ...miInfo,
+          familiaId: familia.value,
+          familiaName: familia.label,
         }}
         query={query}
       />
@@ -32,7 +34,7 @@ export default function Medicos({ user, miInfo, query }) {
             Agregar Médico
           </Button>
         </Flex>
-        <Box sx={{ overFlowX: "auto" }} my={2}>
+        <Box sx={{ overflowX: "auto" }} my={2}>
           <table>
             <thead>
               <tr>
@@ -42,6 +44,22 @@ export default function Medicos({ user, miInfo, query }) {
                 <th>Especialidad</th>
               </tr>
             </thead>
+            <tbody>
+              {miInfo.medicos.map((medico) => (
+                <tr key={medico._id}>
+                  <td>{medico.nombre}</td>
+                  <td>{medico.apellido}</td>
+                  <td>
+                    {medico.telefonos.map((tel, index) => (
+                      <p key={index}>
+                        <a href={`tel:${tel}`}>{tel}</a>
+                      </p>
+                    ))}
+                  </td>
+                  <td>{medico.especialidad}</td>
+                </tr>
+              ))}
+            </tbody>
           </table>
         </Box>
       </Flex>
