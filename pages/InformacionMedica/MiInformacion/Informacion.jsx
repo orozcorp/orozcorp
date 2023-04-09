@@ -3,8 +3,10 @@ import { Flex, Heading, Text, Button } from "@theme-ui/components";
 import { format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
 import { uniqueId } from "lodash";
-import AgregarTuSeguro from "./AgregarTuSeguro";
 
+import Seguro from "./Seguro";
+import Medicamentos from "./Medicamentos";
+import Medicos from "./Medicos";
 const QUERY = gql`
   query GetUserProfile($idUser: String!) {
     getUserProfile(idUser: $idUser) {
@@ -18,6 +20,8 @@ const QUERY = gql`
         lastName
         tipoSangre
         fechaVencimientoSeguro
+        rfc
+        curp
         medicamentos {
           _id
           dosis
@@ -65,25 +69,17 @@ export default function Informacion({ user }) {
   const { data, loading, error } = useQuery(QUERY, {
     variables: { idUser: user },
   });
-  const [displaySeguro, setDisplaySeguro] = useState("none");
+  const [display, setDisplay] = useState("");
   const miInfo = data?.getUserProfile?.profile;
   const age = useMemo(
     () => calculateAge(miInfo?.fechaNacimiento),
     [miInfo?.fechaNacimiento]
   );
-  const seguroVencido = useMemo(
-    () => new Date(miInfo?.fechaVencimientoSeguro) < new Date(),
-    [miInfo?.fechaVencimientoSeguro]
-  );
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
     <Flex m={2} p={2} sx={{ flexFlow: "column nowrap" }}>
-      <AgregarTuSeguro
-        user={data?.getUserProfile?._id}
-        display={displaySeguro}
-        setDisplay={setDisplaySeguro}
-      />
       <Flex
         my={2}
         sx={{
@@ -149,6 +145,30 @@ export default function Informacion({ user }) {
             alignItems: "center",
           }}
         >
+          <Text sx={{ fontWeight: "bold" }}>RFC:</Text>
+          <Text> {miInfo.rfc}</Text>
+        </Flex>
+        <Flex
+          m={2}
+          sx={{
+            flexFlow: "column nowrap",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Text sx={{ fontWeight: "bold" }}>CURP:</Text>
+          <Text> {miInfo.curp}</Text>
+        </Flex>
+        <Flex
+          m={2}
+          sx={{
+            flexFlow: "column nowrap",
+            justifyContent: "center",
+            alignContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Text sx={{ fontWeight: "bold" }}>Fecha de Nacimiento: </Text>{" "}
           <Text> {format_date(miInfo.fechaNacimiento)} </Text>
           <Text>
@@ -196,56 +216,74 @@ export default function Informacion({ user }) {
           )}
         </Flex>
       </Flex>
-      <Heading as="h4">Seguro</Heading>
-      <Flex my={2} sx={{ flexFlow: "column nowrap", alignItems: "flex-start" }}>
-        <Flex my={1} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
-          {!miInfo.tarjetaSeguro && (
-            <Button
-              variant="danger"
-              m={1}
-              onClick={() => setDisplaySeguro("box")}
-            >
-              Agregar tu seguro
-            </Button>
-          )}
-          {seguroVencido && (
-            <Button variant="danger" m={1}>
-              Tu seguro ha vencido Actualizalo
-            </Button>
-          )}
-        </Flex>
-        {miInfo.tarjetaSeguro && (
-          <Flex my={1} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
-            <Box>
-              <Image
-                src={miInfo.tarjetaSeguro}
-                alt="Tarjeta Seguro"
-                width={300}
-                height={300}
-              />
-            </Box>
-            <Box>
-              <a href={miInfo.caratualSeguro} target="_blank">
-                {" "}
-                Descargar Caratula
-              </a>
-            </Box>
-            <Box>
-              <Text>Vence: {format_date(miInfo.fechaVencimientoSeguro)}</Text>
-            </Box>
-          </Flex>
-        )}
+      <Flex
+        my={2}
+        sx={{
+          flexFlow: "row wrap",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        <Heading
+          as="h4"
+          onClick={() => setDisplay("Seguro")}
+          mx={2}
+          sx={{
+            textDecoration: "underline",
+            fontWeight: display === "Seguro" ? "bold" : "normal",
+            fontSize: display === "Seguro" ? "1.5em" : "1em",
+          }}
+        >
+          Seguro
+        </Heading>
+        <Heading
+          onClick={() => setDisplay("Medicamentos")}
+          as="h4"
+          mx={2}
+          sx={{
+            textDecoration: "underline",
+            fontWeight: display === "Medicamentos" ? "bold" : "normal",
+            fontSize: display === "Medicamentos" ? "1.5em" : "1em",
+          }}
+        >
+          Medicamentos
+        </Heading>
+        <Heading
+          onClick={() => setDisplay("Medicos")}
+          as="h4"
+          mx={2}
+          sx={{
+            textDecoration: "underline",
+            fontWeight: display === "Medicos" ? "bold" : "normal",
+            fontSize: display === "Medicos" ? "1.5em" : "1em",
+          }}
+        >
+          Médicos
+        </Heading>
       </Flex>
-      <Heading as="h4">Medicamentos</Heading>
-      <Flex
-        my={2}
-        sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}
-      ></Flex>
-      <Heading as="h4">Médicos</Heading>
-      <Flex
-        my={2}
-        sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}
-      ></Flex>
+      {{
+        Seguro: () => (
+          <Seguro
+            user={data?.getUserProfile?._id}
+            miInfo={miInfo}
+            query={QUERY}
+          />
+        ),
+        Medicamentos: () => (
+          <Medicamentos
+            user={data?.getUserProfile?._id}
+            miInfo={miInfo}
+            query={QUERY}
+          />
+        ),
+        Medicos: () => (
+          <Medicos
+            user={data?.getUserProfile?._id}
+            miInfo={miInfo}
+            query={QUERY}
+          />
+        ),
+      }[display]?.()}
     </Flex>
   );
 }

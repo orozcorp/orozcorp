@@ -29,8 +29,18 @@ export const usersSchema = gql`
     frecuencia: String!
     observaciones: String
     recetadaPor: String!
+    sirverPara: String!
+    medicoName: String!
     medicoId: ID!
     active: Boolean!
+  }
+  type MedicosProfile {
+    _id: ID!
+    nombre: String!
+    apellido: String!
+    telefonos: [String]
+    especialidad: String!
+    direccion: String
   }
   type UserProfile {
     name: String!
@@ -47,9 +57,11 @@ export const usersSchema = gql`
     alergias: [String]
     enfermedades: [String]
     medicamentos: [Medicamentos]
-    medicos: [Medicos]
+    medicos: [MedicosProfile]
     minor: Boolean
     familias: [Familia]
+    rfc: String!
+    curp: String!
   }
   input FamiliaInput {
     _id: ID!
@@ -69,6 +81,8 @@ export const usersSchema = gql`
     familias: [FamiliaInput]
     tipoSangre: String!
     fechaNacimiento: Date!
+    rfc: String!
+    curp: String!
   }
   input SeguroInput {
     caratulaSeguro: String!

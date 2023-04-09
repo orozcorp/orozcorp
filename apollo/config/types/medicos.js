@@ -1,13 +1,21 @@
 import { gql } from "@apollo/client";
 
 export const medicosSchema = gql`
+  type PacienteMedico {
+    _id: ID!
+    nombre: String!
+    apellido: String!
+    familiaId: ID!
+    familiaName: String!
+  }
   type Medicos {
     _id: ID!
     nombre: String!
     apellido: String!
     telefonos: [String]
     especialidad: String!
-    direccion: String!
+    direccion: String
+    pacientes: [PacienteMedico]
   }
   type VisitasMedicas {
     _id: ID!
@@ -19,5 +27,25 @@ export const medicosSchema = gql`
     pacienteId: ID!
     pacienteName: String!
     medicoName: String!
+  }
+  input PacienteMedicoInput {
+    _id: ID
+    nombre: String!
+    apellido: String!
+    familiaId: ID!
+    familiaName: String!
+  }
+  input MedicosInput {
+    nombre: String!
+    apellido: String!
+    telefonos: [String]
+    especialidad: String!
+    direccion: String
+  }
+  type Query {
+    getMedicos(nombre: String!): [Medicos]
+  }
+  type Mutation {
+    addMedico(input: MedicosInput!, addNew: Boolean!): GeneralResponse!
   }
 `;

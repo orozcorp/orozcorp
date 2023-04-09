@@ -25,13 +25,14 @@ export default function AgregarTuSeguro({ user, setDisplay, display }) {
   );
   const [updateUserSeguro, { loading }] = useMutation(MUTATION, {
     variables: {
-      idUser: user._id,
+      idUser: user,
       seguro: {
         tarjetaSeguro,
         caratulaSeguro,
         fechaVencimientoSeguro,
       },
     },
+    //Add await refetchQueries to update the cache
     onCompleted: (data) => {
       setTarjetaSeguro("");
       setCaratulaSeguro("");
@@ -83,7 +84,9 @@ export default function AgregarTuSeguro({ user, setDisplay, display }) {
           <Input
             type="date"
             value={dateInputFormat(fechaVencimientoSeguro)}
-            onChange={(e) => setFechaVencimientoSeguro(new Date(e))}
+            onChange={(e) =>
+              setFechaVencimientoSeguro(new Date(e.currentTarget.value))
+            }
           />
         </Box>
         <Button

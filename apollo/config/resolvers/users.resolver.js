@@ -35,6 +35,8 @@ export const usersResolvers = {
             "profile.alergias": 1,
             "profile.enfermedades": 1,
             "profile.medicos": 1,
+            "profile.rfc": 1,
+            "profile.curp": 1,
             "profile.fechaVencimientoSeguro": 1,
             "profile.medicamentos": {
               $filter: {
@@ -145,18 +147,16 @@ export const usersResolvers = {
     },
     updateUserSeguro: async (root, { idUser, seguro }, { db }) => {
       try {
-        await db
-          .collection("users")
-          .updateOne(
-            { _id: new ObjectId(idUser) },
-            {
-              $set: {
-                "profile.caratulaSeguro": seguro.caratulaSeguro,
-                "profile.tarjetaSeguro": seguro.tarjetaSeguro,
-                "profile.fechaVencimientoSeguro": seguro.fechaVencimientoSeguro,
-              },
-            }
-          );
+        await db.collection("users").updateOne(
+          { _id: new ObjectId(idUser) },
+          {
+            $set: {
+              "profile.caratulaSeguro": seguro.caratulaSeguro,
+              "profile.tarjetaSeguro": seguro.tarjetaSeguro,
+              "profile.fechaVencimientoSeguro": seguro.fechaVencimientoSeguro,
+            },
+          }
+        );
         return {
           message: "Seguro actualizado",
           success: true,

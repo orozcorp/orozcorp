@@ -39,6 +39,8 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     familias: [],
     tipoSangre: "",
     fechaNacimiento: new Date(),
+    curp: "",
+    rfc: "",
   };
   const familias = session?.user?.familias?.map((familia) => ({
     value: familia._id,
@@ -102,7 +104,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
           insertUser();
         }}
       >
-        <Flex sx={{ flexFlow: "row wrap" }}>
+        <Flex sx={{ flexFlow: "row wrap", justifyContent: "space-between" }}>
           <Box m={1}>
             <Label>Nombre</Label>
             <Input
@@ -158,6 +160,22 @@ export default function AgregarFamiliar({ display, setDisplay }) {
             />
           </Box>
           <Box m={1}>
+            <Label>Curp</Label>
+            <Input
+              type="text"
+              value={values.curp}
+              onChange={makeOnChange("curp")}
+            />
+          </Box>
+          <Box m={1}>
+            <Label>RFC</Label>
+            <Input
+              type="text"
+              value={values.rfc}
+              onChange={makeOnChange("rfc")}
+            />
+          </Box>
+          <Box m={1}>
             <Label>Tipo de Sangre</Label>
             <Input
               type="text"
@@ -166,7 +184,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
             />
           </Box>
         </Flex>
-        <Flex sx={{ flexFlow: "row wrap" }}>
+        <Flex sx={{ flexFlow: "row wrap", justifyContent: "space-between" }}>
           <Box m={1}>
             <Label
               sx={{
