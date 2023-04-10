@@ -20,6 +20,7 @@ export const usersSchema = gql`
     administradorName: String!
     administradorId: ID!
   }
+
   type Medicamentos {
     _id: ID!
     fechaInicio: Date!
@@ -28,11 +29,20 @@ export const usersSchema = gql`
     dosis: String!
     frecuencia: String!
     observaciones: String
-    recetadaPor: String!
+    sirvePara: String!
+    medicoName: String!
+    medicoId: ID!
+  }
+  input MedicamentosInput {
+    fechaInicio: Date!
+    fechaFin: Date!
+    nombre: String!
+    dosis: String!
+    frecuencia: String!
+    observaciones: String
     sirverPara: String!
     medicoName: String!
     medicoId: ID!
-    active: Boolean!
   }
   type MedicosProfile {
     _id: ID!
@@ -99,6 +109,7 @@ export const usersSchema = gql`
   type Query {
     getUserProfile(idUser: String!): User
     getFamilyMembers(idFamilia: String): [User]
+    getFamilyDoctors(idUser: ID!, nombre: String): [MedicosProfile]
   }
   type Mutation {
     insertUser(input: UserInput!): GeneralResponse!

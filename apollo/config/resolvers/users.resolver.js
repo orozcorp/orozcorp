@@ -66,6 +66,66 @@ export const usersResolvers = {
         )
         .toArray();
     },
+    getFamilyDoctors: async (root, { idUser, nombre }, { db }) => {
+      return await db
+        .collection("users")
+        .aggregate([
+          {
+            $match: {
+              _id: new ObjectId(idUser),
+            },
+          },
+          {
+            $unwind: "$profile.medicos",
+          },
+          {
+            $match: {
+              $or: [
+                {
+                  "profile.medicos.nombre": {
+                    $regex: nombre,
+                    $options: "i",
+                  },
+                },
+                {
+                  "profile.medicos.apellido": {
+                    $regex: nombre,
+                    $options: "i",
+                  },
+                },
+              ],
+            },
+          },
+          {
+            $group: {
+              _id: "$_id",
+              medicos: {
+                $push: "$profile.medicos",
+              },
+            },
+          },
+          {
+            $project: {
+              _id: 0,
+              medicos: 1,
+            },
+          },
+          {
+            $unwind: "$medicos",
+          },
+          {
+            $project: {
+              _id: "$medicos._id",
+              nombre: "$medicos.nombre",
+              apellido: "$medicos.apellido",
+              telefonos: "$medicos.telefonos",
+              especialidad: "$medicos.especialidad",
+              direccion: "$medicos.direccion",
+            },
+          },
+        ])
+        .toArray();
+    },
   },
   Mutation: {
     insertUser: async (root, { input }, { db }) => {
