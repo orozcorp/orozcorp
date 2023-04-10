@@ -25,14 +25,12 @@ const QUERY = gql`
         medicamentos {
           _id
           dosis
-          active
           fechaFin
           fechaInicio
           frecuencia
           medicoId
           nombre
           observaciones
-          recetadaPor
         }
         medicos {
           _id

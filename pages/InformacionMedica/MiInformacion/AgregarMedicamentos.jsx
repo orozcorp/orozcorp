@@ -24,6 +24,19 @@ const QUERY = gql`
   }
 `;
 
+const MUTATION = gql`
+  mutation InsertUserMedicamentos(
+    $idUser: String!
+    $medicamento: MedicamentosInput!
+  ) {
+    insertUserMedicamentos(idUser: $idUser, medicamento: $medicamento) {
+      code
+      message
+      success
+    }
+  }
+`;
+
 export default function AgregarMedicamentos({
   user,
   setDisplay,
@@ -47,6 +60,7 @@ export default function AgregarMedicamentos({
   const { data, loading, error } = useQuery(QUERY, {
     variables: { idUser: user._id, nombre: medico },
   });
+  const [drId, setDrId] = useState("");
   const doctors = data?.getFamilyDoctors || [];
   const makeOnChange =
     (fieldName) =>
@@ -55,6 +69,34 @@ export default function AgregarMedicamentos({
         ...medicamento,
         [fieldName]: value.toUpperCase(),
       });
+  const [insertUserMedicamentos, { loading: loadingMutation }] = useMutation(
+    MUTATION,
+    {
+      variables: {
+        idUser: user._id,
+        medicamento,
+      },
+      onCompleted: ({ insertUserMedicamentos }) => {
+        setMedicamento(initialMedicamento);
+        setMedico("");
+        setDisplay("none");
+      },
+      onError: (error) => {
+        setAlert({
+          message: error.message,
+          display: "box",
+          variant: "orange",
+        });
+      },
+      refetchQueries: [
+        {
+          query,
+          variables: { idUser: user._id },
+        },
+      ],
+      awaitRefetchQueries: true,
+    }
+  );
   return (
     <Modal display={display} setDisplay={setDisplay}>
       <Heading>Agregar Medicamento</Heading>
@@ -65,6 +107,7 @@ export default function AgregarMedicamentos({
             justifyContent: "space-around",
             alignItems: "flex-end",
           }}
+          as="form"
         >
           <Box m={2}>
             <Label>Nombre</Label>
@@ -142,6 +185,11 @@ export default function AgregarMedicamentos({
                 <Box
                   m={1}
                   key={doctor._id}
+                  sx={{
+                    backgroundColor: drId === doctor._id ? "primary" : "white",
+                    color: drId === doctor._id ? "white" : "black",
+                    border: "1px solid black",
+                  }}
                   onClick={() => {
                     setMedicamento({
                       ...medicamento,
@@ -150,6 +198,8 @@ export default function AgregarMedicamentos({
                     });
                     setMedico("");
                   }}
+                  onMouseEnter={() => setDrId(doctor._id)}
+                  onMouseLeave={() => setDrId("")}
                 >
                   <Text>{`${doctor.nombre} ${doctor.apellido}`}</Text>
                 </Box>

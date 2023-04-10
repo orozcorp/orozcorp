@@ -15,7 +15,6 @@ function isYoungerThan18(birthdate) {
 
   return age < 18;
 }
-
 export const usersResolvers = {
   Query: {
     getUserProfile: async (root, { idUser }, { db }) => {
@@ -228,6 +227,31 @@ export const usersResolvers = {
         return {
           code: 400,
           message: "Error al actualizar seguro",
+          success: false,
+        };
+      }
+    },
+    insertUserMedicamentos: async (root, { idUser, medicamento }, { db }) => {
+      medicamento._id = new ObjectId();
+      medicamento.fechaInicio = new Date(medicamento.fechaInicio);
+      medicamento.fechaFin = new Date(medicamento.fechaFin);
+      try {
+        await db
+          .collection("users")
+          .updateOne(
+            { _id: new ObjectId(idUser) },
+            { $push: { "profile.medicamentos": medicamento } }
+          );
+        return {
+          message: "Medicamentos agregados",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al agregar medicamentos",
           success: false,
         };
       }

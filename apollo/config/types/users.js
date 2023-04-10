@@ -120,5 +120,9 @@ export const usersSchema = gql`
       peso: Float!
     ): GeneralResponse!
     updateUserSeguro(idUser: String!, seguro: SeguroInput!): GeneralResponse!
+    insertUserMedicamentos(
+      idUser: String!
+      medicamento: MedicamentosInput!
+    ): GeneralResponse!
   }
 `;

@@ -14,14 +14,16 @@ export const medicosResolvers = {
   },
   Mutation: {
     addMedico: async (root, { input, addNew }, { db }) => {
+      const { pacientes } = input;
       try {
         if (!addNew && !input?._id) {
           const newMedico = await db.collection("Medicos").insertOne(input);
           const medicosProfile = input;
+          medicosProfile._id = newMedico.insertedId;
           delete medicosProfile.pacientes;
           const addToFamilia = await db.collection("users").updateMany(
             {
-              "profile.familias._id": input.pacientes[0].familiaId,
+              "profile.familias._id": pacientes[0].familiaId,
             },
             {
               $push: { "profile.medicos": medicosProfile },
@@ -33,7 +35,6 @@ export const medicosResolvers = {
             success: true,
           };
         } else {
-          const { pacientes } = input;
           const updatedMedico = await db
             .collection("Medicos")
             .updateOne({ _id: input._id }, { $push: pacientes });
