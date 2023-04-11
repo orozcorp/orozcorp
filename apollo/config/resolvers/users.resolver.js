@@ -17,7 +17,40 @@ function isYoungerThan18(birthdate) {
 }
 export const usersResolvers = {
   Query: {
-    getUserProfile: async (root, { idUser }, { db }) => {
+    getUserProfile: async (root, { idUser, oldMed }, { db }) => {
+      if (oldMed) {
+        const user = await db.collection("users").findOne(
+          { _id: new ObjectId(idUser) },
+          {
+            projection: {
+              _id: 1,
+              "profile.name": 1,
+              "profile.lastName": 1,
+              "profile.caratulaSeguro": 1,
+              "profile.tarjetaSeguro": 1,
+              "profile.fechaNacimiento": 1,
+              "profile.peso": 1,
+              "profile.estatura": 1,
+              "profile.tipoSangre": 1,
+              "profile.alergias": 1,
+              "profile.enfermedades": 1,
+              "profile.medicos": 1,
+              "profile.rfc": 1,
+              "profile.curp": 1,
+              "profile.minor": 1,
+              "profile.fechaVencimientoSeguro": 1,
+              "profile.medicamentos": {
+                $filter: {
+                  input: "$profile.medicamentos",
+                  as: "medicamento",
+                  cond: { $lte: ["$$medicamento.fechaFin", new Date()] },
+                },
+              },
+            },
+          }
+        );
+        return user;
+      }
       const user = await db.collection("users").findOne(
         { _id: new ObjectId(idUser) },
         {
@@ -66,6 +99,7 @@ export const usersResolvers = {
         .toArray();
     },
     getFamilyDoctors: async (root, { idUser, nombre }, { db }) => {
+      if (nombre === "") return [];
       return await db
         .collection("users")
         .aggregate([
@@ -122,6 +156,12 @@ export const usersResolvers = {
               direccion: "$medicos.direccion",
             },
           },
+          {
+            $sort: {
+              nombre: 1,
+              apellido: 1,
+            },
+          },
         ])
         .toArray();
     },
@@ -151,46 +191,30 @@ export const usersResolvers = {
         };
       }
     },
-    updateUserWeight: async (root, { idUser, peso }, { db }) => {
-      try {
-        await db
-          .collection("users")
-          .updateOne(
-            { _id: new ObjectId(idUser) },
-            { $set: { "profile.peso": peso } }
-          );
-        return {
-          message: "Peso actualizado",
-          success: true,
-          code: 200,
-        };
-      } catch (error) {
-        console.error(error);
-        return {
-          code: 400,
-          message: "Error al actualizar peso",
-          success: false,
-        };
-      }
-    },
     updateUserWeightHeight: async (
       root,
-      { idUser, estatura, peso },
+      { idUser, estatura, peso, fecha },
       { db }
     ) => {
       try {
-        await db
-          .collection("users")
-          .updateOne(
-            { _id: new ObjectId(idUser) },
-            { $set: { "profile.estatura": estatura, "$profile.peso": peso } }
-          );
         const obj = {
           user: idUser,
           peso,
           estatura,
+          fecha: new Date(fecha),
         };
-        await db.collection("BabyGrowth").insertOne(obj);
+
+        await db.collection("users").updateOne(
+          { _id: new ObjectId(idUser) },
+          {
+            $set: {
+              "profile.estatura": estatura,
+              "profile.peso": peso,
+            },
+            $push: { "profile.historialPeso": obj },
+          }
+        );
+
         return {
           message: "Estatura actualizada",
           success: true,
@@ -235,13 +259,15 @@ export const usersResolvers = {
       medicamento._id = new ObjectId();
       medicamento.fechaInicio = new Date(medicamento.fechaInicio);
       medicamento.fechaFin = new Date(medicamento.fechaFin);
+      console.log("medicamento", medicamento);
       try {
-        await db
+        const update = await db
           .collection("users")
           .updateOne(
             { _id: new ObjectId(idUser) },
             { $push: { "profile.medicamentos": medicamento } }
           );
+        console.log("update", update);
         return {
           message: "Medicamentos agregados",
           success: true,

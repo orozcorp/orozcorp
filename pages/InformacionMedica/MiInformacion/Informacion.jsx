@@ -7,9 +7,10 @@ import { uniqueId } from "lodash";
 import Seguro from "./Seguro";
 import Medicamentos from "./Medicamentos";
 import Medicos from "./Medicos";
+import HistorialDePeso from "./HistorialDePeso";
 const QUERY = gql`
-  query GetUserProfile($idUser: String!) {
-    getUserProfile(idUser: $idUser) {
+  query GetUserProfile($idUser: String!, $oldMed: Boolean!) {
+    getUserProfile(idUser: $idUser, oldMed: $oldMed) {
       _id
       profile {
         alergias
@@ -28,7 +29,7 @@ const QUERY = gql`
           fechaFin
           fechaInicio
           frecuencia
-          medicoId
+          medicoName
           nombre
           observaciones
         }
@@ -63,9 +64,11 @@ function calculateAge(birthdate) {
   const months = (today.getMonth() + 12 - birthDate.getMonth()) % 12;
   return { years: age, months: months };
 }
+
 export default function Informacion({ user, familia }) {
+  const [oldMed, setOldMed] = useState(false);
   const { data, loading, error } = useQuery(QUERY, {
-    variables: { idUser: user },
+    variables: { idUser: user, oldMed },
   });
   const [display, setDisplay] = useState("");
   const miInfo = useMemo(() => data?.getUserProfile?.profile, [data]);
@@ -74,7 +77,7 @@ export default function Informacion({ user, familia }) {
     () => calculateAge(miInfo?.fechaNacimiento),
     [miInfo?.fechaNacimiento]
   );
-
+  // add the agregar peso modal and open it when the Button is clicked, remember to pass the user as an object and add the userInfo as profile
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
@@ -91,15 +94,9 @@ export default function Informacion({ user, familia }) {
           {miInfo.name} {miInfo.lastName}
           <small style={{ margin: "12px" }}> Info </small>
         </Heading>
-        {miInfo.minor ? (
-          <Button m={1} variant="outline">
-            Agregar estatura y peso
-          </Button>
-        ) : (
-          <Button m={1} variant="outline">
-            Agregar Peso
-          </Button>
-        )}
+        <Button m={1} variant="outline">
+          Agregar peso {miInfo.minor ? "y estatura" : ""}
+        </Button>
         <Button m={1} variant="outline">
           Editar informacion
         </Button>
@@ -265,6 +262,30 @@ export default function Informacion({ user, familia }) {
         >
           Médicos
         </Heading>
+        <Heading
+          onClick={() => setDisplay("Historial")}
+          as="h4"
+          mx={2}
+          sx={{
+            textDecoration: "underline",
+            fontWeight: display === "Historial" ? "bold" : "normal",
+            fontSize: display === "Historial" ? "1.5em" : "1em",
+          }}
+        >
+          Historial Médico
+        </Heading>
+        <Heading
+          onClick={() => setDisplay("Historial")}
+          as="h4"
+          mx={2}
+          sx={{
+            textDecoration: "underline",
+            fontWeight: display === "Historial" ? "bold" : "normal",
+            fontSize: display === "Historial" ? "1.5em" : "1em",
+          }}
+        >
+          Historial de Peso {miInfo.minor ? "y Estatura" : ""}
+        </Heading>
       </Flex>
       {{
         Seguro: () => (
@@ -279,6 +300,10 @@ export default function Informacion({ user, familia }) {
             user={data?.getUserProfile?._id}
             miInfo={miInfo}
             query={QUERY}
+            oldMedicamento={{
+              oldMed,
+              setOldMed,
+            }}
           />
         ),
         Medicos: () => (
@@ -287,6 +312,21 @@ export default function Informacion({ user, familia }) {
             miInfo={miInfo}
             query={QUERY}
             familia={familia}
+          />
+        ),
+        Historial: () => (
+          <Historial
+            user={data?.getUserProfile?._id}
+            miInfo={miInfo}
+            query={QUERY}
+            familia={familia}
+          />
+        ),
+        HistorialPeso: () => (
+          <HistorialDePeso
+            user={data?.getUserProfile?._id}
+            miInfo={miInfo}
+            query={QUERY}
           />
         ),
       }[display]?.()}

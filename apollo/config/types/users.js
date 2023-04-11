@@ -12,7 +12,7 @@ export const usersSchema = gql`
     user: ID!
     fecha: Date!
     peso: Float!
-    estatura: Float!
+    estatura: Float
   }
   type Familia {
     _id: ID!
@@ -40,7 +40,7 @@ export const usersSchema = gql`
     dosis: String!
     frecuencia: String!
     observaciones: String
-    sirverPara: String!
+    sirvePara: String!
     medicoName: String!
     medicoId: ID!
   }
@@ -63,6 +63,7 @@ export const usersSchema = gql`
     fechaNacimiento: Date
     peso: Float
     estatura: Float
+    historialPeso: [BabyGrowth]
     tipoSangre: String
     alergias: [String]
     enfermedades: [String]
@@ -107,17 +108,17 @@ export const usersSchema = gql`
     profile: UserProfile
   }
   type Query {
-    getUserProfile(idUser: String!): User
+    getUserProfile(idUser: String!, oldMed: Boolean!): User
     getFamilyMembers(idFamilia: String): [User]
     getFamilyDoctors(idUser: ID!, nombre: String): [MedicosProfile]
   }
   type Mutation {
     insertUser(input: UserInput!): GeneralResponse!
-    updateUserWeight(idUser: String!, peso: Float!): GeneralResponse!
     updateUserWeightHeight(
       idUser: String!
       estatura: Float!
       peso: Float!
+      fecha: Date!
     ): GeneralResponse!
     updateUserSeguro(idUser: String!, seguro: SeguroInput!): GeneralResponse!
     insertUserMedicamentos(

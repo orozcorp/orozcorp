@@ -1,7 +1,7 @@
 export const medicosResolvers = {
   Query: {
     getMedicos: async (root, { nombre }, { db }) => {
-      //Fix to use the $text operator
+      if (nombre === "") return [];
       return await db
         .collection("Medicos")
         .find(

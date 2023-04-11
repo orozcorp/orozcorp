@@ -33,9 +33,6 @@ export default function InformacionMedica() {
               Agregar familiar
             </Button>
           )}
-          <Button m={2} onClick={() => setInfoDisplay("miHistorialMedico")}>
-            Historial médico
-          </Button>
           <Button m={2} onClick={() => setInfoDisplay("miInformacion")}>
             Informacion personal
           </Button>

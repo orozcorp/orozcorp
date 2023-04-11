@@ -42,6 +42,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
                 <th>Apellido</th>
                 <th>Telefonos</th>
                 <th>Especialidad</th>
+                <th>Direccion</th>
               </tr>
             </thead>
             <tbody>
@@ -57,6 +58,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
                     ))}
                   </td>
                   <td>{medico.especialidad}</td>
+                  <td>{medico.direccion}</td>
                 </tr>
               ))}
             </tbody>

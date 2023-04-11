@@ -8,6 +8,7 @@ import {
   Input,
   Text,
   Spinner,
+  Textarea,
 } from "@theme-ui/components";
 import { useState } from "react";
 import Modal from "../../../components/atoms/Modal";
@@ -43,7 +44,6 @@ export default function AgregarMedicamentos({
   display,
   query,
 }) {
-  console.log(user);
   const { setAlert } = useGlobalData();
   const initialMedicamento = {
     nombre: "",
@@ -54,6 +54,7 @@ export default function AgregarMedicamentos({
     sirvePara: "",
     medicoName: "",
     medicoId: "",
+    observaciones: "Sin observaciones",
   };
   const [medicamento, setMedicamento] = useState(initialMedicamento);
   const [medico, setMedico] = useState("");
@@ -69,45 +70,53 @@ export default function AgregarMedicamentos({
         ...medicamento,
         [fieldName]: value.toUpperCase(),
       });
-  const [insertUserMedicamentos, { loading: loadingMutation }] = useMutation(
-    MUTATION,
-    {
-      variables: {
-        idUser: user._id,
-        medicamento,
+  const [
+    insertUserMedicamentos,
+    { loading: loadingMutation, data: result, error: errorMutation },
+  ] = useMutation(MUTATION, {
+    variables: {
+      idUser: user._id,
+      medicamento,
+    },
+
+    onCompleted: () => {
+      setMedicamento(initialMedicamento);
+      setMedico("");
+      setDisplay("none");
+    },
+    onError: (error) => {
+      setAlert({
+        message: error.message,
+        display: "box",
+        variant: "orange",
+      });
+    },
+    refetchQueries: [
+      {
+        query,
+        variables: { idUser: user._id },
       },
-      onCompleted: ({ insertUserMedicamentos }) => {
-        setMedicamento(initialMedicamento);
-        setMedico("");
-        setDisplay("none");
-      },
-      onError: (error) => {
-        setAlert({
-          message: error.message,
-          display: "box",
-          variant: "orange",
-        });
-      },
-      refetchQueries: [
-        {
-          query,
-          variables: { idUser: user._id },
-        },
-      ],
-      awaitRefetchQueries: true,
-    }
-  );
+    ],
+    awaitRefetchQueries: true,
+  });
   return (
     <Modal display={display} setDisplay={setDisplay}>
       <Heading>Agregar Medicamento</Heading>
-      <Flex sx={{ flexFlow: "column nowrap", alignItems: "flex-start" }}>
+      <Flex
+        sx={{ flexFlow: "column nowrap", alignItems: "flex-start" }}
+        as="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          console.log(medicamento);
+          insertUserMedicamentos();
+        }}
+      >
         <Flex
           sx={{
             flexFlow: "row wrap",
             justifyContent: "space-around",
             alignItems: "flex-end",
           }}
-          as="form"
         >
           <Box m={2}>
             <Label>Nombre</Label>
@@ -139,6 +148,13 @@ export default function AgregarMedicamentos({
               type="text"
               value={medicamento.sirvePara}
               onChange={makeOnChange("sirvePara")}
+            />
+          </Box>
+          <Box m={2} sx={{ width: ["100%", "300px"] }}>
+            <Label>Observaciones</Label>
+            <Textarea
+              value={medicamento.observaciones}
+              onChange={makeOnChange("observaciones")}
             />
           </Box>
           <Box m={2}>
@@ -186,7 +202,7 @@ export default function AgregarMedicamentos({
                   m={1}
                   key={doctor._id}
                   sx={{
-                    backgroundColor: drId === doctor._id ? "primary" : "white",
+                    backgroundColor: drId === doctor._id ? "grey" : "white",
                     color: drId === doctor._id ? "white" : "black",
                     border: "1px solid black",
                   }}
@@ -196,7 +212,7 @@ export default function AgregarMedicamentos({
                       medicoName: `${doctor.nombre} ${doctor.apellido}`,
                       medicoId: doctor._id,
                     });
-                    setMedico("");
+                    setMedico(`${doctor.nombre} ${doctor.apellido}`);
                   }}
                   onMouseEnter={() => setDrId(doctor._id)}
                   onMouseLeave={() => setDrId("")}
@@ -212,7 +228,7 @@ export default function AgregarMedicamentos({
             return key !== "fechaInicio" && key !== "fechaFin";
           })
           .every((prop) => prop !== "") && (
-          <Button disabled={loadingMutation}>
+          <Button disabled={loadingMutation} type="submit">
             {loadingMutation ? <Spinner /> : "Agregar medicamento"}
           </Button>
         )}
