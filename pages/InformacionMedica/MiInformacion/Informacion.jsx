@@ -8,6 +8,8 @@ import Seguro from "./Seguro";
 import Medicamentos from "./Medicamentos";
 import Medicos from "./Medicos";
 import HistorialDePeso from "./HistorialDePeso";
+import HistorialMedico from "./HistorialMedico";
+import AgregarPeso from "./AgregarPeso";
 const QUERY = gql`
   query GetUserProfile($idUser: String!, $oldMed: Boolean!) {
     getUserProfile(idUser: $idUser, oldMed: $oldMed) {
@@ -23,6 +25,13 @@ const QUERY = gql`
         fechaVencimientoSeguro
         rfc
         curp
+        historialPeso {
+          _id
+          user
+          fecha
+          peso
+          estatura
+        }
         medicamentos {
           _id
           dosis
@@ -71,6 +80,7 @@ export default function Informacion({ user, familia }) {
     variables: { idUser: user, oldMed },
   });
   const [display, setDisplay] = useState("");
+  const [displayPeso, setDisplayPeso] = useState("none");
   const miInfo = useMemo(() => data?.getUserProfile?.profile, [data]);
 
   const age = useMemo(
@@ -82,6 +92,16 @@ export default function Informacion({ user, familia }) {
   if (error) return <p>Error: {error.message}</p>;
   return (
     <Flex p={2} sx={{ flexFlow: "column nowrap" }}>
+      <AgregarPeso
+        display={displayPeso}
+        setDisplay={setDisplayPeso}
+        userInfo={{
+          _id: user,
+          profile: miInfo,
+        }}
+        minor={miInfo.minor}
+        query={QUERY}
+      />
       <Flex
         my={2}
         sx={{
@@ -94,7 +114,7 @@ export default function Informacion({ user, familia }) {
           {miInfo.name} {miInfo.lastName}
           <small style={{ margin: "12px" }}> Info </small>
         </Heading>
-        <Button m={1} variant="outline">
+        <Button m={1} variant="outline" onClick={() => setDisplayPeso("box")}>
           Agregar peso {miInfo.minor ? "y estatura" : ""}
         </Button>
         <Button m={1} variant="outline">
@@ -275,13 +295,13 @@ export default function Informacion({ user, familia }) {
           Historial Médico
         </Heading>
         <Heading
-          onClick={() => setDisplay("Historial")}
+          onClick={() => setDisplay("HistorialPeso")}
           as="h4"
           mx={2}
           sx={{
             textDecoration: "underline",
-            fontWeight: display === "Historial" ? "bold" : "normal",
-            fontSize: display === "Historial" ? "1.5em" : "1em",
+            fontWeight: display === "HistorialPeso" ? "bold" : "normal",
+            fontSize: display === "HistorialPeso" ? "1.5em" : "1em",
           }}
         >
           Historial de Peso {miInfo.minor ? "y Estatura" : ""}
@@ -315,7 +335,7 @@ export default function Informacion({ user, familia }) {
           />
         ),
         Historial: () => (
-          <Historial
+          <HistorialMedico
             user={data?.getUserProfile?._id}
             miInfo={miInfo}
             query={QUERY}

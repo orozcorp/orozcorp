@@ -4,8 +4,6 @@ function isYoungerThan18(birthdate) {
   const birthDate = new Date(birthdate);
   let age = today.getFullYear() - birthDate.getFullYear();
   const monthDifference = today.getMonth() - birthDate.getMonth();
-
-  // Adjust the age based on the month and day difference
   if (
     monthDifference < 0 ||
     (monthDifference === 0 && today.getDate() < birthDate.getDate())
@@ -18,69 +16,40 @@ function isYoungerThan18(birthdate) {
 export const usersResolvers = {
   Query: {
     getUserProfile: async (root, { idUser, oldMed }, { db }) => {
-      if (oldMed) {
-        const user = await db.collection("users").findOne(
-          { _id: new ObjectId(idUser) },
-          {
-            projection: {
-              _id: 1,
-              "profile.name": 1,
-              "profile.lastName": 1,
-              "profile.caratulaSeguro": 1,
-              "profile.tarjetaSeguro": 1,
-              "profile.fechaNacimiento": 1,
-              "profile.peso": 1,
-              "profile.estatura": 1,
-              "profile.tipoSangre": 1,
-              "profile.alergias": 1,
-              "profile.enfermedades": 1,
-              "profile.medicos": 1,
-              "profile.rfc": 1,
-              "profile.curp": 1,
-              "profile.minor": 1,
-              "profile.fechaVencimientoSeguro": 1,
-              "profile.medicamentos": {
-                $filter: {
-                  input: "$profile.medicamentos",
-                  as: "medicamento",
-                  cond: { $lte: ["$$medicamento.fechaFin", new Date()] },
-                },
-              },
-            },
-          }
-        );
-        return user;
-      }
-      const user = await db.collection("users").findOne(
-        { _id: new ObjectId(idUser) },
-        {
-          projection: {
-            _id: 1,
-            "profile.name": 1,
-            "profile.lastName": 1,
-            "profile.caratulaSeguro": 1,
-            "profile.tarjetaSeguro": 1,
-            "profile.fechaNacimiento": 1,
-            "profile.peso": 1,
-            "profile.estatura": 1,
-            "profile.tipoSangre": 1,
-            "profile.alergias": 1,
-            "profile.enfermedades": 1,
-            "profile.medicos": 1,
-            "profile.rfc": 1,
-            "profile.curp": 1,
-            "profile.minor": 1,
-            "profile.fechaVencimientoSeguro": 1,
-            "profile.medicamentos": {
-              $filter: {
-                input: "$profile.medicamentos",
-                as: "medicamento",
-                cond: { $gte: ["$$medicamento.fechaFin", new Date()] },
-              },
-            },
+      const filterCondition = oldMed
+        ? { $lte: ["$$medicamento.fechaFin", new Date()] }
+        : { $gte: ["$$medicamento.fechaFin", new Date()] };
+
+      const projection = {
+        _id: 1,
+        "profile.name": 1,
+        "profile.lastName": 1,
+        "profile.caratulaSeguro": 1,
+        "profile.tarjetaSeguro": 1,
+        "profile.fechaNacimiento": 1,
+        "profile.peso": 1,
+        "profile.estatura": 1,
+        "profile.tipoSangre": 1,
+        "profile.alergias": 1,
+        "profile.enfermedades": 1,
+        "profile.medicos": 1,
+        "profile.rfc": 1,
+        "profile.curp": 1,
+        "profile.minor": 1,
+        "profile.fechaVencimientoSeguro": 1,
+        "profile.medicamentos": {
+          $filter: {
+            input: "$profile.medicamentos",
+            as: "medicamento",
+            cond: filterCondition,
           },
-        }
-      );
+        },
+      };
+
+      const user = await db
+        .collection("users")
+        .findOne({ _id: new ObjectId(idUser) }, { projection });
+
       return user;
     },
     getFamilyMembers: async (root, { idFamilia }, { db }) => {
