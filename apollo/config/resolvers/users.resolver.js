@@ -1,4 +1,5 @@
 import { ObjectId } from "mongodb";
+import { v4 as uuidv4 } from "uuid";
 function isYoungerThan18(birthdate) {
   const today = new Date();
   const birthDate = new Date(birthdate);
@@ -37,6 +38,7 @@ export const usersResolvers = {
         "profile.curp": 1,
         "profile.minor": 1,
         "profile.fechaVencimientoSeguro": 1,
+        "profile.historialPeso": 1,
         "profile.medicamentos": {
           $filter: {
             input: "$profile.medicamentos",
@@ -167,6 +169,7 @@ export const usersResolvers = {
     ) => {
       try {
         const obj = {
+          _id: uuidv4(),
           user: idUser,
           peso,
           estatura,

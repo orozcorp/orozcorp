@@ -87,7 +87,6 @@ export default function Informacion({ user, familia }) {
     () => calculateAge(miInfo?.fechaNacimiento),
     [miInfo?.fechaNacimiento]
   );
-  // add the agregar peso modal and open it when the Button is clicked, remember to pass the user as an object and add the userInfo as profile
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
