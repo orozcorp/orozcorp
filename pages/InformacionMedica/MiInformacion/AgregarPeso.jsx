@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "../../../components/atoms/Modal";
 import { Heading, Button, Label, Input, Flex, Box } from "@theme-ui/components";
 import { dateInputFormat } from "../../../lib/helpers/formatters";
-
+import { gql, useMutation } from "@apollo/client";
 const MUTATION_PESO_ESTATURA = gql`
   mutation UpdateUserWeightHeight(
     $idUser: String!
