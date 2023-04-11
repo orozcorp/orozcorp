@@ -52,6 +52,13 @@ export const usersSchema = gql`
     especialidad: String!
     direccion: String
   }
+  type HistorialMedico {
+    _id: ID!
+    fecha: Date!
+    descripcion: String!
+    medicoName: String!
+    medicoId: ID!
+  }
   type UserProfile {
     name: String!
     lastName: String!
@@ -73,6 +80,7 @@ export const usersSchema = gql`
     familias: [Familia]
     rfc: String!
     curp: String!
+    historialMedico: [HistorialMedico]
   }
   input FamiliaInput {
     _id: ID!

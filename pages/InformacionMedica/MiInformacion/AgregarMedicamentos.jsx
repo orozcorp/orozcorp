@@ -107,7 +107,6 @@ export default function AgregarMedicamentos({
         as="form"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log(medicamento);
           insertUserMedicamentos();
         }}
       >

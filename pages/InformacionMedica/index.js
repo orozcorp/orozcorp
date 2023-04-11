@@ -8,7 +8,10 @@ import MiInformacion from "./MiInformacion";
 
 export default function InformacionMedica() {
   const { data: session, status } = useSession();
-  const superAdmin = session?.roles?.includes("superAdmin");
+  const isHeadOfFamily =
+    session?.user?.familias?.filter(
+      (familia) => session?.user?.id === familia.administradorId
+    )?.length > 0;
   const [display, setDisplay] = useState("none");
   const [infoDisplay, setInfoDisplay] = useState("");
   return (
@@ -28,7 +31,7 @@ export default function InformacionMedica() {
           Información Médica
         </Heading>
         <Flex sx={{ flexFlow: "row wrap" }}>
-          {superAdmin && (
+          {isHeadOfFamily && (
             <Button m={2} onClick={() => setDisplay("box")}>
               Agregar familiar
             </Button>

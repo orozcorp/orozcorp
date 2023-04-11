@@ -32,6 +32,13 @@ const QUERY = gql`
           peso
           estatura
         }
+        historialMedico {
+          _id
+          fecha
+          descripcion
+          medicoName
+          medicoId
+        }
         medicamentos {
           _id
           dosis

@@ -42,12 +42,14 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     curp: "",
     rfc: "",
   };
-  const familias = session?.user?.familias?.map((familia) => ({
-    value: familia._id,
-    label: familia.nombre,
-    administradorName: familia.administradorName,
-    administradorId: familia.administradorId,
-  }));
+  const familias = session?.user?.familias
+    ?.filter((familia) => session?.user?.id === familia.administradorId)
+    .map((familia) => ({
+      value: familia._id,
+      label: familia.nombre,
+      administradorName: familia.administradorName,
+      administradorId: familia.administradorId,
+    }));
   const [values, setValues] = useState(initialValues);
   const makeOnChange =
     (fieldName) =>
@@ -61,6 +63,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     variables: {
       input: {
         ...values,
+        email: values.email.toLowerCase(),
         familias: values.familias.map((familia) => ({
           _id: familia.value,
           nombre: familia.label,
@@ -223,8 +226,8 @@ export default function AgregarFamiliar({ display, setDisplay }) {
             <Textarea
               rows={3}
               sx={{ minWidth: "300px" }}
-              value={values.alergias}
-              onChange={makeOnChange("enfermedad")}
+              value={values.enfermedades}
+              onChange={makeOnChange("enfermedades")}
             />
           </Box>
           <Box m={1} sx={{ minWidth: "300px" }}>

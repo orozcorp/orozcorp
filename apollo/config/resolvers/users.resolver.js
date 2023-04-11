@@ -39,6 +39,7 @@ export const usersResolvers = {
         "profile.minor": 1,
         "profile.fechaVencimientoSeguro": 1,
         "profile.historialPeso": 1,
+        "profile.historialMedico": 1,
         "profile.medicamentos": {
           $filter: {
             input: "$profile.medicamentos",
