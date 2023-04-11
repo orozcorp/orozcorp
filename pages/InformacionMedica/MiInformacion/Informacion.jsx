@@ -229,7 +229,7 @@ export default function Informacion({ user, familia }) {
         <Heading
           as="h4"
           onClick={() => setDisplay("Seguro")}
-          mx={2}
+          m={2}
           sx={{
             textDecoration: "underline",
             fontWeight: display === "Seguro" ? "bold" : "normal",
@@ -241,7 +241,7 @@ export default function Informacion({ user, familia }) {
         <Heading
           onClick={() => setDisplay("Medicamentos")}
           as="h4"
-          mx={2}
+          m={2}
           sx={{
             textDecoration: "underline",
             fontWeight: display === "Medicamentos" ? "bold" : "normal",
@@ -253,7 +253,7 @@ export default function Informacion({ user, familia }) {
         <Heading
           onClick={() => setDisplay("Medicos")}
           as="h4"
-          mx={2}
+          m={2}
           sx={{
             textDecoration: "underline",
             fontWeight: display === "Medicos" ? "bold" : "normal",
@@ -265,7 +265,7 @@ export default function Informacion({ user, familia }) {
         <Heading
           onClick={() => setDisplay("Historial")}
           as="h4"
-          mx={2}
+          m={2}
           sx={{
             textDecoration: "underline",
             fontWeight: display === "Historial" ? "bold" : "normal",
@@ -277,7 +277,7 @@ export default function Informacion({ user, familia }) {
         <Heading
           onClick={() => setDisplay("Historial")}
           as="h4"
-          mx={2}
+          m={2}
           sx={{
             textDecoration: "underline",
             fontWeight: display === "Historial" ? "bold" : "normal",
