@@ -23,6 +23,7 @@ export const usersResolvers = {
 
       const projection = {
         _id: 1,
+        email: 1,
         "profile.name": 1,
         "profile.lastName": 1,
         "profile.caratulaSeguro": 1,
@@ -232,7 +233,6 @@ export const usersResolvers = {
       medicamento._id = new ObjectId();
       medicamento.fechaInicio = new Date(medicamento.fechaInicio);
       medicamento.fechaFin = new Date(medicamento.fechaFin);
-      console.log("medicamento", medicamento);
       try {
         const update = await db
           .collection("users")
@@ -240,9 +240,35 @@ export const usersResolvers = {
             { _id: new ObjectId(idUser) },
             { $push: { "profile.medicamentos": medicamento } }
           );
-        console.log("update", update);
         return {
           message: "Medicamentos agregados",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al agregar medicamentos",
+          success: false,
+        };
+      }
+    },
+    updateUserProfile: async (root, { userId, email, input }, { db }) => {
+      try {
+        await db.collection("users").updateOne(
+          {
+            _id: new ObjectId(userId),
+          },
+          {
+            $set: {
+              email,
+              profile: { ...input },
+            },
+          }
+        );
+        return {
+          message: "User profile updated",
           success: true,
           code: 200,
         };

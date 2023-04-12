@@ -10,10 +10,12 @@ import Medicos from "./Medicos";
 import HistorialDePeso from "./HistorialDePeso";
 import HistorialMedico from "./HistorialMedico";
 import AgregarPeso from "./AgregarPeso";
+import EditarInformacion from "./EditarInformacionModal";
 const QUERY = gql`
   query GetUserProfile($idUser: String!, $oldMed: Boolean!) {
     getUserProfile(idUser: $idUser, oldMed: $oldMed) {
       _id
+      email
       profile {
         alergias
         caratulaSeguro
@@ -88,6 +90,7 @@ export default function Informacion({ user, familia }) {
   });
   const [display, setDisplay] = useState("");
   const [displayPeso, setDisplayPeso] = useState("none");
+  const [displayEdit, setDisplayEdit] = useState("none");
   const miInfo = useMemo(() => data?.getUserProfile?.profile, [data]);
 
   const age = useMemo(
@@ -108,6 +111,16 @@ export default function Informacion({ user, familia }) {
         minor={miInfo.minor}
         query={QUERY}
       />
+      <EditarInformacion
+        display={displayEdit}
+        setDisplay={setDisplayEdit}
+        query={QUERY}
+        user={{
+          _id: user,
+          email: data?.getUserProfile?.email,
+          ...miInfo,
+        }}
+      />
       <Flex
         my={2}
         sx={{
@@ -123,7 +136,7 @@ export default function Informacion({ user, familia }) {
         <Button m={1} variant="outline" onClick={() => setDisplayPeso("box")}>
           Agregar peso {miInfo.minor ? "y estatura" : ""}
         </Button>
-        <Button m={1} variant="outline">
+        <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
           Editar informacion
         </Button>
       </Flex>

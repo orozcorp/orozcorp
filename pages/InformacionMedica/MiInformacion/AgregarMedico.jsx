@@ -84,7 +84,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
     refetchQueries: [
       {
         query,
-        variables: { idUser: user._id },
+        variables: { idUser: user._id, oldMed: false },
       },
     ],
     awaitRefetchQueries: true,

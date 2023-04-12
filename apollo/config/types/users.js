@@ -103,6 +103,18 @@ export const usersSchema = gql`
     rfc: String!
     curp: String!
   }
+  input UserInputEdit {
+    tipoSangre: String!
+    fechaNacimiento: Date!
+    rfc: String!
+    curp: String!
+    peso: Float!
+    estatura: Float!
+    name: String!
+    lastName: String!
+    alergias: [String]
+    enfermedades: [String]
+  }
   input SeguroInput {
     caratulaSeguro: String!
     tarjetaSeguro: String!
@@ -122,6 +134,11 @@ export const usersSchema = gql`
   }
   type Mutation {
     insertUser(input: UserInput!): GeneralResponse!
+    updateUserProfile(
+      userId: ID!
+      email: String!
+      input: UserInputEdit!
+    ): GeneralResponse!
     updateUserWeightHeight(
       idUser: String!
       estatura: Float!

@@ -66,7 +66,7 @@ export default function AgregarPeso({
     refetchQueries: [
       {
         query,
-        variables: { idUser: userInfo._id },
+        variables: { idUser: userInfo._id, oldMed: false },
       },
     ],
     awaitRefetchQueries: true,
