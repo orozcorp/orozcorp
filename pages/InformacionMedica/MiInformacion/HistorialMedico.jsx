@@ -1,13 +1,26 @@
 import { Flex, Button, Box } from "@theme-ui/components";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { format_date } from "../../../lib/helpers/formatters";
+import AgregarHistorialMedico from "./AgregarHistorialMedico";
 
 export default function HistorialMedico({ user, miInfo, query, familia }) {
+  const sortedHistorial = useMemo(() => {
+    const historialCopy = [...(miInfo?.historialMedico || [])];
+    return historialCopy.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+  }, [miInfo]);
+
   const [display, setDisplay] = useState("none");
   return (
     <Flex
       my={2}
       sx={{ flexFlow: "column nowrap", justifyContent: "flex-start" }}
     >
+      <AgregarHistorialMedico
+        user={user}
+        setDisplay={setDisplay}
+        display={display}
+        query={query}
+      />
       <Flex
         my={1}
         sx={{
@@ -19,6 +32,26 @@ export default function HistorialMedico({ user, miInfo, query, familia }) {
         <Button m={1} variant="primary" onClick={() => setDisplay("box")}>
           Agregar Historia Médica
         </Button>
+      </Flex>
+      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Descripcion</th>
+              <th>Medico</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedHistorial?.map((peso) => (
+              <tr key={peso._id}>
+                <td>{format_date(peso.fecha)}</td>
+                <td>{peso.descripcion}</td>
+                <td>{peso.medicoName}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </Flex>
     </Flex>
   );

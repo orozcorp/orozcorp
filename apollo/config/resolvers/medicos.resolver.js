@@ -2,7 +2,7 @@ export const medicosResolvers = {
   Query: {
     getMedicos: async (root, { nombre }, { db }) => {
       if (nombre === "") return [];
-      return await db
+      const medico = await db
         .collection("Medicos")
         .find(
           { $text: { $search: nombre } },
@@ -10,6 +10,7 @@ export const medicosResolvers = {
         )
         .sort({ nombre: 1, apellido: 1 })
         .toArray();
+      return medico;
     },
   },
   Mutation: {

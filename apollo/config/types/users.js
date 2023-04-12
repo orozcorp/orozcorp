@@ -59,6 +59,12 @@ export const usersSchema = gql`
     medicoName: String!
     medicoId: ID!
   }
+  input HistorialMedicoInput {
+    fecha: Date!
+    descripcion: String!
+    medicoName: String!
+    medicoId: ID!
+  }
   type UserProfile {
     name: String!
     lastName: String!
@@ -149,6 +155,10 @@ export const usersSchema = gql`
     insertUserMedicamentos(
       idUser: String!
       medicamento: MedicamentosInput!
+    ): GeneralResponse!
+    insertUserHistorialMedico(
+      idUser: String!
+      historial: HistorialMedicoInput!
     ): GeneralResponse!
   }
 `;

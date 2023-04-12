@@ -281,5 +281,32 @@ export const usersResolvers = {
         };
       }
     },
+    insertUserHistorialMedico: async (root, { idUser, historial }, { db }) => {
+      historial._id = uuidv4();
+      try {
+        await db.collection("users").updateOne(
+          {
+            _id: new ObjectId(idUser),
+          },
+          {
+            $push: {
+              "profile.historialMedico": historial,
+            },
+          }
+        );
+        return {
+          message: "Historial medico agregado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al agregar historial medico",
+          success: false,
+        };
+      }
+    },
   },
 };
