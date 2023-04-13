@@ -28,7 +28,7 @@ export function FamiliarContainer(props) {
   }
   if (
     (status === "unauthenticated" && !session) ||
-    !session?.roles?.includes("admin")
+    !session?.roles?.includes("familiar")
   ) {
     return (
       <FamiliarContext.Provider value={{ session, status }}>
