@@ -263,7 +263,16 @@ export const usersResolvers = {
           {
             $set: {
               email,
-              profile: { ...input },
+              profile: {
+                tipoSangre: input.tipoSangre,
+                alergias: input.alergias,
+                enfermedades: input.enfermedades,
+                fechaNacimeinto: new Date(input.fechaNacimeinto),
+                rfc: input.rfc,
+                curp: input.curp,
+                name: input.name,
+                lastName: input.lastName,
+              },
             },
           }
         );
