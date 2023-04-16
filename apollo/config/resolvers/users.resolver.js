@@ -38,6 +38,7 @@ export const usersResolvers = {
         "profile.rfc": 1,
         "profile.curp": 1,
         "profile.minor": 1,
+        "profile.estudios": 1,
         "profile.fechaVencimientoSeguro": 1,
         "profile.historialPeso": 1,
         "profile.historialMedico": 1,
@@ -313,6 +314,33 @@ export const usersResolvers = {
         return {
           code: 400,
           message: "Error al agregar historial medico",
+          success: false,
+        };
+      }
+    },
+    insertUserEstudios: async (root, { idUser, estudio }, { db }) => {
+      estudio._id = uuidv4();
+      try {
+        await db.collection("users").updateOne(
+          {
+            _id: new ObjectId(idUser),
+          },
+          {
+            $push: {
+              "profile.estudio": estudio,
+            },
+          }
+        );
+        return {
+          message: "Estudio medico agregado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al agregar estudio medico",
           success: false,
         };
       }

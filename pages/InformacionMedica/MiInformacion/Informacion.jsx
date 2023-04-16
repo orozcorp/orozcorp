@@ -11,6 +11,7 @@ import HistorialDePeso from "./HistorialDePeso";
 import HistorialMedico from "./HistorialMedico";
 import AgregarPeso from "./AgregarPeso";
 import EditarInformacion from "./EditarInformacionModal";
+import Estudios from "./Estudios";
 const QUERY = gql`
   query GetUserProfile($idUser: String!, $oldMed: Boolean!) {
     getUserProfile(idUser: $idUser, oldMed: $oldMed) {
@@ -40,6 +41,14 @@ const QUERY = gql`
           descripcion
           medicoName
           medicoId
+        }
+        estudios {
+          _id
+          fecha
+          descripcion
+          medicoName
+          medicoId
+          estudio
         }
         medicamentos {
           _id
@@ -325,6 +334,18 @@ export default function Informacion({ user, familia }) {
         >
           Historial de Peso {miInfo.minor ? "y Estatura" : ""}
         </Heading>
+        <Heading
+          onClick={() => setDisplay("Estudios")}
+          as="h4"
+          m={2}
+          sx={{
+            textDecoration: "underline",
+            fontWeight: display === "Estudios" ? "bold" : "normal",
+            fontSize: display === "Estudios" ? "1.5em" : "1em",
+          }}
+        >
+          Estudios
+        </Heading>
       </Flex>
       {{
         Seguro: () => (
@@ -366,6 +387,14 @@ export default function Informacion({ user, familia }) {
             user={data?.getUserProfile?._id}
             miInfo={miInfo}
             query={QUERY}
+          />
+        ),
+        Estudios: () => (
+          <Estudios
+            user={data?.getUserProfile?._id}
+            miInfo={miInfo}
+            query={QUERY}
+            familia={familia}
           />
         ),
       }[display]?.()}

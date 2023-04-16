@@ -59,12 +59,28 @@ export const usersSchema = gql`
     medicoName: String!
     medicoId: ID!
   }
+  type Estudios {
+    _id: ID!
+    fecha: Date!
+    descripcion: String!
+    medicoName: String!
+    medicoId: ID!
+    estudio: String!
+  }
   input HistorialMedicoInput {
     fecha: Date!
     descripcion: String!
     medicoName: String!
     medicoId: ID!
   }
+  input EstudiosInput {
+    fecha: Date!
+    descripcion: String!
+    medicoName: String!
+    medicoId: ID!
+    estudio: String!
+  }
+
   type UserProfile {
     name: String!
     lastName: String!
@@ -82,6 +98,7 @@ export const usersSchema = gql`
     enfermedades: [String]
     medicamentos: [Medicamentos]
     medicos: [MedicosProfile]
+    estudios: [Estudios]
     minor: Boolean
     familias: [Familia]
     rfc: String!
@@ -159,6 +176,10 @@ export const usersSchema = gql`
     insertUserHistorialMedico(
       idUser: String!
       historial: HistorialMedicoInput!
+    ): GeneralResponse!
+    insertUserEstudios(
+      idUser: String!
+      estudio: EstudiosInput!
     ): GeneralResponse!
   }
 `;
