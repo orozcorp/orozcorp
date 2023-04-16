@@ -148,6 +148,7 @@ export const usersResolvers = {
       input.minor = isYoungerThan18(input.fechaNacimiento);
       input.medicamentos = [];
       input.medicos = [];
+      input.estudios = [];
       const user = { profile: { ...input }, createdAt: new Date(), email };
       try {
         const { insertedId } = await db.collection("users").insertOne(user);
