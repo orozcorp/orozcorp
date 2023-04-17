@@ -62,6 +62,7 @@ export default function MiInformacion() {
           <Label>Selecciona Familia</Label>
           <Select
             options={families}
+            isSearchable
             value={familia}
             onChange={(e) => setFamilia(e)}
           />
@@ -71,6 +72,7 @@ export default function MiInformacion() {
           <Select
             options={familyMembers}
             value={individual}
+            isSearchable
             onChange={(e) => setIndividual(e)}
           />
         </Box>

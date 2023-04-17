@@ -244,6 +244,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
             </Label>
             <Select
               isMulti
+              isSearchable
               options={familias}
               value={values.familias}
               onChange={(e) => setValues({ ...values, familias: e })}
