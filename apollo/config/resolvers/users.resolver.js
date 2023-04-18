@@ -328,7 +328,7 @@ export const usersResolvers = {
           },
           {
             $push: {
-              "profile.estudio": estudio,
+              "profile.estudios": estudio,
             },
           }
         );
