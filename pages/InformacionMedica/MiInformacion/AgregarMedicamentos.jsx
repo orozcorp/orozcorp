@@ -184,9 +184,13 @@ export default function AgregarMedicamentos({
           </Box>
           <Flex
             m={2}
-            sx={{ flexFlow: "column nowrap", alignItems: "flex-start" }}
+            sx={{
+              flexFlow: "column nowrap",
+              alignItems: "flex-start",
+              minWidth: "300px",
+            }}
           >
-            <Box>
+            <Box sx={{ minWidth: "300px" }}>
               <Label>Medico que receto</Label>
               <Input
                 type="text"
@@ -198,12 +202,14 @@ export default function AgregarMedicamentos({
               doctors.length > 0 &&
               doctors.map((doctor) => (
                 <Box
-                  m={1}
+                  my={1}
+                  p={2}
                   key={doctor._id}
                   sx={{
                     backgroundColor: drId === doctor._id ? "grey" : "white",
                     color: drId === doctor._id ? "white" : "black",
                     border: "1px solid black",
+                    width: "100%",
                   }}
                   onClick={() => {
                     setMedicamento({

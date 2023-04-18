@@ -131,6 +131,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
                 <Box
                   key={medico._id}
                   my={1}
+                  p={2}
                   onMouseEnter={() => setActiveDr(medico._id)}
                   onMouseLeave={() => setActiveDr("")}
                   onClick={() => {
@@ -139,6 +140,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
                   }}
                   sx={{
                     border: "1px solid black",
+                    width: "100%",
                     backgroundColor: activeDr ? "green" : "white",
                     color: activeDr ? "white" : "black",
                   }}
