@@ -34,6 +34,7 @@ export default function HistorialDePeso({ user, miInfo, query }) {
           justifyContent: "space-between",
           alignItems: "center",
         }}
+        my={3}
       >
         <GraficasPeso userId={user} />
         {miInfo?.minor && <GraficasEstatura userId={user} />}
