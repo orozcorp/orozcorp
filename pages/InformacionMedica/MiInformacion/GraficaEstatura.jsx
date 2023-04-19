@@ -62,7 +62,7 @@ export default function GraficasEstatura({ userId }) {
     return <p>Cargando...</p>;
   }
   return (
-    <Box m={1} sx={{ width: ["100%", "40%"], height: ["100%", "50vh"] }}>
+    <Box m={1} sx={{ width: ["100%", "40%"], height: ["400px", "50vh"] }}>
       <Line
         data={data.createEstaturaGraphData}
         options={options}
