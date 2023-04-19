@@ -238,11 +238,11 @@ th {
   text-align: center;
   height: fit-content;
   width: fit-content;
-  padding: -15px
+  padding: 6px;
 }
 
 table {
-  border-spacing: 0.5rem;
+  border-spacing: 1rem;
   border-collapse: collapse;
   width: 100%;
 }
@@ -255,7 +255,9 @@ th {
 td {
   border-bottom: 0.5px solid #000;
 }
-
+tr {
+  border-bottom: 0.5px solid #000;
+}
 .react-rotating-text-cursor {
   animation: blinking-cursor 0.8s cubic-bezier(0.68, 0.01, 0.01, 0.99) 0s infinite;
 }
