@@ -30,6 +30,7 @@
     "nodemailer": "^6.9.0",
     "numeral": "^2.0.6",
     "react": "^18.2.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-rotating-text": "^1.4.1",

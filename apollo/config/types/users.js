@@ -150,10 +150,22 @@ export const usersSchema = gql`
     emailVerified: Date
     profile: UserProfile
   }
+  type Dataset {
+    label: String!
+    data: [Float]!
+    backgroundColor: String!
+    borderColor: String!
+  }
+  type LineChart {
+    labels: [String]!
+    datasets: [Dataset]!
+  }
   type Query {
     getUserProfile(idUser: String!, oldMed: Boolean!): User
     getFamilyMembers(idFamilia: String): [User]
     getFamilyDoctors(idUser: ID!, nombre: String): [MedicosProfile]
+    createPesoGraphData(idUser: String!): LineChart!
+    createEstaturaGraphData(idUser: String!): LineChart!
   }
   type Mutation {
     insertUser(input: UserInput!): GeneralResponse!

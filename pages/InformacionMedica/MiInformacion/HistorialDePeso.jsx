@@ -1,13 +1,13 @@
 import React, { useMemo } from "react";
 import { Flex } from "@theme-ui/components";
 import { format_date } from "../../../lib/helpers/formatters";
-
+import GraficasPeso from "./GraficasPeso";
+import GraficasEstatura from "./GraficaEstatura";
 export default function HistorialDePeso({ user, miInfo, query }) {
   const sortedHistorial = useMemo(() => {
     const historialCopy = [...(miInfo?.historialPeso || [])];
     return historialCopy.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
   }, [miInfo]);
-
   return (
     <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
       <table>
@@ -28,6 +28,16 @@ export default function HistorialDePeso({ user, miInfo, query }) {
           ))}
         </tbody>
       </table>
+      <Flex
+        sx={{
+          flexFlow: "row wrap",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <GraficasPeso userId={user} />
+        {miInfo?.minor && <GraficasEstatura userId={user} />}
+      </Flex>
     </Flex>
   );
 }

@@ -139,6 +139,130 @@ export const usersResolvers = {
         ])
         .toArray();
     },
+    createPesoGraphData: async (root, { idUser }, { db }) => {
+      try {
+        const aggregatePeso = await db
+          .collection("users")
+          .aggregate([
+            { $match: { _id: new ObjectId(idUser) } },
+            { $unwind: "$profile.historialPeso" },
+            {
+              $project: {
+                fecha: "$profile.historialPeso.fecha",
+                peso: "$profile.historialPeso.peso",
+              },
+            },
+            { $sort: { fecha: 1 } },
+            {
+              $group: {
+                _id: {
+                  year: { $year: "$fecha" },
+                  week: { $week: "$fecha" },
+                },
+                peso: { $avg: "$peso" },
+              },
+            },
+            {
+              $sort: {
+                "_id.year": 1,
+                "_id.week": 1,
+              },
+            },
+            {
+              $project: {
+                _id: 0,
+                label: {
+                  $concat: [
+                    { $toString: "$_id.year" },
+                    " - ",
+                    { $toString: "$_id.week" },
+                  ],
+                },
+                peso: 1,
+              },
+            },
+          ])
+          .toArray();
+        return {
+          labels: aggregatePeso.map((item) => item.label),
+          datasets: [
+            {
+              label: "Peso en kg",
+              data: aggregatePeso.map((item) => item.peso),
+              backgroundColor: "rgba(220, 10, 10, 1)",
+              borderColor: "rgba(220, 10, 10, 1)",
+            },
+          ],
+        };
+      } catch (error) {
+        return {
+          labels: [],
+          datasets: [],
+        };
+      }
+    },
+    createEstaturaGraphData: async (root, { idUser }, { db }) => {
+      try {
+        const aggregatePeso = await db
+          .collection("users")
+          .aggregate([
+            { $match: { _id: new ObjectId(idUser) } },
+            { $unwind: "$profile.historialPeso" },
+            {
+              $project: {
+                fecha: "$profile.historialPeso.fecha",
+                estatura: "$profile.historialPeso.estatura",
+              },
+            },
+            { $sort: { fecha: 1 } },
+            {
+              $group: {
+                _id: {
+                  year: { $year: "$fecha" },
+                  week: { $week: "$fecha" },
+                },
+                estatura: { $avg: "$estatura" },
+              },
+            },
+            {
+              $sort: {
+                "_id.year": 1,
+                "_id.week": 1,
+              },
+            },
+            {
+              $project: {
+                _id: 0,
+                label: {
+                  $concat: [
+                    { $toString: "$_id.year" },
+                    " - ",
+                    { $toString: "$_id.week" },
+                  ],
+                },
+                estatura: 1,
+              },
+            },
+          ])
+          .toArray();
+        return {
+          labels: aggregatePeso.map((item) => item.label),
+          datasets: [
+            {
+              label: "Estatura en cm",
+              data: aggregatePeso.map((item) => item.estatura),
+              backgroundColor: "rgba(220, 10, 10, 1)",
+              borderColor: "rgba(220, 10, 10, 1)",
+            },
+          ],
+        };
+      } catch (error) {
+        return {
+          labels: [],
+          datasets: [],
+        };
+      }
+    },
   },
   Mutation: {
     insertUser: async (root, { input }, { db }) => {
