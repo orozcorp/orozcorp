@@ -94,7 +94,7 @@ export default function AgregarMedicamentos({
     refetchQueries: [
       {
         query,
-        variables: { idUser: user._id },
+        variables: { idUser: user._id, oldMed: false },
       },
     ],
     awaitRefetchQueries: true,
