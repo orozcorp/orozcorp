@@ -50,6 +50,7 @@ export const usersSchema = gql`
     apellido: String!
     telefonos: [String]
     especialidad: String!
+    cabecera: Boolean!
     direccion: String
   }
   type HistorialMedico {

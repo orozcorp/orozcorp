@@ -16,6 +16,7 @@ export const medicosSchema = gql`
     especialidad: String!
     direccion: String
     pacientes: [PacienteMedico]
+    email: String
   }
   type VisitasMedicas {
     _id: ID!
@@ -34,6 +35,7 @@ export const medicosSchema = gql`
     apellido: String!
     familiaId: ID!
     familiaName: String!
+    cabecera: Boolean!
   }
   input MedicosInput {
     nombre: String!
@@ -42,6 +44,7 @@ export const medicosSchema = gql`
     especialidad: String!
     direccion: String!
     pacientes: [PacienteMedicoInput]!
+    email: String
   }
   type Query {
     getMedicos(nombre: String!): [Medicos]

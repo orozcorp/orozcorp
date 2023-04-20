@@ -57,7 +57,10 @@ export default function Navbar() {
             Sign In
           </Button>
         )}
-        <Menu toggled={toggled} setToggled={setToggled} />
+        {session && status !== "loading" && (
+          <Menu toggled={toggled} setToggled={setToggled} />
+        )}
+
         {status === "loading" && <Spinner />}
       </Flex>
     </Flex>

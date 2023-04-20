@@ -8,6 +8,7 @@ import {
   Input,
   Text,
   Spinner,
+  Checkbox,
 } from "@theme-ui/components";
 import { useState, useMemo } from "react";
 import Modal from "../../../components/atoms/Modal";
@@ -20,6 +21,10 @@ const QUERY = gql`
       _id
       nombre
       apellido
+      telefonos
+      especialidad
+      direccion
+      email
     }
   }
 `;
@@ -42,15 +47,18 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
       apellido: user.lastName,
       familiaId: user.familiaId,
       familiaName: user.familiaName,
+      cabecera: false,
     }),
     [user]
   );
+  const [paciente, setPaciente] = useState(initialPaciente);
   const newInitial = {
     nombre: "",
     apellido: "",
     telefonos: "",
     especialidad: "",
     direccion: "",
+    email: "",
   };
   const { setAlert } = useGlobalData();
   const [foundDr, setFoundDr] = useState(false);
@@ -64,7 +72,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
       input: {
         ...newDoctor,
         telefonos: newDoctor.telefonos.split(","),
-        pacientes: [initialPaciente],
+        pacientes: [paciente],
       },
       addNew: foundDr,
     },
@@ -102,7 +110,6 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
         as="form"
         onSubmit={(e) => {
           e.preventDefault();
-          console.log("calling");
           addMedico();
         }}
         my={2}
@@ -151,6 +158,21 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
                   </Text>
                 </Box>
               ))}
+          </Box>
+          <Box
+            my={2}
+            sx={{ alignSelf: "flex-start" }}
+            onClick={() => {
+              setPaciente({ ...paciente, cabecera: !paciente.cabecera });
+            }}
+          >
+            <Label>Es tu medico principal</Label>
+            <Checkbox
+              checked={paciente.cabecera}
+              onChange={() => {
+                setPaciente({ ...paciente, cabecera: !paciente.cabecera });
+              }}
+            />
           </Box>
         </Flex>
         <Text my={2} sx={{ fontSize: "24px" }}>

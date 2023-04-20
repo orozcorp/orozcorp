@@ -16,11 +16,14 @@ export default function NewMedico({ newDoctor, setNewDoctor }) {
           flexFlow: "row wrap",
           justifyContent: "space-around",
           alignItems: "flex-end",
+          backgroundColor: "#bababa",
+          borderRadius: "5px",
         }}
       >
         <Box m={2}>
           <Label>Nombre</Label>
           <Input
+            required
             type="text"
             value={newDoctor.nombre}
             onChange={makeOnChange("nombre")}
@@ -29,9 +32,18 @@ export default function NewMedico({ newDoctor, setNewDoctor }) {
         <Box m={2}>
           <Label>Apellido</Label>
           <Input
+            required
             type="text"
             value={newDoctor.apellido}
             onChange={makeOnChange("apellido")}
+          />
+        </Box>
+        <Box m={2}>
+          <Label>Email</Label>
+          <Input
+            type="email"
+            value={newDoctor.email}
+            onChange={makeOnChange("email")}
           />
         </Box>
         <Box m={2}>
@@ -43,6 +55,7 @@ export default function NewMedico({ newDoctor, setNewDoctor }) {
           </Label>
           <Input
             type="text"
+            required
             value={newDoctor.telefonos}
             onChange={makeOnChange("telefonos")}
           />
@@ -50,6 +63,7 @@ export default function NewMedico({ newDoctor, setNewDoctor }) {
         <Box m={2}>
           <Label>Especialidad</Label>
           <Input
+            required
             type="text"
             value={newDoctor.especialidad}
             onChange={makeOnChange("especialidad")}
