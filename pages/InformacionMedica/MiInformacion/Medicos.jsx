@@ -1,9 +1,29 @@
+import { gql, useMutation } from "@apollo/client";
 import { Button, Flex, Box, Checkbox } from "@theme-ui/components";
 import { useState } from "react";
 import AgregarMedico from "./AgregarMedico";
 
+const MUTATION = gql`
+  mutation Mutation($idUser: String!, $idMedico: String!) {
+    updateMedicoCabecera(idUser: $idUser, idMedico: $idMedico) {
+      code
+      message
+      success
+    }
+  }
+`;
+
 export default function Medicos({ user, miInfo, query, familia }) {
   const [display, setDisplay] = useState("none");
+  const [updateMedicoCabecera, { loading }] = useMutation(MUTATION, {
+    refetchQueries: [
+      {
+        query,
+        variables: { idUser: user, oldMed: false },
+      },
+    ],
+    awaitRefetchQueries: true,
+  });
   return (
     <>
       <AgregarMedico
@@ -50,10 +70,23 @@ export default function Medicos({ user, miInfo, query, familia }) {
               {miInfo.medicos.map((medico) => (
                 <tr key={medico._id}>
                   <td>
-                    <Checkbox
-                      checked={medico.cabecera}
-                      onChange={() => console.log("change")}
-                    />
+                    <Flex
+                      sx={{
+                        flexFlow: "column nowrap",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                      onClick={() =>
+                        updateMedicoCabecera({
+                          variables: { idUser: user, idMedico: medico._id },
+                        })
+                      }
+                    >
+                      <Checkbox
+                        checked={medico?.cabecera}
+                        onChange={() => console.log("change")}
+                      />
+                    </Flex>
                   </td>
                   <td>{medico.nombre}</td>
                   <td>{medico.apellido}</td>

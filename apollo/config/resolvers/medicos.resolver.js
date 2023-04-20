@@ -20,8 +20,9 @@ export const medicosResolvers = {
         if (!addNew && !input?._id) {
           const newMedico = await db.collection("Medicos").insertOne(input);
           const medicosProfile = input;
-          medicosProfile._id = newMedico.insertedId;
+          medicosProfile._id = newMedico.insertedId.toString();
           medicosProfile.cabecera = false;
+          console.log(medicosProfile);
           delete medicosProfile.pacientes;
           const addToFamilia = await db.collection("users").updateMany(
             {

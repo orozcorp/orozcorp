@@ -472,22 +472,25 @@ export const usersResolvers = {
     },
     updateMedicoCabecera: async (root, { idUser, idMedico }, { db }) => {
       try {
+        // Get the user data
+        const user = await db
+          .collection("users")
+          .findOne({ _id: new ObjectId(idUser) });
+
         // Set the specific idMedico's cabecera to true and others to false
-        await db.collection("users").updateOne(
-          {
-            _id: new ObjectId(idUser),
-          },
-          {
-            $set: {
-              "profile.medicos.$[medico].cabecera": {
-                $cond: [{ $eq: ["$$medico._id", idMedico] }, true, false],
-              },
-            },
-          },
-          {
-            arrayFilters: [{ "medico._id": { $exists: true } }],
-          }
+        const updatedMedicos = user.profile.medicos.map((medico) =>
+          medico._id === idMedico
+            ? { ...medico, cabecera: true }
+            : { ...medico, cabecera: false }
         );
+
+        // Update the user's medicos with the updated medicos list
+        await db
+          .collection("users")
+          .updateOne(
+            { _id: new ObjectId(idUser) },
+            { $set: { "profile.medicos": updatedMedicos } }
+          );
 
         return {
           message: "Medico cabecera agregado",
