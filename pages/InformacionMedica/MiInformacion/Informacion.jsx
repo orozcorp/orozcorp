@@ -95,8 +95,6 @@ export default function Informacion({ user, familia }) {
   const [displayEnvInfo, setDisplayEnvInfo] = useState(false);
   const downloadPDF = () => {
     setDisplayEnvInfo(true);
-
-    // Add a timeout to wait for the displayEnvInfo to be rendered
     setTimeout(() => {
       const element = document.getElementById("pdf-content");
       const options = {
@@ -111,7 +109,6 @@ export default function Informacion({ user, familia }) {
         .set(options)
         .save()
         .then(() => {
-          // Use the .then() callback to set displayEnvInfo to false after saving the PDF
           setDisplayEnvInfo(false);
         });
     }, 500); // Adjust the delay as needed (e.g., 500 ms)
