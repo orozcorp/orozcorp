@@ -47,7 +47,6 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
       apellido: user.lastName,
       familiaId: user.familiaId,
       familiaName: user.familiaName,
-      cabecera: false,
     }),
     [user]
   );
@@ -158,21 +157,6 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
                   </Text>
                 </Box>
               ))}
-          </Box>
-          <Box
-            my={2}
-            sx={{ alignSelf: "flex-start" }}
-            onClick={() => {
-              setPaciente({ ...paciente, cabecera: !paciente.cabecera });
-            }}
-          >
-            <Label>Es tu medico principal</Label>
-            <Checkbox
-              checked={paciente.cabecera}
-              onChange={() => {
-                setPaciente({ ...paciente, cabecera: !paciente.cabecera });
-              }}
-            />
           </Box>
         </Flex>
         <Text my={2} sx={{ fontSize: "24px" }}>

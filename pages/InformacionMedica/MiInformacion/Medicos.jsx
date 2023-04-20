@@ -1,4 +1,4 @@
-import { Button, Flex, Box } from "@theme-ui/components";
+import { Button, Flex, Box, Checkbox } from "@theme-ui/components";
 import { useState } from "react";
 import AgregarMedico from "./AgregarMedico";
 
@@ -38,6 +38,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
           <table>
             <thead>
               <tr>
+                <th>Cabecera</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Telefonos</th>
@@ -48,6 +49,12 @@ export default function Medicos({ user, miInfo, query, familia }) {
             <tbody>
               {miInfo.medicos.map((medico) => (
                 <tr key={medico._id}>
+                  <td>
+                    <Checkbox
+                      checked={medico.cabecera}
+                      onChange={() => console.log("change")}
+                    />
+                  </td>
                   <td>{medico.nombre}</td>
                   <td>{medico.apellido}</td>
                   <td>

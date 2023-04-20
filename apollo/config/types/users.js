@@ -194,5 +194,6 @@ export const usersSchema = gql`
       idUser: String!
       estudio: EstudiosInput!
     ): GeneralResponse!
+    updateMedicoCabecera(idUser: String!, idMedico: String!): GeneralResponse!
   }
 `;

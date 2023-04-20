@@ -470,5 +470,38 @@ export const usersResolvers = {
         };
       }
     },
+    updateMedicoCabecera: async (root, { idUser, idMedico }, { db }) => {
+      try {
+        // Set the specific idMedico's cabecera to true and others to false
+        await db.collection("users").updateOne(
+          {
+            _id: new ObjectId(idUser),
+          },
+          {
+            $set: {
+              "profile.medicos.$[medico].cabecera": {
+                $cond: [{ $eq: ["$$medico._id", idMedico] }, true, false],
+              },
+            },
+          },
+          {
+            arrayFilters: [{ "medico._id": { $exists: true } }],
+          }
+        );
+
+        return {
+          message: "Medico cabecera agregado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al agregar medico cabecera",
+          success: false,
+        };
+      }
+    },
   },
 };

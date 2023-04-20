@@ -35,7 +35,6 @@ export const medicosSchema = gql`
     apellido: String!
     familiaId: ID!
     familiaName: String!
-    cabecera: Boolean!
   }
   input MedicosInput {
     nombre: String!

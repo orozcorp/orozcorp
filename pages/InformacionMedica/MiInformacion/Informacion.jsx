@@ -67,6 +67,7 @@ const QUERY = gql`
           especialidad
           nombre
           telefonos
+          cabecera
         }
         name
         peso
