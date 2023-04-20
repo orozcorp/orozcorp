@@ -3,7 +3,6 @@ import { Flex, Heading, Text, Button, Badge } from "@theme-ui/components";
 import { calculateAge, format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
 import { uniqueId } from "lodash";
-import html2pdf from "html2pdf.js";
 import Seguro from "./Seguro";
 import Medicamentos from "./Medicamentos";
 import Medicos from "./Medicos";
@@ -93,16 +92,21 @@ export default function Informacion({ user, familia }) {
     [miInfo?.fechaNacimiento]
   );
   const [displayEnvInfo, setDisplayEnvInfo] = useState(false);
-  const downloadPDF = () => {
+  const downloadPDF = async () => {
     setDisplayEnvInfo(true);
-    setTimeout(() => {
+    setTimeout(async () => {
       const element = document.getElementById("pdf-content");
+      if (!element) return console.log("No se encontro el elemento");
+
       const options = {
         filename: `${miInfo.name} ${miInfo.lastName} - Información Médica.pdf`,
         image: { type: "jpeg", quality: 1 },
         html2canvas: { scale: 2, useCORS: true },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
       };
+
+      // Use dynamic import to load html2pdf.js only when running in the browser
+      const html2pdf = (await import("html2pdf.js")).default;
 
       html2pdf()
         .from(element)

@@ -130,30 +130,6 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             alignItems: "center",
           }}
         >
-          <Text sx={{ fontWeight: "bold" }}>RFC:</Text>
-          <Text> {miInfo.rfc}</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>CURP:</Text>
-          <Text> {miInfo.curp}</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
           <Text sx={{ fontWeight: "bold" }}>Fecha de Nacimiento: </Text>{" "}
           <Text> {format_date(miInfo.fechaNacimiento)} </Text>
           <Text>
