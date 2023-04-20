@@ -22,7 +22,6 @@ export const medicosResolvers = {
           const medicosProfile = input;
           medicosProfile._id = newMedico.insertedId.toString();
           medicosProfile.cabecera = false;
-          console.log(medicosProfile);
           delete medicosProfile.pacientes;
           const addToFamilia = await db.collection("users").updateMany(
             {

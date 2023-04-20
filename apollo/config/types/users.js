@@ -81,7 +81,27 @@ export const usersSchema = gql`
     medicoId: ID!
     estudio: String!
   }
-
+  type FamiliaUserSendDoctor {
+    _id: ID!
+    name: String!
+    alergias: [String]
+    enfermedades: [String]
+  }
+  type UserSendDoctor {
+    _id: ID!
+    name: String!
+    lastName: String!
+    peso: Float
+    estatura: Float
+    tipoSangre: String
+    fechaNacimiento: Date
+    alergias: [String]
+    enfermedades: [String]
+    medicamentos: [Medicamentos]
+    historialMedico: [HistorialMedico]
+    estudios: [Estudios]
+    familiares: [FamiliaUserSendDoctor]
+  }
   type UserProfile {
     name: String!
     lastName: String!
@@ -167,6 +187,7 @@ export const usersSchema = gql`
     getFamilyDoctors(idUser: ID!, nombre: String): [MedicosProfile]
     createPesoGraphData(idUser: String!): LineChart!
     createEstaturaGraphData(idUser: String!): LineChart!
+    getInformacionForDoctors(idUser: String!): UserSendDoctor
   }
   type Mutation {
     insertUser(input: UserInput!): GeneralResponse!

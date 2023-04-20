@@ -1,9 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import { Flex, Heading, Text, Button, Badge } from "@theme-ui/components";
-import { format_date } from "../../../lib/helpers/formatters";
+import { calculateAge, format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
 import { uniqueId } from "lodash";
-
+import html2pdf from "html2pdf.js";
 import Seguro from "./Seguro";
 import Medicamentos from "./Medicamentos";
 import Medicos from "./Medicos";
@@ -12,6 +12,7 @@ import HistorialMedico from "./HistorialMedico";
 import AgregarPeso from "./AgregarPeso";
 import EditarInformacion from "./EditarInformacionModal";
 import Estudios from "./Estudios";
+import MiInformacionPDF from "./MiInformacionPDF";
 const QUERY = gql`
   query GetUserProfile($idUser: String!, $oldMed: Boolean!) {
     getUserProfile(idUser: $idUser, oldMed: $oldMed) {
@@ -78,21 +79,6 @@ const QUERY = gql`
   }
 `;
 
-function calculateAge(birthdate) {
-  const today = new Date();
-  const birthDate = new Date(birthdate);
-  let age = today.getFullYear() - birthDate.getFullYear();
-  const monthDifference = today.getMonth() - birthDate.getMonth();
-  if (
-    monthDifference < 0 ||
-    (monthDifference === 0 && today.getDate() < birthDate.getDate())
-  ) {
-    age--;
-  }
-  const months = (today.getMonth() + 12 - birthDate.getMonth()) % 12;
-  return { years: age, months: months };
-}
-
 export default function Informacion({ user, familia }) {
   const [oldMed, setOldMed] = useState(false);
   const { data, loading, error } = useQuery(QUERY, {
@@ -102,11 +88,34 @@ export default function Informacion({ user, familia }) {
   const [displayPeso, setDisplayPeso] = useState("none");
   const [displayEdit, setDisplayEdit] = useState("none");
   const miInfo = useMemo(() => data?.getUserProfile?.profile, [data]);
-
   const age = useMemo(
     () => calculateAge(miInfo?.fechaNacimiento),
     [miInfo?.fechaNacimiento]
   );
+  const [displayEnvInfo, setDisplayEnvInfo] = useState(false);
+  const downloadPDF = () => {
+    setDisplayEnvInfo(true);
+
+    // Add a timeout to wait for the displayEnvInfo to be rendered
+    setTimeout(() => {
+      const element = document.getElementById("pdf-content");
+      const options = {
+        filename: `${miInfo.name} ${miInfo.lastName} - Información Médica.pdf`,
+        image: { type: "jpeg", quality: 1 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+      };
+
+      html2pdf()
+        .from(element)
+        .set(options)
+        .save()
+        .then(() => {
+          // Use the .then() callback to set displayEnvInfo to false after saving the PDF
+          setDisplayEnvInfo(false);
+        });
+    }, 500); // Adjust the delay as needed (e.g., 500 ms)
+  };
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
   return (
@@ -149,6 +158,10 @@ export default function Informacion({ user, familia }) {
         <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
           Editar informacion
         </Button>
+        <Button onClick={downloadPDF}>Enviar mi informacion</Button>
+        {displayEnvInfo && (
+          <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />
+        )}
       </Flex>
       <Flex my={2} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
         <Flex

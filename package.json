@@ -17,6 +17,7 @@
     "chart.js": "^4.2.1",
     "eslint-config-next": "^13.2.4",
     "graphql": "^16.6.0",
+    "html2pdf.js": "^0.10.1",
     "isomorphic-unfetch": "^4.0.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",

@@ -57,6 +57,46 @@ export const usersResolvers = {
 
       return user;
     },
+    getInformacionForDoctors: async (root, { idUser }, { db }) => {
+      const userFamilias = await db
+        .collection("users")
+        .findOne({ _id: new ObjectId(idUser) });
+      const familias = userFamilias.profile.familias.map((val) => val._id);
+      const familyMembers = await db
+        .collection("users")
+        .aggregate([
+          { $match: { "profile.familias._id": { $in: familias } } },
+          {
+            $project: {
+              _id: 1,
+              name: { $concat: ["$profile.name", " ", "$profile.lastName"] },
+              alergias: "$profile.alergias",
+              enfermedades: "$profile.enfermedades",
+            },
+          },
+        ])
+        .toArray();
+      const filteredFamilyMembers = familyMembers.filter(
+        (val) =>
+          val.name !==
+          userFamilias.profile.name + " " + userFamilias.profile.lastName
+      );
+      return {
+        _id: userFamilias._id,
+        name: userFamilias.profile.name,
+        lastName: userFamilias.profile.lastName,
+        peso: userFamilias.profile.peso,
+        estatura: userFamilias.profile.estatura,
+        tipoSangre: userFamilias.profile.tipoSangre,
+        alergias: userFamilias.profile.alergias,
+        enfermedades: userFamilias.profile.enfermedades,
+        medicamentos: userFamilias.profile.medicamentos,
+        historialMedico: userFamilias.profile.historialMedico,
+        fechaNacimiento: userFamilias.profile.fechaNacimiento,
+        estudios: userFamilias.profile.estudios,
+        familiares: filteredFamilyMembers,
+      };
+    },
     getFamilyMembers: async (root, { idFamilia }, { db }) => {
       return await db
         .collection("users")
