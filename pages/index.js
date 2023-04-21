@@ -1,6 +1,8 @@
 import { LocalBusinessJsonLd, NextSeo } from "next-seo";
 import { Box } from "@theme-ui/components";
-
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { useSession } from "next-auth/react";
 import dynamic from "next/dynamic";
 
 const Contactanos = dynamic(() => import("../components/landing/Contactanos"));
@@ -11,6 +13,14 @@ const Section3 = dynamic(() => import("../components/landing/Section3"));
 const Section0 = dynamic(() => import("../components/landing/Section0"));
 
 export default function index() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (status !== "loading" && session) {
+      router.push("/InformacionMedica");
+    }
+  }, [session, status, router]);
   return (
     <Box sx={{ height: "100%", marginBottom: "200px" }}>
       <NextSeo
