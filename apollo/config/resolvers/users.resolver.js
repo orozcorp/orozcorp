@@ -654,5 +654,61 @@ export const usersResolvers = {
         };
       }
     },
+    insertUserFamilia: async (root, { idUser, familia }, { db }) => {
+      try {
+        const nuclear = familia.nuclear;
+        delete familia.nuclear;
+
+        const familiaInsert = await db
+          .collection("Familias")
+          .insertOne(familia);
+
+        const user = await db
+          .collection("users")
+          .findOne({ _id: new ObjectId(idUser) });
+        const currentFamilias = user.profile.familias;
+
+        let newFamilias;
+
+        if (nuclear) {
+          newFamilias = currentFamilias.map((familia) => ({
+            ...familia,
+            nuclear: false,
+          }));
+        } else {
+          newFamilias = [...currentFamilias];
+        }
+
+        newFamilias.push({
+          ...familia,
+          _id: familiaInsert.insertedId.toString(),
+          nuclear,
+        });
+
+        await db.collection("users").updateOne(
+          {
+            _id: new ObjectId(idUser),
+          },
+          {
+            $set: {
+              "profile.familias": newFamilias,
+            },
+          }
+        );
+
+        return {
+          message: "Familia agregada",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.log(error);
+        return {
+          code: 400,
+          message: "Error al agregar familia",
+          success: false,
+        };
+      }
+    },
   },
 };

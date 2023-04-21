@@ -3,20 +3,25 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { FamiliarContainer } from "../../components/context/FamiliarContext";
 import AgregarFamiliar from "./AgregarFamiliar";
+import CrearFamilia from "./CrearFamilia";
 import MiHistorialMedico from "./MiHistorialMedico";
 import MiInformacion from "./MiInformacion";
 
 export default function InformacionMedica() {
   const { data: session, status } = useSession();
+  const canAddFamily =
+    session?.user?.familias?.length <= 3 && session?.user?.minor;
   const isHeadOfFamily =
     session?.user?.familias?.filter(
       (familia) => session?.user?.id === familia.administradorId
     )?.length > 0;
   const [display, setDisplay] = useState("none");
+  const [crearFamilia, setCrearFamilia] = useState(false);
   const [infoDisplay, setInfoDisplay] = useState("");
   return (
     <FamiliarContainer>
       <AgregarFamiliar display={display} setDisplay={setDisplay} />
+      <CrearFamilia display={crearFamilia} setDisplay={setCrearFamilia} />
       <Flex
         sx={{
           flexFlow: "column nowrap",
@@ -33,7 +38,16 @@ export default function InformacionMedica() {
         <Flex sx={{ flexFlow: "row wrap" }}>
           {isHeadOfFamily && (
             <Button m={2} onClick={() => setDisplay("box")}>
-              Agregar familiar
+              Agregar a familiar
+            </Button>
+          )}
+          {!canAddFamily && (
+            <Button
+              m={2}
+              variant="outline"
+              onClick={() => setCrearFamilia("box")}
+            >
+              Crear familia
             </Button>
           )}
           <Button m={2} onClick={() => setInfoDisplay("miInformacion")}>

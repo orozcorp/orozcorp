@@ -128,10 +128,11 @@ export const usersSchema = gql`
     historialMedico: [HistorialMedico]
   }
   input FamiliaInput {
-    _id: ID!
+    _id: ID
     nombre: String!
     administradorName: String!
     administradorId: ID!
+    nuclear: Boolean
   }
   input UserInput {
     email: String!
@@ -238,5 +239,6 @@ export const usersSchema = gql`
       idUser: String!
       idMedicamento: String!
     ): GeneralResponse!
+    insertUserFamilia(idUser: String!, familia: FamiliaInput!): GeneralResponse!
   }
 `;

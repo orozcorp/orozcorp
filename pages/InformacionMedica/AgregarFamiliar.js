@@ -1,4 +1,4 @@
-import Modal from "../../components/atoms/Modal";
+import Modal from "@/components/atoms/Modal";
 import {
   Heading,
   Flex,
@@ -12,8 +12,8 @@ import { useState } from "react";
 import { useSession } from "next-auth/react";
 import Select from "react-select";
 import { gql, useMutation } from "@apollo/client";
-import { useGlobalData } from "../../components/context/GlobalContext";
-import { dateInputFormat } from "../../lib/helpers/formatters";
+import { useGlobalData } from "@/components/context/GlobalContext";
+import { dateInputFormat } from "@/lib/helpers/formatters";
 
 const MUTATION = gql`
   mutation Mutation($input: UserInput!) {
