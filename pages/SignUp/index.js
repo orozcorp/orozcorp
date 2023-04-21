@@ -113,7 +113,13 @@ export default function SignUp() {
           insert();
         }}
       >
-        <Flex sx={{ flexFlow: "row wrap" }}>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+          }}
+        >
           <Box m={1} sx={{ width: "200px" }}>
             <Label htmlFor="email">Email</Label>
             <Input
@@ -141,11 +147,13 @@ export default function SignUp() {
         </Flex>
         <Flex
           sx={{
-            flexFlow: "row wrap",
-            alignSelf: "flex-start",
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+            alignSelf: ["center", "flex-start"],
           }}
         >
-          <Box m={1} sx={{ width: ["250px", "620px"] }}>
+          <Box m={1} sx={{ width: ["200px", "620px"] }}>
             <Label>Apellidos de Familia nuclear</Label>
             <Input
               type="text"
@@ -156,7 +164,13 @@ export default function SignUp() {
             />
           </Box>
         </Flex>
-        <Flex sx={{ flexFlow: "row wrap" }}>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+          }}
+        >
           <Box m={1} sx={{ width: "200px" }}>
             <Label>Fecha de Nacimiento</Label>
             <Input
@@ -189,7 +203,13 @@ export default function SignUp() {
             />
           </Box>
         </Flex>
-        <Flex sx={{ flexFlow: "row wrap" }}>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+          }}
+        >
           <Box m={1} sx={{ width: "200px" }}>
             <Label>Curp</Label>
             <Input
@@ -216,7 +236,13 @@ export default function SignUp() {
             />
           </Box>
         </Flex>
-        <Flex sx={{ flexFlow: "row wrap" }}>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+          }}
+        >
           <Box m={1}>
             <Label
               sx={{
@@ -262,8 +288,8 @@ export default function SignUp() {
         </Flex>
         <Flex
           sx={{
-            flexFlow: "row wrap",
-            justifyContent: "center",
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
             alignItems: "center",
           }}
           m={1}
