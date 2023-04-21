@@ -173,7 +173,7 @@ export default function Informacion({ user, familia }) {
           Editar informacion
         </Button>
         <Button onClick={downloadPDF} disabled={displayEnvInfo}>
-          {displayEnvInfo ? <Spinner /> : "Enviar mi informacion"}
+          {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
         </Button>
         {displayEnvInfo && (
           <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />

@@ -178,7 +178,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
         </Flex>
       </Flex>
       <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-        <Heading as="h4" id="historialMedico">
+        <Heading as="h4" id="historialMedico" my={2}>
           Historial Médico
         </Heading>
         <table>

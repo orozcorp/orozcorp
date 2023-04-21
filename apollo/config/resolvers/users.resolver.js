@@ -62,10 +62,33 @@ export const usersResolvers = {
         .collection("users")
         .findOne({ _id: new ObjectId(idUser) });
       const familias = userFamilias.profile.familias.map((val) => val._id);
+      const apellidos = userFamilias.profile.lastName.split(" ");
       const familyMembers = await db
         .collection("users")
         .aggregate([
-          { $match: { "profile.familias._id": { $in: familias } } },
+          {
+            $match: {
+              $and: [
+                { "profile.familias._id": { $in: familias } },
+                {
+                  $or: [
+                    {
+                      "profile.lastName": {
+                        $regex: apellidos[0],
+                        $options: "i",
+                      },
+                    },
+                    {
+                      "profile.lastName": {
+                        $regex: apellidos[1],
+                        $options: "i",
+                      },
+                    },
+                  ],
+                },
+              ],
+            },
+          },
           {
             $project: {
               _id: 1,
@@ -90,10 +113,22 @@ export const usersResolvers = {
         tipoSangre: userFamilias.profile.tipoSangre,
         alergias: userFamilias.profile.alergias,
         enfermedades: userFamilias.profile.enfermedades,
-        medicamentos: userFamilias.profile.medicamentos,
-        historialMedico: userFamilias.profile.historialMedico,
+        medicamentos: userFamilias.profile.medicamentos?.sort((a, b) => {
+          const dateA = new Date(a.fechaInicio);
+          const dateB = new Date(b.fechaInicio);
+          return dateB - dateA;
+        }),
+        historialMedico: userFamilias.profile.historialMedico?.sort((a, b) => {
+          const dateA = new Date(a.fecha);
+          const dateB = new Date(b.fecha);
+          return dateB - dateA;
+        }),
         fechaNacimiento: userFamilias.profile.fechaNacimiento,
-        estudios: userFamilias.profile.estudios,
+        estudios: userFamilias.profile.estudios?.sort((a, b) => {
+          const dateA = new Date(a.fecha);
+          const dateB = new Date(b.fecha);
+          return dateB - dateA;
+        }),
         familiares: filteredFamilyMembers,
       };
     },
@@ -110,6 +145,7 @@ export const usersResolvers = {
             },
           }
         )
+        .sort({ "profile.name": 1, "profile.lastName": 1 })
         .toArray();
     },
     getFamilyDoctors: async (root, { idUser, nombre }, { db }) => {
