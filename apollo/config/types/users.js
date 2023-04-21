@@ -234,5 +234,9 @@ export const usersSchema = gql`
       input: UserSignUpInput!
       familia: String!
     ): GeneralResponse!
+    updateMedicamentoDate(
+      idUser: String!
+      idMedicamento: String!
+    ): GeneralResponse!
   }
 `;

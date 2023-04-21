@@ -1,10 +1,32 @@
-import { Flex, Button, Box } from "@theme-ui/components";
+import { Flex, Button, Box, Spinner } from "@theme-ui/components";
 import { useState } from "react";
 import AgregarMedicamentos from "./AgregarMedicamentos";
 import { format_dateMed } from "../../../lib/helpers/formatters";
+import { AiOutlineStop } from "react-icons/ai";
+import { gql, useMutation } from "@apollo/client";
+
+const MUTATION = gql`
+  mutation UpdateMedicamentoDate($idUser: String!, $idMedicamento: String!) {
+    updateMedicamentoDate(idUser: $idUser, idMedicamento: $idMedicamento) {
+      code
+      message
+      success
+    }
+  }
+`;
+
 export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
   const { oldMed, setOldMed } = oldMedicamento;
   const [display, setDisplay] = useState("none");
+  const [updateMedicamentoDate, { loading }] = useMutation(MUTATION, {
+    refetchQueries: [
+      {
+        query,
+        variables: { idUser: user, oldMed: false },
+      },
+    ],
+    awaitRefetchQueries: true,
+  });
   return (
     <Flex
       my={2}
@@ -45,6 +67,7 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
               <th>Frecuencia</th>
               <th>Observaciones</th>
               <th>Recetada por</th>
+              <th>Terminar medicamento</th>
             </tr>
           </thead>
           <tbody>
@@ -58,6 +81,29 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
                 <td>{medicamento.frecuencia}</td>
                 <td>{medicamento.observaciones}</td>
                 <td>{medicamento.medicoName}</td>
+                <td>
+                  <Flex
+                    sx={{
+                      flexFlow: "row wrap",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Button
+                      disabled={loading}
+                      onClick={() =>
+                        updateMedicamentoDate({
+                          variables: {
+                            idUser: user,
+                            idMedicamento: medicamento._id,
+                          },
+                        })
+                      }
+                    >
+                      {loading ? <Spinner /> : <AiOutlineStop />}
+                    </Button>
+                  </Flex>
+                </td>
               </tr>
             ))}
           </tbody>

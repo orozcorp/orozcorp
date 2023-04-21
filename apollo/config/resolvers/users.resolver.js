@@ -595,5 +595,28 @@ export const usersResolvers = {
         };
       }
     },
+    updateMedicamentoDate: async (root, { idUser, idMedicamento }, { db }) => {
+      try {
+        const update = await db
+          .collection("users")
+          .updateOne(
+            { _id: new ObjectId(idUser) },
+            { $set: { "profile.medicamentos.$[elem].fechaFin": new Date() } },
+            { arrayFilters: [{ "elem._id": new ObjectId(idMedicamento) }] }
+          );
+        return {
+          message: "Medicamento actualizado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.log(error);
+        return {
+          code: 400,
+          message: "Error al actualizar fecha",
+          success: false,
+        };
+      }
+    },
   },
 };
