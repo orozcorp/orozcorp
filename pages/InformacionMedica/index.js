@@ -16,7 +16,7 @@ export default function InformacionMedica() {
       (familia) => session?.user?.id === familia.administradorId
     )?.length > 0;
   const [display, setDisplay] = useState("none");
-  const [crearFamilia, setCrearFamilia] = useState(false);
+  const [crearFamilia, setCrearFamilia] = useState("none");
   const [infoDisplay, setInfoDisplay] = useState("");
   return (
     <FamiliarContainer>
