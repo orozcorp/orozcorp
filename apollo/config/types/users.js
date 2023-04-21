@@ -19,6 +19,7 @@ export const usersSchema = gql`
     nombre: String!
     administradorName: String!
     administradorId: ID!
+    nuclear: Boolean
   }
 
   type Medicamentos {
@@ -147,6 +148,19 @@ export const usersSchema = gql`
     rfc: String!
     curp: String!
   }
+  input UserSignUpInput {
+    email: String!
+    name: String!
+    lastName: String!
+    peso: Float!
+    estatura: Float!
+    alergias: [String]
+    enfermedades: [String]
+    tipoSangre: String!
+    fechaNacimiento: Date!
+    rfc: String!
+    curp: String!
+  }
   input UserInputEdit {
     tipoSangre: String!
     fechaNacimiento: Date!
@@ -216,5 +230,9 @@ export const usersSchema = gql`
       estudio: EstudiosInput!
     ): GeneralResponse!
     updateMedicoCabecera(idUser: String!, idMedico: String!): GeneralResponse!
+    insertUserSignUp(
+      input: UserSignUpInput!
+      familia: String!
+    ): GeneralResponse!
   }
 `;

@@ -39,11 +39,18 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           <ThemeProvider theme={theme}>
             <GlobalContainer>
               <main
-                style={{ position: "relative" }}
+                style={{
+                  position: "relative",
+                  display: "flex",
+                  flexFlow: "column nowrap",
+                  minHeight: "100vh",
+                }}
                 className={customFont.className}
               >
                 <Navbar />
-                <Component {...pageProps} />
+                <div style={{ flex: 1 }}>
+                  <Component {...pageProps} />
+                </div>
                 <Footer />
               </main>
             </GlobalContainer>

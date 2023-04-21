@@ -59,6 +59,11 @@ export default {
       boxShadow: "0px 6px 15px 0px rgba(0, 0, 0, 0.25)",
       right: "10px",
     },
+    error: {
+      backgroundColor: "danger",
+      color: "white",
+      boxShadow: "0px 6px 15px 0px rgba(0, 0, 0, 0.25)",
+    },
   },
   text: {
     small: {

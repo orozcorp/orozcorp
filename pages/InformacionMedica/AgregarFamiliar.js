@@ -199,7 +199,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
             >
               Alergias
               <p>
-                <small>seperar con " , " - comas - cada alergia</small>
+                <small>separar con " , " - comas - cada alergia</small>
               </p>
             </Label>
             <Textarea
@@ -220,7 +220,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
             >
               Enfermedades
               <p>
-                <small>seperar con " , " - comas - cada enfermedad</small>
+                <small>separar con " , " - comas - cada enfermedad</small>
               </p>
             </Label>
             <Textarea

@@ -546,5 +546,54 @@ export const usersResolvers = {
         };
       }
     },
+    insertUserSignUp: async (root, { input, familia }, { db }) => {
+      const email = input.email;
+      delete input.email;
+      input.fechaNacimiento = new Date(input.fechaNacimiento);
+      input.minor = isYoungerThan18(input.fechaNacimiento);
+      input.medicamentos = [];
+      input.medicos = [];
+      input.estudios = [];
+      const user = {
+        profile: { ...input },
+        createdAt: new Date(),
+        email,
+      };
+      try {
+        const { insertedId } = await db.collection("users").insertOne(user);
+        const familiaInsert = {
+          nombre: familia,
+          adminstradorName: `${input.name} ${input.lastName}`,
+          adminstradorId: insertedId.toString(),
+        };
+        const familiaInserted = await db
+          .collection("Familias")
+          .insertOne(familiaInsert);
+        const familiaObject = {
+          ...familiaInsert,
+          _id: familiaInserted.insertedId.toString(),
+          nuclear: true,
+        };
+        await db
+          .collection("users")
+          .updateOne(
+            { _id: insertedId },
+            { $push: { "profile.familias": familiaObject } }
+          );
+
+        return {
+          message: "Usuario creado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al crear usuario",
+          success: false,
+        };
+      }
+    },
   },
 };

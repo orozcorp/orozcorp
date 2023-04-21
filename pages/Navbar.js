@@ -49,14 +49,25 @@ export default function Navbar() {
         mr={2}
       >
         {!session && status !== "loading" && (
-          <Button
-            onClick={signIn}
-            m={1}
-            sx={{ backgroundColor: "#fff", color: "#000" }}
-          >
-            Sign In
-          </Button>
+          <>
+            <Button
+              onClick={signIn}
+              m={1}
+              sx={{ backgroundColor: "#fff", color: "#000" }}
+            >
+              Sign In
+            </Button>
+            <Button m={1} sx={{ backgroundColor: "#fff", color: "#000" }}>
+              <Link
+                href="/SignUp"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
+                Sign up
+              </Link>
+            </Button>
+          </>
         )}
+
         {session && status !== "loading" && (
           <Menu toggled={toggled} setToggled={setToggled} />
         )}

@@ -1,5 +1,12 @@
 import { gql, useQuery } from "@apollo/client";
-import { Flex, Heading, Text, Button, Badge } from "@theme-ui/components";
+import {
+  Flex,
+  Heading,
+  Text,
+  Button,
+  Badge,
+  Spinner,
+} from "@theme-ui/components";
 import { calculateAge, format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
 import { uniqueId } from "lodash";
@@ -165,7 +172,9 @@ export default function Informacion({ user, familia }) {
         <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
           Editar informacion
         </Button>
-        <Button onClick={downloadPDF}>Enviar mi informacion</Button>
+        <Button onClick={downloadPDF} disabled={displayEnvInfo}>
+          {displayEnvInfo ? <Spinner /> : "Enviar mi informacion"}
+        </Button>
         {displayEnvInfo && (
           <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />
         )}
