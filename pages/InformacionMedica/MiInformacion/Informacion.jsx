@@ -103,9 +103,15 @@ export default function Informacion({ user, familia }) {
         image: { type: "jpeg", quality: 1 },
         html2canvas: { scale: 2, useCORS: true },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        pagebreak: {
+          avoid: [
+            "#historialMedico",
+            "#historialMedicamentos",
+            "#historialEstudios",
+            "#Familiares",
+          ],
+        },
       };
-
-      // Use dynamic import to load html2pdf.js only when running in the browser
       const html2pdf = (await import("html2pdf.js")).default;
 
       html2pdf()

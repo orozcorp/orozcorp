@@ -84,7 +84,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           {miInfo.name} {miInfo.lastName} - INFORMACION MEDICA
         </Heading>
       </Flex>
-      <Flex my={2} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
+      <Flex m={2} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
         <Flex
           sx={{
             flexFlow: "column nowrap",
@@ -178,7 +178,9 @@ export default function MiInformacionPDF({ user, setDisplay }) {
         </Flex>
       </Flex>
       <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-        <Heading as="h4">Historial Médico</Heading>
+        <Heading as="h4" id="historialMedico">
+          Historial Médico
+        </Heading>
         <table>
           <thead>
             <tr>
@@ -198,8 +200,10 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Flex>
-      <Box sx={{ overflowX: "auto" }} my={2}>
-        <Heading as="h4">Historial Medicamentos</Heading>
+      <Box sx={{ overflowX: "auto" }} id="historialMedicamentos" m={2}>
+        <Heading as="h4" my={2}>
+          Historial Medicamentos
+        </Heading>
         <table style={{ marginTop: "24px", marginBotton: "60px" }}>
           <thead>
             <tr>
@@ -227,8 +231,14 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Box>
-      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-        <Heading as="h4">Historial Estudios</Heading>
+      <Flex
+        m={2}
+        sx={{ flexFlow: "column nowrap", overflowX: "auto" }}
+        id="historialEstudios"
+      >
+        <Heading as="h4" my={2}>
+          Historial Estudios
+        </Heading>
         <table>
           <thead>
             <tr>
@@ -254,8 +264,14 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Flex>
-      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-        <Heading as="h4">Familiares</Heading>
+      <Flex
+        m={2}
+        sx={{ flexFlow: "column nowrap", overflowX: "auto" }}
+        id="Familiares"
+      >
+        <Heading as="h4" my={2}>
+          Familiares
+        </Heading>
         <table>
           <thead>
             <tr>
