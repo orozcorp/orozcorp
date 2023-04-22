@@ -12,10 +12,7 @@ import {
   Alert,
 } from "@theme-ui/components";
 import { useState } from "react";
-import {
-  dateInputFormat,
-  styleReactSelect,
-} from "../../lib/helpers/formatters";
+import { dateInputFormat, styleReactSelect } from "@/lib/helpers/formatters";
 import Select from "react-select";
 import { gql, useMutation } from "@apollo/client";
 import { signIn } from "next-auth/react";
