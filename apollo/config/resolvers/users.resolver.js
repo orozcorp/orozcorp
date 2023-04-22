@@ -406,11 +406,11 @@ export const usersResolvers = {
   </style>
 </head>
 <body>
-  <p>Estimado(a) {{profile.name}} {{profile.lastname}},</p>
+  <p>Estimado(a) ${profile.name} ${profile.lastname},</p>
 
   <p>Nos complace informarte que un familiar te ha inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.</p>
 
-  <p>Para comenzar a utilizar OrozCorp, por favor accede a la aplicación en <a href="https://orozcorp.live">https://orozcorp.live</a> e inicia sesión utilizando la siguiente dirección de correo electrónico: {{email}}</p>
+  <p>Para comenzar a utilizar OrozCorp, por favor accede a la aplicación en <a href="https://orozcorp.live">https://orozcorp.live</a> e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}</p>
 
   <p>Una vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.</p>
 
@@ -688,7 +688,41 @@ export const usersResolvers = {
             { _id: insertedId },
             { $push: { "profile.familias": familiaObject } }
           );
+        await nodemailerMailgun.sendMail({
+          from: process.env.EMAIL_FROM,
+          to: email,
+          subject: `Bienvenid@ ${input.name} a la app de salud Orozcorp`,
+          text: `Estimado(a) ${input.name} ${input.lastname},\n\nNos complace informarte que te has inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.\n\nPara comenzar a utilizar OrozCorp, por favor accede a la aplicación en https://orozcorp.live e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}\n\nUna vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
+          html: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido a OrozCorp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <p>Estimado(a) ${input.name} ${input.lastname},</p>
 
+  <p>Nos complace informarte que has inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.</p>
+
+  <p>Para comenzar a utilizar OrozCorp, por favor accede a la aplicación en <a href="https://orozcorp.live">https://orozcorp.live</a> e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}</p>
+
+  <p>Una vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.</p>
+
+  <p>Si tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.</p>
+
+  <p>Gracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!</p>
+
+  <p>Atentamente,</p>
+
+  <p>El equipo de OrozCorp</p>
+</body>
+</html>`,
+        });
         return {
           message: "Usuario creado",
           success: true,
