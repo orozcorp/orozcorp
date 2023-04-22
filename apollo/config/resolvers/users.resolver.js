@@ -14,6 +14,19 @@ function isYoungerThan18(birthdate) {
 
   return age < 18;
 }
+
+import nodemailer from "nodemailer";
+import mg from "nodemailer-mailgun-transport";
+
+const nodemailerMailgun = nodemailer.createTransport(
+  mg({
+    auth: {
+      api_key: process.env.EMAIL_API,
+      domain: process.env.DOMAIN,
+    },
+  })
+);
+
 export const usersResolvers = {
   Query: {
     getUserProfile: async (root, { idUser, oldMed }, { db }) => {
@@ -342,16 +355,74 @@ export const usersResolvers = {
   },
   Mutation: {
     insertUser: async (root, { input }, { db }) => {
-      const email = input.email;
-      delete input.email;
-      input.fechaNacimiento = new Date(input.fechaNacimiento);
-      input.minor = isYoungerThan18(input.fechaNacimiento);
-      input.medicamentos = [];
-      input.medicos = [];
-      input.estudios = [];
-      const user = { profile: { ...input }, createdAt: new Date(), email };
+      const familyArray = input.familias.map((item) => item._id);
+      const families = await db
+        .collection("users")
+        .aggregate([
+          { $match: { "profile.familias._id": { $in: familyArray } } },
+          { $unwind: "$profile.familias" },
+          { $match: { "profile.familias._id": { $in: familyArray } } },
+          { $group: { _id: "$profile.familias._id", count: { $sum: 1 } } },
+        ])
+        .toArray();
+      const canAdd = families.every((item) => item.count < 19);
+      if (!canAdd) {
+        return {
+          code: 400,
+          message: "No se puede agregar más de 20 miembros a una familia",
+          success: false,
+        };
+      }
+      const { email, fechaNacimiento, ...profile } = input;
+      const newUser = {
+        email,
+        profile: {
+          ...profile,
+          fechaNacimiento: new Date(fechaNacimiento),
+          minor: isYoungerThan18(new Date(fechaNacimiento)),
+          medicamentos: [],
+          medicos: [],
+          estudios: [],
+        },
+        createdAt: new Date(),
+      };
       try {
-        const { insertedId } = await db.collection("users").insertOne(user);
+        const { insertedId } = await db.collection("users").insertOne(newUser);
+        await nodemailerMailgun.sendMail({
+          from: process.env.EMAIL_FROM,
+          to: email,
+          subject: `Hola ${profile.name} un familiar te ha agregado a su familia en la app de salud Orozcorp`,
+          text: `Estimado(a) ${profile.name} ${profile.lastname},\n\nNos complace informarte que un familiar te ha inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.\n\nPara comenzar a utilizar OrozCorp, por favor accede a la aplicación en https://orozcorp.live e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}\n\nUna vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
+          html: `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Bienvenido a OrozCorp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <p>Estimado(a) {{profile.name}} {{profile.lastname}},</p>
+
+  <p>Nos complace informarte que un familiar te ha inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.</p>
+
+  <p>Para comenzar a utilizar OrozCorp, por favor accede a la aplicación en <a href="https://orozcorp.live">https://orozcorp.live</a> e inicia sesión utilizando la siguiente dirección de correo electrónico: {{email}}</p>
+
+  <p>Una vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.</p>
+
+  <p>Si tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.</p>
+
+  <p>Gracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!</p>
+
+  <p>Atentamente,</p>
+
+  <p>El equipo de OrozCorp</p>
+</body>
+</html>`,
+        });
         return {
           message: "Usuario creado",
           success: true,
