@@ -147,6 +147,7 @@ export const usersResolvers = {
       };
     },
     getFamilyMembers: async (root, { idFamilia }, { db }) => {
+      console.log(idFamilia);
       return await db
         .collection("users")
         .find(

@@ -26,9 +26,11 @@ export default function MiInformacion() {
     label: "Selecciona un miembro",
     value: null,
   });
+  console.log(familia);
   const { data, loading, error } = useQuery(QUERY, {
     variables: { idFamilia: familia.value },
   });
+  console.log(data);
   const familyMembers = useMemo(() => {
     if (data?.getFamilyMembers) {
       return data.getFamilyMembers.map((member) => ({
