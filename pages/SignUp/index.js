@@ -50,6 +50,7 @@ export default function SignUp() {
     fechaNacimiento: new Date(),
     rfc: "________",
     curp: "________",
+    telefono: "",
     alergias: "Sin Alergias",
     enfermedades: "Sin enfermedades",
   };
@@ -126,6 +127,14 @@ export default function SignUp() {
               type="email"
               value={user.email}
               onChange={makeOnChange("email")}
+            />
+          </Box>
+          <Box m={1} sx={{ width: "200px" }}>
+            <Label htmlFor="telefono">Telefono</Label>
+            <Input
+              type="tel"
+              value={user.telefono}
+              onChange={makeOnChange("telefono")}
             />
           </Box>
           <Box m={1} sx={{ width: "200px" }}>

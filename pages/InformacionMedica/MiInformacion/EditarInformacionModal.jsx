@@ -56,6 +56,7 @@ export default function EditarInformacion({
         estatura: parseFloat(values.estatura),
         curp: values.curp,
         rfc: values.rfc,
+        telefono: values.telefono,
         tipoSangre: values.tipoSangre,
         alergias: values.alergias?.split(",").map((alergia) => alergia.trim()),
         enfermedades: values.enfermedades
@@ -124,6 +125,14 @@ export default function EditarInformacion({
               type="text"
               value={values.email}
               onChange={makeOnChange("email")}
+            />
+          </Box>
+          <Box m={1}>
+            <Label>Telefono</Label>
+            <Input
+              type="tel"
+              value={values.telefono}
+              onChange={makeOnChange("telefono")}
             />
           </Box>
           <Box m={1}>

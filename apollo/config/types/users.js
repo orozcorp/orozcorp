@@ -110,6 +110,7 @@ export const usersSchema = gql`
     picture: String
     caratulaSeguro: String
     tarjetaSeguro: String
+    telefono: String!
     fechaVencimientoSeguro: Date
     fechaNacimiento: Date
     peso: Float
@@ -147,6 +148,7 @@ export const usersSchema = gql`
     tipoSangre: String!
     fechaNacimiento: Date!
     rfc: String!
+    telefono: String!
     curp: String!
   }
   input UserSignUpInput {
@@ -154,6 +156,7 @@ export const usersSchema = gql`
     name: String!
     lastName: String!
     peso: Float!
+    telefono: String!
     estatura: Float!
     alergias: [String]
     enfermedades: [String]
@@ -170,6 +173,7 @@ export const usersSchema = gql`
     peso: Float!
     estatura: Float!
     name: String!
+    telefono: String!
     lastName: String!
     alergias: [String]
     enfermedades: [String]

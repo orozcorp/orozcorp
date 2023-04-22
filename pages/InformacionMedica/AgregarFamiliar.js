@@ -37,6 +37,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     alergias: "",
     enfermedades: "",
     familias: [],
+    telefono: "",
     tipoSangre: "",
     fechaNacimiento: new Date(),
     curp: "",
@@ -130,6 +131,14 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               type="text"
               value={values.email}
               onChange={makeOnChange("email")}
+            />
+          </Box>
+          <Box m={1}>
+            <Label>Telefono</Label>
+            <Input
+              type="tel"
+              value={values.telefono}
+              onChange={makeOnChange("telefono")}
             />
           </Box>
           <Box m={1}>
