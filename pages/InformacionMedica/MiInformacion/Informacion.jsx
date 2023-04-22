@@ -31,6 +31,7 @@ const QUERY = gql`
         estatura
         fechaNacimiento
         lastName
+        telefono
         tipoSangre
         fechaVencimientoSeguro
         rfc
