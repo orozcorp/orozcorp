@@ -261,7 +261,7 @@ export default function SignUp() {
             >
               Alergias
               <p>
-                <small>separar con " , " - comas - cada alergia</small>
+                <small>separar con comas " , " cada alergia</small>
               </p>
             </Label>
             <Textarea
@@ -282,7 +282,7 @@ export default function SignUp() {
             >
               Enfermedades Crónicas
               <p>
-                <small>separar con " , " - comas - cada enfermedad</small>
+                <small>separar con comas " , " cada enfermedad</small>
               </p>
             </Label>
             <Textarea
@@ -309,11 +309,16 @@ export default function SignUp() {
             onChange={({ currentTarget: { checked } }) => setAcepto(checked)}
           />
         </Flex>
-        {Object.values(user).every((prop) => prop !== "") && acepto && (
-          <Button disabled={loading}>
-            {loading ? <Spinner /> : "Sign up"}
-          </Button>
-        )}
+
+        <Button
+          disabled={
+            loading ||
+            !Object.values(user).every((prop) => prop !== "") ||
+            !acepto
+          }
+        >
+          {loading ? <Spinner /> : "Sign up"}
+        </Button>
       </Box>
       {error && <Alert variant="error">{error}</Alert>}
     </Flex>
