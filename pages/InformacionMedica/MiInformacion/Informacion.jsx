@@ -168,7 +168,7 @@ export default function Informacion({ user, familia }) {
         my={2}
         sx={{
           flexFlow: "row wrap",
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
           alignItems: "center",
         }}
       >
@@ -182,7 +182,7 @@ export default function Informacion({ user, familia }) {
         <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
           Editar informacion
         </Button>
-        <Button onClick={downloadPDF} disabled={displayEnvInfo}>
+        <Button m={1} onClick={downloadPDF} disabled={displayEnvInfo}>
           {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
         </Button>
         {displayEnvInfo && (

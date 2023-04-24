@@ -64,7 +64,7 @@ export default function MiInformacion() {
       <Flex
         sx={{
           flexFlow: "row wrap",
-          justifyContent: "space-between",
+          justifyContent: "flex-start",
           alignItems: "center",
         }}
       >
