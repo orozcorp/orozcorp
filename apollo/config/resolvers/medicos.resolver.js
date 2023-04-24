@@ -1,3 +1,4 @@
+import { ObjectId } from "mongodb";
 export const medicosResolvers = {
   Query: {
     getMedicos: async (root, { nombre }, { db }) => {
@@ -25,7 +26,7 @@ export const medicosResolvers = {
           delete medicosProfile.pacientes;
           const addToFamilia = await db.collection("users").updateMany(
             {
-              "profile.familias._id": pacientes[0].familiaId,
+              _id: new ObjectId(pacientes[0]._id),
             },
             {
               $push: { "profile.medicos": medicosProfile },

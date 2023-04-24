@@ -8,11 +8,16 @@ export const medicosSchema = gql`
     familiaId: ID!
     familiaName: String!
   }
+  type TelefonosMedicos {
+    _id: ID
+    telefono: String
+    tipo: String
+  }
   type Medicos {
     _id: ID!
     nombre: String!
     apellido: String!
-    telefonos: [String]
+    telefonos: [TelefonosMedicos]!
     especialidad: String!
     direccion: String
     pacientes: [PacienteMedico]
@@ -36,10 +41,15 @@ export const medicosSchema = gql`
     familiaId: ID!
     familiaName: String!
   }
+  input TelefonosMedicosInput {
+    _id: ID!
+    telefono: String!
+    tipo: String!
+  }
   input MedicosInput {
     nombre: String!
     apellido: String!
-    telefonos: [String]!
+    telefonos: [TelefonosMedicosInput]!
     especialidad: String!
     direccion: String!
     pacientes: [PacienteMedicoInput]!

@@ -40,7 +40,7 @@ const ADD_MEDICO = gql`
 `;
 
 export default function AgregarMedico({ user, setDisplay, display, query }) {
-  const initialPaciente = useMemo(
+  const paciente = useMemo(
     () => ({
       _id: user._id,
       nombre: user.name,
@@ -50,11 +50,10 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
     }),
     [user]
   );
-  const [paciente, setPaciente] = useState(initialPaciente);
   const newInitial = {
     nombre: "",
     apellido: "",
-    telefonos: "",
+    telefonos: [],
     especialidad: "",
     direccion: "",
     email: "",
@@ -70,7 +69,6 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
     variables: {
       input: {
         ...newDoctor,
-        telefonos: newDoctor.telefonos.split(","),
         pacientes: [paciente],
       },
       addNew: foundDr,

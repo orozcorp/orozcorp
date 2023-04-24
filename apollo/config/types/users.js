@@ -49,7 +49,7 @@ export const usersSchema = gql`
     _id: ID!
     nombre: String!
     apellido: String!
-    telefonos: [String]
+    telefonos: [TelefonosMedicos]
     especialidad: String!
     cabecera: Boolean!
     direccion: String

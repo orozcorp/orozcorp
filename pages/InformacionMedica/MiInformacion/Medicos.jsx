@@ -1,5 +1,5 @@
 import { gql, useMutation } from "@apollo/client";
-import { Button, Flex, Box, Checkbox } from "@theme-ui/components";
+import { Button, Flex, Box, Checkbox, Badge } from "@theme-ui/components";
 import { useState } from "react";
 import AgregarMedico from "./AgregarMedico";
 
@@ -93,7 +93,10 @@ export default function Medicos({ user, miInfo, query, familia }) {
                   <td>
                     {medico.telefonos.map((tel, index) => (
                       <p key={index}>
-                        <a href={`tel:${tel}`}>{tel}</a>
+                        <a href={`tel:${tel?.telefono}`}>
+                          <Badge m={1}>{tel?.tipo}</Badge>
+                          {tel?.telefono}
+                        </a>
                       </p>
                     ))}
                   </td>

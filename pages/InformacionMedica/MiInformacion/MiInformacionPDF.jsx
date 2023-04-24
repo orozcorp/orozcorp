@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { Flex, Heading, Box, Text, Badge } from "@theme-ui/components";
+import { Flex, Heading, Box, Text, Spinner } from "@theme-ui/components";
 import { useMemo } from "react";
 import {
   format_date,
@@ -68,7 +68,12 @@ export default function MiInformacionPDF({ user, setDisplay }) {
     const historialCopy = [...(miInfo?.estudios || [])];
     return historialCopy.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
   }, [miInfo]);
-  if (loading) return <p>Loading...</p>;
+  if (loading)
+    return (
+      <p>
+        <Spinner />
+      </p>
+    );
   if (error) return <p>Error: {error.message}</p>;
   return (
     <Flex id="pdf-content" p={2} sx={{ flexFlow: "column nowrap" }}>

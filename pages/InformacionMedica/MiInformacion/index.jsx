@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { Flex, Box, Label } from "@theme-ui/components";
+import { Flex, Box, Label, Spinner, Alert } from "@theme-ui/components";
 import { useSession } from "next-auth/react";
 import { useState, useMemo } from "react";
 import Select from "react-select";
@@ -47,8 +47,18 @@ export default function MiInformacion() {
     }
     return [];
   }, [session]);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
+  if (loading)
+    return (
+      <p>
+        <Spinner />
+      </p>
+    );
+  if (error)
+    return (
+      <p>
+        <Alert>{error.message}</Alert>
+      </p>
+    );
   return (
     <Flex sx={{ flexFlow: "column nowrap", paddingBottom: "200px" }}>
       <Flex

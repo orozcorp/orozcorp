@@ -74,7 +74,11 @@ const QUERY = gql`
           direccion
           especialidad
           nombre
-          telefonos
+          telefonos {
+            _id
+            telefono
+            tipo
+          }
           cabecera
         }
         name
@@ -131,7 +135,12 @@ export default function Informacion({ user, familia }) {
         });
     }, 500); // Adjust the delay as needed (e.g., 500 ms)
   };
-  if (loading) return <p><Spinner /></p>;
+  if (loading)
+    return (
+      <p>
+        <Spinner />
+      </p>
+    );
   if (error) return <p>Error: {error.message}</p>;
   return (
     <Flex p={2} sx={{ flexFlow: "column nowrap" }}>
