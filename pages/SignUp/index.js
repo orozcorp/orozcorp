@@ -217,7 +217,7 @@ export default function SignUp() {
             alignItems: "center",
           }}
         >
-          <Box m={1} sx={{ width: "200px" }}>
+          <Box m={1} sx={{ width: "300px" }}>
             <Label>Curp</Label>
             <Input
               type="text"
@@ -225,7 +225,7 @@ export default function SignUp() {
               onChange={makeOnChange("curp")}
             />
           </Box>
-          <Box m={1} sx={{ width: "200px" }}>
+          <Box m={1} sx={{ width: "300px" }}>
             <Label>RFC</Label>
             <Input
               type="text"
@@ -280,7 +280,7 @@ export default function SignUp() {
                 alignContent: "center",
               }}
             >
-              Enfermedades Cronicas
+              Enfermedades Crónicas
               <p>
                 <small>separar con " , " - comas - cada enfermedad</small>
               </p>
