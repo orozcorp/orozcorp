@@ -393,7 +393,7 @@ export const usersResolvers = {
           from: process.env.EMAIL_FROM,
           to: email,
           subject: `Hola ${profile.name} un familiar te ha agregado a su familia en la app de salud Orozcorp`,
-          text: `Estimado(a) ${profile.name} ${profile.lastname},\n\nNos complace informarte que un familiar te ha inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.\n\nPara comenzar a utilizar OrozCorp, por favor accede a la aplicación en https://orozcorp.live e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}\n\nUna vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
+          text: `Estimado(a) ${profile.name} ${profile.lastName},\n\nNos complace informarte que un familiar te ha inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.\n\nPara comenzar a utilizar OrozCorp, por favor accede a la aplicación en https://orozcorp.live e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}\n\nUna vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
           html: `<!DOCTYPE html>
 <html>
 <head>
@@ -406,7 +406,7 @@ export const usersResolvers = {
   </style>
 </head>
 <body>
-  <p>Estimado(a) ${profile.name} ${profile.lastname},</p>
+  <p>Estimado(a) ${profile.name} ${profile.lastName},</p>
 
   <p>Nos complace informarte que un familiar te ha inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.</p>
 
@@ -458,7 +458,7 @@ export const usersResolvers = {
           from: process.env.EMAIL_FROM,
           to: email,
           subject: `Hola ${user.profile.name} un familiar quiere ha agregarte a su familia en la app de salud Orozcorp`,
-          text: `Estimado(a) ${user.profile.name} ${user.profile.lastname},\n\nNos complace informarte quiere agregarte a su familia en OrozCorp. \n\nPara aceptar la invitacion por favor accede a la aplicación en https://orozcorp.live e inicia sesión\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
+          text: `Estimado(a) ${user.profile.name} ${user.profile.lastName},\n\nNos complace informarte quiere agregarte a su familia en OrozCorp. \n\nPara aceptar la invitacion por favor accede a la aplicación en https://orozcorp.live e inicia sesión\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
           html: `<!DOCTYPE html>
                   <html>
                   <head>
@@ -471,7 +471,7 @@ export const usersResolvers = {
                     </style>
                   </head>
                   <body>
-                    <p>Estimado(a) ${user.profile.name} ${user.profile.lastname},</p>
+                    <p>Estimado(a) ${user.profile.name} ${user.profile.lastName},</p>
 
                     <p>Nos complace informarte que un familiar quiere agregarte a su familia en OrozCorp. </p>
 
@@ -756,7 +756,7 @@ export const usersResolvers = {
           from: process.env.EMAIL_FROM,
           to: email,
           subject: `Bienvenid@ ${input.name} a la app de salud Orozcorp`,
-          text: `Estimado(a) ${input.name} ${input.lastname},\n\nNos complace informarte que te has inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.\n\nPara comenzar a utilizar OrozCorp, por favor accede a la aplicación en https://orozcorp.live e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}\n\nUna vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
+          text: `Estimado(a) ${input.name} ${input.lastName},\n\nNos complace informarte que te has inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.\n\nPara comenzar a utilizar OrozCorp, por favor accede a la aplicación en https://orozcorp.live e inicia sesión utilizando la siguiente dirección de correo electrónico: ${email}\n\nUna vez que inicies sesión, podrás ver y actualizar los historiales médicos de los miembros de tu familia, así como añadir nuevos registros médicos según sea necesario.\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
           html: `<!DOCTYPE html>
 <html>
 <head>
@@ -769,7 +769,7 @@ export const usersResolvers = {
   </style>
 </head>
 <body>
-  <p>Estimado(a) ${input.name} ${input.lastname},</p>
+  <p>Estimado(a) ${input.name} ${input.lastName},</p>
 
   <p>Nos complace informarte que has inscrito en OrozCorp, una aplicación que te permite llevar un registro médico familiar. OrozCorp te ayuda a mantener un seguimiento de los historiales médicos de todos tus seres queridos, proporcionándote una manera organizada y fácil de acceder a esta información importante.</p>
 
@@ -871,6 +871,54 @@ export const usersResolvers = {
           success: true,
           code: 200,
         };
+      } catch (error) {
+        console.log(error);
+        return {
+          code: 400,
+          message: "Error al agregar familia",
+          success: false,
+        };
+      }
+    },
+    aceptarInvitacionFamilia: async (
+      root,
+      { idUser, idInvitacion },
+      { db }
+    ) => {
+      try {
+        //First we get the invitation
+        const invitation = await db.collection("users").findOne(
+          {
+            _id: new ObjectId(idUser),
+            "profile.familyInvitations._id": idInvitacion,
+          },
+          {
+            projection: {
+              "profile.familyInvitations.$": 1,
+              "profile.familias": 1,
+            },
+          }
+        );
+        const familiaToAdd = await db
+          .collection("Familias")
+          .findOne({ _id: invitation.profile.familyInvitations[0].familiaId });
+        const currentFamilias = user.profile.familias;
+        const newFamilias = [
+          ...currentFamilias,
+          {
+            ...familiaToAdd,
+            _id: familiaToAdd._id.toString(),
+          },
+        ];
+        const addUserToFamilia = await db
+          .collection("users")
+          .updateOne(
+            { _id: new ObjectId(idUser) },
+            {
+              $set: { "profile.familias": newFamilias },
+              $pull: { "profile.familyInvitations": { _id: idInvitacion } },
+            }
+          );
       } catch (error) {
         console.log(error);
         return {

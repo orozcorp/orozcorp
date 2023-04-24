@@ -112,9 +112,11 @@ export const usersSchema = gql`
     estatus: String!
     fecha: Date!
   }
+
   input FamilyInvitationInput {
     _id: ID!
-    familia: ID!
+    familiaName: String!
+    familiaId: ID!
     userWhoInvited: String!
     userWhoInvitedId: ID!
     estatus: String!
@@ -266,5 +268,9 @@ export const usersSchema = gql`
       idMedicamento: String!
     ): GeneralResponse!
     insertUserFamilia(idUser: String!, familia: FamiliaInput!): GeneralResponse!
+    aceptarInvitacionFamilia(
+      idUser: String!
+      idInvitacion: String!
+    ): GeneralResponse!
   }
 `;

@@ -1,4 +1,5 @@
 import Modal from "@/components/atoms/Modal";
+import { v4 as uuidv4 } from "uuid";
 import {
   Heading,
   Flex,
@@ -7,6 +8,7 @@ import {
   Button,
   Box,
   Textarea,
+  Spinner,
 } from "@theme-ui/components";
 import { useState } from "react";
 import { useSession } from "next-auth/react";
@@ -18,6 +20,16 @@ import { dateInputFormat } from "@/lib/helpers/formatters";
 const MUTATION = gql`
   mutation Mutation($input: UserInput!) {
     insertUser(input: $input) {
+      code
+      message
+      success
+    }
+  }
+`;
+
+const MUTATION_NOTIFY = gql`
+  mutation NotifyUserFamily($family: FamilyInvitationInput!, $email: String) {
+    notifyUserFamily(family: $family, email: $email) {
       code
       message
       success
@@ -70,6 +82,10 @@ export default function AgregarFamiliar({ display, setDisplay }) {
       });
   const { setAlert } = useGlobalData();
   const [email, setEmail] = useState("");
+  const [familia, setFamilia] = useState({
+    value: null,
+    label: "Selecciona una familia",
+  });
   const [insertUser, { loading }] = useMutation(MUTATION, {
     variables: {
       input: {
@@ -101,8 +117,38 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     },
   });
   const [registered, { loading: loadingRegistered }] = useMutation(
-    MUTATION,
-    {}
+    MUTATION_NOTIFY,
+    {
+      variables: {
+        email,
+        family: {
+          _id: uuidv4(),
+          familiaName: familia.label,
+          familiaId: familia.value,
+          userWhoInvited: session?.user?.name,
+          userWhoInvitedId: session?.user?.id,
+          estatus: "pendiente",
+          fecha: new Date(),
+        },
+      },
+      onCompleted: ({}) => {
+        setEmail("");
+        setFamilia({ value: null, label: "Selecciona una familia" });
+        setDisplay("none");
+        setAlert({
+          message: "Invitación enviada",
+          display: "box",
+          variant: "blue",
+        });
+      },
+      onError: (err) => {
+        setAlert({
+          message: err.message,
+          display: "box",
+          variant: "orange",
+        });
+      },
+    }
   );
   return (
     <Modal display={display} setDisplay={setDisplay}>
@@ -125,6 +171,25 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               type="text"
               value={email}
               onChange={(e) => setEmail(e.currentTarget.value.toLowerCase())}
+            />
+          </Box>
+          <Box m={1} sx={{ minWidth: "300px" }}>
+            <Label
+              sx={{
+                display: "flex",
+                flexFlow: "column nowrap",
+                justifyContent: "center",
+                alignContent: "center",
+              }}
+              mb={3}
+            >
+              Familias a incluir
+            </Label>
+            <Select
+              isSearchable
+              options={familias}
+              value={familia}
+              onChange={(e) => setFamilia(e)}
             />
           </Box>
           {email && (
