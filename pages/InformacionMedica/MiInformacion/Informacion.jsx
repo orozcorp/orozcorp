@@ -6,6 +6,7 @@ import {
   Button,
   Badge,
   Spinner,
+  Box,
 } from "@theme-ui/components";
 import { calculateAge, format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
@@ -168,21 +169,28 @@ export default function Informacion({ user, familia }) {
         my={2}
         sx={{
           flexFlow: "row wrap",
-          justifyContent: "flex-start",
+          justifyContent: "space-between",
           alignItems: "center",
+          width: "100%",
         }}
       >
-        <Heading as="h3">
-          {miInfo.name} {miInfo.lastName}
-          <small style={{ margin: "12px" }}> Info </small>
-        </Heading>
-        <Button m={1} variant="outline" onClick={() => setDisplayPeso("box")}>
-          Agregar peso {miInfo.minor ? "y estatura" : ""}
-        </Button>
-        <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
-          Editar informacion
-        </Button>
-        <Button m={1} onClick={downloadPDF} disabled={displayEnvInfo}>
+        <Box>
+          <Heading as="h3">
+            {miInfo.name} {miInfo.lastName}
+          </Heading>
+          <Button m={1} variant="outline" onClick={() => setDisplayPeso("box")}>
+            Agregar peso {miInfo.minor ? "y estatura" : ""}
+          </Button>
+          <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
+            Editar informacion
+          </Button>
+        </Box>
+        <Button
+          m={1}
+          onClick={downloadPDF}
+          sx={{ alignSelf: "flex-end" }}
+          disabled={displayEnvInfo}
+        >
           {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
         </Button>
         {displayEnvInfo && (

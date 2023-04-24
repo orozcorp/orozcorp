@@ -103,6 +103,23 @@ export const usersSchema = gql`
     estudios: [Estudios]
     familiares: [FamiliaUserSendDoctor]
   }
+  type FamilyInvitation {
+    _id: ID!
+    familiaName: String!
+    familiaId: ID!
+    userWhoInvited: String!
+    userWhoInvitedId: ID!
+    estatus: String!
+    fecha: Date!
+  }
+  input FamilyInvitationInput {
+    _id: ID!
+    familia: ID!
+    userWhoInvited: String!
+    userWhoInvitedId: ID!
+    estatus: String!
+    fecha: Date!
+  }
   type UserProfile {
     name: String!
     lastName: String!
@@ -127,6 +144,7 @@ export const usersSchema = gql`
     rfc: String!
     curp: String!
     historialMedico: [HistorialMedico]
+    familyInvitations: [FamilyInvitation]
   }
   input FamiliaInput {
     _id: ID
@@ -210,6 +228,10 @@ export const usersSchema = gql`
   }
   type Mutation {
     insertUser(input: UserInput!): GeneralResponse!
+    notifyUserFamily(
+      family: FamilyInvitationInput!
+      email: String
+    ): GeneralResponse!
     updateUserProfile(
       userId: ID!
       email: String!

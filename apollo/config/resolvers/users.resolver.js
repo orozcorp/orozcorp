@@ -438,6 +438,70 @@ export const usersResolvers = {
         };
       }
     },
+    notifyUserFamily: async (root, { family, email }, { db }) => {
+      try {
+        const user = await db.collection("users").findOne({ email });
+        if (!user) {
+          return {
+            code: 400,
+            message: "No se encontró el usuario",
+            success: false,
+          };
+        }
+        const updated = await db
+          .collection("users")
+          .updateOne(
+            { _id: new ObjectId(user._id) },
+            { $push: { "profile.familyInvitations": family } }
+          );
+        await nodemailerMailgun.sendMail({
+          from: process.env.EMAIL_FROM,
+          to: email,
+          subject: `Hola ${user.profile.name} un familiar quiere ha agregarte a su familia en la app de salud Orozcorp`,
+          text: `Estimado(a) ${user.profile.name} ${user.profile.lastname},\n\nNos complace informarte quiere agregarte a su familia en OrozCorp. \n\nPara aceptar la invitacion por favor accede a la aplicación en https://orozcorp.live e inicia sesión\n\nSi tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.\n\nGracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!\n\nAtentamente,\n\nEl equipo de OrozCorp`,
+          html: `<!DOCTYPE html>
+                  <html>
+                  <head>
+                    <meta charset="UTF-8">
+                    <title>Bienvenido a OrozCorp</title>
+                    <style>
+                      body {
+                        font-family: Arial, sans-serif;
+                      }
+                    </style>
+                  </head>
+                  <body>
+                    <p>Estimado(a) ${user.profile.name} ${user.profile.lastname},</p>
+
+                    <p>Nos complace informarte que un familiar quiere agregarte a su familia en OrozCorp. </p>
+
+                    <p>Para aceptar por favor accede a la aplicación en <a href="https://orozcorp.live">https://orozcorp.live</a> e inicia sesión </p>
+
+
+                    <p>Si tienes alguna pregunta o necesitas ayuda con la aplicación, no dudes en ponerte en contacto con nuestro equipo de soporte. Estaremos encantados de ayudarte en lo que necesites.</p>
+
+                    <p>Gracias por formar parte de la familia OrozCorp. ¡Esperamos que nuestra aplicación te resulte valiosa para mantener a tu familia saludable y protegida!</p>
+
+                    <p>Atentamente,</p>
+
+                    <p>El equipo de OrozCorp</p>
+                  </body>
+                  </html>`,
+        });
+        return {
+          message: "Usuario creado",
+          success: true,
+          code: 200,
+        };
+      } catch (error) {
+        console.error(error);
+        return {
+          code: 400,
+          message: "Error al crear usuario",
+          success: false,
+        };
+      }
+    },
     updateUserWeightHeight: async (
       root,
       { idUser, estatura, peso, fecha },
