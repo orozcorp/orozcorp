@@ -217,22 +217,6 @@ export default function SignUp() {
             alignItems: "center",
           }}
         >
-          <Box m={1} sx={{ width: "300px" }}>
-            <Label>Curp</Label>
-            <Input
-              type="text"
-              value={user.curp}
-              onChange={makeOnChange("curp")}
-            />
-          </Box>
-          <Box m={1} sx={{ width: "300px" }}>
-            <Label>RFC</Label>
-            <Input
-              type="text"
-              value={user.rfc}
-              onChange={makeOnChange("rfc")}
-            />
-          </Box>
           <Box m={1} sx={{ width: "200px" }}>
             <Label>Tipo de sangre</Label>
             <Select
