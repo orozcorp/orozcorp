@@ -161,7 +161,7 @@ export default function SignUp() {
           }}
         >
           <Box m={1} sx={{ width: ["200px", "620px"] }}>
-            <Label>Apellidos de Familia nuclear</Label>
+            <Label>Apellido Familiar <small>Nombre de tu familia</small></Label>
             <Input
               type="text"
               value={familia}
