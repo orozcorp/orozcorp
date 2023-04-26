@@ -16,6 +16,7 @@ import Select from "react-select";
 import { gql, useMutation } from "@apollo/client";
 import { useGlobalData } from "@/components/context/GlobalContext";
 import { dateInputFormat } from "@/lib/helpers/formatters";
+import { styleReactSelect } from "../../lib/helpers/formatters";
 
 const tipoSangreOptions = [
   { label: "A+", value: "A+" },
@@ -108,7 +109,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
           administradorName: familia.administradorName,
           administradorId: familia.administradorId,
         })),
-        tipoSangre: user.tipoSangre.value,
+        tipoSangre: values.tipoSangre.value,
         peso: parseFloat(values.peso),
         estatura: parseFloat(values.estatura),
         alergias: values.alergias?.split(",").map((alergia) => alergia.trim()),
@@ -315,8 +316,8 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               <Select
                 styles={styleReactSelect}
                 options={tipoSangreOptions}
-                value={user.tipoSangre}
-                onChange={(tipoSangre) => setUser({ ...user, tipoSangre })}
+                value={values.tipoSangre}
+                onChange={(tipoSangre) => setValues({ ...user, tipoSangre })}
               />
             </Box>
           </Flex>
