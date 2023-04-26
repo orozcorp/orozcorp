@@ -15,6 +15,7 @@ const nodemailerMailgun = nodemailer.createTransport(
 export default async function handler(NextApiRequest, NextApiResponse) {
   if (NextApiRequest.method === "POST") {
     try {
+      console.log('trying')
       const { authorization } = NextApiRequest.headers;
       if (authorization === `Bearer ${process.env.CRON_KEY}`) {
         const { db } = await connectToDatabase();
