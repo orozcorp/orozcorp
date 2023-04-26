@@ -601,16 +601,14 @@ export const usersResolvers = {
           {
             $set: {
               email,
-              profile: {
-                tipoSangre: input.tipoSangre,
-                alergias: input.alergias,
-                enfermedades: input.enfermedades,
-                fechaNacimeinto: new Date(input.fechaNacimeinto),
-                rfc: input.rfc,
-                curp: input.curp,
-                name: input.name,
-                lastName: input.lastName,
-              },
+              "profile.tipoSangre": input.tipoSangre,
+              "profile.alergias": input.alergias,
+              "profile.enfermedades": input.enfermedades,
+              "profile.fechaNacimeinto": new Date(input.fechaNacimeinto),
+              "profile.rfc": input.rfc,
+              "profile.curp": input.curp,
+              "profile.name": input.name,
+              "profile.lastName": input.lastName,
             },
           }
         );
