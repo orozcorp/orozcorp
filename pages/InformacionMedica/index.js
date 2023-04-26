@@ -10,11 +10,7 @@ import MiInformacion from "./MiInformacion";
 export default function InformacionMedica() {
   const { data: session, status } = useSession();
   const canAddFamily =
-    session?.user?.familias?.length <= 3 && session?.user?.minor;
-  const isHeadOfFamily =
-    session?.user?.familias?.filter(
-      (familia) => session?.user?.id === familia.administradorId
-    )?.length > 0;
+    session?.user?.familias?.length >= 3 && session?.user?.minor;
   const [display, setDisplay] = useState("none");
   const [crearFamilia, setCrearFamilia] = useState("none");
   const [infoDisplay, setInfoDisplay] = useState("");
@@ -36,11 +32,9 @@ export default function InformacionMedica() {
           Información Médica
         </Heading>
         <Flex sx={{ flexFlow: "row wrap" }}>
-          {isHeadOfFamily && (
-            <Button m={2} onClick={() => setDisplay("box")}>
-              Agregar a familiar
-            </Button>
-          )}
+          <Button m={2} onClick={() => setDisplay("box")}>
+            Agregar a familiar
+          </Button>
           {!canAddFamily && (
             <Button
               m={2}
