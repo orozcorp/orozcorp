@@ -41,8 +41,8 @@ export default function Section2() {
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
             Nuestros estrategas trabajan para definir el problema, hallar
-            oportunidades de negocios, y usuarios meta. Ayudamos a transformar
-            tu visión en el producto digital planeado
+            oportunidades de negocios y usuarios meta. Ayúdamos a transformar tu
+            visión en el producto digital planeado
           </Text>
         </Box>
         <Box
@@ -54,13 +54,13 @@ export default function Section2() {
           variant="styles.boxGlass"
         >
           <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
-            Diseño relampago
+            Diseño relámpago
           </Heading>
           <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
-            Un proceso por paso por paso para resolver problemas gigantescos,
-            crear nuevos productos, mejorar productos existentes. Comprimimos
-            meses de trabajo en pocas semanas, resultando en un prototipo de
-            alta fidelidad y probado por usuarios reales.
+            Un proceso por paso para resolver problemas gigantescos, crear
+            nuevos productos, mejorar productos existentes. Comprimimos meses de
+            trabajo en pocas semanas, resultando en un prototipo de alta
+            fidelidad y probado por usuarios reales.
           </Text>
         </Box>
         <Box

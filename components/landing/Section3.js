@@ -76,7 +76,7 @@ export default function Section3() {
             </Heading>
           </Flex>
           <ul style={{ marginTop: "24px", fontSize: "24px" }}>
-            <li>Diseño relampago</li>
+            <li>Diseño relámpago</li>
             <li>Wireframing</li>
             <li>Crear prototipo</li>
             <li>Branding</li>
