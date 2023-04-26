@@ -17,6 +17,17 @@ import { gql, useMutation } from "@apollo/client";
 import { useGlobalData } from "@/components/context/GlobalContext";
 import { dateInputFormat } from "@/lib/helpers/formatters";
 
+const tipoSangreOptions = [
+  { label: "A+", value: "A+" },
+  { label: "A-", value: "A-" },
+  { label: "B+", value: "B+" },
+  { label: "B-", value: "B-" },
+  { label: "AB+", value: "AB+" },
+  { label: "AB-", value: "AB-" },
+  { label: "O+", value: "O+" },
+  { label: "O-", value: "O-" },
+];
+
 const MUTATION = gql`
   mutation Mutation($input: UserInput!) {
     insertUser(input: $input) {
@@ -59,7 +70,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     enfermedades: "",
     familias: [],
     telefono: "",
-    tipoSangre: "",
+    tipoSangre: { value: null, label: "Selecciona tipo de sangre" },
     fechaNacimiento: new Date(),
     curp: "",
     rfc: "",
@@ -97,6 +108,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
           administradorName: familia.administradorName,
           administradorId: familia.administradorId,
         })),
+        tipoSangre: user.tipoSangre.value,
         peso: parseFloat(values.peso),
         estatura: parseFloat(values.estatura),
         alergias: values.alergias?.split(",").map((alergia) => alergia.trim()),
@@ -229,7 +241,7 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               />
             </Box>
             <Box m={1}>
-              <Label>Apellido</Label>
+              <Label>Apellidos</Label>
               <Input
                 type="text"
                 value={values.lastName}
@@ -298,12 +310,13 @@ export default function AgregarFamiliar({ display, setDisplay }) {
                 onChange={makeOnChange("rfc")}
               />
             </Box>
-            <Box m={1}>
-              <Label>Tipo de Sangre</Label>
-              <Input
-                type="text"
-                value={values.tipoSangre}
-                onChange={makeOnChange("tipoSangre")}
+            <Box m={1} sx={{ width: "200px" }}>
+              <Label>Tipo de sangre</Label>
+              <Select
+                styles={styleReactSelect}
+                options={tipoSangreOptions}
+                value={user.tipoSangre}
+                onChange={(tipoSangre) => setUser({ ...user, tipoSangre })}
               />
             </Box>
           </Flex>
