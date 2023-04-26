@@ -135,6 +135,14 @@ export default function SignUp() {
               onChange={makeOnChange("telefono")}
             />
           </Box>
+        </Flex>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+          }}
+        >
           <Box m={1} sx={{ width: "200px" }}>
             <Label>Nombre</Label>
             <Input
@@ -144,7 +152,7 @@ export default function SignUp() {
             />
           </Box>
           <Box m={1} sx={{ width: "200px" }}>
-            <Label>Apellido</Label>
+            <Label>Apellidos</Label>
             <Input
               type="text"
               value={user.lastName}
@@ -161,7 +169,12 @@ export default function SignUp() {
           }}
         >
           <Box m={1} sx={{ width: ["200px", "620px"] }}>
-            <Label>Apellido Familiar <small>Nombre de tu familia</small></Label>
+            <Label>
+              Apellido Familiar{" "}
+              <small style={{ marginLeft: "20px" }}>
+                Nombre de tu familia - el que llevan tus hijos
+              </small>
+            </Label>
             <Input
               type="text"
               value={familia}
