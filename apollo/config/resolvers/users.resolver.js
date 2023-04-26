@@ -726,6 +726,7 @@ export const usersResolvers = {
       input.medicamentos = [];
       input.medicos = [];
       input.estudios = [];
+      input.roles - ["familiar"];
       const user = {
         profile: { ...input },
         createdAt: new Date(),
@@ -910,15 +911,13 @@ export const usersResolvers = {
             _id: familiaToAdd._id.toString(),
           },
         ];
-        const addUserToFamilia = await db
-          .collection("users")
-          .updateOne(
-            { _id: new ObjectId(idUser) },
-            {
-              $set: { "profile.familias": newFamilias },
-              $pull: { "profile.familyInvitations": { _id: idInvitacion } },
-            }
-          );
+        const addUserToFamilia = await db.collection("users").updateOne(
+          { _id: new ObjectId(idUser) },
+          {
+            $set: { "profile.familias": newFamilias },
+            $pull: { "profile.familyInvitations": { _id: idInvitacion } },
+          }
+        );
       } catch (error) {
         console.log(error);
         return {
