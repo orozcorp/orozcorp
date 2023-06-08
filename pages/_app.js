@@ -32,7 +32,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
         />
         <meta
           name="keywords"
-          content="Digital Product Development, App Creation Services, Digital Strategy Consulting, Web App Development, Custom App Development, High Fidelity Prototyping, Product Discovery Services, Rapid Design Process, Business Plan Analysis, User Research Services, Javascript, Node JS, React, Next JS Development, Hosting and Maintenance Services, Cost Optimization Services, Database Analysis Services, Wireframing and Branding Services, Agile Development Team, Dedicated Development Team, Multidisciplinary Development Team, Digital Transformation Services, Custom ERP, CRM, POS Development"
+          content="Orozcorp, Eduardo Orozco, Eduardo Orozco Mendoza, Digital Product Development, App Creation Services, Digital Strategy Consulting, Web App Development, Custom App Development, High Fidelity Prototyping, Product Discovery Services, Rapid Design Process, Business Plan Analysis, User Research Services, Javascript, Node JS, React, Next JS Development, Hosting and Maintenance Services, Cost Optimization Services, Database Analysis Services, Wireframing and Branding Services, Agile Development Team, Dedicated Development Team, Multidisciplinary Development Team, Digital Transformation Services, Custom ERP, CRM, POS Development"
         />
         <meta
           name="ahrefs-site-verification"
