@@ -32,7 +32,10 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           name="keywords"
           content="Digital Product Development, App Creation Services, Digital Strategy Consulting, Web App Development, Custom App Development, High Fidelity Prototyping, Product Discovery Services, Rapid Design Process, Business Plan Analysis, User Research Services, Javascript, Node JS, React, Next JS Development, Hosting and Maintenance Services, Cost Optimization Services, Database Analysis Services, Wireframing and Branding Services, Agile Development Team, Dedicated Development Team, Multidisciplinary Development Team, Digital Transformation Services, Custom ERP, CRM, POS Development"
         />
-
+        <meta
+          name="ahrefs-site-verification"
+          content="c4041087b3a4ebd2b0b1c0236e0b7cbfcf7bfba0ede4c67d59b5b5b4a9ee9b56"
+        />
         <meta property="og:image" content="https://www.orozcorp.live/api/og" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
