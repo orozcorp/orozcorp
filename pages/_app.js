@@ -26,6 +26,11 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           name="description"
           content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS, Finanzas, Logística  - Eduardo Orozco Mendoza"
         />
+        <meta
+          name="keywords"
+          content="Digital Product Development, App Creation Services, Digital Strategy Consulting, Web App Development, Custom App Development, High Fidelity Prototyping, Product Discovery Services, Rapid Design Process, Business Plan Analysis, User Research Services, Javascript, Node JS, React, Next JS Development, Hosting and Maintenance Services, Cost Optimization Services, Database Analysis Services, Wireframing and Branding Services, Agile Development Team, Dedicated Development Team, Multidisciplinary Development Team, Digital Transformation Services, Custom ERP, CRM, POS Development"
+        />
+
         <meta property="og:image" content="https://www.orozcorp.live/api/og" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
