@@ -11,6 +11,8 @@ import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import Head from "next/head";
 import Script from "next/script";
+import SEO from "../next-seo.config";
+import { DefaultSeo } from "next-seo";
 const customFont = Inter({
   display: "swap",
   subsets: ["latin"],
@@ -44,6 +46,15 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Script id="google-analytics" strategy="lazyOnload" async>
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){window.dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-H6EDP81J4D');
+        `}
+      </Script>
+      <DefaultSeo {...SEO} />
       <SessionProvider session={pageProps?.session}>
         <ApolloProvider client={apollo}>
           <ThemeProvider theme={theme}>
@@ -67,21 +78,20 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           </ThemeProvider>
         </ApolloProvider>
       </SessionProvider>
-      <>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-H6EDP81J4D"
-          strategy="lazyOnload"
-          async
-        />
-        <Script id="google-analytics" strategy="lazyOnload" async>
-          {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){window.dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-H6EDP81J4D');
-        `}
-        </Script>
-      </>
+
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-H6EDP81J4D"
+        strategy="lazyOnload"
+        async
+      />
+      <noscript>
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=G-H6EDP81J4D"
+          height="0"
+          width="0"
+          style={{ display: "none", visibility: "hidden" }}
+        ></iframe>
+      </noscript>
     </>
   );
 });
