@@ -26,9 +26,9 @@ export default function index() {
       <NextSeo
         title="Orozcorp"
         description="Consultoria de webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
-        canonical="https://www.orozcorp.live/"
+        canonical="https://orozcorp.live/"
         openGraph={{
-          url: "https://www.orozcorp.live",
+          url: "https://orozcorp.live",
           title: "Orozcorp",
           description:
             "Consultoria de webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS",
@@ -49,10 +49,10 @@ export default function index() {
       />
       <LocalBusinessJsonLd
         type="Consulting Firm"
-        id="https://www.orozcorp.live"
+        id="https://orozcorp.live"
         name="Orozcorp"
         description="webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
-        url="http://www.orozcorp.live"
+        url="http://orozcorp.live"
         telephone="+525536554893"
         address={{
           streetAddress: "General Miguel Aleman 32 loc d",

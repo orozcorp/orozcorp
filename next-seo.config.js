@@ -9,7 +9,7 @@ export default {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://www.orozcorp.live/",
+    url: "https://orozcorp.live/",
     siteName: "Orozcorp - Digital Product Development & Strategy Consulting",
   },
 };

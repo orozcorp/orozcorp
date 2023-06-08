@@ -38,7 +38,7 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
           name="ahrefs-site-verification"
           content="c4041087b3a4ebd2b0b1c0236e0b7cbfcf7bfba0ede4c67d59b5b5b4a9ee9b56"
         />
-        <meta property="og:image" content="https://www.orozcorp.live/api/og" />
+        <meta property="og:image" content="https://orozcorp.live/api/og" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="fragment" content="!" />
