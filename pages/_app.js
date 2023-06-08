@@ -21,10 +21,12 @@ export default withApolloClient(({ pageProps, Component, apollo }) => {
   return (
     <>
       <Head>
-        <title>Orozcorp | webapp, ecommerce, catalogo , landing</title>
+        <title>
+          Orozcorp - Digital Product Development & Strategy Consulting
+        </title>
         <meta
           name="description"
-          content="Orozcorp, webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS, Finanzas, Logística  - Eduardo Orozco Mendoza"
+          content="Orozcorp specializes in creating and launching digital products. From app creation and web development to strategic consulting and ongoing support, our dedicated team can transform your idea into a successful digital product. Start your digital journey with us today."
         />
         <meta
           name="keywords"
