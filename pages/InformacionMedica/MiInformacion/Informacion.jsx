@@ -7,6 +7,7 @@ import {
   Badge,
   Spinner,
   Box,
+  Alert,
 } from "@theme-ui/components";
 import Image from "next/image";
 import { calculateAge, format_date } from "../../../lib/helpers/formatters";
@@ -144,7 +145,7 @@ export default function Informacion({ user, familia }) {
         <Spinner />
       </p>
     );
-  if (error) return <p>Error: {error.message}</p>;
+  if (error) return <Alert variant="error">Error: {error.message}</Alert>;
   return (
     <Flex p={2} sx={{ flexFlow: "column nowrap" }}>
       <AgregarPeso
