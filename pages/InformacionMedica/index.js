@@ -19,7 +19,7 @@ export default function InformacionMedica() {
         p={2}
       >
         <Heading as="h2" sx={{ textDecoration: "red underline" }}>
-          Historial Médico
+          Mi familia
         </Heading>
         <Flex
           sx={{
