@@ -33,7 +33,7 @@ export default function Estudios({ user, miInfo, query }) {
           Agregar Estudios
         </Button>
       </Flex>
-      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
+      <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
         <table>
           <thead>
             <tr>
@@ -58,7 +58,7 @@ export default function Estudios({ user, miInfo, query }) {
             ))}
           </tbody>
         </table>
-      </Flex>
+      </Box>
     </Flex>
   );
 }

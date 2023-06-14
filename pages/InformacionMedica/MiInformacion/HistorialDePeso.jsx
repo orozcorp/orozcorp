@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { Flex } from "@theme-ui/components";
+import { Flex, Box } from "@theme-ui/components";
 import { format_date } from "../../../lib/helpers/formatters";
 import GraficasPeso from "./GraficasPeso";
 import GraficasEstatura from "./GraficaEstatura";
@@ -10,24 +10,26 @@ export default function HistorialDePeso({ user, miInfo, query }) {
   }, [miInfo]);
   return (
     <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-      <table>
-        <thead>
-          <tr>
-            <th>Fecha</th>
-            <th>Peso</th>
-            <th>Estatura</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedHistorial?.map((peso) => (
-            <tr key={peso._id}>
-              <td>{format_date(peso.fecha)}</td>
-              <td>{peso.peso} kg</td>
-              <td>{peso.estatura} cm</td>
+      <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
+        <table>
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Peso</th>
+              <th>Estatura</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {sortedHistorial?.map((peso) => (
+              <tr key={peso._id}>
+                <td>{format_date(peso.fecha)}</td>
+                <td>{peso.peso} kg</td>
+                <td>{peso.estatura} cm</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Box>
       <Flex
         sx={{
           flexFlow: "row wrap",

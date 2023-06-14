@@ -33,7 +33,7 @@ export default function HistorialMedico({ user, miInfo, query }) {
           Agregar Historia Médica
         </Button>
       </Flex>
-      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
+      <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
         <table>
           <thead>
             <tr>
@@ -52,7 +52,7 @@ export default function HistorialMedico({ user, miInfo, query }) {
             ))}
           </tbody>
         </table>
-      </Flex>
+      </Box>
     </Flex>
   );
 }

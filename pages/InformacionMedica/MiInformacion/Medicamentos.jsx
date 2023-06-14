@@ -57,8 +57,15 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
           Ver medicamentos {oldMed ? "actuales" : "anteriores"}
         </Button>
       </Flex>
-      <Box sx={{ overflowX: "auto" }} my={2}>
-        <table style={{ marginTop: "24px", marginBotton: "60px" }}>
+      <Box sx={{ overflowX: "auto", maxWidth: "80vw" }} my={2}>
+        <table
+          style={{
+            marginTop: "24px",
+            borderSpacing: "1rem",
+            borderCollapse: "collapse",
+            width: "100%",
+          }}
+        >
           <thead>
             <tr>
               <th>Fechas</th>

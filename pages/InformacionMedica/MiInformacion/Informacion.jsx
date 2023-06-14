@@ -139,15 +139,35 @@ export default function Informacion({ user, familia }) {
         });
     }, 500); // Adjust the delay as needed (e.g., 500 ms)
   };
+
   if (loading)
     return (
-      <p>
+      <Flex
+        sx={{
+          flexFlow: "column nowrap",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
         <Spinner />
-      </p>
+      </Flex>
     );
-  if (error) return <Alert variant="error">Error: {error.message}</Alert>;
+  if (error)
+    return (
+      <Flex
+        sx={{
+          flexFlow: "column nowrap",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <Alert variant="error">Error: {error.message}</Alert>
+      </Flex>
+    );
   return (
-    <Flex p={2} sx={{ flexFlow: "column nowrap" }}>
+    <Flex sx={{ flexFlow: "column nowrap" }}>
       <AgregarPeso
         display={displayPeso}
         setDisplay={setDisplayPeso}
@@ -400,10 +420,10 @@ export default function Informacion({ user, familia }) {
         </Flex>
       </Flex>
       <Flex
-        my={2}
+        my={4}
         sx={{
           flexFlow: "row wrap",
-          justifyContent: "flex-start",
+          justifyContent: ["center", "flex-start"],
           alignItems: "center",
         }}
       >
@@ -504,55 +524,57 @@ export default function Informacion({ user, familia }) {
           Estudios
         </Heading>
       </Flex>
-      {{
-        Seguro: () => (
-          <Seguro
-            user={data?.getUserProfile?._id}
-            miInfo={miInfo}
-            query={QUERY}
-          />
-        ),
-        Medicamentos: () => (
-          <Medicamentos
-            user={data?.getUserProfile?._id}
-            miInfo={miInfo}
-            query={QUERY}
-            oldMedicamento={{
-              oldMed,
-              setOldMed,
-            }}
-          />
-        ),
-        Medicos: () => (
-          <Medicos
-            user={data?.getUserProfile?._id}
-            miInfo={miInfo}
-            query={QUERY}
-            familia={familia}
-          />
-        ),
-        Historial: () => (
-          <HistorialMedico
-            user={data?.getUserProfile?._id}
-            miInfo={miInfo}
-            query={QUERY}
-          />
-        ),
-        HistorialPeso: () => (
-          <HistorialDePeso
-            user={data?.getUserProfile?._id}
-            miInfo={miInfo}
-            query={QUERY}
-          />
-        ),
-        Estudios: () => (
-          <Estudios
-            user={data?.getUserProfile?._id}
-            miInfo={miInfo}
-            query={QUERY}
-          />
-        ),
-      }[display]?.()}
+      <Box mb={6}>
+        {{
+          Seguro: () => (
+            <Seguro
+              user={data?.getUserProfile?._id}
+              miInfo={miInfo}
+              query={QUERY}
+            />
+          ),
+          Medicamentos: () => (
+            <Medicamentos
+              user={data?.getUserProfile?._id}
+              miInfo={miInfo}
+              query={QUERY}
+              oldMedicamento={{
+                oldMed,
+                setOldMed,
+              }}
+            />
+          ),
+          Medicos: () => (
+            <Medicos
+              user={data?.getUserProfile?._id}
+              miInfo={miInfo}
+              query={QUERY}
+              familia={familia}
+            />
+          ),
+          Historial: () => (
+            <HistorialMedico
+              user={data?.getUserProfile?._id}
+              miInfo={miInfo}
+              query={QUERY}
+            />
+          ),
+          HistorialPeso: () => (
+            <HistorialDePeso
+              user={data?.getUserProfile?._id}
+              miInfo={miInfo}
+              query={QUERY}
+            />
+          ),
+          Estudios: () => (
+            <Estudios
+              user={data?.getUserProfile?._id}
+              miInfo={miInfo}
+              query={QUERY}
+            />
+          ),
+        }[display]?.()}
+      </Box>
     </Flex>
   );
 }

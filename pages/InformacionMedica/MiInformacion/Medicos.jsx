@@ -14,6 +14,7 @@ const MUTATION = gql`
 `;
 
 export default function Medicos({ user, miInfo, query, familia }) {
+  console.log("familia", familia);
   const [display, setDisplay] = useState("none");
   const [updateMedicoCabecera, { loading }] = useMutation(MUTATION, {
     refetchQueries: [
@@ -35,8 +36,8 @@ export default function Medicos({ user, miInfo, query, familia }) {
         user={{
           _id: user,
           ...miInfo,
-          familiaId: familiaNuclear._id,
-          familiaName: familiaNuclear.nombre,
+          familiaId: familiaNuclear?._id,
+          familiaName: familiaNuclear?.nombre,
         }}
         query={query}
       />
@@ -57,7 +58,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
             Agregar Médico
           </Button>
         </Flex>
-        <Box sx={{ overflowX: "auto" }} my={2}>
+        <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
           <table>
             <thead>
               <tr>
@@ -95,12 +96,12 @@ export default function Medicos({ user, miInfo, query, familia }) {
                   <td>{medico.apellido}</td>
                   <td>
                     {medico.telefonos.map((tel, index) => (
-                      <p key={index}>
+                      <div key={index} style={{ margin: "6px" }}>
                         <a href={`tel:${tel?.telefono}`}>
                           <Badge m={1}>{tel?.tipo}</Badge>
                           {tel?.telefono}
                         </a>
-                      </p>
+                      </div>
                     ))}
                   </td>
                   <td>{medico.especialidad}</td>

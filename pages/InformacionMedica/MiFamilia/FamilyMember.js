@@ -35,7 +35,6 @@ export default function FamilyMember({ user, setActive, active }) {
             borderRadius: "50%",
             overflow: "hidden",
             border: "1px solid rgb(7 89 133)",
-            boxShadow: "6px 6px 3px 0px rgba(0,0,0,0.75)",
           }}
         />
       ) : (
@@ -45,7 +44,6 @@ export default function FamilyMember({ user, setActive, active }) {
             height: "100px",
             borderRadius: "50%",
             border: "1px solid rgb(7 89 133)",
-            boxShadow: "6px 6px 3px 0px rgba(7, 89, 133,0.75)",
           }}
         />
       )}

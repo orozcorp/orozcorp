@@ -232,32 +232,6 @@ input,
 
 
 
-td,
-th {
-  border: 1px solid #000;
-  text-align: center;
-  height: fit-content;
-  width: fit-content;
-  padding: 6px;
-}
-
-table {
-  border-spacing: 1rem;
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th {
-  padding: 10px;
-  text-align: left;
-}
-
-td {
-  border-bottom: 0.5px solid #000;
-}
-tr {
-  border-bottom: 0.5px solid #000;
-}
 .react-rotating-text-cursor {
   animation: blinking-cursor 0.8s cubic-bezier(0.68, 0.01, 0.01, 0.99) 0s infinite;
 }
@@ -400,4 +374,21 @@ tr {
     -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
+}
+
+table {
+  border-spacing: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+th {
+  text-align: left;
+}
+
+
+td, th {
+  border: 1px solid #000;
+  text-align: center;
+  height:fit-content;
+  width: fit-content;
 }
