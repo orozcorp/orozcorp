@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { format_date } from "../../../lib/helpers/formatters";
 import AgregarEstudio from "./AgregarEstudio";
 
-export default function Estudios({ user, miInfo, query, familia }) {
+export default function Estudios({ user, miInfo, query }) {
   const sortedHistorial = useMemo(() => {
     const historialCopy = [...(miInfo?.estudios || [])];
     return historialCopy.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));

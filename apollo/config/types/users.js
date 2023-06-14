@@ -222,7 +222,7 @@ export const usersSchema = gql`
   }
   type Query {
     getUserProfile(idUser: String!, oldMed: Boolean!): User
-    getFamilyMembers(idFamilia: String): [User]
+    getFamilyMembers(familias: [String]): [User]
     getFamilyDoctors(idUser: ID!, nombre: String): [MedicosProfile]
     createPesoGraphData(idUser: String!): LineChart!
     createEstaturaGraphData(idUser: String!): LineChart!

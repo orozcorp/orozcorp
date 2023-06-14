@@ -3,7 +3,7 @@ import { useState, useMemo } from "react";
 import { format_date } from "../../../lib/helpers/formatters";
 import AgregarHistorialMedico from "./AgregarHistorialMedico";
 
-export default function HistorialMedico({ user, miInfo, query, familia }) {
+export default function HistorialMedico({ user, miInfo, query }) {
   const sortedHistorial = useMemo(() => {
     const historialCopy = [...(miInfo?.historialMedico || [])];
     return historialCopy.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));

@@ -8,6 +8,7 @@ import {
   Spinner,
   Box,
 } from "@theme-ui/components";
+import Image from "next/image";
 import { calculateAge, format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
 import { uniqueId } from "lodash";
@@ -27,6 +28,7 @@ const QUERY = gql`
       email
       profile {
         alergias
+        picture
         caratulaSeguro
         enfermedades
         estatura
@@ -166,151 +168,233 @@ export default function Informacion({ user, familia }) {
         }}
       />
       <Flex
-        my={2}
+        mt={3}
         sx={{
-          flexFlow: "row wrap",
-          justifyContent: "space-between",
-          alignItems: "center",
+          flexFlow: ["column nowrap", "row wrap"],
+          justifyContent: ["center", "space-between"],
+          alignItems: ["center", "stretch"],
+          gap: "1em",
           width: "100%",
         }}
       >
-        <Box>
-          <Heading as="h3">
-            {miInfo.name} {miInfo.lastName}
-          </Heading>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "space-between"],
+            alignItems: "center",
+            gap: "1em",
+          }}
+        >
+          {miInfo.picture ? (
+            <Image
+              src={miInfo.picture}
+              alt="profile picture"
+              width={180}
+              height={200}
+              style={{
+                borderRadius: "50%",
+                overflow: "hidden",
+                border: "1px solid rgba(7 89 133 0.5)",
+              }}
+            />
+          ) : (
+            <Box
+              sx={{
+                width: "180px",
+                height: "200px",
+                borderRadius: "50%",
+                border: "1px solid rgb(7 89 133)",
+                boxShadow: "6px 6px 3px 0px rgba(7, 89, 133,0.75)",
+              }}
+            />
+          )}
+          <Flex
+            ml={[2, 4]}
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "flex-start",
+              alignItems: "stretch",
+              border: "1px solid #003471",
+              borderRadius: "12px",
+            }}
+            p={2}
+          >
+            <Heading as="h2" sx={{ color: "#003471" }}>
+              {miInfo.name} {miInfo.lastName}
+            </Heading>
+            <Flex
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}
+            >
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>Tipo de Sangre:</Text>
+                <Text> {miInfo.tipoSangre}</Text>
+              </Flex>
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>Fecha de Nacimiento: </Text>{" "}
+                <Text> {format_date(miInfo.fechaNacimiento)} </Text>
+                <Text>
+                  {age.years} años {age.months} meses
+                </Text>
+              </Flex>
+            </Flex>
+            <Flex
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}
+            >
+              <Flex
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "flex",
+                }}
+                m={2}
+              >
+                <Text sx={{ fontWeight: "bold" }}>Peso:</Text>
+                <Text> {miInfo.peso} kg</Text>
+              </Flex>
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>Estatura:</Text>
+                <Text> {miInfo.estatura} cm</Text>
+              </Flex>
+            </Flex>
+            <Flex
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}
+            >
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>Alergias: </Text>
+                {miInfo.alergias?.length > 0 && (
+                  <>
+                    {miInfo.alergias.map((alergia) => (
+                      <Text m={1} key={uniqueId()}>
+                        {alergia}
+                      </Text>
+                    ))}
+                  </>
+                )}
+              </Flex>
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>Enfermedades: </Text>
+                {miInfo.enfermedades?.length > 0 && (
+                  <>
+                    {miInfo.enfermedades.map((enfermedad) => (
+                      <Badge m={1} key={uniqueId()}>
+                        {enfermedad}
+                      </Badge>
+                    ))}
+                  </>
+                )}
+              </Flex>
+            </Flex>
+            <Flex
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+              }}
+            >
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>RFC:</Text>
+                <Text> {miInfo.rfc}</Text>
+              </Flex>
+              <Flex
+                m={2}
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                  alignItems: "center",
+                }}
+              >
+                <Text sx={{ fontWeight: "bold" }}>CURP:</Text>
+                <Text> {miInfo.curp}</Text>
+              </Flex>
+            </Flex>
+          </Flex>
+        </Flex>
+        <Flex
+          sx={{
+            flexFlow: "column nowrap",
+            justifyContent: "space-between",
+            alignItems: ["center", "flex-end"],
+          }}
+        >
           <Button m={1} variant="outline" onClick={() => setDisplayPeso("box")}>
             Agregar peso {miInfo.minor ? "y estatura" : ""}
           </Button>
           <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
             Editar informacion
           </Button>
-        </Box>
-        <Button
-          m={1}
-          onClick={downloadPDF}
-          sx={{ alignSelf: "flex-end" }}
-          disabled={displayEnvInfo}
-        >
-          {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
-        </Button>
-        {displayEnvInfo && (
-          <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />
-        )}
-      </Flex>
-      <Flex my={2} sx={{ flexFlow: "row wrap", alignItems: "flex-start" }}>
-        <Flex
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "flex",
-          }}
-          m={2}
-        >
-          <Text sx={{ fontWeight: "bold" }}>Peso:</Text>
-          <Text> {miInfo.peso} kg</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>Estatura:</Text>
-          <Text> {miInfo.estatura} cm</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>Tipo de Sangre:</Text>
-          <Text> {miInfo.tipoSangre}</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>RFC:</Text>
-          <Text> {miInfo.rfc}</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>CURP:</Text>
-          <Text> {miInfo.curp}</Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>Fecha de Nacimiento: </Text>{" "}
-          <Text> {format_date(miInfo.fechaNacimiento)} </Text>
-          <Text>
-            {age.years} años {age.months} meses
-          </Text>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>Alergias: </Text>
-          {miInfo.alergias?.length > 0 && (
-            <>
-              {miInfo.alergias.map((alergia) => (
-                <Text m={1} key={uniqueId()}>
-                  {alergia}
-                </Text>
-              ))}
-            </>
-          )}
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text sx={{ fontWeight: "bold" }}>Enfermedades: </Text>
-          {miInfo.enfermedades?.length > 0 && (
-            <>
-              {miInfo.enfermedades.map((enfermedad) => (
-                <Badge m={1} key={uniqueId()}>
-                  {enfermedad}
-                </Badge>
-              ))}
-            </>
+
+          <Button
+            m={1}
+            onClick={downloadPDF}
+            sx={{ alignSelf: "flex-end", backgroundColor: "#003471" }}
+            disabled={displayEnvInfo}
+          >
+            {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
+          </Button>
+          {displayEnvInfo && (
+            <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />
           )}
         </Flex>
       </Flex>
@@ -327,10 +411,14 @@ export default function Informacion({ user, familia }) {
           onClick={() => setDisplay("Seguro")}
           m={2}
           sx={{
-            textDecoration: "underline",
+            backgroundColor: display === "Seguro" ? "#003471" : "white",
+            color: display === "Seguro" ? "white" : "#003471",
+            border: "1px solid #003471",
+            borderRadius: "12px",
             fontWeight: display === "Seguro" ? "bold" : "normal",
-            fontSize: display === "Seguro" ? "1.5em" : "1em",
+            fontSize: "1em",
           }}
+          p={2}
         >
           Seguro
         </Heading>
@@ -339,9 +427,13 @@ export default function Informacion({ user, familia }) {
           as="h4"
           m={2}
           sx={{
-            textDecoration: "underline",
+            backgroundColor: display === "Medicamentos" ? "#003471" : "white",
+            color: display === "Medicamentos" ? "white" : "#003471",
+            border: "1px solid #003471",
+            borderRadius: "12px",
             fontWeight: display === "Medicamentos" ? "bold" : "normal",
-            fontSize: display === "Medicamentos" ? "1.5em" : "1em",
+            fontSize: "1em",
+            p: 2,
           }}
         >
           Medicamentos
@@ -351,9 +443,13 @@ export default function Informacion({ user, familia }) {
           as="h4"
           m={2}
           sx={{
-            textDecoration: "underline",
+            backgroundColor: display === "Medicos" ? "#003471" : "white",
+            color: display === "Medicos" ? "white" : "#003471",
+            border: "1px solid #003471",
+            borderRadius: "12px",
             fontWeight: display === "Medicos" ? "bold" : "normal",
-            fontSize: display === "Medicos" ? "1.5em" : "1em",
+            fontSize: "1em",
+            p: 2,
           }}
         >
           Médicos
@@ -363,9 +459,13 @@ export default function Informacion({ user, familia }) {
           as="h4"
           m={2}
           sx={{
-            textDecoration: "underline",
+            backgroundColor: display === "Historial" ? "#003471" : "white",
+            color: display === "Historial" ? "white" : "#003471",
+            border: "1px solid #003471",
+            borderRadius: "12px",
             fontWeight: display === "Historial" ? "bold" : "normal",
-            fontSize: display === "Historial" ? "1.5em" : "1em",
+            fontSize: "1em",
+            p: 2,
           }}
         >
           Historial Médico
@@ -375,9 +475,13 @@ export default function Informacion({ user, familia }) {
           as="h4"
           m={2}
           sx={{
-            textDecoration: "underline",
+            backgroundColor: display === "HistorialPeso" ? "#003471" : "white",
+            color: display === "HistorialPeso" ? "white" : "#003471",
+            border: "1px solid #003471",
+            borderRadius: "12px",
             fontWeight: display === "HistorialPeso" ? "bold" : "normal",
-            fontSize: display === "HistorialPeso" ? "1.5em" : "1em",
+            fontSize: "1em",
+            p: 2,
           }}
         >
           Historial de Peso {miInfo.minor ? "y Estatura" : ""}
@@ -387,9 +491,13 @@ export default function Informacion({ user, familia }) {
           as="h4"
           m={2}
           sx={{
-            textDecoration: "underline",
+            backgroundColor: display === "Estudios" ? "#003471" : "white",
+            color: display === "Estudios" ? "white" : "#003471",
+            border: "1px solid #003471",
+            borderRadius: "12px",
             fontWeight: display === "Estudios" ? "bold" : "normal",
-            fontSize: display === "Estudios" ? "1.5em" : "1em",
+            fontSize: "1em",
+            p: 2,
           }}
         >
           Estudios
@@ -427,7 +535,6 @@ export default function Informacion({ user, familia }) {
             user={data?.getUserProfile?._id}
             miInfo={miInfo}
             query={QUERY}
-            familia={familia}
           />
         ),
         HistorialPeso: () => (
@@ -442,7 +549,6 @@ export default function Informacion({ user, familia }) {
             user={data?.getUserProfile?._id}
             miInfo={miInfo}
             query={QUERY}
-            familia={familia}
           />
         ),
       }[display]?.()}

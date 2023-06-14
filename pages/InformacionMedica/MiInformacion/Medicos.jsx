@@ -1,6 +1,6 @@
 import { gql, useMutation } from "@apollo/client";
 import { Button, Flex, Box, Checkbox, Badge } from "@theme-ui/components";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import AgregarMedico from "./AgregarMedico";
 
 const MUTATION = gql`
@@ -24,6 +24,9 @@ export default function Medicos({ user, miInfo, query, familia }) {
     ],
     awaitRefetchQueries: true,
   });
+  const familiaNuclear = useMemo(() => {
+    return familia?.find((fam) => fam.nuclear);
+  }, [familia]);
   return (
     <>
       <AgregarMedico
@@ -32,8 +35,8 @@ export default function Medicos({ user, miInfo, query, familia }) {
         user={{
           _id: user,
           ...miInfo,
-          familiaId: familia.value,
-          familiaName: familia.label,
+          familiaId: familiaNuclear._id,
+          familiaName: familiaNuclear.nombre,
         }}
         query={query}
       />

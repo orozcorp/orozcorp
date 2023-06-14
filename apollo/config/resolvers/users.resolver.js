@@ -14,7 +14,6 @@ function isYoungerThan18(birthdate) {
 
   return age < 18;
 }
-
 import nodemailer from "nodemailer";
 import mg from "nodemailer-mailgun-transport";
 
@@ -39,6 +38,7 @@ export const usersResolvers = {
         email: 1,
         "profile.name": 1,
         "profile.lastName": 1,
+        "profile.picture": 1,
         "profile.caratulaSeguro": 1,
         "profile.tarjetaSeguro": 1,
         "profile.fechaNacimiento": 1,
@@ -146,21 +146,23 @@ export const usersResolvers = {
         familiares: filteredFamilyMembers,
       };
     },
-    getFamilyMembers: async (root, { idFamilia }, { db }) => {
-      return await db
+    getFamilyMembers: async (root, { familias }, { db }) => {
+      const users = await db
         .collection("users")
         .find(
-          { "profile.familias._id": idFamilia },
+          { "profile.familias._id": { $in: familias } },
           {
             projection: {
               _id: 1,
               "profile.name": 1,
               "profile.lastName": 1,
+              "profile.picture": 1,
             },
           }
         )
         .sort({ "profile.name": 1, "profile.lastName": 1 })
         .toArray();
+      return users;
     },
     getFamilyDoctors: async (root, { idUser, nombre }, { db }) => {
       if (nombre === "") return [];

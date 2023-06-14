@@ -9,9 +9,7 @@ export default withApollo(
       connectToDevTools: process.browser,
       ssrMode: !process.browser, // Disables forceFetch on the server (so queries are only run once)
       link: createHttpLink({
-        uri: process.env.NEXT_PUBLIC_ROOT_URL
-          ? `https://orozcorp.live/api`
-          : "http://localhost:3000/api",
+        uri: process.env.NEXT_PUBLIC_ROOT_URL + "/api/", // Server URL (must be absolute)
         credentials: "same-origin", // Additional fetch() options like `credentials` or `headers`
         headers,
       }),

@@ -77,10 +77,11 @@ export default {
     },
     primary: {
       color: "white",
-      bg: "primary",
+      bg: "#003471",
       "&:hover": {
-        bg: "text",
-        color: "white",
+        bg: "white",
+        color: "#003471",
+        border: "1px solid #003471",
       },
       "&:disabled": {
         bg: "#797A79",
@@ -107,11 +108,11 @@ export default {
       },
     },
     outline: {
-      color: "primary",
+      color: "#003471",
       bg: "transparent",
       boxShadow: "inset 0 0 0 1px",
       "&:hover": {
-        bg: "secondary",
+        bg: "#003471",
         color: "white",
       },
       "&:disabled": {
