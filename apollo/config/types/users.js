@@ -195,6 +195,7 @@ export const usersSchema = gql`
     name: String!
     telefono: String
     lastName: String!
+    picture: String
     alergias: [String]
     enfermedades: [String]
   }

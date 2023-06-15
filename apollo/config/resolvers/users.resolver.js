@@ -612,6 +612,7 @@ export const usersResolvers = {
               "profile.curp": input.curp,
               "profile.name": input.name,
               "profile.lastName": input.lastName,
+              "profile.picture": input.picture,
             },
           }
         );

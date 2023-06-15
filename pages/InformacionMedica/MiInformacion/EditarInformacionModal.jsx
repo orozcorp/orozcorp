@@ -6,7 +6,6 @@ import {
   Label,
   Button,
   Box,
-  Textarea,
   Spinner,
   Badge,
 } from "@theme-ui/components";
@@ -15,6 +14,7 @@ import { gql, useMutation } from "@apollo/client";
 import { useGlobalData } from "../../../components/context/GlobalContext";
 import { dateInputFormat } from "../../../lib/helpers/formatters";
 import { AiOutlineDelete } from "react-icons/ai";
+import Upload from "../../../components/atoms/Upload";
 const MUTATION = gql`
   mutation Mutation($userId: ID!, $email: String!, $input: UserInputEdit!) {
     updateUserProfile(userId: $userId, email: $email, input: $input) {
@@ -35,6 +35,7 @@ export default function EditarInformacion({
     alergias: user?.alergias?.join(", "),
     enfermedades: user?.enfermedades?.join(", "),
   };
+  const [foto, setFoto] = useState(user?.foto || "");
   const [values, setValues] = useState(initialValues);
   const makeOnChange =
     (fieldName) =>
@@ -61,6 +62,7 @@ export default function EditarInformacion({
         curp: values.curp,
         rfc: values.rfc,
         telefono: values.telefono,
+        picture: foto,
         tipoSangre: values.tipoSangre,
         alergias,
         enfermedades,
@@ -234,7 +236,15 @@ export default function EditarInformacion({
               Agregar Alergia
             </Button>
           </Flex>
-          <Flex sx={{ flexFlow: "row wrap", gap: "6px" }} my={1}>
+          <Flex
+            sx={{
+              flexFlow: "row wrap",
+              justifyContent: "space-between",
+              gap: "6px",
+              width: "100%",
+            }}
+            my={1}
+          >
             {alergias?.map((alergia, index) => (
               <Badge
                 sx={{
@@ -302,7 +312,15 @@ export default function EditarInformacion({
               Agregar Enfermedad
             </Button>
           </Flex>
-          <Flex sx={{ flexFlow: "row wrap", gap: "6px" }} my={1}>
+          <Flex
+            sx={{
+              flexFlow: "row wrap",
+              justifyContent: "space-between",
+              gap: "6px",
+              width: "100%",
+            }}
+            my={1}
+          >
             {enfermedades?.map((enfermedad, index) => (
               <Badge
                 sx={{
@@ -329,6 +347,13 @@ export default function EditarInformacion({
             ))}
           </Flex>
         </Flex>
+        <Upload
+          setFoto={setFoto}
+          location="profilePicture"
+          user={user?._id}
+          heading="Cambiar foto"
+          accept="image/*"
+        />
         <Button mt={4} type="submit" disabled={loading}>
           {loading ? <Spinner /> : "Editar familiar"}
         </Button>
