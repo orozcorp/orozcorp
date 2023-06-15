@@ -386,6 +386,7 @@ export const usersResolvers = {
           medicamentos: [],
           medicos: [],
           estudios: [],
+          roles: ["familiar"],
         },
         createdAt: new Date(),
       };
@@ -726,7 +727,7 @@ export const usersResolvers = {
       input.medicamentos = [];
       input.medicos = [];
       input.estudios = [];
-      input.roles - ["familiar"];
+      input.roles = ["familiar"];
       const user = {
         profile: { ...input },
         createdAt: new Date(),
