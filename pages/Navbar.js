@@ -35,9 +35,19 @@ export default function Navbar() {
             alignItems: "flex-end",
           }}
         >
-          <Heading ml={2} as="h1" sx={{ color: "#000", fontSize: "30px" }}>
-            Orozcorp
-          </Heading>
+          <Link href="/" style={{ textDecoration: "none" }}>
+            <Text
+              ml={2}
+              sx={{
+                color: "#000",
+                fontSize: "30px",
+                fontWeight: "bold",
+                textDecoration: "none",
+              }}
+            >
+              Orozcorp
+            </Text>
+          </Link>
         </Flex>
       </Flex>
       <Flex

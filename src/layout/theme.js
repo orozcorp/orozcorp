@@ -4,7 +4,7 @@ export default {
   colors: {
     text: "#000",
     background: "#fff",
-    primary: "#000",
+    primary: "#003471",
     secondary: "#008080",
     danger: "#b30018",
     pink: "#f26363",

@@ -10,7 +10,7 @@ export default function HistorialDePeso({ user, miInfo, query }) {
   }, [miInfo]);
   return (
     <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-      <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
+      <Box my={2} sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}>
         <table>
           <thead>
             <tr>

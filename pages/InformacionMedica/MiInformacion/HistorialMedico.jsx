@@ -33,7 +33,7 @@ export default function HistorialMedico({ user, miInfo, query }) {
           Agregar Historia Médica
         </Button>
       </Flex>
-      <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
+      <Box my={2} sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}>
         <table>
           <thead>
             <tr>

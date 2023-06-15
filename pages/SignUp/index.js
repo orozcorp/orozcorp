@@ -8,7 +8,7 @@ import {
   Spinner,
   Checkbox,
   Text,
-  Textarea,
+  Badge,
   Alert,
 } from "@theme-ui/components";
 import { useState } from "react";
@@ -16,6 +16,7 @@ import { dateInputFormat, styleReactSelect } from "@/lib/helpers/formatters";
 import Select from "react-select";
 import { gql, useMutation } from "@apollo/client";
 import { signIn } from "next-auth/react";
+import { AiOutlineDelete } from "react-icons/ai";
 const tipoSangreOptions = [
   { label: "A+", value: "A+" },
   { label: "A-", value: "A-" },
@@ -52,6 +53,10 @@ export default function SignUp() {
     alergias: "Sin Alergias",
     enfermedades: "Sin enfermedades",
   };
+  const [alergias, setAlergias] = useState([]);
+  const [writtenAlergia, setWrittenAlergia] = useState("");
+  const [enfermedades, setEnfermedades] = useState([]);
+  const [writtenEnfermedad, setWrittenEnfermedad] = useState("");
   const [acepto, setAcepto] = useState(false);
   const [user, setUser] = useState(initial);
   const makeOnChange =
@@ -61,8 +66,6 @@ export default function SignUp() {
         ...user,
         [fieldName]: value.toUpperCase(),
       });
-  const [familia, setFamilia] = useState("");
-
   const [insert, { loading, error }] = useMutation(MUTATION, {
     variables: {
       input: {
@@ -70,13 +73,11 @@ export default function SignUp() {
         email: user.email.toLowerCase(),
         peso: parseFloat(user.peso),
         estatura: parseFloat(user.estatura),
-        alergias: user.alergias?.split(",").map((alergia) => alergia.trim()),
-        enfermedades: user.enfermedades
-          ?.split(",")
-          .map((enfermedad) => enfermedad.trim()),
+        alergias,
+        enfermedades,
         tipoSangre: user.tipoSangre.value,
       },
-      familia: familia,
+      familia: user.lastName,
     },
     onCompleted: () => {
       signIn();
@@ -104,7 +105,6 @@ export default function SignUp() {
           flexFlow: "column nowrap",
           justifyContent: "center",
           alignItems: "center",
-          minWidth: "300px",
           maxWidth: "800px",
         }}
         onSubmit={(e) => {
@@ -117,6 +117,8 @@ export default function SignUp() {
             flexFlow: ["column nowrap", "row wrap"],
             justifyContent: ["center", "space-between"],
             alignItems: "center",
+            my: 1,
+            p: 2,
           }}
         >
           <Box m={1} sx={{ width: "200px" }}>
@@ -141,6 +143,8 @@ export default function SignUp() {
             flexFlow: ["column nowrap", "row wrap"],
             justifyContent: ["center", "space-between"],
             alignItems: "center",
+            my: 1,
+            p: 2,
           }}
         >
           <Box m={1} sx={{ width: "200px" }}>
@@ -165,41 +169,10 @@ export default function SignUp() {
             flexFlow: ["column nowrap", "row wrap"],
             justifyContent: ["center", "space-between"],
             alignItems: "center",
-            alignSelf: ["center", "flex-start"],
+            my: 1,
+            p: 2,
           }}
         >
-          <Box m={1} sx={{ width: ["200px", "620px"] }}>
-            <Label>
-              Apellido Familiar{" "}
-              <small style={{ marginLeft: "20px" }}>
-                Nombre de tu familia - el que llevan tus hijos
-              </small>
-            </Label>
-            <Input
-              type="text"
-              value={familia}
-              onChange={({ currentTarget: { value } }) =>
-                setFamilia(value.toUpperCase())
-              }
-            />
-          </Box>
-        </Flex>
-        <Flex
-          sx={{
-            flexFlow: ["column nowrap", "row wrap"],
-            justifyContent: ["center", "space-between"],
-            alignItems: "center",
-          }}
-        >
-          <Box m={1} sx={{ width: "200px" }}>
-            <Label>Fecha de Nacimiento</Label>
-            <Input
-              type="date"
-              sx={{ width: "100%" }}
-              value={dateInputFormat(user.fechaNacimiento)}
-              onChange={makeOnChange("fechaNacimiento")}
-            />
-          </Box>
           <Box m={1} sx={{ width: "200px" }}>
             <Label>Peso en kgs</Label>
             <Input
@@ -228,6 +201,8 @@ export default function SignUp() {
             flexFlow: ["column nowrap", "row wrap"],
             justifyContent: ["center", "space-between"],
             alignItems: "center",
+            my: 1,
+            p: 2,
           }}
         >
           <Box m={1} sx={{ width: "200px" }}>
@@ -239,56 +214,159 @@ export default function SignUp() {
               onChange={(tipoSangre) => setUser({ ...user, tipoSangre })}
             />
           </Box>
+          <Box m={1} sx={{ width: "200px" }}>
+            <Label>Fecha de Nacimiento</Label>
+            <Input
+              type="date"
+              sx={{ width: "100%" }}
+              value={dateInputFormat(user.fechaNacimiento)}
+              onChange={makeOnChange("fechaNacimiento")}
+            />
+          </Box>
         </Flex>
         <Flex
           sx={{
             flexFlow: ["column nowrap", "row wrap"],
-            justifyContent: ["center", "space-between"],
-            alignItems: "center",
+            justifyContent: ["center", "flex-start"],
+            alignItems: "flex-start",
+            width: "100%",
+
+            my: 2,
+            p: 2,
           }}
         >
-          <Box m={1}>
-            <Label
-              sx={{
-                display: "flex",
-                flexFlow: "column nowrap",
-                justifyContent: "center",
-                alignContent: "center",
+          <Flex
+            m={1}
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+              gap: "12px",
+            }}
+            mr={[2, 4]}
+          >
+            <Box>
+              <Label
+                sx={{
+                  display: "flex",
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                Alergias
+              </Label>
+              <Input
+                value={writtenAlergia}
+                onChange={({ target: { value } }) => setWrittenAlergia(value)}
+              />
+            </Box>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                setAlergias([...alergias, writtenAlergia]);
+                setWrittenAlergia("");
               }}
             >
-              Alergias
-              <p>
-                <small>separar con comas " , " cada alergia</small>
-              </p>
-            </Label>
-            <Textarea
-              rows={3}
-              sx={{ minWidth: "300px" }}
-              value={user.alergias}
-              onChange={makeOnChange("alergias")}
-            />
-          </Box>
-          <Box m={1}>
-            <Label
-              sx={{
-                display: "flex",
-                flexFlow: "column nowrap",
-                justifyContent: "center",
-                alignContent: "center",
+              Agregar Alergia
+            </Button>
+          </Flex>
+          <Flex sx={{ flexFlow: "row wrap", gap: "6px" }} my={2}>
+            {alergias.map((alergia, index) => (
+              <Badge
+                sx={{
+                  display: "flex",
+                  flexFlow: "row wrap",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "6px",
+                  fontSize: "18px",
+                }}
+                key={index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAlergias(alergias.filter((item, i) => i !== index));
+                }}
+              >
+                <AiOutlineDelete />
+                <div> {alergia}</div>
+              </Badge>
+            ))}
+          </Flex>
+        </Flex>
+        <Flex
+          sx={{
+            flexFlow: ["column nowrap", "row wrap"],
+            justifyContent: ["center", "flex-start"],
+            alignItems: "flex-start",
+            width: "100%",
+
+            my: 2,
+            p: 2,
+          }}
+        >
+          <Flex
+            m={1}
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "space-between",
+              alignItems: "flex-start",
+              gap: "12px",
+              width: "100%",
+            }}
+          >
+            <Box>
+              <Label
+                sx={{
+                  display: "flex",
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                Enfermedades Cronicas
+              </Label>
+              <Input
+                value={writtenEnfermedad}
+                onChange={({ target: { value } }) =>
+                  setWrittenEnfermedad(value)
+                }
+              />
+            </Box>
+            <Button
+              onClick={(e) => {
+                e.preventDefault();
+                setEnfermedades([...enfermedades, writtenEnfermedad]);
+                setWrittenEnfermedad("");
               }}
             >
-              Enfermedades Crónicas
-              <p>
-                <small>separar con comas " , " cada enfermedad</small>
-              </p>
-            </Label>
-            <Textarea
-              rows={3}
-              sx={{ minWidth: "300px" }}
-              value={user.enfermedades}
-              onChange={makeOnChange("enfermedades")}
-            />
-          </Box>
+              Agregar Enfermedad
+            </Button>
+          </Flex>
+          <Flex sx={{ flexFlow: "row wrap", width: "100%", gap: "6px" }} my={2}>
+            {enfermedades.map((enfermedad, index) => (
+              <Badge
+                key={index}
+                sx={{
+                  display: "flex",
+                  flexFlow: "row wrap",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "6px",
+                  fontSize: "18px",
+                }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEnfermedades(enfermedad.filter((item, i) => i !== index));
+                }}
+              >
+                <AiOutlineDelete />
+                <div> {enfermedad}</div>
+              </Badge>
+            ))}
+          </Flex>
         </Flex>
         <Flex
           sx={{
@@ -306,7 +384,6 @@ export default function SignUp() {
             onChange={({ currentTarget: { checked } }) => setAcepto(checked)}
           />
         </Flex>
-
         <Button
           disabled={
             loading ||

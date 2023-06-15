@@ -33,7 +33,7 @@ export default function Estudios({ user, miInfo, query }) {
           Agregar Estudios
         </Button>
       </Flex>
-      <Box my={2} sx={{ overflowX: "auto", maxWidth: "80vw" }}>
+      <Box my={2} sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}>
         <table>
           <thead>
             <tr>
