@@ -340,7 +340,9 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             {miInfo?.familiares?.map((familiar) => (
               <tr key={familiar._id}>
                 <td>{familiar.name}</td>
-                <td>{familiar.telefono}</td>
+                <td>
+                  <a href={`tel:${tel?.telefono}`}>{familiar.telefono}</a>
+                </td>
                 <td>
                   {familiar.alergias?.length > 0 && (
                     <>
