@@ -87,6 +87,7 @@ export const usersSchema = gql`
     name: String!
     alergias: [String]
     enfermedades: [String]
+    telefono: String
   }
   type UserSendDoctor {
     _id: ID!
@@ -102,6 +103,8 @@ export const usersSchema = gql`
     historialMedico: [HistorialMedico]
     estudios: [Estudios]
     familiares: [FamiliaUserSendDoctor]
+    medicos: [MedicosProfile]
+    tarjetaSeguro: String
   }
   type FamilyInvitation {
     _id: ID!
@@ -159,6 +162,7 @@ export const usersSchema = gql`
     email: String!
     name: String!
     lastName: String!
+    telefono: String!
     roles: [AllowedRoles!]!
     peso: Float!
     estatura: Float!
@@ -168,7 +172,6 @@ export const usersSchema = gql`
     tipoSangre: String!
     fechaNacimiento: Date!
     rfc: String!
-    telefono: String
     curp: String!
   }
   input UserSignUpInput {

@@ -25,6 +25,7 @@ const QUERY = gql`
         alergias
         enfermedades
         name
+        telefono
       }
       fechaNacimiento
       historialMedico {
@@ -43,9 +44,23 @@ const QUERY = gql`
         medicoName
         nombre
       }
+      medicos {
+        _id
+        apellido
+        direccion
+        especialidad
+        nombre
+        telefonos {
+          _id
+          telefono
+          tipo
+        }
+        cabecera
+      }
       name
       peso
       tipoSangre
+      tarjetaSeguro
     }
   }
 `;
@@ -54,7 +69,6 @@ export default function MiInformacionPDF({ user, setDisplay }) {
   const { loading, error, data } = useQuery(QUERY, {
     variables: { idUser: user },
   });
-  console.log(data);
   const miInfo = data?.getInformacionForDoctors;
   const age = useMemo(
     () => calculateAge(miInfo?.fechaNacimiento),
@@ -183,6 +197,42 @@ export default function MiInformacionPDF({ user, setDisplay }) {
         </Flex>
       </Flex>
       <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
+        <Heading as="h4" id="medicos" my={2}>
+          Medicos
+        </Heading>
+        <table>
+          <thead>
+            <tr>
+              <th>Cabecera</th>
+              <th>Nombre</th>
+              <th>Telefonos</th>
+              <th>Especialidad</th>
+              <th>Direccion</th>
+            </tr>
+          </thead>
+          <tbody>
+            {miInfo?.medicos?.map((medico) => (
+              <tr key={medico._id}>
+                <td>{medico.cabecera && "Medico de cabecera"}</td>
+                <td>{`${medico.nombre} ${medico.apellido}`}</td>
+                <td>
+                  {medico.telefonos.map((tel, index) => (
+                    <div key={index} style={{ margin: "6px" }}>
+                      <a href={`tel:${tel?.telefono}`}>
+                        <div m={1}>{tel?.tipo}</div>
+                        {tel?.telefono}
+                      </a>
+                    </div>
+                  ))}
+                </td>
+                <td>{medico.especialidad}</td>
+                <td>{medico.direccion}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Flex>
+      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
         <Heading as="h4" id="historialMedico" my={2}>
           Historial Médico
         </Heading>
@@ -281,6 +331,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           <thead>
             <tr>
               <th>Nombre</th>
+              <th>Telefono</th>
               <th>Alergias</th>
               <th>Enfermedades</th>
             </tr>
@@ -289,6 +340,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             {miInfo?.familiares?.map((familiar) => (
               <tr key={familiar._id}>
                 <td>{familiar.name}</td>
+                <td>{familiar.telefono}</td>
                 <td>
                   {familiar.alergias?.length > 0 && (
                     <>

@@ -379,9 +379,9 @@ export default function Informacion({ user, familia }) {
                 m={2}
                 sx={{
                   flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "center",
+                  justifyContent: "flex-start",
+                  alignContent: "flex-start",
+                  alignItems: "flex-start",
                 }}
               >
                 <Text sx={{ fontWeight: "bold" }}>RFC:</Text>
@@ -391,9 +391,9 @@ export default function Informacion({ user, familia }) {
                 m={2}
                 sx={{
                   flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "center",
+                  justifyContent: "flex-end",
+                  alignContent: "flex-end",
+                  alignItems: "flex-end",
                 }}
               >
                 <Text sx={{ fontWeight: "bold" }}>CURP:</Text>
@@ -406,7 +406,7 @@ export default function Informacion({ user, familia }) {
           my={[3, 0]}
           sx={{
             flexFlow: "column nowrap",
-            justifyContent: "space-between",
+            justifyContent: "space-around",
             alignItems: ["center", "flex-end"],
           }}
         >

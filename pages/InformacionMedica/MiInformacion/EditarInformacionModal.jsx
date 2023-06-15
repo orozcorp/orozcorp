@@ -347,16 +347,24 @@ export default function EditarInformacion({
             ))}
           </Flex>
         </Flex>
-        <Upload
-          setFoto={setFoto}
-          location="profilePicture"
-          user={user?._id}
-          heading="Cambiar foto"
-          accept="image/*"
-        />
-        <Button mt={4} type="submit" disabled={loading}>
-          {loading ? <Spinner /> : "Editar familiar"}
-        </Button>
+        <Flex
+          sx={{
+            width: "100%",
+            flexFlow: "row wrap",
+            justifyContent: "space-between",
+          }}
+        >
+          <Upload
+            setFoto={setFoto}
+            location="profilePicture"
+            user={user?._id}
+            heading="Cambiar foto"
+            accept="image/*"
+          />
+          <Button type="submit" disabled={loading}>
+            {loading ? <Spinner /> : "Editar familiar"}
+          </Button>
+        </Flex>
       </Flex>
     </Modal>
   );

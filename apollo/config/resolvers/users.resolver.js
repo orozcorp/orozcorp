@@ -83,7 +83,10 @@ export const usersResolvers = {
           {
             $match: {
               $and: [
-                { "profile.familias._id": { $in: familias } },
+                {
+                  "profile.familias._id": { $in: familias },
+                  "profile.minor": false,
+                },
                 {
                   $or: [
                     {
@@ -109,6 +112,7 @@ export const usersResolvers = {
               name: { $concat: ["$profile.name", " ", "$profile.lastName"] },
               alergias: "$profile.alergias",
               enfermedades: "$profile.enfermedades",
+              telefono: "$profile.telefono",
             },
           },
         ])
@@ -127,6 +131,8 @@ export const usersResolvers = {
         tipoSangre: userFamilias.profile.tipoSangre,
         alergias: userFamilias.profile.alergias,
         enfermedades: userFamilias.profile.enfermedades,
+        medicos: userFamilias.profile.medicos,
+        tarjetaSeguro: userFamilias.profile.tarjetaSeguro,
         medicamentos: userFamilias.profile.medicamentos?.sort((a, b) => {
           const dateA = new Date(a.fechaInicio);
           const dateB = new Date(b.fechaInicio);
@@ -356,6 +362,7 @@ export const usersResolvers = {
       }
     },
   },
+
   Mutation: {
     insertUser: async (root, { input }, { db }) => {
       const familyArray = input.familias.map((item) => item._id);
@@ -613,6 +620,7 @@ export const usersResolvers = {
               "profile.name": input.name,
               "profile.lastName": input.lastName,
               "profile.picture": input.picture,
+              "profile.telefono": input.telefono,
             },
           }
         );
