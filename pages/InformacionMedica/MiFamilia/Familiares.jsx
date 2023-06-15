@@ -36,7 +36,14 @@ export default function Familiares() {
     familia: session?.user?.familias,
   });
   return (
-    <>
+    <Flex
+      sx={{
+        flexFlow: "row wrap",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+      }}
+    >
       <Box
         sx={{
           width: "90vw",
@@ -58,7 +65,6 @@ export default function Familiares() {
             gap: "8px",
             minWidth: "max-content",
           }}
-          p={3}
         >
           {familiares?.map((familiar) => (
             <FamilyMember
@@ -71,6 +77,6 @@ export default function Familiares() {
         </Flex>
       </Box>
       <Informacion user={active._id} familia={active.familia} />
-    </>
+    </Flex>
   );
 }

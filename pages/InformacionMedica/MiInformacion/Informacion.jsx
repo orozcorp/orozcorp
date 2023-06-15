@@ -12,7 +12,6 @@ import {
 import Image from "next/image";
 import { calculateAge, format_date } from "../../../lib/helpers/formatters";
 import { useMemo, useState } from "react";
-import { uniqueId } from "lodash";
 import Seguro from "./Seguro";
 import Medicamentos from "./Medicamentos";
 import Medicos from "./Medicos";
@@ -167,7 +166,16 @@ export default function Informacion({ user, familia }) {
       </Flex>
     );
   return (
-    <Flex sx={{ flexFlow: "column nowrap" }}>
+    <Flex
+      sx={{
+        flexFlow: "column nowrap",
+        justifyContent: "center",
+        alignContent: "center",
+        alignItems: "center",
+        width: "100%",
+        marginLeft: ["-20px", 0],
+      }}
+    >
       <AgregarPeso
         display={displayPeso}
         setDisplay={setDisplayPeso}
@@ -194,7 +202,6 @@ export default function Informacion({ user, familia }) {
           flexFlow: ["column nowrap", "row wrap"],
           justifyContent: ["center", "space-between"],
           alignItems: ["center", "stretch"],
-          gap: "1em",
           width: "100%",
         }}
       >
@@ -202,7 +209,9 @@ export default function Informacion({ user, familia }) {
           sx={{
             flexFlow: ["column nowrap", "row wrap"],
             justifyContent: ["center", "space-between"],
+            alignContent: "center",
             alignItems: "center",
+            width: ["100%", "auto"],
             gap: "1em",
           }}
         >
@@ -230,7 +239,7 @@ export default function Informacion({ user, familia }) {
             />
           )}
           <Flex
-            ml={[2, 4]}
+            ml={[0, 4]}
             sx={{
               flexFlow: "column nowrap",
               justifyContent: "flex-start",
@@ -256,11 +265,11 @@ export default function Informacion({ user, familia }) {
                   flexFlow: "column nowrap",
                   justifyContent: "center",
                   alignContent: "center",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                 }}
               >
                 <Text sx={{ fontWeight: "bold" }}>Tipo de Sangre:</Text>
-                <Text> {miInfo.tipoSangre}</Text>
+                <Text sx={{ fontSize: "20px" }}> {miInfo.tipoSangre}</Text>
               </Flex>
               <Flex
                 m={2}
@@ -268,13 +277,14 @@ export default function Informacion({ user, familia }) {
                   flexFlow: "column nowrap",
                   justifyContent: "center",
                   alignContent: "center",
-                  alignItems: "center",
+                  alignItems: "flex-end",
                 }}
               >
                 <Text sx={{ fontWeight: "bold" }}>Fecha de Nacimiento: </Text>{" "}
                 <Text> {format_date(miInfo.fechaNacimiento)} </Text>
                 <Text>
-                  {age.years} años {age.months} meses
+                  {age.years} años{" "}
+                  <>{age.years < 3 && <>{age.months} meses</>}</>
                 </Text>
               </Flex>
             </Flex>
@@ -323,16 +333,16 @@ export default function Informacion({ user, familia }) {
                   flexFlow: "column nowrap",
                   justifyContent: "center",
                   alignContent: "center",
-                  alignItems: "center",
+                  alignItems: "flex-start",
                 }}
               >
                 <Text sx={{ fontWeight: "bold" }}>Alergias: </Text>
                 {miInfo.alergias?.length > 0 && (
                   <>
-                    {miInfo.alergias.map((alergia) => (
-                      <Text m={1} key={uniqueId()}>
+                    {miInfo.alergias.map((alergia, index) => (
+                      <Badge m={1} key={index}>
                         {alergia}
-                      </Text>
+                      </Badge>
                     ))}
                   </>
                 )}
@@ -343,14 +353,14 @@ export default function Informacion({ user, familia }) {
                   flexFlow: "column nowrap",
                   justifyContent: "center",
                   alignContent: "center",
-                  alignItems: "center",
+                  alignItems: "flex-end",
                 }}
               >
                 <Text sx={{ fontWeight: "bold" }}>Enfermedades: </Text>
                 {miInfo.enfermedades?.length > 0 && (
                   <>
-                    {miInfo.enfermedades.map((enfermedad) => (
-                      <Badge m={1} key={uniqueId()}>
+                    {miInfo.enfermedades.map((enfermedad, index) => (
+                      <Badge m={1} key={index}>
                         {enfermedad}
                       </Badge>
                     ))}
@@ -393,6 +403,7 @@ export default function Informacion({ user, familia }) {
           </Flex>
         </Flex>
         <Flex
+          my={[3, 0]}
           sx={{
             flexFlow: "column nowrap",
             justifyContent: "space-between",

@@ -11,14 +11,16 @@ export default function FamilyMember({ user, setActive, active }) {
         justifyContent: "stretch",
         alignItems: "center",
         alignContent: "center",
+        backgroundColor: active._id === user._id && "rgb(7 89 133)",
         background: hovered && "rgba( 255, 255, 255, 0.55 )",
         boxShadow: hovered && " 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
         backdropFilter: hovered && "blur( 13.5px )",
-        borderRadius: hovered && "10px",
+        borderRadius: "10px",
         border:
           active._id === user._id
             ? "1px solid rgb(7 89 133)"
             : hovered && "1px solid rgba( 255, 255, 255, 0.18 )",
+        maxWidth: "100px",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -28,8 +30,8 @@ export default function FamilyMember({ user, setActive, active }) {
       {user.profile.picture ? (
         <Image
           src={user.profile.picture}
-          width={90}
-          height={100}
+          width={60}
+          height={70}
           alt={user?.profile?.name}
           style={{
             borderRadius: "50%",
@@ -40,21 +42,34 @@ export default function FamilyMember({ user, setActive, active }) {
       ) : (
         <Box
           sx={{
-            width: "90px",
-            height: "100px",
+            width: "60px",
+            height: "70px",
             borderRadius: "50%",
-            border: "1px solid rgb(7 89 133)",
+            border:
+              active._id === user._id && !hovered
+                ? "1px solid white"
+                : "1px solid rgb(7 89 133)",
           }}
         />
       )}
       <Text
         mt={2}
-        sx={{ textAlign: "center", color: "rgb(7 89 133)", fontWeight: "bold" }}
+        sx={{
+          textAlign: "center",
+          color:
+            active._id === user._id && !hovered ? "white" : "rgb(7 89 133)",
+          fontWeight: "bold",
+        }}
       >
         {user.profile.name}
       </Text>
       <Text
-        sx={{ textAlign: "center", color: "rgb(7 89 133)", fontWeight: "bold" }}
+        sx={{
+          textAlign: "center",
+          color:
+            active._id === user._id && !hovered ? "white" : "rgb(7 89 133)",
+          fontWeight: "bold",
+        }}
       >
         {user.profile.lastName}
       </Text>
