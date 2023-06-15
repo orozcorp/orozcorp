@@ -54,9 +54,10 @@ export default function SignUp() {
     enfermedades: "Sin enfermedades",
   };
   const [alergias, setAlergias] = useState([]);
-  const [writtenAlergia, setWrittenAlergia] = useState("");
+  const [writtenAlergia, setWrittenAlergia] = useState("Sin Alergias");
   const [enfermedades, setEnfermedades] = useState([]);
-  const [writtenEnfermedad, setWrittenEnfermedad] = useState("");
+  const [writtenEnfermedad, setWrittenEnfermedad] =
+    useState("Sin enfermedades");
   const [acepto, setAcepto] = useState(false);
   const [user, setUser] = useState(initial);
   const makeOnChange =

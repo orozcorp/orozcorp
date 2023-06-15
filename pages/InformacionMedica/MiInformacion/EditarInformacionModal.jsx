@@ -8,12 +8,13 @@ import {
   Box,
   Textarea,
   Spinner,
+  Badge,
 } from "@theme-ui/components";
 import { useState } from "react";
 import { gql, useMutation } from "@apollo/client";
 import { useGlobalData } from "../../../components/context/GlobalContext";
 import { dateInputFormat } from "../../../lib/helpers/formatters";
-
+import { AiOutlineDelete } from "react-icons/ai";
 const MUTATION = gql`
   mutation Mutation($userId: ID!, $email: String!, $input: UserInputEdit!) {
     updateUserProfile(userId: $userId, email: $email, input: $input) {
@@ -23,7 +24,6 @@ const MUTATION = gql`
     }
   }
 `;
-
 export default function EditarInformacion({
   display,
   setDisplay,
@@ -44,6 +44,10 @@ export default function EditarInformacion({
         [fieldName]: value.toUpperCase(),
       });
   const { setAlert } = useGlobalData();
+  const [alergias, setAlergias] = useState(user?.alergias || []);
+  const [writtenAlergia, setWrittenAlergia] = useState("");
+  const [enfermedades, setEnfermedades] = useState(user?.enfermedades || []);
+  const [writtenEnfermedad, setWrittenEnfermedad] = useState("");
   const [insertUser, { loading }] = useMutation(MUTATION, {
     variables: {
       userId: user._id,
@@ -58,10 +62,8 @@ export default function EditarInformacion({
         rfc: values.rfc,
         telefono: values.telefono,
         tipoSangre: values.tipoSangre,
-        alergias: values.alergias?.split(",").map((alergia) => alergia.trim()),
-        enfermedades: values.enfermedades
-          ?.split(",")
-          .map((enfermedad) => enfermedad.trim()),
+        alergias,
+        enfermedades,
       },
     },
     onCompleted: ({}) => {
@@ -165,7 +167,7 @@ export default function EditarInformacion({
               onChange={makeOnChange("estatura")}
             />
           </Box>
-          <Box m={1} sx={{ width: "300px" }}>
+          <Box m={1}>
             <Label>Curp</Label>
             <Input
               type="text"
@@ -190,51 +192,144 @@ export default function EditarInformacion({
             />
           </Box>
         </Flex>
-        <Flex sx={{ flexFlow: "row wrap", justifyContent: "space-between" }}>
-          <Box m={1}>
-            <Label
-              sx={{
-                display: "flex",
-                flexFlow: "column nowrap",
-                justifyContent: "center",
-                alignContent: "center",
+        <Flex
+          sx={{
+            flexFlow: "row wrap",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+          mb={2}
+        >
+          <Flex
+            sx={{
+              flexFlow: ["row wrap"],
+              justifyContent: ["space-between"],
+              alignItems: "flex-start",
+            }}
+          >
+            <Box m={1}>
+              <Label
+                sx={{
+                  display: "flex",
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                Alergias
+              </Label>
+              <Input
+                value={writtenAlergia}
+                onChange={({ target: { value } }) => setWrittenAlergia(value)}
+              />
+            </Box>
+            <Button
+              sx={{ alignSelf: "flex-end", marginBottom: "6px" }}
+              onClick={(e) => {
+                e.preventDefault();
+                setAlergias([...alergias, writtenAlergia]);
+                setWrittenAlergia("");
               }}
             >
-              Alergias
-              <p>
-                <small>separar con " , " - comas - cada alergia</small>
-              </p>
-            </Label>
-            <Textarea
-              rows={3}
-              sx={{ minWidth: "300px" }}
-              value={values.alergias}
-              onChange={makeOnChange("alergias")}
-            />
-          </Box>
-          <Box m={1}>
-            <Label
-              sx={{
-                display: "flex",
-                flexFlow: "column nowrap",
-                justifyContent: "center",
-                alignContent: "center",
-              }}
-            >
-              Enfermedades
-              <p>
-                <small>separar con " , " - comas - cada enfermedad</small>
-              </p>
-            </Label>
-            <Textarea
-              rows={3}
-              sx={{ minWidth: "300px" }}
-              value={values.enfermedades}
-              onChange={makeOnChange("enfermedades")}
-            />
-          </Box>
+              Agregar Alergia
+            </Button>
+          </Flex>
+          <Flex sx={{ flexFlow: "row wrap", gap: "6px" }} my={1}>
+            {alergias?.map((alergia, index) => (
+              <Badge
+                sx={{
+                  display: "flex",
+                  flexFlow: "row wrap",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "6px",
+                  fontSize: "18px",
+                  alignSelf: "flex-start",
+                }}
+                key={index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAlergias(alergias.filter((item, i) => i !== index));
+                }}
+              >
+                <AiOutlineDelete />
+                <div> {alergia}</div>
+              </Badge>
+            ))}
+          </Flex>
         </Flex>
-        <Button my={2} type="submit" disabled={loading}>
+        <Flex
+          sx={{
+            flexFlow: "row wrap",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <Flex
+            sx={{
+              flexFlow: ["row wrap"],
+              justifyContent: ["space-between"],
+              alignItems: "flex-start",
+            }}
+          >
+            <Box m={1}>
+              <Label
+                sx={{
+                  display: "flex",
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignContent: "center",
+                }}
+              >
+                Enfermedades
+              </Label>
+              <Input
+                value={writtenEnfermedad}
+                onChange={({ target: { value } }) =>
+                  setWrittenEnfermedad(value)
+                }
+              />
+            </Box>
+            <Button
+              sx={{ alignSelf: "flex-end", marginBottom: "6px" }}
+              onClick={(e) => {
+                e.preventDefault();
+                setEnfermedades([...enfermedades, writtenEnfermedad]);
+                setWrittenEnfermedad("");
+              }}
+            >
+              Agregar Enfermedad
+            </Button>
+          </Flex>
+          <Flex sx={{ flexFlow: "row wrap", gap: "6px" }} my={1}>
+            {enfermedades?.map((enfermedad, index) => (
+              <Badge
+                sx={{
+                  display: "flex",
+                  flexFlow: "row wrap",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "6px",
+                  fontSize: "18px",
+                  alignSelf: "flex-start",
+                }}
+                key={index}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEnfermedades(
+                    enfermedades.filter((item, i) => i !== index)
+                  );
+                }}
+              >
+                <AiOutlineDelete />
+                <div> {enfermedad}</div>
+              </Badge>
+            ))}
+          </Flex>
+        </Flex>
+        <Button mt={4} type="submit" disabled={loading}>
           {loading ? <Spinner /> : "Editar familiar"}
         </Button>
       </Flex>
