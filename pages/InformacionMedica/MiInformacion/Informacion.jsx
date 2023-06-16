@@ -112,7 +112,6 @@ export default function Informacion({ user, familia }) {
     setTimeout(async () => {
       const element = document.getElementById("pdf-content");
       if (!element) return console.log("No se encontro el elemento");
-
       const options = {
         filename: `${miInfo.name} ${miInfo.lastName} - Información Médica.pdf`,
         image: { type: "jpeg", quality: 1 },
@@ -200,7 +199,7 @@ export default function Informacion({ user, familia }) {
         mt={3}
         sx={{
           flexFlow: ["column nowrap", "row wrap"],
-          justifyContent: ["center", "space-between"],
+          justifyContent: ["center", "space-around"],
           alignItems: ["center", "stretch"],
           width: "100%",
         }}
@@ -213,24 +212,26 @@ export default function Informacion({ user, familia }) {
             alignItems: "center",
             width: ["100%", "auto"],
             gap: "1em",
+            border: "1px solid #003471",
+            borderRadius: "12px",
+            p: 2,
           }}
         >
           {miInfo.picture ? (
             <Image
               src={miInfo.picture}
               alt="profile picture"
-              width={180}
+              width={200}
               height={200}
               style={{
                 borderRadius: "50%",
                 overflow: "hidden",
-                border: "1px solid rgba(7 89 133 0.5)",
               }}
             />
           ) : (
             <Box
               sx={{
-                width: "180px",
+                width: "200px",
                 height: "200px",
                 borderRadius: "50%",
                 border: "1px solid rgb(7 89 133)",
@@ -244,8 +245,6 @@ export default function Informacion({ user, familia }) {
               flexFlow: "column nowrap",
               justifyContent: "flex-start",
               alignItems: "stretch",
-              border: "1px solid #003471",
-              borderRadius: "12px",
             }}
             p={2}
           >

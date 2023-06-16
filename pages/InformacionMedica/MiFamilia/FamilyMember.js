@@ -20,7 +20,7 @@ export default function FamilyMember({ user, setActive, active }) {
           active._id === user._id
             ? "1px solid rgb(7 89 133)"
             : hovered && "1px solid rgba( 255, 255, 255, 0.18 )",
-        maxWidth: "100px",
+        width: "100px",
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -30,8 +30,8 @@ export default function FamilyMember({ user, setActive, active }) {
       {user.profile.picture ? (
         <Image
           src={user.profile.picture}
-          width={60}
-          height={70}
+          width={50}
+          height={50}
           alt={user?.profile?.name}
           style={{
             borderRadius: "50%",
@@ -42,8 +42,8 @@ export default function FamilyMember({ user, setActive, active }) {
       ) : (
         <Box
           sx={{
-            width: "60px",
-            height: "70px",
+            width: "50px",
+            height: "50px",
             borderRadius: "50%",
             border:
               active._id === user._id && !hovered

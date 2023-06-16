@@ -60,6 +60,11 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     value: false,
     label: "No",
   });
+  const [alergias, setAlergias] = useState([]);
+  const [writtenAlergia, setWrittenAlergia] = useState("Sin Alergias");
+  const [enfermedades, setEnfermedades] = useState([]);
+  const [writtenEnfermedad, setWrittenEnfermedad] =
+    useState("Sin enfermedades");
   const initialValues = {
     name: "",
     lastName: "",
@@ -67,8 +72,6 @@ export default function AgregarFamiliar({ display, setDisplay }) {
     roles: ["familiar"],
     peso: 0,
     estatura: 0,
-    alergias: "",
-    enfermedades: "",
     familias: [],
     telefono: "",
     tipoSangre: { value: null, label: "Selecciona tipo de sangre" },
@@ -112,10 +115,8 @@ export default function AgregarFamiliar({ display, setDisplay }) {
         tipoSangre: values.tipoSangre.value,
         peso: parseFloat(values.peso),
         estatura: parseFloat(values.estatura),
-        alergias: values.alergias?.split(",").map((alergia) => alergia.trim()),
-        enfermedades: values.enfermedades
-          ?.split(",")
-          .map((enfermedad) => enfermedad.trim()),
+        alergias,
+        enfermedades,
       },
     },
     onCompleted: ({}) => {
@@ -321,69 +322,154 @@ export default function AgregarFamiliar({ display, setDisplay }) {
               />
             </Box>
           </Flex>
-          <Flex sx={{ flexFlow: "row wrap", justifyContent: "space-between" }}>
-            <Box m={1}>
-              <Label
-                sx={{
-                  display: "flex",
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
+          <Flex
+            sx={{
+              flexFlow: ["column nowrap", "row wrap"],
+              justifyContent: ["center", "flex-start"],
+              alignItems: "flex-start",
+              width: "100%",
+
+              my: 2,
+              p: 2,
+            }}
+          >
+            <Flex
+              m={1}
+              sx={{
+                flexFlow: "column nowrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                gap: "12px",
+              }}
+              mr={[2, 4]}
+            >
+              <Box>
+                <Label
+                  sx={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignContent: "center",
+                  }}
+                >
+                  Alergias
+                </Label>
+                <Input
+                  value={writtenAlergia}
+                  onChange={({ target: { value } }) => setWrittenAlergia(value)}
+                />
+              </Box>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setAlergias([...alergias, writtenAlergia]);
+                  setWrittenAlergia("");
                 }}
               >
-                Alergias
-                <p>
-                  <small>separar con " , " - comas - cada alergia</small>
-                </p>
-              </Label>
-              <Textarea
-                rows={3}
-                sx={{ minWidth: "300px" }}
-                value={values.alergias}
-                onChange={makeOnChange("alergias")}
-              />
-            </Box>
-            <Box m={1}>
-              <Label
-                sx={{
-                  display: "flex",
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
+                Agregar Alergia
+              </Button>
+            </Flex>
+            <Flex sx={{ flexFlow: "row wrap", gap: "6px" }} my={2}>
+              {alergias.map((alergia, index) => (
+                <Badge
+                  sx={{
+                    display: "flex",
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "6px",
+                    padding: "6px",
+                    fontSize: "18px",
+                  }}
+                  key={index}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setAlergias(alergias.filter((item, i) => i !== index));
+                  }}
+                >
+                  <AiOutlineDelete />
+                  <div> {alergia}</div>
+                </Badge>
+              ))}
+            </Flex>
+          </Flex>
+          <Flex
+            sx={{
+              flexFlow: ["column nowrap", "row wrap"],
+              justifyContent: ["center", "flex-start"],
+              alignItems: "flex-start",
+              width: "100%",
+
+              my: 2,
+              p: 2,
+            }}
+          >
+            <Flex
+              m={1}
+              sx={{
+                flexFlow: "column nowrap",
+                justifyContent: "space-between",
+                alignItems: "flex-start",
+                gap: "12px",
+                width: "100%",
+              }}
+            >
+              <Box>
+                <Label
+                  sx={{
+                    display: "flex",
+                    flexFlow: "column nowrap",
+                    justifyContent: "center",
+                    alignContent: "center",
+                  }}
+                >
+                  Enfermedades Cronicas
+                </Label>
+                <Input
+                  value={writtenEnfermedad}
+                  onChange={({ target: { value } }) =>
+                    setWrittenEnfermedad(value)
+                  }
+                />
+              </Box>
+              <Button
+                onClick={(e) => {
+                  e.preventDefault();
+                  setEnfermedades([...enfermedades, writtenEnfermedad]);
+                  setWrittenEnfermedad("");
                 }}
               >
-                Enfermedades
-                <p>
-                  <small>separar con " , " - comas - cada enfermedad</small>
-                </p>
-              </Label>
-              <Textarea
-                rows={3}
-                sx={{ minWidth: "300px" }}
-                value={values.enfermedades}
-                onChange={makeOnChange("enfermedades")}
-              />
-            </Box>
-            <Box m={1} sx={{ minWidth: "300px" }}>
-              <Label
-                sx={{
-                  display: "flex",
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                }}
-                mb={3}
-              >
-                Familias a incluir
-              </Label>
-              <Select
-                isMulti
-                isSearchable
-                options={familias}
-                value={values.familias}
-                onChange={(e) => setValues({ ...values, familias: e })}
-              />
-            </Box>
+                Agregar Enfermedad
+              </Button>
+            </Flex>
+            <Flex
+              sx={{ flexFlow: "row wrap", width: "100%", gap: "6px" }}
+              my={2}
+            >
+              {enfermedades.map((enfermedad, index) => (
+                <Badge
+                  key={index}
+                  sx={{
+                    display: "flex",
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    gap: "6px",
+                    padding: "6px",
+                    fontSize: "18px",
+                  }}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setEnfermedades(
+                      enfermedad.filter((item, i) => i !== index)
+                    );
+                  }}
+                >
+                  <AiOutlineDelete />
+                  <div> {enfermedad}</div>
+                </Badge>
+              ))}
+            </Flex>
           </Flex>
           <Button my={2} type="submit" disabled={loading}>
             Agregar familiar
