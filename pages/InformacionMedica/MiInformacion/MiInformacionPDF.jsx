@@ -341,7 +341,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
               <tr key={familiar._id}>
                 <td>{familiar.name}</td>
                 <td>
-                  <a href={`tel:${tel?.telefono}`}>{familiar.telefono}</a>
+                  <a href={`tel:${familiar?.telefono}`}>{familiar?.telefono}</a>
                 </td>
                 <td>
                   {familiar.alergias?.length > 0 && (
