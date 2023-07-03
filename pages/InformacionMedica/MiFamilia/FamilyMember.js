@@ -11,21 +11,20 @@ export default function FamilyMember({ user, setActive, active }) {
         justifyContent: "stretch",
         alignItems: "center",
         alignContent: "center",
-        backgroundColor: active._id === user._id && "rgb(7 89 133)",
-        background: hovered && "rgba( 255, 255, 255, 0.55 )",
-        boxShadow: hovered && " 0 8px 32px 0 rgba( 31, 38, 135, 0.37 )",
-        backdropFilter: hovered && "blur( 13.5px )",
-        borderRadius: "10px",
-        border:
-          active._id === user._id
-            ? "1px solid rgb(7 89 133)"
-            : hovered && "1px solid rgba( 255, 255, 255, 0.18 )",
+        backgroundColor:
+          active._id === user._id ? "rgb(7 89 133)" : "rgb(186 230 253)",
+        borderRadius: "999px",
+        border: "1px solid white",
+        boxShadow:
+          "0 10px 15px -3px rgba(7, 89, 133, 0.1), 0 4px 6px -4px rgba(7, 89, 133, 0.1)",
         width: "100px",
+        my: 2,
+        mx: 2,
+        p: 3,
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => setActive(user)}
-      p={2}
     >
       {user.profile.picture ? (
         <Image
@@ -56,8 +55,7 @@ export default function FamilyMember({ user, setActive, active }) {
         mt={2}
         sx={{
           textAlign: "center",
-          color:
-            active._id === user._id && !hovered ? "white" : "rgb(7 89 133)",
+          color: active._id === user._id ? "white" : "rgb(7 89 133)",
           fontWeight: "bold",
         }}
       >
@@ -66,8 +64,7 @@ export default function FamilyMember({ user, setActive, active }) {
       <Text
         sx={{
           textAlign: "center",
-          color:
-            active._id === user._id && !hovered ? "white" : "rgb(7 89 133)",
+          color: active._id === user._id ? "white" : "rgb(7 89 133)",
           fontWeight: "bold",
         }}
       >

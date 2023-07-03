@@ -137,7 +137,6 @@ export default function Informacion({ user, familia }) {
         });
     }, 500); // Adjust the delay as needed (e.g., 500 ms)
   };
-
   if (loading)
     return (
       <Flex
@@ -172,7 +171,6 @@ export default function Informacion({ user, familia }) {
         alignContent: "center",
         alignItems: "center",
         width: "100%",
-        marginLeft: ["-20px", 0],
       }}
     >
       <AgregarPeso
@@ -196,395 +194,454 @@ export default function Informacion({ user, familia }) {
         }}
       />
       <Flex
-        mt={3}
-        sx={{
-          flexFlow: ["column nowrap", "row wrap"],
-          justifyContent: ["center", "space-around"],
-          alignItems: ["center", "stretch"],
-          width: "100%",
-        }}
-      >
-        <Flex
-          sx={{
-            flexFlow: ["column nowrap", "row wrap"],
-            justifyContent: ["center", "space-between"],
-            alignContent: "center",
-            alignItems: "center",
-            width: ["100%", "auto"],
-            gap: "1em",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            p: 2,
-          }}
-        >
-          {miInfo.picture ? (
-            <Image
-              src={miInfo.picture}
-              alt="profile picture"
-              width={200}
-              height={200}
-              style={{
-                borderRadius: "50%",
-                overflow: "hidden",
-              }}
-            />
-          ) : (
-            <Box
-              sx={{
-                width: "200px",
-                height: "200px",
-                borderRadius: "50%",
-                border: "1px solid rgb(7 89 133)",
-                boxShadow: "6px 6px 3px 0px rgba(7, 89, 133,0.75)",
-              }}
-            />
-          )}
-          <Flex
-            ml={[0, 4]}
-            sx={{
-              flexFlow: "column nowrap",
-              justifyContent: "flex-start",
-              alignItems: "stretch",
-            }}
-            p={2}
-          >
-            <Heading as="h2" sx={{ color: "#003471" }}>
-              {miInfo.name} {miInfo.lastName}
-            </Heading>
-            <Flex
-              sx={{
-                flexFlow: "row wrap",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-            >
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>Tipo de Sangre:</Text>
-                <Text sx={{ fontSize: "20px" }}> {miInfo.tipoSangre}</Text>
-              </Flex>
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "flex-end",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>Fecha de Nacimiento: </Text>{" "}
-                <Text> {format_date(miInfo.fechaNacimiento)} </Text>
-                <Text>
-                  {age.years} años{" "}
-                  <>{age.years < 3 && <>{age.months} meses</>}</>
-                </Text>
-              </Flex>
-            </Flex>
-            <Flex
-              sx={{
-                flexFlow: "row wrap",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-            >
-              <Flex
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "flex",
-                }}
-                m={2}
-              >
-                <Text sx={{ fontWeight: "bold" }}>Peso:</Text>
-                <Text> {miInfo.peso} kg</Text>
-              </Flex>
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>Estatura:</Text>
-                <Text> {miInfo.estatura} cm</Text>
-              </Flex>
-            </Flex>
-            <Flex
-              sx={{
-                flexFlow: "row wrap",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-            >
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>Alergias: </Text>
-                {miInfo.alergias?.length > 0 && (
-                  <>
-                    {miInfo.alergias.map((alergia, index) => (
-                      <Badge m={1} key={index}>
-                        {alergia}
-                      </Badge>
-                    ))}
-                  </>
-                )}
-              </Flex>
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "center",
-                  alignContent: "center",
-                  alignItems: "flex-end",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>Enfermedades: </Text>
-                {miInfo.enfermedades?.length > 0 && (
-                  <>
-                    {miInfo.enfermedades.map((enfermedad, index) => (
-                      <Badge m={1} key={index}>
-                        {enfermedad}
-                      </Badge>
-                    ))}
-                  </>
-                )}
-              </Flex>
-            </Flex>
-            <Flex
-              sx={{
-                flexFlow: "row wrap",
-                justifyContent: "space-between",
-                alignItems: "flex-start",
-              }}
-            >
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "flex-start",
-                  alignContent: "flex-start",
-                  alignItems: "flex-start",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>RFC:</Text>
-                <Text> {miInfo.rfc}</Text>
-              </Flex>
-              <Flex
-                m={2}
-                sx={{
-                  flexFlow: "column nowrap",
-                  justifyContent: "flex-end",
-                  alignContent: "flex-end",
-                  alignItems: "flex-end",
-                }}
-              >
-                <Text sx={{ fontWeight: "bold" }}>CURP:</Text>
-                <Text> {miInfo.curp}</Text>
-              </Flex>
-            </Flex>
-          </Flex>
-        </Flex>
-        <Flex
-          my={[3, 0]}
-          sx={{
-            flexFlow: "column nowrap",
-            justifyContent: "space-around",
-            alignItems: ["center", "flex-end"],
-          }}
-        >
-          <Button m={1} variant="outline" onClick={() => setDisplayPeso("box")}>
-            Agregar peso {miInfo.minor ? "y estatura" : ""}
-          </Button>
-          <Button m={1} variant="outline" onClick={() => setDisplayEdit("box")}>
-            Editar informacion
-          </Button>
-
-          <Button
-            m={1}
-            onClick={downloadPDF}
-            sx={{ alignSelf: "flex-end", backgroundColor: "#003471" }}
-            disabled={displayEnvInfo}
-          >
-            {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
-          </Button>
-          {displayEnvInfo && (
-            <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />
-          )}
-        </Flex>
-      </Flex>
-      <Flex
-        my={4}
         sx={{
           flexFlow: "row wrap",
-          justifyContent: ["center", "flex-start"],
+          width: ["100%", "80%"],
+          justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <Heading
-          as="h4"
-          onClick={() => setDisplay("Seguro")}
-          m={2}
+        <Flex
           sx={{
-            backgroundColor: display === "Seguro" ? "#003471" : "white",
-            color: display === "Seguro" ? "white" : "#003471",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            fontWeight: display === "Seguro" ? "bold" : "normal",
-            fontSize: "1em",
-          }}
-          p={2}
-        >
-          Seguro
-        </Heading>
-        <Heading
-          onClick={() => setDisplay("Medicamentos")}
-          as="h4"
-          m={2}
-          sx={{
-            backgroundColor: display === "Medicamentos" ? "#003471" : "white",
-            color: display === "Medicamentos" ? "white" : "#003471",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            fontWeight: display === "Medicamentos" ? "bold" : "normal",
-            fontSize: "1em",
-            p: 2,
+            flexFlow: "column nowrap",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          Medicamentos
-        </Heading>
-        <Heading
-          onClick={() => setDisplay("Medicos")}
-          as="h4"
-          m={2}
-          sx={{
-            backgroundColor: display === "Medicos" ? "#003471" : "white",
-            color: display === "Medicos" ? "white" : "#003471",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            fontWeight: display === "Medicos" ? "bold" : "normal",
-            fontSize: "1em",
-            p: 2,
-          }}
-        >
-          Médicos
-        </Heading>
-        <Heading
-          onClick={() => setDisplay("Historial")}
-          as="h4"
-          m={2}
-          sx={{
-            backgroundColor: display === "Historial" ? "#003471" : "white",
-            color: display === "Historial" ? "white" : "#003471",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            fontWeight: display === "Historial" ? "bold" : "normal",
-            fontSize: "1em",
-            p: 2,
-          }}
-        >
-          Historial Médico
-        </Heading>
-        <Heading
-          onClick={() => setDisplay("HistorialPeso")}
-          as="h4"
-          m={2}
-          sx={{
-            backgroundColor: display === "HistorialPeso" ? "#003471" : "white",
-            color: display === "HistorialPeso" ? "white" : "#003471",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            fontWeight: display === "HistorialPeso" ? "bold" : "normal",
-            fontSize: "1em",
-            p: 2,
-          }}
-        >
-          Historial de Peso {miInfo.minor ? "y Estatura" : ""}
-        </Heading>
-        <Heading
-          onClick={() => setDisplay("Estudios")}
-          as="h4"
-          m={2}
-          sx={{
-            backgroundColor: display === "Estudios" ? "#003471" : "white",
-            color: display === "Estudios" ? "white" : "#003471",
-            border: "1px solid #003471",
-            borderRadius: "12px",
-            fontWeight: display === "Estudios" ? "bold" : "normal",
-            fontSize: "1em",
-            p: 2,
-          }}
-        >
-          Estudios
-        </Heading>
-      </Flex>
-      <Box mb={6}>
-        {{
-          Seguro: () => (
-            <Seguro
-              user={data?.getUserProfile?._id}
-              miInfo={miInfo}
-              query={QUERY}
-            />
-          ),
-          Medicamentos: () => (
-            <Medicamentos
-              user={data?.getUserProfile?._id}
-              miInfo={miInfo}
-              query={QUERY}
-              oldMedicamento={{
-                oldMed,
-                setOldMed,
+          <Flex
+            sx={{
+              flexFlow: "column nowrap",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Flex
+              my={[3, 2]}
+              sx={{
+                flexFlow: "row wrap",
+                justifyContent: "space-around",
+                alignItems: ["center", "flex-end"],
               }}
-            />
-          ),
-          Medicos: () => (
-            <Medicos
-              user={data?.getUserProfile?._id}
-              miInfo={miInfo}
-              query={QUERY}
-              familia={familia}
-            />
-          ),
-          Historial: () => (
-            <HistorialMedico
-              user={data?.getUserProfile?._id}
-              miInfo={miInfo}
-              query={QUERY}
-            />
-          ),
-          HistorialPeso: () => (
-            <HistorialDePeso
-              user={data?.getUserProfile?._id}
-              miInfo={miInfo}
-              query={QUERY}
-            />
-          ),
-          Estudios: () => (
-            <Estudios
-              user={data?.getUserProfile?._id}
-              miInfo={miInfo}
-              query={QUERY}
-            />
-          ),
-        }[display]?.()}
-      </Box>
+            >
+              <Button m={1} onClick={() => setDisplayPeso("box")}>
+                Agregar peso {miInfo.minor ? "y estatura" : ""}
+              </Button>
+              <Button m={1} onClick={() => setDisplayEdit("box")}>
+                Editar informacion
+              </Button>
+
+              <Button
+                m={1}
+                onClick={downloadPDF}
+                sx={{ alignSelf: "flex-end", backgroundColor: "#003471" }}
+                disabled={displayEnvInfo}
+              >
+                {displayEnvInfo ? <Spinner /> : "Descargar mi informacion"}
+              </Button>
+              {displayEnvInfo && (
+                <MiInformacionPDF user={user} setDisplay={setDisplayEnvInfo} />
+              )}
+            </Flex>
+            <Flex
+              sx={{
+                flexFlow: "column nowrap",
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "center",
+                width: ["300px", "500px"],
+                gap: "1em",
+                borderRadius: "12px",
+                p: 2,
+                backgroundColor: "#0093E9",
+                backgroundImage:
+                  "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
+              }}
+            >
+              <Flex
+                sx={{
+                  flexFlow: "row wrap",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  width: "100%",
+                }}
+              >
+                {miInfo.picture ? (
+                  <Image
+                    src={miInfo.picture}
+                    alt="profile picture"
+                    width={80}
+                    height={80}
+                    style={{
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                    }}
+                  />
+                ) : (
+                  <Box
+                    sx={{
+                      width: "80px",
+                      height: "80px",
+                      borderRadius: "50%",
+                      border: "1px solid rgb(7 89 133)",
+                      boxShadow: "6px 6px 3px 0px rgba(7, 89, 133,0.75)",
+                    }}
+                  />
+                )}
+                <Flex
+                  sx={{
+                    flexFlow: "column nowrap",
+                    justifyContent: "flex-start",
+                    alignItems: "stretch",
+                    flex: 1,
+                    mx: 2,
+                  }}
+                  p={2}
+                >
+                  <Heading as="h2" sx={{ color: "#fff" }}>
+                    {miInfo.name} {miInfo.lastName}
+                  </Heading>
+                </Flex>
+              </Flex>
+              <Flex
+                sx={{
+                  flexFlow: "column nowrap",
+                  width: "100%",
+                }}
+              >
+                <Flex
+                  sx={{
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      Tipo de Sangre:
+                    </Text>
+                    <Text sx={{ fontSize: "20px", color: "white" }}>
+                      {" "}
+                      {miInfo.tipoSangre}
+                    </Text>
+                  </Flex>
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      Fecha de Nacimiento:{" "}
+                    </Text>{" "}
+                    <Text sx={{ color: "white" }}>
+                      {" "}
+                      {format_date(miInfo.fechaNacimiento)}{" "}
+                    </Text>
+                    <Text sx={{ color: "white" }}>
+                      {age.years} años{" "}
+                      <>{age.years < 3 && <>{age.months} meses</>}</>
+                    </Text>
+                  </Flex>
+                </Flex>
+                <Flex
+                  sx={{
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Flex
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "flex",
+                    }}
+                    m={2}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      Peso:
+                    </Text>
+                    <Text sx={{ color: "white" }}> {miInfo.peso} kg</Text>
+                  </Flex>
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      Estatura:
+                    </Text>
+                    <Text sx={{ color: "white" }}> {miInfo.estatura} cm</Text>
+                  </Flex>
+                </Flex>
+                <Flex
+                  sx={{
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      Alergias:{" "}
+                    </Text>
+                    {miInfo.alergias?.length > 0 && (
+                      <>
+                        {miInfo.alergias.map((alergia, index) => (
+                          <Badge m={1} key={index}>
+                            {alergia}
+                          </Badge>
+                        ))}
+                      </>
+                    )}
+                  </Flex>
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "center",
+                      alignContent: "center",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      Enfermedades:{" "}
+                    </Text>
+                    {miInfo.enfermedades?.length > 0 && (
+                      <>
+                        {miInfo.enfermedades.map((enfermedad, index) => (
+                          <Badge m={1} key={index}>
+                            {enfermedad}
+                          </Badge>
+                        ))}
+                      </>
+                    )}
+                  </Flex>
+                </Flex>
+                <Flex
+                  sx={{
+                    flexFlow: "row wrap",
+                    justifyContent: "space-between",
+                    alignItems: "flex-start",
+                  }}
+                >
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "flex-start",
+                      alignContent: "flex-start",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      RFC:
+                    </Text>
+                    <Text sx={{ color: "white" }}> {miInfo.rfc}</Text>
+                  </Flex>
+                  <Flex
+                    m={2}
+                    sx={{
+                      flexFlow: "column nowrap",
+                      justifyContent: "flex-end",
+                      alignContent: "flex-end",
+                      alignItems: "flex-end",
+                    }}
+                  >
+                    <Text sx={{ fontWeight: "bold", color: "white" }}>
+                      CURP:
+                    </Text>
+                    <Text sx={{ color: "white" }}> {miInfo.curp}</Text>
+                  </Flex>
+                </Flex>
+              </Flex>
+            </Flex>
+          </Flex>
+          <Flex
+            my={4}
+            sx={{
+              flexFlow: "row wrap",
+              justifyContent: "space-between",
+              alignItems: "center",
+              width: "100%",
+            }}
+          >
+            <Heading
+              as="h4"
+              onClick={() => setDisplay("Seguro")}
+              m={2}
+              sx={{
+                backgroundColor: display === "Seguro" ? "#003471" : "white",
+                color: display === "Seguro" ? "white" : "#003471",
+                border: "1px solid #003471",
+                borderRadius: "12px",
+                fontWeight: display === "Seguro" ? "bold" : "normal",
+                fontSize: "1em",
+              }}
+              p={2}
+            >
+              Seguro
+            </Heading>
+            <Heading
+              onClick={() => setDisplay("Medicamentos")}
+              as="h4"
+              m={2}
+              sx={{
+                backgroundColor:
+                  display === "Medicamentos" ? "#003471" : "white",
+                color: display === "Medicamentos" ? "white" : "#003471",
+                border: "1px solid #003471",
+                borderRadius: "12px",
+                fontWeight: display === "Medicamentos" ? "bold" : "normal",
+                fontSize: "1em",
+                p: 2,
+              }}
+            >
+              Medicamentos
+            </Heading>
+            <Heading
+              onClick={() => setDisplay("Medicos")}
+              as="h4"
+              m={2}
+              sx={{
+                backgroundColor: display === "Medicos" ? "#003471" : "white",
+                color: display === "Medicos" ? "white" : "#003471",
+                border: "1px solid #003471",
+                borderRadius: "12px",
+                fontWeight: display === "Medicos" ? "bold" : "normal",
+                fontSize: "1em",
+                p: 2,
+              }}
+            >
+              Médicos
+            </Heading>
+            <Heading
+              onClick={() => setDisplay("Historial")}
+              as="h4"
+              m={2}
+              sx={{
+                backgroundColor: display === "Historial" ? "#003471" : "white",
+                color: display === "Historial" ? "white" : "#003471",
+                border: "1px solid #003471",
+                borderRadius: "12px",
+                fontWeight: display === "Historial" ? "bold" : "normal",
+                fontSize: "1em",
+                p: 2,
+              }}
+            >
+              Historial Médico
+            </Heading>
+            <Heading
+              onClick={() => setDisplay("HistorialPeso")}
+              as="h4"
+              m={2}
+              sx={{
+                backgroundColor:
+                  display === "HistorialPeso" ? "#003471" : "white",
+                color: display === "HistorialPeso" ? "white" : "#003471",
+                border: "1px solid #003471",
+                borderRadius: "12px",
+                fontWeight: display === "HistorialPeso" ? "bold" : "normal",
+                fontSize: "1em",
+                p: 2,
+              }}
+            >
+              Historial de Peso {miInfo.minor ? "y Estatura" : ""}
+            </Heading>
+            <Heading
+              onClick={() => setDisplay("Estudios")}
+              as="h4"
+              m={2}
+              sx={{
+                backgroundColor: display === "Estudios" ? "#003471" : "white",
+                color: display === "Estudios" ? "white" : "#003471",
+                border: "1px solid #003471",
+                borderRadius: "12px",
+                fontWeight: display === "Estudios" ? "bold" : "normal",
+                fontSize: "1em",
+                p: 2,
+              }}
+            >
+              Estudios
+            </Heading>
+          </Flex>
+          <Box mb={6}>
+            {{
+              Seguro: () => (
+                <Seguro
+                  user={data?.getUserProfile?._id}
+                  miInfo={miInfo}
+                  query={QUERY}
+                />
+              ),
+              Medicamentos: () => (
+                <Medicamentos
+                  user={data?.getUserProfile?._id}
+                  miInfo={miInfo}
+                  query={QUERY}
+                  oldMedicamento={{
+                    oldMed,
+                    setOldMed,
+                  }}
+                />
+              ),
+              Medicos: () => (
+                <Medicos
+                  user={data?.getUserProfile?._id}
+                  miInfo={miInfo}
+                  query={QUERY}
+                  familia={familia}
+                />
+              ),
+              Historial: () => (
+                <HistorialMedico
+                  user={data?.getUserProfile?._id}
+                  miInfo={miInfo}
+                  query={QUERY}
+                />
+              ),
+              HistorialPeso: () => (
+                <HistorialDePeso
+                  user={data?.getUserProfile?._id}
+                  miInfo={miInfo}
+                  query={QUERY}
+                />
+              ),
+              Estudios: () => (
+                <Estudios
+                  user={data?.getUserProfile?._id}
+                  miInfo={miInfo}
+                  query={QUERY}
+                />
+              ),
+            }[display]?.()}
+          </Box>
+        </Flex>
+      </Flex>
     </Flex>
   );
 }

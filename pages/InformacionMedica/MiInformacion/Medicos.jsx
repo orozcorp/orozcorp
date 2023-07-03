@@ -14,7 +14,6 @@ const MUTATION = gql`
 `;
 
 export default function Medicos({ user, miInfo, query, familia }) {
-  console.log("familia", familia);
   const [display, setDisplay] = useState("none");
   const [updateMedicoCabecera, { loading }] = useMutation(MUTATION, {
     refetchQueries: [

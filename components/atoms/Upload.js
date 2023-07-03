@@ -31,7 +31,6 @@ export default function Upload({ setFoto, location, user, heading, accept }) {
       throw new Error(error);
     }
   }
-
   const inputFile = useRef(null);
   function uploadImage() {
     const Ogfile = inputFile.current.files[0];
