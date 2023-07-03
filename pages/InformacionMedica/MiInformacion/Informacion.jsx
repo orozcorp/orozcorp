@@ -248,7 +248,7 @@ export default function Informacion({ user, familia }) {
                 justifyContent: "center",
                 alignContent: "center",
                 alignItems: "center",
-                width: ["300px", "500px"],
+                width: ["90%", "500px"],
                 gap: "1em",
                 borderRadius: "12px",
                 p: 2,
