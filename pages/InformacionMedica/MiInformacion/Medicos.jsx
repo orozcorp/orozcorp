@@ -1,5 +1,12 @@
 import { gql, useMutation } from "@apollo/client";
-import { Button, Flex, Box, Checkbox, Badge } from "@theme-ui/components";
+import {
+  Button,
+  Flex,
+  Heading,
+  Checkbox,
+  Badge,
+  Text,
+} from "@theme-ui/components";
 import { useMemo, useState } from "react";
 import AgregarMedico from "./AgregarMedico";
 
@@ -57,59 +64,82 @@ export default function Medicos({ user, miInfo, query, familia }) {
             Agregar Médico
           </Button>
         </Flex>
-        <Box my={2} sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}>
-          <table>
-            <thead>
-              <tr>
-                <th>Cabecera</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Telefonos</th>
-                <th>Especialidad</th>
-                <th>Direccion</th>
-              </tr>
-            </thead>
-            <tbody>
-              {miInfo.medicos.map((medico) => (
-                <tr key={medico._id}>
-                  <td>
-                    <Flex
-                      sx={{
-                        flexFlow: "column nowrap",
-                        justifyContent: "center",
-                        alignItems: "center",
-                      }}
-                      onClick={() =>
-                        updateMedicoCabecera({
-                          variables: { idUser: user, idMedico: medico._id },
-                        })
-                      }
+        <Flex
+          sx={{
+            flexFlow: "row wrap",
+            width: "100%",
+            gap: "12px",
+            justifyContent: "space-between",
+            alignItems: "stretch",
+          }}
+        >
+          {miInfo.medicos.map((medico) => (
+            <div
+              key={medico._id}
+              className="
+                m-4
+                flex flex-col flex-nowrap justify-between items-stretch
+                w-80 gap-4 rounded-lg p-4 shadow-lg shadow-sky-600
+                drop-shadow-2xl
+                bg-gradient-to-t from-sky-800 to-sky-400
+        "
+            >
+              <Flex
+                sx={{
+                  flexFlow: "row wrap",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                onClick={() =>
+                  updateMedicoCabecera({
+                    variables: { idUser: user, idMedico: medico._id },
+                  })
+                }
+              >
+                <Checkbox
+                  sx={{
+                    flex: "1 1 50px",
+                  }}
+                  checked={medico?.cabecera}
+                  onChange={() => console.log("change")}
+                />
+                <Heading
+                  as="h2"
+                  sx={{ color: "white", fontSize: "30px", flex: "2 2 100px" }}
+                >
+                  <small style={{ marginRight: "6px", fontSize: "16px" }}>
+                    {medico.nombre}
+                  </small>
+                  {medico.apellido}
+                </Heading>
+              </Flex>
+              <Heading as="h3" sx={{ color: "white" }}>
+                Telefonos
+              </Heading>
+              <Flex
+                sx={{
+                  flexFlow: "column nowrap",
+                  justifyContent: "center",
+                  alignItems: "start",
+                }}
+              >
+                {medico.telefonos.map((tel, index) => (
+                  <div key={index}>
+                    <a
+                      href={`tel:${tel?.telefono}`}
+                      className="flex flex-row flex-wrap justify-start items-start w-full gap-2 w-full"
                     >
-                      <Checkbox
-                        checked={medico?.cabecera}
-                        onChange={() => console.log("change")}
-                      />
-                    </Flex>
-                  </td>
-                  <td>{medico.nombre}</td>
-                  <td>{medico.apellido}</td>
-                  <td>
-                    {medico.telefonos.map((tel, index) => (
-                      <div key={index} style={{ margin: "6px" }}>
-                        <a href={`tel:${tel?.telefono}`}>
-                          <Badge m={1}>{tel?.tipo}</Badge>
-                          {tel?.telefono}
-                        </a>
-                      </div>
-                    ))}
-                  </td>
-                  <td>{medico.especialidad}</td>
-                  <td>{medico.direccion}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </Box>
+                      <Badge m={1}>{tel?.tipo}</Badge>
+                      <div className="text-white">{tel?.telefono}</div>
+                    </a>
+                  </div>
+                ))}
+              </Flex>
+              <Text sx={{ color: "white" }}>{medico.especialidad}</Text>
+              <Text sx={{ color: "white" }}>{medico.direccion}</Text>
+            </div>
+          ))}
+        </Flex>
       </Flex>
     </>
   );
