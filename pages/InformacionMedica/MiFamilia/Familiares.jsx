@@ -50,6 +50,7 @@ export default function Familiares() {
           overflowX: "scroll",
           scrollbarWidth: "thin",
           scrollbarColor: "rgba(7, 89, 133, 0.7) transparent",
+          p: 3,
           "&::-webkit-scrollbar": {
             width: "8px",
             height: "3px",
@@ -62,6 +63,8 @@ export default function Familiares() {
         <Flex
           sx={{
             flexFlow: "row nowrap",
+            justifyContent: "center",
+            alignItems: "center",
             gap: "8px",
             minWidth: "max-content",
           }}

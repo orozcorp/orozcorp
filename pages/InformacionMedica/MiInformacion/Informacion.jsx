@@ -216,7 +216,7 @@ export default function Informacion({ user, familia }) {
             }}
           >
             <Flex
-              my={[3, 2]}
+              my={[3, 3]}
               sx={{
                 flexFlow: "row wrap",
                 justifyContent: "space-around",
@@ -252,6 +252,7 @@ export default function Informacion({ user, familia }) {
                 gap: "1em",
                 borderRadius: "12px",
                 p: 2,
+                mt: 3,
                 backgroundColor: "#0093E9",
                 backgroundImage:
                   "linear-gradient(160deg, #0093E9 0%, #80D0C7 100%)",
@@ -482,7 +483,7 @@ export default function Informacion({ user, familia }) {
             </Flex>
           </Flex>
           <Flex
-            my={4}
+            my={3}
             sx={{
               flexFlow: "row wrap",
               justifyContent: "space-between",

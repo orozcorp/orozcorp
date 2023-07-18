@@ -7,8 +7,8 @@ export default function FamilyMember({ user, setActive, active }) {
   return (
     <div
       className={`flex flex-col w-24 flex-nowrap justify-stretch
-       shadow-lg shadow-sky-600
-                drop-shadow-md text-white
+       shadow-sm shadow-sky-600
+                drop-shadow-sm text-white
       items-center content-center  hover:bg-sky-800 rounded-full border-2 border-color-sky-400 hover:border-color-sky-800  p-4 m-4
       ${active._id === user._id ? "bg-sky-800" : "bg-sky-200"}`}
       onMouseEnter={() => setHovered(true)}
