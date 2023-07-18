@@ -50,7 +50,11 @@ export default function Medicos({ user, miInfo, query, familia }) {
 
       <Flex
         my={2}
-        sx={{ flexFlow: "column nowrap", justifyContent: "flex-start" }}
+        sx={{
+          flexFlow: "column nowrap",
+          justifyContent: "flex-start",
+          width: "100%",
+        }}
       >
         <Flex
           my={1}
@@ -69,7 +73,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
             flexFlow: "row wrap",
             width: "100%",
             gap: "12px",
-            justifyContent: "space-between",
+            justifyContent: "flex-start",
             alignItems: "stretch",
           }}
         >
@@ -77,6 +81,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
             <div
               key={medico._id}
               className="
+                p-8
                 m-4
                 flex flex-col flex-nowrap justify-between items-stretch
                 w-80 gap-4 rounded-lg p-4 shadow-lg shadow-sky-600

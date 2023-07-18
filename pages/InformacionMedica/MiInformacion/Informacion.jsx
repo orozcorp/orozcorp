@@ -589,7 +589,7 @@ export default function Informacion({ user, familia }) {
               Estudios
             </Heading>
           </Flex>
-          <Box mb={6}>
+          <Box mb={6} sx={{ width: "100%" }}>
             {{
               Seguro: () => (
                 <Seguro
