@@ -1,5 +1,6 @@
 import { Flex, Heading, Text, Box } from "@theme-ui/components";
-
+import dynamic from "next/dynamic";
+const Sec2Box = dynamic(() => import("./Sec2Box"), { ssr: false });
 export default function Section2() {
   return (
     <Flex
@@ -25,94 +26,39 @@ export default function Section2() {
           flexFlow: "row wrap",
           justifyContent: "space-around",
           alignContent: "center",
-          alignItems: "stretch",
+          alignItems: "center",
         }}
       >
-        <Box
-          m={2}
-          p={2}
-          sx={{
-            width: ["100%", "400px", "500px"],
-          }}
-          variant="styles.boxGlass"
-        >
-          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
-            Descubrimiento
-          </Heading>
-          <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
-            Nuestros estrategas trabajan para definir el problema, hallar
+        <Sec2Box
+          title={"Descubrimiento"}
+          text="Nuestros estrategas trabajan para definir el problema, hallar
             oportunidades de negocios y usuarios meta. Ayúdamos a transformar tu
-            visión en el producto digital planeado
-          </Text>
-        </Box>
-        <Box
-          m={2}
-          p={2}
-          sx={{
-            width: ["100%", "400px", "500px"],
-          }}
-          variant="styles.boxGlass"
-        >
-          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
-            Diseño relámpago
-          </Heading>
-          <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
-            Un proceso por paso para resolver problemas gigantescos, crear
+            visión en el producto digital planeado"
+        />
+        <Sec2Box
+          title={"Diseño relámpago"}
+          text="Un proceso por paso para resolver problemas gigantescos, crear
             nuevos productos, mejorar productos existentes. Comprimimos meses de
             trabajo en pocas semanas, resultando en un prototipo de alta
-            fidelidad y probado por usuarios reales.
-          </Text>
-        </Box>
-        <Box
-          m={2}
-          p={2}
-          sx={{
-            width: ["100%", "400px", "500px"],
-          }}
-          variant="styles.boxGlass"
-        >
-          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
-            Versión 1
-          </Heading>
-          <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
-            Desarrollo eficiente y veloz de un nuevo producto digital con un
+            fidelidad y probado por usuarios reales."
+        />
+        <Sec2Box
+          title={"Versión 1"}
+          text="Desarrollo eficiente y veloz de un nuevo producto digital con un
             equipo dedicado a tu proyecto. Con un equipo multidisciplinario para
-            un resultado óptimo.
-          </Text>
-        </Box>
-        <Box
-          m={2}
-          p={2}
-          sx={{
-            width: ["100%", "400px", "500px"],
-          }}
-          variant="styles.boxGlass"
-        >
-          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
-            Equipo de desarrollo
-          </Heading>
-          <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
-            Un equipo dedicado de mercadólogos, desarrolladores, y empresarios,
+            un resultado óptimo."
+        />
+        <Sec2Box
+          title={"Equipo de desarrollo"}
+          text="Un equipo dedicado de mercadólogos, desarrolladores, y empresarios,
             te llevan de la mano para mejorar e iterar sobre las versiones ya
-            establecidas. Para un rendimiento y funcionalidad óptima.
-          </Text>
-        </Box>
-        <Box
-          m={2}
-          p={2}
-          sx={{
-            width: ["100%", "400px", "500px"],
-          }}
-          variant="styles.boxGlass"
-        >
-          <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
-            Mantenimiento y soporte
-          </Heading>
-          <Text sx={{ color: "#4a4a4a", fontSize: ["18px", "20px"] }}>
-            ¿No requieres más desarrollo? No hay problema, a través de contratos
-            anuales continuamos ofreciéndote soporte en todo momento.
-          </Text>
-        </Box>
+            establecidas. Para un rendimiento y funcionalidad óptima."
+        />
+        <Sec2Box
+          title={"Mantenimiento y soporte"}
+          text=" ¿No requieres más desarrollo? No hay problema, a través de contratos
+            anuales continuamos ofreciéndote soporte en todo momento."
+        />
       </Flex>
     </Flex>
   );

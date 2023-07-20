@@ -1,6 +1,7 @@
 import { Flex, Heading, Box } from "@theme-ui/components";
 import useWindowSize from "../hooks/useWindowSize";
 import ReactRotatingText from "react-rotating-text";
+import Sec1Box from "./Sec1Box";
 export default function Section1() {
   const size = useWindowSize();
   return (
@@ -52,127 +53,9 @@ export default function Section1() {
           alignItems: "center",
         }}
       >
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            height: "300px",
-            width: "320px",
-            position: "relative",
-            backgroundColor: "#232323",
-            justifyContent: "center",
-            alignItems: "center",
-            alignContent: "center",
-          }}
-          variant="styles.boxGlassBlackBG"
-        >
-          <Heading
-            as="h3"
-            sx={{
-              color: "#fff",
-              fontSize: "48px",
-              textAlign: "center",
-              zIndex: 999,
-            }}
-          >
-            Define Proyecto
-          </Heading>
-          <Heading
-            as="h3"
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              color: "#414141",
-              fontSize: "300px",
-              zIndex: -1,
-            }}
-          >
-            1
-          </Heading>
-        </Flex>
-
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            height: "300px",
-            width: "320px",
-            position: "relative",
-            backgroundColor: "#232323",
-            justifyContent: "center",
-            alignItems: "center",
-            alignContent: "center",
-          }}
-          variant="styles.boxGlassBlackBG"
-        >
-          <Heading
-            as="h3"
-            sx={{
-              color: "#fff",
-              fontSize: "48px",
-              textAlign: "center",
-              zIndex: 999,
-            }}
-          >
-            Incrementa Valor
-          </Heading>
-          <Heading
-            as="h3"
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              color: "#414141",
-              fontSize: "300px",
-              zIndex: -1,
-            }}
-          >
-            2
-          </Heading>
-        </Flex>
-        <Flex
-          m={2}
-          sx={{
-            flexFlow: "column nowrap",
-            height: "300px",
-            width: "320px",
-            position: "relative",
-            backgroundColor: "#232323",
-            justifyContent: "center",
-            alignItems: "center",
-            alignContent: "center",
-          }}
-          variant="styles.boxGlassBlackBG"
-        >
-          <Heading
-            as="h3"
-            sx={{
-              color: "#fff",
-              fontSize: "48px",
-              textAlign: "center",
-              zIndex: 999,
-            }}
-          >
-            Genera Resultados
-          </Heading>
-          <Heading
-            as="h3"
-            sx={{
-              position: "absolute",
-              top: "50%",
-              left: "50%",
-              transform: "translate(-50%, -50%)",
-              color: "#414141",
-              fontSize: "300px",
-              zIndex: -1,
-            }}
-          >
-            3
-          </Heading>
-        </Flex>
+        <Sec1Box title="Define Proyecto" number="1" />
+        <Sec1Box title="Incrementa Valor" number="2" />
+        <Sec1Box title="Genera Resultados" number="3" />
       </Flex>
     </Flex>
   );

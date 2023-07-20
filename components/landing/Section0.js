@@ -1,6 +1,7 @@
 import { Box, Flex, Heading, Text } from "@theme-ui/components";
 import Link from "next/link";
 import ReactRotatingText from "react-rotating-text";
+import { motion } from "framer-motion";
 
 export default function Section0() {
   return (
@@ -59,18 +60,25 @@ export default function Section0() {
             alignItems: "center",
           }}
         >
-          <Heading as="h2" sx={{ color: "#4a4a4a", textAlign: "center" }}>
+          <Heading
+            as="h2"
+            sx={{ color: "#4a4a4a", textAlign: "center", fontSize: "36px" }}
+          >
             Tu lo imaginas, nosotros lo creamos
           </Heading>
         </Flex>
-        <Box
-          my={3}
-          p={3}
-          sx={{
+
+        <motion.button
+          style={{
             backgroundColor: "#910000",
             borderRadius: "20px",
             fontSize: "24px",
+            marginTop: "30px",
+            marginBottom: "30px",
+            padding: "20px",
           }}
+          whileHover={{ scale: 1.5 }}
+          whileTap={{ scale: 0.9 }}
         >
           <Link
             href="#crearProductos"
@@ -81,7 +89,7 @@ export default function Section0() {
           >
             Averigua cómo
           </Link>
-        </Box>
+        </motion.button>
       </Flex>
     </>
   );
