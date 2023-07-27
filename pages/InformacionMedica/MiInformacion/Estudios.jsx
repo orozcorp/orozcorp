@@ -33,9 +33,12 @@ export default function Estudios({ user, miInfo, query }) {
           Agregar Estudios
         </Button>
       </Flex>
-      <Box my={2} sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}>
-        <table>
-          <thead>
+      <Box
+        my={2}
+        className="relative overflow-x-auto shadow-xl drop-shadow-md rounded-xl"
+      >
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
             <tr>
               <th>Fecha</th>
               <th>Descripcion</th>
@@ -45,12 +48,18 @@ export default function Estudios({ user, miInfo, query }) {
           </thead>
           <tbody>
             {sortedHistorial?.map((peso) => (
-              <tr key={peso._id}>
-                <td>{format_date(peso.fecha)}</td>
+              <tr key={peso._id} className="bg-white border-b ">
+                <td>
+                  <b>{format_date(peso.fecha)}</b>
+                </td>
                 <td>{peso.descripcion}</td>
                 <td>{peso.medicoName}</td>
                 <td>
-                  <a href={peso.estudio} target="_blank">
+                  <a
+                    href={peso.estudio}
+                    target="_blank"
+                    className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                  >
                     Descargar
                   </a>
                 </td>

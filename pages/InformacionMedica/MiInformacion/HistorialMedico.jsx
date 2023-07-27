@@ -33,9 +33,12 @@ export default function HistorialMedico({ user, miInfo, query }) {
           Agregar Historia Médica
         </Button>
       </Flex>
-      <Box my={2} sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}>
-        <table>
-          <thead>
+      <Box
+        my={2}
+        className="relative overflow-x-auto shadow-xl drop-shadow-md rounded-xl"
+      >
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
             <tr>
               <th>Fecha</th>
               <th>Descripcion</th>
@@ -44,7 +47,7 @@ export default function HistorialMedico({ user, miInfo, query }) {
           </thead>
           <tbody>
             {sortedHistorial?.map((peso) => (
-              <tr key={peso._id}>
+              <tr key={peso._id} className="bg-white border-b ">
                 <td>{format_date(peso.fecha)}</td>
                 <td>{peso.descripcion}</td>
                 <td>{peso.medicoName}</td>

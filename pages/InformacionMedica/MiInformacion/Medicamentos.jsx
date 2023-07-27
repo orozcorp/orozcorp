@@ -57,16 +57,12 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
           Ver medicamentos {oldMed ? "actuales" : "anteriores"}
         </Button>
       </Flex>
-      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
-        <table
-          style={{
-            marginTop: "24px",
-            borderSpacing: "1rem",
-            borderCollapse: "collapse",
-            width: "100%",
-          }}
-        >
-          <thead>
+      <Box
+        my={2}
+        className="relative overflow-x-auto shadow-xl drop-shadow-md rounded-xl"
+      >
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
             <tr>
               <th>Fechas</th>
               <th>Medicamento</th>
@@ -79,10 +75,12 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
           </thead>
           <tbody>
             {miInfo?.medicamentos?.map((medicamento) => (
-              <tr key={medicamento._id}>
-                <td>{`${format_dateMed(
-                  medicamento.fechaInicio
-                )} - ${format_dateMed(medicamento.fechaFin)} `}</td>
+              <tr key={medicamento._id} className="bg-white border-b ">
+                <td>
+                  <b>{`${format_dateMed(
+                    medicamento.fechaInicio
+                  )} - ${format_dateMed(medicamento.fechaFin)} `}</b>
+                </td>
                 <td>{medicamento.nombre}</td>
                 <td>{medicamento.dosis}</td>
                 <td>{medicamento.frecuencia}</td>
@@ -97,6 +95,7 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
                     }}
                   >
                     <Button
+                      className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                       disabled={loading}
                       onClick={() =>
                         updateMedicamentoDate({

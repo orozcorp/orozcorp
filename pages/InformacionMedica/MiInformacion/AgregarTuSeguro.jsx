@@ -16,7 +16,7 @@ const MUTATION = gql`
   }
 `;
 
-export default function AgregarTuSeguro({ user, setDisplay, display }) {
+export default function AgregarTuSeguro({ user, setDisplay, display, query }) {
   const { setAlert } = useGlobalData();
   const [tarjetaSeguro, setTarjetaSeguro] = useState("");
   const [caratulaSeguro, setCaratulaSeguro] = useState("");
@@ -46,6 +46,14 @@ export default function AgregarTuSeguro({ user, setDisplay, display }) {
         variant: "orange",
       });
     },
+    awaitRefetchQueries: true,
+    refetchQueries: [
+      {
+        query,
+        variables: { idUser: user, oldMed: false },
+      },
+    ],
+    awaitRefetchQueries: true,
   });
   return (
     <Modal display={display} setDisplay={setDisplay}>

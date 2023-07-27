@@ -53,7 +53,6 @@ export default function GraficasEstatura({ userId }) {
   const { data, error, loading } = useQuery(QUERY, {
     variables: { idUser: userId },
   });
-  console.log(data);
   if (error) {
     console.error(error);
     return <p>Error</p>;
