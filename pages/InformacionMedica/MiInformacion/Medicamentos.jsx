@@ -58,8 +58,9 @@ export default function Medicamentos({ user, miInfo, query, oldMedicamento }) {
         </Button>
       </Flex>
       <Box
+        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
         my={2}
-        className="relative overflow-x-auto shadow-xl drop-shadow-md rounded-xl"
+        className="shadow-xl drop-shadow-md rounded-xl"
       >
         <table className="w-full text-sm text-left">
           <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
