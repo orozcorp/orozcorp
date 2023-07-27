@@ -34,11 +34,11 @@ export default function Estudios({ user, miInfo, query }) {
         </Button>
       </Flex>
       <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
+        sx={{ overflowX: "auto", maxWidth: "90vw" }}
         my={2}
         className="shadow-xl drop-shadow-md rounded-xl"
       >
-        <table className="text-sm text-left">
+        <table className="text-sm text-left w-full">
           <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
             <tr>
               <th>Fecha</th>
