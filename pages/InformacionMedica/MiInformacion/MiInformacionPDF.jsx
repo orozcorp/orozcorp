@@ -196,12 +196,16 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           )}
         </Flex>
       </Flex>
-      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
+      <Box
+        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
+        my={2}
+        className="shadow-xl drop-shadow-md rounded-xl"
+      >
         <Heading as="h4" id="medicos" my={2}>
           Medicos
         </Heading>
-        <table>
-          <thead>
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Cabecera</th>
               <th>Nombre</th>
@@ -212,7 +216,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </thead>
           <tbody>
             {miInfo?.medicos?.map((medico) => (
-              <tr key={medico._id}>
+              <tr key={medico._id} className="bg-white border-b ">
                 <td>{medico.cabecera && "Medico de cabecera"}</td>
                 <td>{`${medico.nombre} ${medico.apellido}`}</td>
                 <td>
@@ -231,13 +235,17 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             ))}
           </tbody>
         </table>
-      </Flex>
-      <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
+      </Box>
+      <Box
+        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
+        my={2}
+        className="shadow-xl drop-shadow-md rounded-xl"
+      >
         <Heading as="h4" id="historialMedico" my={2}>
           Historial Médico
         </Heading>
-        <table>
-          <thead>
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Fecha</th>
               <th>Descripcion</th>
@@ -246,7 +254,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </thead>
           <tbody>
             {sortedHistorialMedico?.map((peso) => (
-              <tr key={peso._id}>
+              <tr key={peso._id} className="bg-white border-b ">
                 <td>{format_date(peso.fecha)}</td>
                 <td>{peso.descripcion}</td>
                 <td>{peso.medicoName}</td>
@@ -254,13 +262,17 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             ))}
           </tbody>
         </table>
-      </Flex>
-      <Box sx={{ overflowX: "auto" }} id="historialMedicamentos" m={2}>
+      </Box>
+      <Box
+        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
+        my={2}
+        className="shadow-xl drop-shadow-md rounded-xl"
+      >
         <Heading as="h4" my={2}>
           Historial Medicamentos
         </Heading>
-        <table style={{ marginTop: "24px", marginBotton: "60px" }}>
-          <thead>
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Fechas</th>
               <th>Medicamento</th>
@@ -272,7 +284,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </thead>
           <tbody>
             {miInfo?.medicamentos?.map((medicamento) => (
-              <tr key={medicamento._id}>
+              <tr key={medicamento._id} className="bg-white border-b ">
                 <td>{`${format_dateMed(
                   medicamento.fechaInicio
                 )} - ${format_dateMed(medicamento.fechaFin)} `}</td>
@@ -286,16 +298,16 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Box>
-      <Flex
-        m={2}
-        sx={{ flexFlow: "column nowrap", overflowX: "auto" }}
-        id="historialEstudios"
+      <Box
+        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
+        my={2}
+        className="shadow-xl drop-shadow-md rounded-xl"
       >
         <Heading as="h4" my={2}>
           Historial Estudios
         </Heading>
-        <table>
-          <thead>
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Fecha</th>
               <th>Descripcion</th>
@@ -305,7 +317,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </thead>
           <tbody>
             {sortedHistorialEstudios?.map((peso) => (
-              <tr key={peso._id}>
+              <tr key={peso._id} className="bg-white border-b ">
                 <td>{format_date(peso.fecha)}</td>
                 <td>{peso.descripcion}</td>
                 <td>{peso.medicoName}</td>
@@ -318,17 +330,17 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             ))}
           </tbody>
         </table>
-      </Flex>
-      <Flex
-        m={2}
-        sx={{ flexFlow: "column nowrap", overflowX: "auto" }}
-        id="Familiares"
+      </Box>
+      <Box
+        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
+        my={2}
+        className="shadow-xl drop-shadow-md rounded-xl"
       >
         <Heading as="h4" my={2}>
           Familiares
         </Heading>
-        <table>
-          <thead>
+        <table className="w-full text-sm text-left">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Nombre</th>
               <th>Telefono</th>
@@ -338,7 +350,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </thead>
           <tbody>
             {miInfo?.familiares?.map((familiar) => (
-              <tr key={familiar._id}>
+              <tr key={familiar._id} className="bg-white border-b ">
                 <td>{familiar.name}</td>
                 <td>
                   <a href={`tel:${familiar?.telefono}`}>{familiar?.telefono}</a>
@@ -369,7 +381,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
             ))}
           </tbody>
         </table>
-      </Flex>
+      </Box>
     </Flex>
   );
 }

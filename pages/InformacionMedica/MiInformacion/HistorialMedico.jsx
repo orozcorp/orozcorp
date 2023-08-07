@@ -39,7 +39,7 @@ export default function HistorialMedico({ user, miInfo, query }) {
         className="shadow-xl drop-shadow-md rounded-xl"
       >
         <table className="w-full text-sm text-left">
-          <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Fecha</th>
               <th>Descripcion</th>

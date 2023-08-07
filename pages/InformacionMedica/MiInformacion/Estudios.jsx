@@ -39,7 +39,7 @@ export default function Estudios({ user, miInfo, query }) {
         className="shadow-xl drop-shadow-md rounded-xl"
       >
         <table className="text-sm text-left w-full">
-          <thead className="text-md text-white uppercase bg-gradient-to-r from-cyan-500 to-blue-500">
+          <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
               <th>Fecha</th>
               <th>Descripcion</th>
