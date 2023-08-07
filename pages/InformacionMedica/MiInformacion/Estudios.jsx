@@ -33,11 +33,7 @@ export default function Estudios({ user, miInfo, query }) {
           Agregar Estudios
         </Button>
       </Flex>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: "90vw" }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: "90vw" }} my={2}>
         <table className="text-sm text-left w-full">
           <thead className="text-md text-white uppercase bg-blue-500">
             <tr>

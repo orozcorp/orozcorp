@@ -21,6 +21,7 @@ import AgregarPeso from "./AgregarPeso";
 import EditarInformacion from "./EditarInformacionModal";
 import Estudios from "./Estudios";
 import MiInformacionPDF from "./MiInformacionPDF";
+import html2pdf from "html2pdf.js";
 const QUERY = gql`
   query GetUserProfile($idUser: String!, $oldMed: Boolean!) {
     getUserProfile(idUser: $idUser, oldMed: $oldMed) {
@@ -126,7 +127,6 @@ export default function Informacion({ user, familia }) {
           ],
         },
       };
-      const html2pdf = (await import("html2pdf.js")).default;
 
       html2pdf()
         .from(element)

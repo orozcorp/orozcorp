@@ -196,11 +196,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           )}
         </Flex>
       </Flex>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
         <Heading as="h4" id="medicos" my={2}>
           Medicos
         </Heading>
@@ -236,11 +232,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Box>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
         <Heading as="h4" id="historialMedico" my={2}>
           Historial Médico
         </Heading>
@@ -263,11 +255,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Box>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
         <Heading as="h4" my={2}>
           Historial Medicamentos
         </Heading>
@@ -298,11 +286,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Box>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
         <Heading as="h4" my={2}>
           Historial Estudios
         </Heading>
@@ -331,11 +315,7 @@ export default function MiInformacionPDF({ user, setDisplay }) {
           </tbody>
         </table>
       </Box>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
         <Heading as="h4" my={2}>
           Familiares
         </Heading>

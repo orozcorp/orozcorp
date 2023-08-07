@@ -21,11 +21,7 @@ export default function HistorialDePeso({ user, miInfo, query }) {
   }, [miInfo]);
   return (
     <Flex m={2} sx={{ flexFlow: "column nowrap", overflowX: "auto" }}>
-      <Box
-        sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }}
-        my={2}
-        className="shadow-xl drop-shadow-md rounded-xl"
-      >
+      <Box sx={{ overflowX: "auto", maxWidth: ["80vw", "100vw"] }} my={2}>
         <table className=" text-sm text-left">
           <thead className="text-md text-white uppercase bg-blue-500">
             <tr>
