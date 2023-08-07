@@ -128,15 +128,19 @@ export default function Informacion({ user, familia }) {
       };
 
       const html2pdf = (await import("html2pdf.js")).default;
-      html2pdf()
-        .from(element)
-        .set(options)
-        .save()
-        .then(() => {
-          setDisplayEnvInfo(false);
-        });
-    }, 1000); // Adjust the delay as needed (e.g., 500 ms)
+      // Add a setTimeout of 500 milliseconds after importing html2pdf.js
+      setTimeout(async () => {
+        html2pdf()
+          .from(element)
+          .set(options)
+          .save()
+          .then(() => {
+            setDisplayEnvInfo(false);
+          });
+      }, 1000);
+    }, 1000); // Adjust the delay as needed for the outer setTimeout (e.g., 1000 ms)
   };
+
   if (loading)
     return (
       <Flex
