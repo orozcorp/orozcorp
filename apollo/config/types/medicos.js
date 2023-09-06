@@ -47,6 +47,7 @@ export const medicosSchema = gql`
     tipo: String!
   }
   input MedicosInput {
+    _id: ID
     nombre: String!
     apellido: String!
     telefonos: [TelefonosMedicosInput]!

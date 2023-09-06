@@ -31,9 +31,11 @@ export default function Medicos({ user, miInfo, query, familia }) {
     ],
     awaitRefetchQueries: true,
   });
+  console.log("familia", familia);
   const familiaNuclear = useMemo(() => {
     return familia?.find((fam) => fam.nuclear);
   }, [familia]);
+  console.log("familiaNuclear", familiaNuclear);
   return (
     <>
       <AgregarMedico

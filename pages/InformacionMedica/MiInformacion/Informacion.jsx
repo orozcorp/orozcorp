@@ -88,12 +88,17 @@ const QUERY = gql`
         peso
         tarjetaSeguro
         minor
+        familias {
+          _id
+          nombre
+          nuclear
+        }
       }
     }
   }
 `;
 
-export default function Informacion({ user, familia }) {
+export default function Informacion({ user }) {
   const [oldMed, setOldMed] = useState(false);
   const { data, loading, error } = useQuery(QUERY, {
     variables: { idUser: user, oldMed },
@@ -619,7 +624,7 @@ export default function Informacion({ user, familia }) {
                   user={data?.getUserProfile?._id}
                   miInfo={miInfo}
                   query={QUERY}
-                  familia={familia}
+                  familia={miInfo.familias}
                 />
               ),
               Historial: () => (

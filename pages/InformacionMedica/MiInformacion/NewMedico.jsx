@@ -127,9 +127,13 @@ export default function NewMedico({ newDoctor, setNewDoctor }) {
           </Button>
         </Flex>
         <Text sx={{ fontWeight: "bold" }}>Telefonos agregados</Text>
-        <Flex my={2} sx={{ flexFlow: "row wrap", justifyContent: "center" }}>
+        <Flex
+          my={2}
+          sx={{ flexFlow: "row wrap", justifyContent: "center", gap: "4px" }}
+        >
           {newDoctor.telefonos.map((tel) => (
             <Box
+              className="bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded flex flex-col flex-nowrap justify-center items-center"
               key={tel._id}
               onClick={() => {
                 setNewDoctor({
@@ -140,9 +144,7 @@ export default function NewMedico({ newDoctor, setNewDoctor }) {
                 });
               }}
             >
-              <Text>
-                {tel.tipo} - {tel.telefono}
-              </Text>
+              {tel.tipo} - {tel.telefono}
               <AiOutlineDelete />
             </Box>
           ))}

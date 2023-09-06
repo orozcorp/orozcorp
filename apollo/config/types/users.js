@@ -15,10 +15,10 @@ export const usersSchema = gql`
     estatura: Float
   }
   type Familia {
-    _id: ID!
-    nombre: String!
-    administradorName: String!
-    administradorId: ID!
+    _id: ID
+    nombre: String
+    administradorName: String
+    administradorId: ID
     nuclear: Boolean
   }
 

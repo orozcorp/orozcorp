@@ -21,7 +21,11 @@ const QUERY = gql`
       _id
       nombre
       apellido
-      telefonos
+      telefonos {
+        _id
+        telefono
+        tipo
+      }
       especialidad
       direccion
       email
@@ -65,6 +69,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
   const medicosList = data?.getMedicos || [];
   const [activeDr, setActiveDr] = useState("");
   const [newDoctor, setNewDoctor] = useState(newInitial);
+  console.log(paciente);
   const [addMedico, { loading: loadingMutation }] = useMutation(ADD_MEDICO, {
     variables: {
       input: {
@@ -107,6 +112,13 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
         as="form"
         onSubmit={(e) => {
           e.preventDefault();
+          console.log({
+            input: {
+              ...newDoctor,
+              pacientes: [paciente],
+            },
+            addNew: foundDr,
+          });
           addMedico();
         }}
         my={2}
@@ -162,7 +174,7 @@ export default function AgregarMedico({ user, setDisplay, display, query }) {
         </Text>
         <NewMedico newDoctor={newDoctor} setNewDoctor={setNewDoctor} />
         {Object.values(newDoctor).every((prop) => prop !== "") && (
-          <Button disabled={loadingMutation}>
+          <Button disabled={loadingMutation} mt={2}>
             {loadingMutation ? <Spinner /> : "Agregar médico"}
           </Button>
         )}

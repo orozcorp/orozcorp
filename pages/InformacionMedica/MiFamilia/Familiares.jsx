@@ -79,7 +79,7 @@ export default function Familiares() {
           ))}
         </Flex>
       </Box>
-      <Informacion user={active._id} familia={active.familia} />
+      <Informacion user={active._id} />
     </Flex>
   );
 }

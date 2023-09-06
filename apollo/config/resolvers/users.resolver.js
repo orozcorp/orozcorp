@@ -56,6 +56,7 @@ export const usersResolvers = {
         "profile.fechaVencimientoSeguro": 1,
         "profile.historialPeso": 1,
         "profile.historialMedico": 1,
+        "profile.familias": 1,
         "profile.medicamentos": {
           $filter: {
             input: "$profile.medicamentos",
@@ -163,6 +164,7 @@ export const usersResolvers = {
               "profile.name": 1,
               "profile.lastName": 1,
               "profile.picture": 1,
+              "profile.familias": 1,
             },
           }
         )

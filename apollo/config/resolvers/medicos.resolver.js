@@ -40,7 +40,18 @@ export const medicosResolvers = {
         } else {
           const updatedMedico = await db
             .collection("Medicos")
-            .updateOne({ _id: input._id }, { $push: pacientes });
+            .updateOne({ _id: input._id }, { $push: { pacientes } });
+          const medicosProfile = input;
+          medicosProfile.cabecera = false;
+          delete medicosProfile.pacientes;
+          const addToFamilia = await db.collection("users").updateMany(
+            {
+              _id: new ObjectId(pacientes[0]._id),
+            },
+            {
+              $push: { "profile.medicos": medicosProfile },
+            }
+          );
           return {
             code: 200,
             success: true,
