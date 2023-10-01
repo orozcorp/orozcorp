@@ -85,51 +85,48 @@ export default function Contactanos() {
               width: ["100%", "60%"],
               flexFlow: "column nowrap",
               justifyContent: "center",
-              alignContent: ["center","stretch"],
+              alignContent: ["center", "stretch"],
               alignItems: "center",
+              gap: "1rem",
             }}
             onSubmit={(e) => {
               e.preventDefault();
               sendReport();
             }}
           >
-            <Flex sx={{ flexFlow: "row wrap" }}>
-              <Box sx={{ width: ["100%", "200px"] }} m={2}>
-                <Label>Nombre</Label>
-                <Input
-                sx={{ width: ["100%", "200px"] }}
-                  type="text"
-                  value={values.name}
-                  aria-label="name"
-                  onChange={(e) =>
-                    setValues({
-                      ...values,
-                      name: e.currentTarget.value.toUpperCase(),
-                    })
-                  }
-                />
-              </Box>
-              <Box sx={{ width: ["100%", "200px"] }} m={2}>
-                <Label>Email</Label>
-                <Input
-                sx={{ width: ["100%", "200px"] }}
-                  type="email"
-                  value={values.email}
-                  aria-label="email"
-                  onChange={(e) =>
-                    setValues({
-                      ...values,
-                      email: e.currentTarget.value.toUpperCase(),
-                    })
-                  }
-                />
-              </Box>
-            </Flex>
-            <Box sx={{ width: ["95%", "400px"] }} m={2}>
+            <Box sx={{ width: ["95%", "420px"] }}>
+              <Label>Nombre</Label>
+              <Input
+                type="text"
+                value={values.name}
+                aria-label="name"
+                onChange={(e) =>
+                  setValues({
+                    ...values,
+                    name: e.currentTarget.value.toUpperCase(),
+                  })
+                }
+              />
+            </Box>
+
+            <Box sx={{ width: ["95%", "420px"] }}>
+              <Label>Email</Label>
+              <Input
+                type="email"
+                value={values.email}
+                aria-label="email"
+                onChange={(e) =>
+                  setValues({
+                    ...values,
+                    email: e.currentTarget.value.toUpperCase(),
+                  })
+                }
+              />
+            </Box>
+
+            <Box sx={{ width: ["95%", "420px"], my: 2 }}>
               <Label>Mensaje</Label>
               <Textarea
-              p={[2,0]}
-              sx={{ width: ["100%", "200px"] }}
                 value={values.message}
                 aria-label="message"
                 onChange={(e) =>
@@ -137,7 +134,11 @@ export default function Contactanos() {
                 }
               />
             </Box>
-            <Button type="submit" disabled={loading}>
+            <Button
+              type="submit"
+              disabled={loading}
+              sx={{ flex: 1, width: ["95%", "420px"] }}
+            >
               Enviar
             </Button>
           </Flex>
