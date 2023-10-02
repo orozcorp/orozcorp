@@ -9,7 +9,8 @@ export default function Mockup({ img, title, description, link }) {
   return (
     <motion.div
       whileHover={{
-        scale: 1.1, // Increase the scale
+        scale: 1.1,
+        transition: { duration: 0.5 },
       }}
     >
       <div className="flex flex-col flex-nowrap justify-center items-center my-4 max-w-sm z-50">

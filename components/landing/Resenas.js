@@ -29,7 +29,9 @@ export default function Resenas() {
       <div className="w-[100vw] md:w-[90vw] ">
         <div className=" overflow-x-scroll flex flex-row flex-nowrap justify-center items-center mx-14 my-20 h-screen z-0">
           <div
-            className={`overflow-x-scroll flex gap-16 h-full`}
+            className={`overflow-x-scroll flex gap-16 ${
+              hover ? "h-[125%]" : "h-full"
+            }  flex-row flex-nowrap justify-start items-center content-end`}
             style={{ scrollBehavior: "smooth" }}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
