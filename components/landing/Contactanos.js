@@ -50,7 +50,6 @@ export default function Contactanos() {
   });
   return (
     <Flex
-      mt={4}
       p={3}
       sx={{
         flexFlow: "column nowrap",
@@ -78,7 +77,6 @@ export default function Contactanos() {
             Contáctanos
           </Heading>
           <Flex
-            my={2}
             as="form"
             p={2}
             sx={{
@@ -129,6 +127,7 @@ export default function Contactanos() {
               <Textarea
                 value={values.message}
                 aria-label="message"
+                rows="5"
                 onChange={(e) =>
                   setValues({ ...values, message: e.currentTarget.value })
                 }
@@ -137,7 +136,11 @@ export default function Contactanos() {
             <Button
               type="submit"
               disabled={loading}
-              sx={{ flex: 1, width: ["95%", "420px"] }}
+              sx={{
+                flex: 1,
+                width: ["95%", "420px"],
+                backgroundColor: "black",
+              }}
             >
               Enviar
             </Button>
