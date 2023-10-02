@@ -17,10 +17,10 @@ export default function Section1() {
           as="h2"
           my={4}
           sx={{
-            fontSize: ["20px", "36px"],
+            fontSize: ["30px", "36px"],
             color: "#B0B0B0",
-            width: "70%",
-            textAlign: "left",
+            width: ["100%", "70%"],
+            textAlign: ["center", "left"],
           }}
         >
           Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos
@@ -29,7 +29,11 @@ export default function Section1() {
         <Heading
           as="h2"
           my={4}
-          sx={{ fontSize: ["25px", "40px", "72px"], color: "#fff" }}
+          sx={{
+            fontSize: ["25px", "40px", "72px"],
+            color: "#fff",
+            textAlign: ["center", "left"],
+          }}
         >
           Aumenta la eficiencia en cada paso.
         </Heading>

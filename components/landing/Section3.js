@@ -7,31 +7,44 @@ export default function Section3() {
       p={[3, 4, 5]}
       sx={{
         flexFlow: "column nowrap",
-        justifyContent: "flex-start",
+        justifyContent: ["center", "flex-start"],
         alignContent: "center",
-        alignItems: "flex-start",
+        alignItems: ["center", "flex-start"],
       }}
     >
-      <Heading as="h1" sx={{ fontSize: "36px", color: "#4a4a4a" }}>
+      <Heading
+        as="h1"
+        sx={{
+          fontSize: "36px",
+          color: "#4a4a4a",
+          textAlign: ["center", "left"],
+        }}
+      >
         Habilidades y capacidades
       </Heading>
       <Heading
         my={2}
         as="h2"
-        sx={{ fontSize: "48px", color: "#000", lineHeight: ".9" }}
+        sx={{
+          fontSize: "48px",
+          color: "#000",
+          lineHeight: ".9",
+          textAlign: ["center", "left"],
+        }}
       >
         Todo lo que necesitas para crear y lanzar un producto digital
       </Heading>
       <Flex
         my={4}
         sx={{
-          flexFlow: "row wrap",
-          justifyContent: "space-between",
+          flexFlow: ["column nowrap", "row wrap"],
+          justifyContent: ["center", "space-between"],
           alignContent: "center",
-          alignItems: "stretch",
+          alignItems: ["center", "stretch"],
+          gap: ["40px", "12px"],
         }}
       >
-        <Box m={4} sx={{ width: ["100%", "400px", "400px"] }}>
+        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -40,7 +53,7 @@ export default function Section3() {
               backgroundColor: "#000",
               borderRadius: "12px",
             }}
-            p={1}
+            p={[2, 1]}
           >
             <Heading as="h3" mx={3} sx={{ color: "#909090", fontSize: "36px" }}>
               01
@@ -57,7 +70,7 @@ export default function Section3() {
             <li>Análisis de Business Plan</li>
           </ul>
         </Box>
-        <Box m={4} sx={{ width: ["100%", "400px", "400px"] }}>
+        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -82,7 +95,7 @@ export default function Section3() {
             <li>Branding</li>
           </ul>
         </Box>
-        <Box m={4} sx={{ width: ["100%", "400px", "400px"] }}>
+        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -108,7 +121,7 @@ export default function Section3() {
             <li>GraphQL, Mongo</li>
           </ul>
         </Box>
-        <Box m={4} sx={{ width: ["100%", "400px", "400px"] }}>
+        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
           <Flex
             sx={{
               flexFlow: "row wrap",
