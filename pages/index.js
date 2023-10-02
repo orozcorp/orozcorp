@@ -11,6 +11,7 @@ const Section1 = dynamic(() => import("../components/landing/Section1"));
 const Section2 = dynamic(() => import("../components/landing/Section2"));
 const Section3 = dynamic(() => import("../components/landing/Section3"));
 const Section0 = dynamic(() => import("../components/landing/Section0"));
+const Products = dynamic(() => import("../components/landing/Products"));
 
 export default function index() {
   const { data: session, status } = useSession();
@@ -98,6 +99,7 @@ export default function index() {
       <Section0 />
       <Section1 />
       <Section2 />
+      <Products />
       <Section3 />
       <Resenas />
       <Contactanos />
