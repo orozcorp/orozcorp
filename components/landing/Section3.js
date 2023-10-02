@@ -4,7 +4,7 @@ export default function Section3() {
   return (
     <Flex
       mt={4}
-      p={[2, 4, 5]}
+      p={[3, 4, 5]}
       sx={{
         flexFlow: "column nowrap",
         justifyContent: "flex-start",

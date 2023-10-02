@@ -23,10 +23,10 @@ export default function Section2() {
       <Flex
         my={3}
         sx={{
-          flexFlow: "row wrap",
-          justifyContent: "space-around",
-          alignContent: "center",
-          alignItems: "center",
+          flexFlow: ["column nowrap", "row wrap"],
+          justifyContent: ["space-around", "center"],
+          alignContent: ["center"],
+          alignItems: ["center", "stretch"],
         }}
       >
         <Sec2Box

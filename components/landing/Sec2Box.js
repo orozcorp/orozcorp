@@ -22,10 +22,8 @@ export default function Sec2Box({ title, text }) {
       <Box
         m={4}
         p={4}
-        sx={{
-          width: ["100%", "400px", "500px"],
-        }}
         variant="styles.boxGlass"
+        className="flex-1 w-full md:w-96"
       >
         <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>
           {title}
