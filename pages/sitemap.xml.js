@@ -6,6 +6,9 @@ async function generateSiteMap({ projects }) {
   return `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+      <url>
+        <loc>https://www.orozcorp.live</loc>
+      </url>
      ${projects
        .map(({ _id }) => {
          return `
