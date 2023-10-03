@@ -20,7 +20,7 @@ export default function Resenas() {
   const [hover, setHover] = useState(false);
   return (
     <div
-      className="mt-6 flex flex-col flex-nowrap justify-center items-center w-full py-16 px-2 md:px-8 bg-black text-white"
+      className="mt-6 flex flex-col flex-nowrap justify-center items-center w-full py-16 px-2 md:px-8 bg-[#121212] text-white"
       id="portfolio"
     >
       <h2 className={`text-6xl font-bold mb-4`}>PROYECTOS</h2>

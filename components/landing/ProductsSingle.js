@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 export default function ProductsSingle({ product }) {
-  const { name, descripcion, image } = product;
+  const { name, descripcion, image, url } = product;
   return (
     <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col flex-nowrap justify-center items-center">
       {image && (
@@ -15,7 +15,7 @@ export default function ProductsSingle({ product }) {
       )}
 
       <div className="p-5">
-        <Link href="#">
+        <Link href={url}>
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
             {name}
           </h5>
@@ -24,7 +24,7 @@ export default function ProductsSingle({ product }) {
           {descripcion}
         </p>
         <Link
-          href="#"
+          href={url}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
           Conoce más del producto
