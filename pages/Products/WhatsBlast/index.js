@@ -3,9 +3,40 @@ import { motion } from "framer-motion";
 import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "./ProductInformation";
 import Contactanos from "../../../components/landing/Contactanos";
+import { NextSeo } from "next-seo";
 export default function WhatsBlast() {
   return (
     <>
+      <NextSeo
+        title="WhatsBlast: Tu Asistente de Mensajería Masiva en WhatsApp"
+        description="WhatsBlast te permite enviar mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Ofrece estadísticas en tiempo real, segmentación de clientes, y más."
+        canonical="https://orozcorp.live/Products/WhatsBlast"
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content:
+              "Mensajería Masiva, WhatsApp, Estadísticas en Tiempo Real, Segmentación de Clientes, Programación de Mensajes",
+          },
+        ]}
+        openGraph={{
+          url: "https://orozcorp.live/Products/WhatsBlast",
+          title: "WhatsBlast: Tu Asistente de Mensajería Masiva en WhatsApp",
+          description:
+            "WhatsBlast te permite enviar mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Ofrece estadísticas en tiempo real, segmentación de clientes, y más.",
+          images: [
+            {
+              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
+              alt: "Logo de WhatsBlast",
+            },
+          ],
+          siteName: "Orozcorp",
+        }}
+        twitter={{
+          handle: "@orozcorp_io",
+          site: "@orozcorp_io",
+          cardType: "summary_large_image",
+        }}
+      />
       <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20 mb-12 py-12">
         <motion.button
           initial={{ scale: 0, opacity: 0.3 }}

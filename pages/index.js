@@ -25,14 +25,15 @@ export default function index() {
   return (
     <Box sx={{ height: "100%", marginBottom: "200px" }}>
       <NextSeo
-        title="Orozcorp"
-        description="Consultoria de webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
+        title="Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles"
+        description="Orozcorp es tu socio de confianza en el desarrollo de aplicaciones web y móviles. Especializados en Next JS, GraphQL, y JS, transformamos tu visión en soluciones digitales efectivas."
         canonical="https://orozcorp.live/"
         openGraph={{
           url: "https://orozcorp.live",
-          title: "Orozcorp",
+          title:
+            "Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles",
           description:
-            "Consultoria de webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS",
+            "Orozcorp es tu socio de confianza en el desarrollo de aplicaciones web y móviles. Especializados en Next JS, GraphQL, y JS, transformamos tu visión en soluciones digitales efectivas",
           images: [
             {
               url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg",
@@ -47,12 +48,19 @@ export default function index() {
           site: "@orozcorp_io",
           cardType: "summary_large_image",
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content:
+              "Desarrollo Web, Aplicaciones Móviles, Consultoría Tecnológica, NextJS, GraphQL, JavaScript, Ecommerce, Soluciones Digitales, Optimización Web, UI/UX Design",
+          },
+        ]}
       />
       <LocalBusinessJsonLd
         type="Consulting Firm"
         id="https://orozcorp.live"
         name="Orozcorp"
-        description="webapps, ecommerce, Next JS, Graph Ql, JS, Meteor JS"
+        description="Orozcorp es tu socio de confianza en el desarrollo de aplicaciones web y móviles. Especializados en Next JS, GraphQL, y JS, transformamos tu visión en soluciones digitales efectivas"
         url="http://orozcorp.live"
         telephone="+525536554893"
         address={{
