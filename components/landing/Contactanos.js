@@ -15,7 +15,7 @@ const MUTATION = gql`
   }
 `;
 
-export default function Contactanos() {
+export default function Contactanos({ bgColor }) {
   const [enviadoMensaje, setEnviadoMensaje] = useState(false);
   const [sentMessage, setSentMessage] = useLocalStorage("sentMessage", false);
   const [sentMessageId, setSentMessageID] = useLocalStorage(
@@ -56,6 +56,8 @@ export default function Contactanos() {
         justifyContent: "center",
         alignContent: "center",
         alignItems: "center",
+        backgroundColor: bgColor || "white",
+        color: bgColor ? "white" : "black",
       }}
     >
       {enviadoMensaje ? (
@@ -139,7 +141,8 @@ export default function Contactanos() {
               sx={{
                 flex: 1,
                 width: ["95%", "420px"],
-                backgroundColor: "black",
+                backgroundColor: bgColor ? "white" : "black",
+                color: bgColor || "white",
               }}
             >
               Enviar
