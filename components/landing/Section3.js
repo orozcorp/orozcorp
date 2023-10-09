@@ -34,17 +34,8 @@ export default function Section3() {
       >
         Todo lo que necesitas para crear y lanzar un producto digital
       </Heading>
-      <Flex
-        my={4}
-        sx={{
-          flexFlow: ["column nowrap", "row wrap"],
-          justifyContent: ["center", "space-between"],
-          alignContent: "center",
-          alignItems: ["center", "stretch"],
-          gap: ["40px", "12px"],
-        }}
-      >
-        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
+      <div className="my-16 flex flex-col gap-20 flex-nowrap lg:flex-row lg:flex-wrap justify-center lg:justify-between content-start items-center lg:items-start w-full">
+        <div className="max-w-md  min-w-[400px] flex-1">
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -69,8 +60,8 @@ export default function Section3() {
             <li>Valoraciones Financieras</li>
             <li>Análisis de Business Plan</li>
           </ul>
-        </Box>
-        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
+        </div>
+        <div className="max-w-md  min-w-[400px] flex-1">
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -94,8 +85,8 @@ export default function Section3() {
             <li>Crear prototipo</li>
             <li>Branding</li>
           </ul>
-        </Box>
-        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
+        </div>
+        <div className="max-w-md  min-w-[400px] flex-1">
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -120,8 +111,8 @@ export default function Section3() {
             <li>React, Next JS</li>
             <li>GraphQL, Mongo</li>
           </ul>
-        </Box>
-        <Box m={[1, 4]} sx={{ width: ["100%", "400px", "400px"] }}>
+        </div>
+        <div className="max-w-md  min-w-[400px] flex-1">
           <Flex
             sx={{
               flexFlow: "row wrap",
@@ -146,8 +137,8 @@ export default function Section3() {
             <li>Optimización de costos</li>
             <li>Análisis de base de datos</li>
           </ul>
-        </Box>
-      </Flex>
+        </div>
+      </div>
     </Flex>
   );
 }

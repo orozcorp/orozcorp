@@ -72,11 +72,15 @@ export default function WhatsBlast() {
         />
         <ProductInformation
           head="📊 Estadísticas que te hablan"
-          description="¿Quieres saber qué tan efectivos son tus mensajes? WhatsBlast te ofrece estadísticas en tiempo real. Descubre cuántos mensajes has enviado, quiénes los han abierto y quiénes han respondido. Y si quieres ir más allá, tenemos análisis de tono y resumen de respuestas por un precio adicional."
+          description="¿Quieres saber qué tan efectivos son tus mensajes? WhatsBlast te ofrece estadísticas en tiempo real. Descubre cuántos mensajes has enviado, quiénes los han abierto y quiénes han respondido. Y si quieres ir más allá, tenemos análisis de tono y resumen de respuestas ."
         />
         <ProductInformation
-          head="❤️ Habla el idioma de tus clientes"
+          head="🎯 Segmentación Inteligente"
           description="Segmenta a tus clientes según tus necesidades y los atributos que tu CRM te proporciona. Envía mensajes que hablen directo al corazón de tus clientes, mejorando la efectividad de tus campañas."
+        />
+        <ProductInformation
+          head="🌍  Traducción Multilingüe"
+          description="¿Tus clientes hablan diferentes idiomas? No hay problema. Traduce tus mensajes o respuestas a cualquier idioma al instante. Rompe las barreras del idioma y conecta con tus clientes como nunca antes."
         />
         <ProductInformation
           head="💌  Mensajes sin límites... casi"
@@ -84,19 +88,20 @@ export default function WhatsBlast() {
         />
         <ProductInformation
           head="☕ Programa y relájate"
-          description="¿Quieres más tiempo para ti? Programa tus mensajes para que se envíen cuando tú quieras. Así podrás disfrutar de tu café mientras WhatsBlast hace el trabajo duro por ti. Esta función está disponible por un precio adicional."
+          description="¿Quieres más tiempo para ti? Programa tus mensajes para que se envíen cuando tú quieras. Así podrás disfrutar de tu café mientras WhatsBlast hace el trabajo duro por ti."
         />
         <ProductInformation
           head="🔒 Seguridad que puedes confiar"
           description="Utilizamos el API de WhatsApp para garantizar la máxima seguridad en cada mensaje que envías."
         />
+
         <ProductInformation
           head="🌐 Accesible desde cualquier lugar"
           description="Ya sea desde tu computadora o tu celular, accede a WhatsBlast desde cualquier dispositivo con internet y un navegador."
         />
         <ProductInformation
           head="🛠️  Integraciones y más"
-          description="WhatsBlast es una aplicación independiente, pero si lo prefieres, se integra perfectamente con plataformas open source de CRM. Además, por un precio adicional, podemos integrarlo directamente en tu webapp para una personalización completa."
+          description="WhatsBlast es una aplicación independiente, pero si lo prefieres, se integra perfectamente con plataformas open source de CRM. Además, podemos integrarlo directamente en tu webapp para una personalización completa."
         />
       </div>
       <Contactanos bgColor="black" />

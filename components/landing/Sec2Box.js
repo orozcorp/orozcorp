@@ -18,7 +18,7 @@ export default function Sec2Box({ title, text }) {
         stiffness: 260,
         damping: 20,
       }}
-      className="flex-1 w-[90%] md:w-96"
+      className="flex-1 w-[90%] lg:w-[380px]"
     >
       <Box m={4} p={[2, 4]} variant="styles.boxGlass">
         <Heading mb={2} sx={{ color: "#000", fontSize: ["24px", "36px"] }}>

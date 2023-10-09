@@ -38,7 +38,7 @@ export default function Products() {
         <h2 className="text-white text-center text-6xl font-bold">
           Nuestros productos clave
         </h2>
-        <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap gap-8 my-16 w-full justify-center p-4 md:justify-between">
+        <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap gap-8 my-16 w-full justify-center items-center lg:justify-around p-4 ">
           {products.map((product) => (
             <div key={product.id}>
               <ProductJsonLd

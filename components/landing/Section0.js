@@ -1,4 +1,4 @@
-import { Box, Flex, Heading, Text } from "@theme-ui/components";
+import { Flex, Heading } from "@theme-ui/components";
 import Link from "next/link";
 import ReactRotatingText from "react-rotating-text";
 import { motion } from "framer-motion";
@@ -26,7 +26,7 @@ export default function Section0() {
           }}
         >
           <Heading as="h1" sx={{ fontSize: ["40px", "100px"] }}>
-            De ideas a
+            De ideas a tu
           </Heading>
           <Heading
             ml={2}
@@ -37,15 +37,7 @@ export default function Section0() {
             }}
           >
             <ReactRotatingText
-              items={[
-                "tu página",
-                "tu catálogo",
-                "tu App",
-                "tu ERP",
-                "tu CRM",
-                "tu Landing",
-                "tu Ecommerce",
-              ]}
+              items={["Página", "ERP", "CRM", "Tienda"]}
               color="#000"
             />
           </Heading>
