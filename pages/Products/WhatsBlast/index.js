@@ -65,7 +65,7 @@ export default function WhatsBlast() {
         </div>
       </div>
       <ProductFeatures />
-      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap  justify-between items-stretch gap-16 my-8 p-8 md:p-20">
+      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap  justify-around items-stretch gap-16 my-8 p-8 md:p-20">
         <ProductInformation
           head="🌟 Haz que cada cliente se sienta único"
           description="Con WhatsBlast, olvídate de enviar mensajes uno por uno. Envía mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Haz que cada cliente se sienta especial y único, mejorando así la relación con ellos."
@@ -77,10 +77,6 @@ export default function WhatsBlast() {
         <ProductInformation
           head="🎯 Segmentación Inteligente"
           description="Segmenta a tus clientes según tus necesidades y los atributos que tu CRM te proporciona. Envía mensajes que hablen directo al corazón de tus clientes, mejorando la efectividad de tus campañas."
-        />
-        <ProductInformation
-          head="🌍  Traducción Multilingüe"
-          description="¿Tus clientes hablan diferentes idiomas? No hay problema. Traduce tus mensajes o respuestas a cualquier idioma al instante. Rompe las barreras del idioma y conecta con tus clientes como nunca antes."
         />
         <ProductInformation
           head="💌  Mensajes sin límites... casi"
