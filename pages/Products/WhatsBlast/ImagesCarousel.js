@@ -25,7 +25,7 @@ export default function ImagesCarousel() {
         alt="WhatsBlast: Tu Asistente de Mensajería Masiva"
         width={600}
         height={600}
-        className="rounded-lg  z-1 absolute left-4 opacity-50 duration-1000 ease-in"
+        className="rounded-lg  z-1 absolute left-4 opacity-75 duration-1000 ease-in"
         onClick={() => rotateToMiddle(0)}
       />
 
@@ -42,7 +42,7 @@ export default function ImagesCarousel() {
         alt="WhatsBlast: Tu Asistente de Mensajería Masiva"
         width={600}
         height={600}
-        className="rounded-lg  z-1 absolute right-4 opacity-50 duration-1000 ease-in"
+        className="rounded-lg  z-1 absolute right-4 opacity-75 duration-1000 ease-in"
         onClick={() => rotateToMiddle(2)}
       />
     </div>
