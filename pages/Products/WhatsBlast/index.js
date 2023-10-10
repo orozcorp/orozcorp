@@ -4,6 +4,7 @@ import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "./ProductInformation";
 import Contactanos from "../../../components/landing/Contactanos";
 import { NextSeo } from "next-seo";
+import ImagesCarousel from "./ImagesCarousel";
 export default function WhatsBlast() {
   return (
     <>
@@ -65,7 +66,8 @@ export default function WhatsBlast() {
         </div>
       </div>
       <ProductFeatures />
-      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap  justify-around items-stretch gap-16 my-8 p-8 md:p-20">
+      <ImagesCarousel />
+      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap bg-black justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
         <ProductInformation
           head="🌟 Haz que cada cliente se sienta único"
           description="Con WhatsBlast, olvídate de enviar mensajes uno por uno. Envía mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Haz que cada cliente se sienta especial y único, mejorando así la relación con ellos."
@@ -100,7 +102,7 @@ export default function WhatsBlast() {
           description="WhatsBlast es una aplicación independiente, pero si lo prefieres, se integra perfectamente con plataformas open source de CRM. Además, podemos integrarlo directamente en tu webapp para una personalización completa."
         />
       </div>
-      <Contactanos bgColor="black" />
+      <Contactanos />
     </>
   );
 }
