@@ -79,10 +79,13 @@ export default function index() {
           head="📑 Resumen Diario Personalizado"
           description="¿Te sientes abrumado con la cantidad de chats que tienes que revisar cada día? No te preocupes. ChatDigest te envía un resumen diario directamente a tu bandeja de entrada. Y no es cualquier resumen; es un resumen que puedes personalizar para que se ajuste a tus necesidades. Elige las métricas que más te importan y recibe solo la información que realmente necesitas."
         />
-
         <ProductInformation
-          head="🎯 Identifica Oportunidades y Acciones Potenciales"
-          description="Con la ayuda de la inteligencia artificial, ChatDigest no solo resume tus conversaciones, sino que también identifica oportunidades y acciones potenciales. ¿Tienes un cliente potencial que necesita un pequeño empujón? ¿O tal vez una queja que requiere atención inmediata? ChatDigest te lo señala para que puedas actuar rápidamente."
+          head="🔗 Integración con WhatsCRM"
+          description="Si ya estás usando WhatsCRM, tenemos buenas noticias para ti. ChatDigest se integra perfectamente, permitiéndote llevar tu gestión de conversaciones a un nivel completamente nuevo."
+        />
+        <ProductInformation
+          head="🌍 Traduce al Instante"
+          description="¿Tienes un equipo global o clientes en diferentes partes del mundo? No hay problema. Ahora puedes traducir todo el resumen de las conversaciones al idioma que prefieras, haciendo que la comunicación sea más fluida que nunca."
         />
 
         <ProductInformation

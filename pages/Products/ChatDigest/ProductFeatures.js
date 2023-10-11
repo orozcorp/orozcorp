@@ -31,6 +31,13 @@ export default function ProductFeatures() {
       image:
         "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_clocks_minimalistic_happy_colors_0b523170-dedb-4dbd-9716-32cdf6cd1fc1.jpg",
     },
+    {
+      name: "Habla el Idioma de Tus Clientes, Sin Esfuerzo",
+      description:
+        "¿Negocios globales? ¡Desafío aceptado! Con ChatDigest, rompe las barreras del idioma en un instante. Traduce todo el resumen de tus conversaciones al idioma que elijas y conecta con tus clientes como nunca antes. ¡Haz que cada palabra cuente!",
+      image:
+        "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_conversation_bubbles_in_different_languages__minimalis_9752d96f-264e-4299-8a13-0b405d9aea28.jpg",
+    },
   ];
   return (
     <div className="bg-[#121212] py-16">
