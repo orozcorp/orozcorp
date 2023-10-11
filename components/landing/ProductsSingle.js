@@ -16,9 +16,9 @@ export default function ProductsSingle({ product }) {
 
       <div className="p-5">
         <Link href={url}>
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
+          <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">
             {name}
-          </h5>
+          </div>
         </Link>
         <p className="my-8 font-normal text-gray-700 dark:text-gray-400 text-justify whitespace-pre-line">
           {descripcion}

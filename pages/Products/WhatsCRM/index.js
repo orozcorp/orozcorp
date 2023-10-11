@@ -58,6 +58,7 @@ export default function index() {
             alt="WhatsCRM: Conecta, Comunica, Cierra Ventas"
             width={300}
             height={300}
+            priority
           />
         </motion.button>
         <div className="text-center md:text-left">

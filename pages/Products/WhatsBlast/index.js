@@ -57,6 +57,7 @@ export default function WhatsBlast() {
             alt="WhatsBlast: Tu Asistente de Mensajería Masiva"
             width={300}
             height={300}
+            priority
           />
         </motion.button>
         <div className="text-center md:text-left">
