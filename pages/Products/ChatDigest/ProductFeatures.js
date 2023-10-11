@@ -44,7 +44,7 @@ export default function ProductFeatures() {
       <div className="w-full p-4   rounded-lg shadow sm:p-8 ">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-5xl font-bold leading-none text-white my-12 pl-2 md:pl-8">
-            Características de WhatsBlast
+            Características de ChatDigest
           </h2>
         </div>
         <div className="flow-root">
