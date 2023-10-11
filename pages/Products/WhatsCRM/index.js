@@ -26,7 +26,7 @@ export default function index() {
             "WhatsCRM integra WhatsApp con tu CRM para una comunicación fluida y eficiente. Envía y recibe mensajes, accede al inventario en tiempo real, y más.",
           images: [
             {
-              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_whatscrm.png",
+              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
               alt: "Logo de WhatsCRM",
             },
           ],
