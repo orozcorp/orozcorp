@@ -66,7 +66,13 @@ export default function WhatsBlast() {
         </div>
       </div>
       <ProductFeatures />
-      <ImagesCarousel />
+      <ImagesCarousel
+        initialImages={[
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.16.02%E2%80%AFPM.png",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+4.21.58%E2%80%AFPM.png",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.28.05%E2%80%AFPM.png",
+        ]}
+      />
       <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap bg-black justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
         <ProductInformation
           head="🌟 Haz que cada cliente se sienta único"
