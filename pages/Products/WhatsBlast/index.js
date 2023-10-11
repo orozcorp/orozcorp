@@ -5,6 +5,7 @@ import ProductInformation from "./ProductInformation";
 import Contactanos from "../../../components/landing/Contactanos";
 import { NextSeo } from "next-seo";
 import ImagesCarousel from "./ImagesCarousel";
+import Products from "../../../components/landing/Products";
 export default function WhatsBlast() {
   return (
     <>
@@ -109,6 +110,7 @@ export default function WhatsBlast() {
         />
       </div>
       <Contactanos />
+      <Products />
     </>
   );
 }
