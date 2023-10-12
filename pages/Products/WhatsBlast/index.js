@@ -13,6 +13,7 @@ export default function WhatsBlast() {
         title="WhatsBlast: Tu Asistente de Mensajería Masiva en WhatsApp"
         description="WhatsBlast te permite enviar mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Ofrece estadísticas en tiempo real, segmentación de clientes, y más."
         canonical="https://orozcorp.live/Products/WhatsBlast"
+        keywords="Envío Masivo de WhatsApp, Mensajería Masiva en WhatsApp, WhatsApp para Empresas, Programar Mensajes en WhatsApp, Automatización de WhatsApp"
         additionalMetaTags={[
           {
             name: "keywords",

@@ -13,6 +13,7 @@ export default function index() {
         title="ChatDigest: Tu Resumen Diario de Conversaciones en WhatsApp"
         description="Con ChatDigest, recibe un resumen diario de todas tus interacciones con los clientes en WhatsApp. Identifica oportunidades, analiza el tono de la conversación y toma decisiones más inteligentes."
         canonical="https://orozcorp.live/Products/ChatDigest"
+        keywords="Resumen Diario de WhatsApp, Resumen de Conversaciones en WhatsApp, Análisis de Tono, Programación de Resúmenes, Exportación de Datos, Integración con WhatsCRM"
         additionalMetaTags={[
           {
             name: "keywords",

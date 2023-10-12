@@ -13,6 +13,7 @@ export default function index() {
         title="WhatsCRM: Integra WhatsApp en Tu CRM y Aumenta Tus Ventas"
         description="WhatsCRM integra WhatsApp con tu CRM para una comunicación fluida y eficiente. Envía y recibe mensajes, accede al inventario en tiempo real, y más."
         canonical="https://orozcorp.live/Products/WhatsCRM"
+        keywords="Integración de WhatsApp y CRM, Gestión de Conversaciones en WhatsApp, Inventario en Tiempo Real, CRM para WhatsApp,Ventas a través de WhatsApp "
         additionalMetaTags={[
           {
             name: "keywords",
