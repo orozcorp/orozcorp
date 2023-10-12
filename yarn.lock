@@ -3552,11 +3552,6 @@ s3up-client@^1.0.4:
     lodash "^4.17.20"
     promise.series "^0.2.0"
 
-s3up-orozcorp@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/s3up-orozcorp/-/s3up-orozcorp-1.1.2.tgz#4fd96bb6af13032aeb2d4c931d987ccba742cf3d"
-  integrity sha512-BYRVLlgToPAmrhHRgpGza68E4Kr0w0mgJvn0hwgv9VWIU7Wadaq9sxYkal8kzYRdxTdB1atGIP+Ep0xUUjmz8Q==
-
 s3up-server@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/s3up-server/-/s3up-server-1.0.1.tgz#5c9479569829b1997c636da934d5db3ef27d3e60"

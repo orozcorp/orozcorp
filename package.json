@@ -44,7 +44,6 @@
     "react-rotating-text": "^1.4.1",
     "react-select": "^5.7.0",
     "s3up-client": "^1.0.4",
-    "s3up-orozcorp": "^1.1.2",
     "s3up-server": "^1.0.1",
     "tailwindcss": "^3.3.2",
     "theme-ui": "^0.15.4",
