@@ -1,9 +1,6 @@
 import { Flex, Heading, Box } from "@theme-ui/components";
-import useWindowSize from "../hooks/useWindowSize";
-import ReactRotatingText from "react-rotating-text";
 import Sec1Box from "./Sec1Box";
 export default function Section1() {
-  const size = useWindowSize();
   return (
     <Flex
       sx={{
