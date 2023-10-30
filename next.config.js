@@ -12,12 +12,27 @@ module.exports = {
     defaultLocale: "en",
   },
   images: {
-    domains: [
-      "stgfinal.s3.amazonaws.com",
-      "stgfinal.s3.us-east-1.amazonaws.com",
-      "orozcorp.s3.us-east-2.amazonaws.com",
-      "res.cloudinary.com",
-      "s3.amazonaws.com",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "stgfinal.s3.amazonaws.com",
+        pathname: "/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "stgfinal.s3.us-east-1.amazonaws.com",
+        pathname: "/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "stgfinal.s3.us-east-2.amazonaws.com",
+        pathname: "/**/*",
+      },
+      {
+        protocol: "https",
+        hostname: "orozcorp.s3.us-east-2.amazonaws.com",
+        pathname: "/**/*",
+      },
     ],
     unoptimized: false,
   },
@@ -57,7 +72,7 @@ module.exports = {
   optimizeFonts: false,
   env: {
     BASE_URL: dev ? "http://localhost:3000/" : "https://www.orozcorp.live/",
-    DB_URI: process.env.DB_URI,
+    DB_URI: process.env.MONGODB_URI,
   },
   modularizeImports: {
     lodash: {
