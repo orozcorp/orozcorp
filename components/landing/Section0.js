@@ -1,7 +1,7 @@
 import { Flex, Heading } from "@theme-ui/components";
 import Link from "next/link";
 import ReactRotatingText from "react-rotating-text";
-// import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Section0() {
   return (
@@ -59,7 +59,7 @@ export default function Section0() {
             Tu lo imaginas, nosotros lo creamos
           </Heading>
         </Flex>
-        {/*
+
         <motion.button
           style={{
             backgroundColor: "#910000",
@@ -71,17 +71,17 @@ export default function Section0() {
           }}
           whileHover={{ scale: 1.5 }}
           whileTap={{ scale: 0.9 }}
-        > */}
-        <Link
-          href="#crearProductos"
-          style={{
-            textDecoration: "none",
-            color: "#fff",
-          }}
         >
-          Averigua cómo
-        </Link>
-        {/* </motion.button> */}
+          <Link
+            href="#crearProductos"
+            style={{
+              textDecoration: "none",
+              color: "#fff",
+            }}
+          >
+            Averigua cómo
+          </Link>
+        </motion.button>
       </Flex>
     </>
   );
