@@ -8,7 +8,6 @@ import {
   Input,
   Text,
   Spinner,
-  Checkbox,
 } from "@theme-ui/components";
 import { useState, useMemo } from "react";
 import Modal from "../../../components/atoms/Modal";

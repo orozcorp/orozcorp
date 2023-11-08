@@ -31,11 +31,9 @@ export default function Medicos({ user, miInfo, query, familia }) {
     ],
     awaitRefetchQueries: true,
   });
-  console.log("familia", familia);
   const familiaNuclear = useMemo(() => {
     return familia?.find((fam) => fam.nuclear);
   }, [familia]);
-  console.log("familiaNuclear", familiaNuclear);
   return (
     <>
       <AgregarMedico
@@ -86,7 +84,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
                 p-8
                 m-4
                 flex flex-col flex-nowrap justify-between items-stretch
-                w-80 gap-4 rounded-lg p-4 shadow-lg shadow-sky-600
+                w-80 gap-4 rounded-lg shadow-lg shadow-sky-600
                 drop-shadow-2xl
                 bg-gradient-to-t from-sky-800 to-sky-400
         "
@@ -134,7 +132,7 @@ export default function Medicos({ user, miInfo, query, familia }) {
                   <div key={index}>
                     <a
                       href={`tel:${tel?.telefono}`}
-                      className="flex flex-row flex-wrap justify-start items-start w-full gap-2 w-full"
+                      className="flex flex-row flex-wrap justify-start items-start gap-2 w-full"
                     >
                       <Badge m={1}>{tel?.tipo}</Badge>
                       <div className="text-white">{tel?.telefono}</div>
