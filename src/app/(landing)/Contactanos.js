@@ -16,12 +16,8 @@ const MUTATION = `
 
 export default function Contactanos({ bgColor }) {
   const [enviadoMensaje, setEnviadoMensaje] = useState(false);
-  const [sentMessage, setSentMessage] = useLocalStorage("sentMessage", false);
   const [loading, setLoading] = useState(false);
-  const [sentMessageId, setSentMessageID] = useLocalStorage(
-    "setMessageId",
-    null
-  );
+  const [sentMessage, setSentMessage] = useState(false);
   const initial = {
     name: "",
     email: "",
@@ -41,7 +37,6 @@ export default function Contactanos({ bgColor }) {
       await postData({ query: MUTATION, variables: { ...values } });
       setValues(initial);
       setSentMessage(true);
-      setSentMessageID(sendContact.data);
       setLoading(false);
     } catch (error) {
       console.log(error);
