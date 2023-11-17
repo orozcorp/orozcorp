@@ -9,6 +9,15 @@ async function generateSiteMap({ projects }) {
       <url>
         <loc>https://www.orozcorp.live</loc>
       </url>
+            <url>
+        <loc>https://www.orozcorp.live/Products/ChatDigest</loc>
+      </url>
+            <url>
+        <loc>https://www.orozcorp.live/Products/WhatsBlast</loc>
+      </url>
+            <url>
+        <loc>https://www.orozcorp.live/Products/WhatsCRM</loc>
+      </url>
      ${projects
        .map(({ _id }) => {
          return `
