@@ -19,6 +19,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="es">
+      <link rel="icon" href="/favicon.ico" sizes="any" />
       <Script id="google-analytics" strategy="lazyOnload" async>
         {`
           window.dataLayer = window.dataLayer || [];
