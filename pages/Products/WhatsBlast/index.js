@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "./ProductInformation";
 import Contactanos from "../../../components/landing/Contactanos";
-import { NextSeo } from "next-seo";
+import { NextSeo, ProductJsonLd } from "next-seo";
 import ImagesCarousel from "./ImagesCarousel";
 import Products from "../../../components/landing/Products";
 export default function WhatsBlast() {
@@ -40,6 +40,56 @@ export default function WhatsBlast() {
           cardType: "summary_large_image",
         }}
       />
+      <ProductJsonLd
+        productName="WhatsCRM: Integra WhatsApp en Tu CRM y Aumenta Tus Ventas"
+        images={[
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.16.02%E2%80%AFPM.png",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+4.21.58%E2%80%AFPM.png",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.28.05%E2%80%AFPM.png",
+        ]}
+        description="WhatsCRM transforma tu gestión de relaciones con clientes integrando WhatsApp en tu CRM. Ya sea que tengas o no un CRM, WhatsCRM se adapta a tus necesidades, permitiéndote enviar documentos, imágenes y videos, además de ofrecer un registro detallado de ventas y una seguridad de nivel superior."
+        brand="Orozcorp"
+        slogan="Integración Flexible: Tu CRM, Nuestro Poder"
+        disambiguatingDescription="WhatsCRM se caracteriza por su integración flexible con cualquier CRM que tenga API, ofreciendo también la posibilidad de funcionar como una solución independiente. Permite llevar un registro de ventas, garantiza la seguridad de las conversaciones con cifrado de extremo a extremo, y facilita la organización de conversaciones con etiquetas."
+        releaseDate="2023-02-05T08:00:00+08:00"
+        productionDate="2023-02-05T08:00:00+08:00"
+        reviews={[
+          {
+            author: "Elena",
+            datePublished: "2023-04-10T12:00:00Z",
+            reviewBody:
+              "WhatsCRM ha revolucionado la forma en que gestionamos nuestras relaciones con clientes. La integración con nuestro CRM existente fue sencilla y nos ha permitido una comunicación más fluida y eficiente. El cifrado de extremo a extremo nos da la tranquilidad que necesitábamos respecto a la seguridad de las conversaciones.",
+            name: "Transformación en la Gestión de Clientes con WhatsCRM",
+            reviewRating: {
+              bestRating: "5",
+              ratingValue: "5",
+              worstRating: "1",
+            },
+            publisher: {
+              type: "Organization",
+              name: "TechReviews",
+            },
+          },
+        ]}
+        aggregateRating={{
+          ratingValue: "5",
+          reviewCount: "1",
+        }}
+        offers={[
+          {
+            price: "3000",
+            priceCurrency: "USD",
+            priceValidUntil: "2024-01-01",
+            itemCondition: "https://schema.org/NewCondition",
+            availability: "https://schema.org/InStock",
+            url: "https://orozcorp.live/Products/WhatsCRM",
+            seller: {
+              name: "Orozcorp",
+            },
+          },
+        ]}
+      />
+
       <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20 mb-12 py-12">
         <motion.button
           initial={{ scale: 0, opacity: 0.3 }}

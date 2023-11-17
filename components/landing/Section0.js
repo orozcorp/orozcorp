@@ -56,7 +56,7 @@ export default function Section0() {
             as="h2"
             sx={{ color: "#4a4a4a", textAlign: "center", fontSize: "36px" }}
           >
-            Tu lo imaginas, nosotros lo creamos
+            Tú lo imaginas, nosotros lo creamos
           </Heading>
         </Flex>
 

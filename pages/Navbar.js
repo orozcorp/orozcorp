@@ -67,14 +67,6 @@ export default function Navbar() {
             >
               Sign In
             </Button>
-            <Button m={1} sx={{ backgroundColor: "#fff", color: "#000" }}>
-              <Link
-                href="/SignUp"
-                style={{ textDecoration: "none", color: "inherit" }}
-              >
-                Sign up
-              </Link>
-            </Button>
           </>
         )}
 

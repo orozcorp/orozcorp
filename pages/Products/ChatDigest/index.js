@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Contactanos from "../../../components/landing/Contactanos";
-import { NextSeo } from "next-seo";
+import { NextSeo, ProductJsonLd } from "next-seo";
 import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "../WhatsBlast/ProductInformation";
 import ImagesCarousel from "../WhatsBlast/ImagesCarousel";
@@ -39,6 +39,55 @@ export default function index() {
           site: "@orozcorp_io",
           cardType: "summary_large_image",
         }}
+      />
+      <ProductJsonLd
+        productName="ChatDigest: Tu Resumen Diario de Conversaciones en WhatsApp"
+        images={[
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+12.03.41%E2%80%AFPM.png",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+12.03.30%E2%80%AFPM.png",
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+12.03.55%E2%80%AFPM.png",
+        ]}
+        description="ChatDigest es tu asistente virtual para WhatsApp, proporcionando resúmenes diarios personalizados de tus conversaciones. Descubre oportunidades y analiza el tono de las conversaciones para una mejor gestión de la comunicación con tus clientes."
+        brand="Orozcorp"
+        slogan="Resúmenes a la Carta para una Gestión Inteligente"
+        disambiguatingDescription="ChatDigest ofrece resúmenes personalizados que eliminan el caos de la bandeja de entrada, destacando oportunidades clave y analizando el tono emocional de las conversaciones. Su integración con WhatsCRM lleva la gestión de conversaciones a un nuevo nivel, y la función de traducción rompe las barreras del idioma en negocios globales."
+        releaseDate="2023-03-15T08:00:00+08:00"
+        productionDate="2023-03-15T08:00:00+08:00"
+        reviews={[
+          {
+            author: "Carlos",
+            datePublished: "2023-04-20T15:00:00Z",
+            reviewBody:
+              "ChatDigest me ha ayudado a mantenerme al día con todas mis conversaciones de WhatsApp. La personalización de los resúmenes es fantástica, y el análisis del tono de las conversaciones me ha permitido entender mejor a mis clientes.",
+            name: "Eficiencia y Claridad en la Comunicación con ChatDigest",
+            reviewRating: {
+              bestRating: "5",
+              ratingValue: "5",
+              worstRating: "1",
+            },
+            publisher: {
+              type: "Organization",
+              name: "Comunicaciones Modernas",
+            },
+          },
+        ]} // Include reviews as per your data
+        aggregateRating={{
+          ratingValue: "5",
+          reviewCount: "1",
+        }}
+        offers={[
+          {
+            price: "1000",
+            priceCurrency: "USD",
+            priceValidUntil: "2024-01-01",
+            itemCondition: "https://schema.org/NewCondition",
+            availability: "https://schema.org/InStock",
+            url: "https://orozcorp.live/Products/ChatDigest",
+            seller: {
+              name: "Orozcorp",
+            },
+          },
+        ]}
       />
 
       <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20 mb-12 py-12">
