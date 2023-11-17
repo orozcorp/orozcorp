@@ -10,7 +10,7 @@ export default function Section3() {
         Todo lo que necesitas para crear y lanzar un producto digital
       </div>
       <div className="my-16 flex flex-col gap-16 flex-nowrap lg:flex-row lg:flex-wrap justify-center lg:justify-around content-start items-center lg:items-start w-full">
-        <div className="w-[30rem]">
+        <div className="w-80 lg:w-[30rem]">
           <div className="flex flex-row flex-wrap content-center items-center bg-zinc-900 rounded-xl p-4">
             <div className="mx-6 text-zinc-400 text-2xl">01</div>
             <div className="text-white text-xl">Estrategia</div>
@@ -23,7 +23,7 @@ export default function Section3() {
             <li>Análisis de Business Plan</li>
           </ul>
         </div>
-        <div className="w-[30rem]">
+          <div className="w-80 lg:w-[30rem]">
           <div className="flex flex-row flex-wrap content-center items-center bg-zinc-900 rounded-xl p-4">
             <div className="mx-6 text-zinc-400 text-2xl">02</div>
             <div className="text-white text-xl">Diseño</div>
@@ -35,7 +35,7 @@ export default function Section3() {
             <li>Branding</li>
           </ul>
         </div>
-        <div className="w-[30rem]">
+           <div className="w-80 lg:w-[30rem]">
           <div className="flex flex-row flex-wrap content-center items-center bg-zinc-900 rounded-xl p-4">
             <div className="mx-6 text-zinc-400 text-2xl">03</div>
             <div className="text-white text-xl">Desarrollo</div>
@@ -48,7 +48,7 @@ export default function Section3() {
             <li>GraphQL, Mongo</li>
           </ul>
         </div>
-        <div className="w-[30rem]">
+         <div className="w-80 lg:w-[30rem]">
           <div className="flex flex-row flex-wrap content-center items-center bg-zinc-900 rounded-xl p-4">
             <div className="mx-6 text-zinc-400 text-2xl">04</div>
             <div className="text-white text-xl">Gestión</div>
