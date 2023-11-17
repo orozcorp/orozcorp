@@ -53,7 +53,7 @@ export default function index() {
         disambiguatingDescription="ChatDigest ofrece resúmenes personalizados que eliminan el caos de la bandeja de entrada, destacando oportunidades clave y analizando el tono emocional de las conversaciones. Su integración con WhatsCRM lleva la gestión de conversaciones a un nuevo nivel, y la función de traducción rompe las barreras del idioma en negocios globales."
         releaseDate="2023-03-15T08:00:00+08:00"
         productionDate="2023-03-15T08:00:00+08:00"
-        review={[
+        reviews={[
           {
             author: "Carlos",
             datePublished: "2023-04-20T15:00:00Z",
@@ -77,7 +77,7 @@ export default function index() {
         }}
         offers={[
           {
-            price: "1000",
+            price: "3000",
             priceCurrency: "USD",
             priceValidUntil: "2024-01-01",
             itemCondition: "https://schema.org/NewCondition",
