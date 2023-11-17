@@ -53,7 +53,7 @@ export default function index() {
         disambiguatingDescription="WhatsBlast es una herramienta digital diseñada para enviar mensajes masivos en WhatsApp. Permite a los usuarios enviar mensajes personalizados a múltiples destinatarios al mismo tiempo, lo que la hace ideal para empresas y organizaciones que desean interactuar con su base de clientes. Entre sus características clave se incluyen la capacidad de enviar hasta 5,000 mensajes por día, estadísticas en tiempo real sobre la entrega y respuesta de mensajes, y la habilidad de segmentar clientes para comunicaciones dirigidas. Adicionalmente, WhatsBlast ofrece funcionalidades para programar mensajes y es accesible desde cualquier dispositivo con conexión a internet. Este servicio simplifica el proceso de comunicación masiva en WhatsApp, facilitando las interacciones de los usuarios y mejorando el compromiso con los clientes"
         releaseDate="2023-02-05T08:00:00+08:00"
         productionDate="2023-02-05T08:00:00+08:00"
-        reviews={[
+        review={[
           {
             author: "Brandon",
             datePublished: "2023-03-06T03:37:40Z",

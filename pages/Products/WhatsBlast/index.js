@@ -53,7 +53,7 @@ export default function WhatsBlast() {
         disambiguatingDescription="WhatsCRM se caracteriza por su integración flexible con cualquier CRM que tenga API, ofreciendo también la posibilidad de funcionar como una solución independiente. Permite llevar un registro de ventas, garantiza la seguridad de las conversaciones con cifrado de extremo a extremo, y facilita la organización de conversaciones con etiquetas."
         releaseDate="2023-02-05T08:00:00+08:00"
         productionDate="2023-02-05T08:00:00+08:00"
-        reviews={[
+        review={[
           {
             author: "Elena",
             datePublished: "2023-04-10T12:00:00Z",
