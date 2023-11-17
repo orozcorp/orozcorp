@@ -10,6 +10,19 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
     url: "/Products/WhatsBlast",
+    offers: [
+      {
+        price: "3000",
+        priceCurrency: "USD",
+        priceValidUntil: "2020-11-05",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        url: "https://orozcorp.live/Products/WhatsBlast",
+        seller: {
+          name: "Orozcorp",
+        },
+      },
+    ],
   },
   {
     id: 1,
@@ -19,6 +32,19 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
     url: "/Products/WhatsCRM",
+    offers: [
+      {
+        price: "3000",
+        priceCurrency: "USD",
+        priceValidUntil: "2024-01-01",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        url: "https://orozcorp.live/Products/WhatsCRM",
+        seller: {
+          name: "Orozcorp",
+        },
+      },
+    ],
   },
   {
     id: 2,
@@ -28,6 +54,19 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/botreading2.png",
     url: "/Products/ChatDigest",
+    offers: [
+      {
+        price: "3000",
+        priceCurrency: "USD",
+        priceValidUntil: "2024-01-01",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        url: "https://orozcorp.live/Products/ChatDigest",
+        seller: {
+          name: "Orozcorp",
+        },
+      },
+    ],
   },
 ];
 
@@ -46,6 +85,7 @@ export default function Products() {
                 description={product.descripcion}
                 brand="Orozcorp"
                 images={[product.image]}
+                offers={product.offers}
               />
               <ProductsSingle product={product} />
             </div>
