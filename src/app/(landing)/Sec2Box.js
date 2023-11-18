@@ -18,7 +18,7 @@ export default function Sec2Box({ title, text }) {
         stiffness: 260,
         damping: 20,
       }}
-      className="w-96  rounded-2xl shadow-2xl"
+      className="w-80  rounded-2xl shadow-2xl"
     >
       <div className="p-4 lg:p-8 m-8">
         <h3 className="mb-2 text-zinc-800 text-3xl font-bold">{title}</h3>

@@ -57,7 +57,7 @@ export default function Contactanos({ bgColor }) {
         <>
           <h2 className="text-2xl lg:text-4xl mt-8 mb-4 ">Contáctanos</h2>
           <form
-            className="flex flex-col flex-nowrap justify-center items-center content-center lg:content-stretch gap-4"
+            className="flex flex-col flex-nowrap justify-center items-center content-center lg:content-stretch gap-8 w-full"
             onSubmit={sendReport}
           >
             <div className="w-full lg:w-96">
@@ -91,7 +91,7 @@ export default function Contactanos({ bgColor }) {
               />
             </div>
 
-            <div className="w-full lg:w-96 my-4">
+            <div className="w-full lg:w-96">
               <label
                 htmlFor="message"
                 className="block mb-2 text-sm font-medium text-gray-900 "

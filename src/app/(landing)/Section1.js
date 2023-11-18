@@ -7,7 +7,7 @@ export default function Section1() {
           Te ayudamos a crear tu app, tu página, tu catálogo o tu idea. Logramos
           que emprendas, o mejores tu sitio con la mayor facilidad e impacto.
         </h2>
-        <div className="my-4 text-8xl text-white text-center lg:text-left">
+        <div className="my-4 text-6xl lg:text-8xl text-white text-center lg:text-left">
           Aumenta la eficiencia en cada paso.
         </div>
       </div>
