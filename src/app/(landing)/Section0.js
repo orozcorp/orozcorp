@@ -13,14 +13,14 @@ const RotatingText = memo(() => (
 
 export default function Section0() {
   return (
-    <div className="flex flex-col flex-nowrap min-h-screen items-center justify-center p-4">
+    <div className="flex flex-col flex-nowrap min-h-screen items-center justify-center p-4 gap-20">
       <div className="flex flex-row flex-wrap justify-center items-basiline">
         <div className="text-8xl text-center">De ideas a tu</div>
         <div className="ml-4 text-8xl font-bold underline text-rose-800">
           <RotatingText />
         </div>
       </div>
-      <div className="flex flex-row flex-wrap w-full lg:w-3/4 justify-center items-center mt-12">
+      <div className="flex flex-row flex-wrap w-full lg:w-3/4 justify-center items-center">
         <div className="text-zinc-800 text-center text-5xl">
           Tú lo imaginas, nosotros lo creamos
         </div>

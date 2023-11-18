@@ -20,7 +20,9 @@ export default function Sec1Box({ title, number }) {
       }}
     >
       <div className="m-4 flex flex-col flex-nowrap justify-center items-center  relative">
-        <h3 className="text-white text-4xl text-center z-50">{title}</h3>
+        <h3 className="text-white text-4xl text-center z-50 font-bold">
+          {title}
+        </h3>
         <h3 className="absolute  text-zinc-700 text-[14rem] z-0 ">{number}</h3>
       </div>
     </motion.button>
