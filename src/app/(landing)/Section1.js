@@ -14,7 +14,7 @@ export default function Section1() {
       <div className="p-8  text-zinc-100 text-center text-6xl">
         Nuestro Proceso
       </div>
-      <div className="mt-8 flex flex-row flex-wrap justify-evenly items-center">
+      <div className="mt-8 flex flex-row flex-wrap justify-evenly items-center gap-6">
         <Sec1Box title="Define Proyecto" number="1" />
         <Sec1Box title="Incrementa Valor" number="2" />
         <Sec1Box title="Genera Resultados" number="3" />
