@@ -21,7 +21,7 @@ export default function Sec2Box({ title, text }) {
       className="w-80  rounded-2xl shadow-2xl"
     >
       <div className="p-4 lg:p-8 m-8">
-        <h3 className="mb-2 text-zinc-800 text-3xl font-bold">{title}</h3>
+        <h3 className="mb-2 text-zinc-800 text-xl font-bold">{title}</h3>
 
         <div className="text-zinc-400 text-md text-center">{text}</div>
       </div>
