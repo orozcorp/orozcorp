@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import InputSimple from "../../components/atoms/InputSimple";
-import useLocalStorage from "../../components/hooks/useLocalData";
 
 const MUTATION = `
   mutation SendContact($email: String!, $name: String!, $message: String!) {
