@@ -9,7 +9,7 @@ export default function Section2() {
       <h2 className="text-6xl text-center w-3/4 my-8">
         ¡Prepárate para aterrizar tu idea con nuestro método infalible!
       </h2>
-      <div className="my-8 flex flex-col flex-nowrap justify-around items-center lg:flex-row lg:flex-wrap lg:justify-evenly lg:items-stretch gap-8">
+      <div className="my-8 p-16 flex flex-col flex-nowrap justify-around items-center lg:flex-row lg:flex-wrap lg:justify-evenly lg:items-stretch gap-8">
         <Sec2Box
           title={"Descubrimiento"}
           text="Nuestros estrategas trabajan para definir el problema, hallar
