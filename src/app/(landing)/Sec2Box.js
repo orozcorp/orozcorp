@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo, useCallback } from "react";
+import { AiFillCaretDown, AiFillCaretUp } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import useWindowSize from "../../components/hooks/useWindowSize";
@@ -55,6 +56,11 @@ export default function Sec2Box({
             <div className="text-zinc-800 text-md text-center my-8">
               {textExpanded}
             </div>
+          )}
+          {active ? (
+            <AiFillCaretUp className="w-8 h-8 mt-12 self-center" />
+          ) : (
+            <AiFillCaretDown className="w-8 h-8 mt-12 self-center" />
           )}
         </div>
         {active && (
