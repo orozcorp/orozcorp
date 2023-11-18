@@ -31,7 +31,7 @@ export default function Sec2Box({
         stiffness: 260,
         damping: 20,
       }}
-      className={`${active ? "w-[80vw]" : "w-80"}  rounded-2xl shadow-2xl`}
+      className={`${active ? "w-full" : "w-72"}  rounded-2xl shadow-2xl`}
     >
       <div
         className={`p-4 ${
