@@ -7,7 +7,7 @@ export default function Sec1Box({ title, number }) {
   });
   return (
     <motion.button
-      className="border border-zinc-900 rounded-md shadow-lg w-96 h-96 bg-zinc-800"
+      className="border border-zinc-900 rounded-2xl shadow-lg w-72 h-72 bg-zinc-800 shadow-stone-700"
       initial={{ scale: 0 }}
       animate={{ rotate: inView ? 0 : 0, scale: inView ? 1 : 0 }}
       ref={ref}

@@ -11,7 +11,7 @@ export default function Section1() {
           Aumenta la eficiencia en cada paso.
         </div>
       </div>
-      <div className="p-8 my-4 text-zinc-100 text-center text-4xl">
+      <div className="p-8  text-zinc-100 text-center text-6xl">
         Nuestro Proceso
       </div>
       <div className="mt-8 flex flex-row flex-wrap justify-evenly items-center">
