@@ -36,7 +36,7 @@ export default function Sec2Box({
       <div
         className={`p-4 ${
           active ? "lg:p-0" : "lg:p-8"
-        } flex flex-row flex-wrap h-full justify-between items-start `}
+        } flex flex-row flex-wrap h-full justify-between ${active && isMobile ? "items-center": "items-start"} `}
       >
         <div
           className={`flex flex-col flex-nowrap ${
