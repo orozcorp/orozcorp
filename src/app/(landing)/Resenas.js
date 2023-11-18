@@ -33,7 +33,7 @@ export default function Resenas() {
       <h2 className={`text-6xl font-bold mb-4`}>PROYECTOS</h2>
       <div className="font-thin text-3xl my-4">MÁS RECIENTES</div>
 
-      <div className="w-[100vw] md:w-[90vw] ">
+      <div className="w-full md:w-[90vw] ">
         <div className=" overflow-x-scroll flex flex-row flex-nowrap justify-center items-center mx-4 md:mx-14  h-screen z-0 ">
           <div
             className={`overflow-x-scroll flex gap-16 ${

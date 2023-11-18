@@ -22,7 +22,7 @@ export default function InputSimple({
         required={required}
         value={value}
         onChange={onChange}
-        {...(type === "email" && { autocomplete: "email" })}
+        {...(type === "email" && { autoComplete: "email" })}
       />
     </div>
   );
