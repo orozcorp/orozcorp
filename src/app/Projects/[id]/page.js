@@ -13,9 +13,58 @@ const QUERY = `
       images
       description
       project
+      keywords
+      descriptionMeta
     }
   }
 `;
+
+export async function generateMetadata({ params }) {
+  const id = params.id;
+  const portfolioQuery = await getData({
+    query: QUERY,
+    variables: { getPortfolioByIdId: id },
+  });
+  const portfolio = portfolioQuery?.getPortfolioById;
+  const keywords = [
+    "Orozcorp",
+    "Desarrollo Web",
+    "Next JS",
+    "GraphQL",
+    "JavaScript",
+    "Digital Solutions",
+    "Web Development Parnter",
+    "CRM",
+    "ERP",
+  ];
+  portfolio?.keywords?.map((val) => keywords.push(val));
+  return {
+    metadataBase: new URL(`https://orozcorp.live/Projects/${id}`),
+    title: `${portfolio?.project} - ${portfolio?.company} -  by Orozcorp`,
+    description: `${portfolio?.project} - ${portfolio?.company} - created by Orozcorp`,
+    image: portfolio?.images[0],
+    date: portfolio?.date,
+    type: "article",
+    url: `https://www.orozcorp.live/Projects/${id}`,
+    keywords: keywords,
+    openGraph: {
+      title: portfolio?.project,
+      description: `${portfolio?.project} - ${portfolio?.company} - created by Orozcorp`,
+      image: portfolio?.images[0],
+      date: portfolio?.date,
+      type: "article",
+      url: `https://www.orozcorp.live/Projects/${id}`,
+      keywords: keywords,
+      article: {
+        publishedTime: portfolio?.date,
+        modifiedTime: portfolio?.date,
+        authors: ["https://www.orozcorp.io"],
+        tags: keywords,
+      },
+    },
+  };
+}
+
 export default async function Project({ params }) {
   const { id } = params;
   const portfolioQuery = await getData({

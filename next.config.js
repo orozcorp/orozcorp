@@ -2,6 +2,9 @@
 const path = require("path");
 const dev = process.env.NODE_ENV !== "production";
 module.exports = {
+  experimental: {
+    ppr: true,
+  },
   reactStrictMode: true,
   webpack: (config) => {
     config.resolve.alias["@"] = path.resolve(__dirname);
