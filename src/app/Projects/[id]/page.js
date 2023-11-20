@@ -41,7 +41,7 @@ export async function generateMetadata({ params }) {
   return {
     metadataBase: new URL(`https://orozcorp.live/Projects/${id}`),
     title: `${portfolio?.project} - ${portfolio?.company} -  by Orozcorp`,
-    description: `${portfolio?.project} - ${portfolio?.company} - created by Orozcorp`,
+    description: portfolio?.descriptionMeta,
     image: portfolio?.images[0],
     date: portfolio?.date,
     type: "article",
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }) {
     keywords: keywords,
     openGraph: {
       title: portfolio?.project,
-      description: `${portfolio?.project} - ${portfolio?.company} - created by Orozcorp`,
+      description: portfolio?.descriptionMeta,
       image: portfolio?.images[0],
       date: portfolio?.date,
       type: "article",
