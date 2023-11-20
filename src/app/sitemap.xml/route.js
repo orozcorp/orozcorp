@@ -1,4 +1,4 @@
-import { connectToDatabase } from "../lib/mongodb";
+import { connectToDatabase } from "../../lib/mongodb";
 
 const EXTERNAL_DATA_URL = "https://www.orozcorp.live/Projects";
 
@@ -33,21 +33,18 @@ async function generateSiteMap({ projects }) {
 function SiteMap() {
   // getServerSideProps will do the heavy lifting
 }
-export async function getServerSideProps({ res }) {
+export async function GET() {
   const { db } = await connectToDatabase();
   const projects = await db
     .collection("Portfolio")
     .find({}, { projection: { _id: 1 } })
     .toArray();
-  const sitemap = await generateSiteMap({ projects });
-  res.setHeader("Content-Type", "text/xml");
-  // we send the XML to the browser
-  res.write(sitemap);
-  res.end();
-
-  return {
-    props: {},
-  };
+  const body = await generateSiteMap({ projects });
+  return new Response(body, {
+    status: 200,
+    headers: {
+      "Cache-control": "public, s-maxage=86400, stale-while-revalidate",
+      "content-type": "application/xml",
+    },
+  });
 }
-
-export default SiteMap;
