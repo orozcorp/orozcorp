@@ -36,6 +36,20 @@ export async function generateMetadata({ params }) {
     metadataBase: new URL(`https://orozcorp.live/Articles/${id}`),
     openGraph: {
       images: blog?.images?.map((image) => image.url),
+      title: blog?.title,
+      description: blog?.description,
+      image: blog?.images?.[0]?.url,
+      date: blog?.article?.publishedTime,
+      type: "article",
+      url: `https://www.orozcorp.live/Articles/${id}`,
+      keywords: blog?.article?.tags,
+      article: {
+        publishedTime: blog?.article?.publishedTime,
+        modifiedTime: blog?.article?.modifiedTime,
+        expirationTime: blog?.article?.expirationTime,
+        authors: blog?.article?.authors,
+        tags: blog?.article?.tags,
+      },
     },
   };
 }

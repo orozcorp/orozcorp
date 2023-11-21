@@ -1,7 +1,5 @@
-"use client";
 import Mockup from "../../components/atoms/Mockup";
 import { getData } from "../../lib/helpers/getData";
-import { useState, useEffect } from "react";
 import MockupLoading from "../../components/atoms/MockupLoading";
 import { Suspense } from "react";
 const QUERY = `
@@ -18,14 +16,8 @@ const QUERY = `
 `;
 
 async function Projects({}) {
-  const [portfolios, setPortfolios] = useState([]);
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getData({ query: QUERY });
-      setPortfolios(data?.getPortfolios || []);
-    };
-    fetchData();
-  }, []);
+  const data = await getData({ query: QUERY });
+  const portfolios = data?.getPortfolios || [];
   return (
     <>
       {portfolios?.map((portfolio) => (
