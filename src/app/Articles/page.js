@@ -15,7 +15,7 @@ export default async function Articles() {
   const blogs = data?.blogGetAll || [];
   return (
     <>
-      <h1 className="text-4xl font-bold">Articles</h1>
+      <h1 className="text-4xl font-bold">Artículos</h1>
       <div className="flex flex-row flex-wrap gap-4 w-full my-8 justify-between items-stretch">
         {blogs.map((blog) => (
           <Link
