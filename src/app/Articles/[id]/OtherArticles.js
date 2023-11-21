@@ -16,7 +16,7 @@ export default async function OtherArticles() {
   return (
     <div className="w-full">
       <h1 className="text-4xl font-bold">Articles you might enjoy</h1>
-      <div className="flex flex-row flex-wrap gap-4 w-full my-8 justify-between items-stretch">
+      <div className="flex flex-col lg:flex-row flex-nowrap lg:flex-wrap gap-4 w-full my-8 justify-center lg:justify-between items-center lg:items-stretch">
         {blogs.map((blog) => (
           <Link
             href={`/Articles/${blog?._id}`}
