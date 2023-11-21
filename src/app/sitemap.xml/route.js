@@ -1,8 +1,8 @@
 import { connectToDatabase } from "../../lib/mongodb";
 
-const EXTERNAL_DATA_URL = "https://www.orozcorp.live/Projects";
+const EXTERNAL_DATA_URL = "https://www.orozcorp.live/";
 
-async function generateSiteMap({ projects }) {
+async function generateSiteMap({ projects, articles }) {
   return `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
@@ -22,11 +22,20 @@ async function generateSiteMap({ projects }) {
        .map(({ _id }) => {
          return `
        <url>
-           <loc>${`${EXTERNAL_DATA_URL}/${_id.toString()}`}</loc>
+           <loc>${`${EXTERNAL_DATA_URL}/Projects/${_id.toString()}`}</loc>
        </url>
      `;
        })
        .join("")}
+      ${articles
+        .map(({ _id }) => {
+          return `
+          <url>
+              <loc>${`${EXTERNAL_DATA_URL}/Articles/${_id.toString()}`}</loc>
+          </url>
+        `;
+        })
+        .join("")}
    </urlset>
  `;
 }
@@ -39,7 +48,11 @@ export async function GET() {
     .collection("Portfolio")
     .find({}, { projection: { _id: 1 } })
     .toArray();
-  const body = await generateSiteMap({ projects });
+  const articles = await db
+    .collection("Blog")
+    .find({}, { projection: { _id: 1 } })
+    .toArray();
+  const body = await generateSiteMap({ projects, articles });
   return new Response(body, {
     status: 200,
     headers: {
