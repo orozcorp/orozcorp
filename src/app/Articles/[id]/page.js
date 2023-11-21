@@ -1,6 +1,6 @@
 import parse from "html-react-parser";
 import Head from "next/head";
-import { getData } from "@/lib/helpers/getData";
+import { getData } from "../../../lib/helpers/getData";
 const QUERY = `
   query BlogGetById($id: ID!) {
     blogGetById(_id: $id) {
