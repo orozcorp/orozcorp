@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-import Head from "next/head";
+
 import { getData } from "../../../lib/helpers/getData";
 const QUERY = `
   query BlogGetById($id: ID!) {
@@ -24,21 +24,42 @@ const QUERY = `
     }
   }
 `;
+
+export async function generateMetadata({ params }) {
+  const { id } = params;
+  const data = await getData({ query: QUERY, variables: { id } });
+  const blog = data?.blogGetById || {};
+  return {
+    title: blog?.title,
+    description: blog?.description,
+    metadataBase: new URL(`https://orozcorp.live/Articles/${id}`),
+    openGraph: {
+      images: blog?.images?.map((image) => image.url),
+    },
+  };
+}
+
 export default async function Article({ params }) {
   const { id } = params;
   const data = await getData({ query: QUERY, variables: { id } });
   const blog = data?.blogGetById || {};
   return (
     <>
-      <Head>
-        <title>{blog?.title}</title>
-        <meta name="description" content={blog?.description} />
-      </Head>
-
       <main className="flex flex-col flex-nowrap w-full justify-center items-center">
         <div className="flex flex-row flex-wrap p-4 w-full md:w-3/4 items-center justify-center">
           <div className="flex flex-col flex-nowrap w-full justify-start items-start">
             <div className="my-16 w-full break-words text-justify">
+              <h1 className="text-4xl font-bold my-6">{blog.title}</h1>
+              <div className="my-6 flex flex-row flex-wrap gap-2">
+                {blog?.article?.tags?.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="bg-gray-100 text-gray-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
               {parse(blog?.content || "")}
             </div>
           </div>
