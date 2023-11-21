@@ -12,5 +12,19 @@ export const articleResolvers = {
         return {};
       }
     },
+    blogGetAll: async (root, { limit }, { db }) => {
+      try {
+        const data = await db
+          .collection("Blog")
+          .find()
+          .sort({ "article.publisedTime": -1 })
+          .limit(limit)
+          .toArray();
+
+        return data;
+      } catch (error) {
+        return [];
+      }
+    },
   },
 };

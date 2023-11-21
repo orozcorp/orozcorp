@@ -30,5 +30,6 @@ export const article = gql`
   }
   type Query {
     blogGetById(_id: ID!): Blog
+    blogGetAll(limit: Int!): [Blog]
   }
 `;
