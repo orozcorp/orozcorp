@@ -21,10 +21,10 @@ export default async function OtherArticles() {
           <Link
             href={`/Articles/${blog?._id}`}
             key={blog?._id}
-            className="border border-zinc-400 p-4 w-72 min-h-72 shadow-md rounded-md flex flex-col flex-nowrap justify-start items-start gap-4"
+            className="border border-zinc-400 p-4 w-72 min-h-72 shadow-md rounded-md flex flex-col flex-nowrap justify-start items-start gap-4 hover:bg-zinc-600 hover:text-white hover:shadow-xl"
           >
             <h2 className="text-2xl font-bold">{blog?.title}</h2>
-            <p className="text-gray-500">{blog?.description}</p>
+            <p>{blog?.description}</p>
           </Link>
         ))}
       </div>

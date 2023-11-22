@@ -40,7 +40,7 @@ export default function Resenas() {
       className="mt-6 flex flex-col flex-nowrap justify-center items-center w-full py-16 px-2 md:px-8 bg-[#121212] text-white"
       id="portfolio"
     >
-      <h2 className={`text-6xl font-bold mb-4`}>PROYECTOS</h2>
+      <h2 className={`text-6xl font-bold mb-4`}>CASOS DE ÉXITO</h2>
       <div className="font-thin text-3xl my-4">MÁS RECIENTES</div>
 
       <div className="w-full md:w-[90vw] ">
