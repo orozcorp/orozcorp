@@ -16,7 +16,7 @@ export default async function Articles() {
   return (
     <div className="bg-[#121212] text-white p-8">
       <h1 className="text-6xl font-bold mb-8 text-center">Artículos</h1>
-      <div className="flex flex-col lg:flex-row flex-nowrap lg:flex-wrap gap-4 w-full my-8 justify-between items-stretch">
+      <div className="flex flex-col lg:flex-row flex-nowrap lg:flex-wrap gap-4 w-full my-8 justify-center lg:justify-between items-center lg:items-stretch">
         {blogs.map((blog) => (
           <Link
             href={`/Articles/${blog?._id}`}
