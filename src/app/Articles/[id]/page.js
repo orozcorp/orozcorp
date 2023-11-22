@@ -1,5 +1,5 @@
 import parse from "html-react-parser";
-
+import ScrollTop from "../../../components/atoms/ScrollTop";
 import { getData } from "../../../lib/helpers/getData";
 import OtherArticles from "./OtherArticles";
 const QUERY = `
@@ -61,6 +61,7 @@ export default async function Article({ params }) {
   return (
     <>
       <div className="flex flex-col flex-nowrap w-full justify-start items-start">
+        <ScrollTop />
         <div className="my-16 w-full break-words text-justify">
           <h1 className="text-4xl font-bold my-6">{blog.title}</h1>
           <div className="my-6 flex flex-row flex-wrap gap-2">
