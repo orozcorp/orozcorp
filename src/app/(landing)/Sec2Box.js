@@ -38,7 +38,7 @@ export default function Sec2Box({
     >
       <div
         className={`p-4 ${
-          active ? "lg:p-0" : "lg:p-8"
+          active ? "lg:p-4" : "lg:p-8"
         } flex flex-row flex-wrap h-full  ${
           active && isMobile
             ? "items-center justify-center"
