@@ -1,21 +1,38 @@
 import { FaTimes } from "react-icons/fa";
 import { signOut } from "next-auth/react";
+import Link from "next/link";
+import Image from "next/image";
 function LateralMenu({ toggled, setToggled, session }) {
-  const userFamiliar = session?.roles.includes("familiar");
+  const user = session?.user;
   return (
     <div
       className={`${
         toggled ? "sideNavMoved" : "sidenav"
-      } flex flex-col flex-nowrap content-start justify-start items-center h-screen bg-cyan-900`}
+      } flex flex-col flex-nowrap content-start justify-start items-center h-screen bg-zinc-900`}
       id="mySidenav"
       onClick={() => setToggled(!toggled)}
     >
       <FaTimes
-        style={{ alignSelf: "left", marginBottom: "30px", color: "#fff" }}
+        style={{ alignSelf: "left", marginBottom: "30px" }}
+        className="text-zinc-900"
       />
+      <div className="flex flex-col flex-nowrap justify-center items-center gap-4 mb-8">
+        {user?.picture && (
+          <Image src={user.picture} width="50" height="50" alt="profile" />
+        )}
+        {user?.name && <p className="text-zinc-900 max-w-xs">{user.name}</p>}
+      </div>
+      <Link
+        href="/User/WhatsBlast"
+        className="text-zinc-700 hover:text-zinc-950"
+        alt="WhatsBlast"
+        onClick={() => setToggled(!toggled)}
+      >
+        WhatsBlast
+      </Link>
       {session && (
         <button
-          className="mt-4 text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+          className="mt-12 text-white bg-zinc-700 hover:bg-zinc-950 focus:ring-4 focus:outline-none focus:ring-zinc-300  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           onClick={signOut}
         >
           Log Out

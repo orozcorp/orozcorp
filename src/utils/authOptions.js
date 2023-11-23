@@ -39,8 +39,6 @@ export const authOptions = {
         session.user.id = userInfo._id;
         session.user.name = `${userInfo.profile.name} ${userInfo.profile.lastName}`;
         session.user.picture = userInfo.profile.picture;
-        session.user.familias = userInfo.profile.familias || [];
-        session.user.minor = userInfo.profile.minor;
         return session;
       }
       return {};

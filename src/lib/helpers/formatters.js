@@ -5,6 +5,36 @@ import moment from "moment-timezone";
 export function userName(userProfile) {
   return `${userProfile.nombre} ${userProfile.apellido}`;
 }
+export function formatPhoneNumber(value) {
+  // Remove all non-digit characters from the input
+  const cleaned = ("" + value).replace(/\D/g, "");
+
+  // Format based on the length of the cleaned string
+  switch (cleaned.length) {
+    case 11:
+      // Format for 11-digit numbers
+      return `+${cleaned.substring(0, 1)} ${cleaned.substring(
+        1,
+        4
+      )} ${cleaned.substring(4, 7)} ${cleaned.substring(7)}`;
+    case 12:
+      // Format for 12-digit numbers
+      return `+${cleaned.substring(0, 2)} ${cleaned.substring(
+        2,
+        5
+      )} ${cleaned.substring(5, 8)} ${cleaned.substring(8)}`;
+    case 13:
+      // Format for 13-digit numbers
+      return `+${cleaned.substring(0, 3)} ${cleaned.substring(
+        3,
+        6
+      )} ${cleaned.substring(6, 9)} ${cleaned.substring(9)}`;
+    default:
+      // Return the original value if it doesn't match any of the expected lengths
+      return value;
+  }
+}
+
 export function format_money(value) {
   return _.isNumber(value) ? numeral(value).format("$0,0.00") : "$0.00";
 }
