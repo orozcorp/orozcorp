@@ -1,6 +1,7 @@
 import Carousel from "./Carousel";
 import { format_date } from "../../../lib/helpers/formatters";
 import dynamic from "next/dynamic";
+import ScrollTop from "../../../components/atoms/ScrollTop";
 import { getData } from "../../../lib/helpers/getData";
 const Resenas = dynamic(() => import("../../(landing)/Resenas"));
 const QUERY = `
