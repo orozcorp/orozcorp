@@ -26,7 +26,6 @@ export default function Sec2Box({
       initial={{ scale: 0 }}
       animate={{ rotate: inView ? 360 : 0, scale: inView ? 1 : 0 }}
       ref={ref}
-      whileHover={{ scale: 1.1 }}
       whileTap={{ scale: 0.9 }}
       onClick={toggleActive}
       transition={{
@@ -34,7 +33,7 @@ export default function Sec2Box({
         stiffness: 260,
         damping: 20,
       }}
-      className={`${active ? "w-full" : "w-72"}  rounded-2xl shadow-2xl`}
+      className={`${active ? "w-fit" : "w-72"}  rounded-2xl shadow-2xl border`}
     >
       <div
         className={`p-4 ${
@@ -46,8 +45,8 @@ export default function Sec2Box({
         } `}
       >
         <div
-          className={`flex flex-col flex-nowrap ${
-            active && "max-w-sm  items-center justify-center w-full h-full"
+          className={`flex flex-col flex-nowrap h-full justify-between ${
+            active && "max-w-sm  items-center  w-full p-4"
           }`}
         >
           <h3 className="mb-2 text-zinc-800 text-xl font-bold">{title}</h3>
@@ -69,6 +68,7 @@ export default function Sec2Box({
             width={isMobile ? 300 : 600}
             height={300}
             alt={title}
+            className="rounded-2xl"
           />
         )}
       </div>
