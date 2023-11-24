@@ -3,9 +3,12 @@ import { AiOutlineDelete } from "react-icons/ai";
 import { useState } from "react";
 import Spinner from "../../../components/atoms/Spinner";
 import { postData } from "../../../lib/helpers/getData";
+import SendMessage from "./SendMessage";
 import { formatPhoneNumber, format_qty } from "../../../lib/helpers/formatters";
 export default function GetContacts() {
   const [contacts, setContacts] = useState([]);
+  const [display, setDisplay] = useState("none");
+
   const removeContact = (id) => {
     const filteredContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(filteredContacts);
@@ -32,6 +35,11 @@ export default function GetContacts() {
   };
   return (
     <>
+      <SendMessage
+        display={display}
+        setDisplay={setDisplay}
+        contacts={contacts}
+      />
       <div className="flex flex-row flex-wrap gap-8 justify-between items-center w-full">
         {contacts.length < 1 && (
           <button
@@ -46,7 +54,10 @@ export default function GetContacts() {
             <h2 className="text-lg my-2">
               Contacts {format_qty(contacts.length)}
             </h2>
-            <button className="text-white bg-zinc-700 hover:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2">
+            <button
+              onClick={() => setDisplay("block")}
+              className="text-white bg-zinc-700 hover:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-zinc-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2"
+            >
               Generar Mensaje
             </button>
           </>

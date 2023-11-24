@@ -22,7 +22,6 @@ export default function MyNumberData() {
     const getMe = async () => {
       try {
         const data = await getData({ query: QUERY });
-        console.log("data", data);
         setMe(data.getMe);
       } catch (error) {
         console.error("Error fetching QR code:", error);
