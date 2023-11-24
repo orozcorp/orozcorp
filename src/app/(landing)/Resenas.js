@@ -1,4 +1,3 @@
-"use client";
 import Mockup from "../../components/atoms/Mockup";
 import { getData } from "../../lib/helpers/getData";
 import MockupLoading from "../../components/atoms/MockupLoading";
