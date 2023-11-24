@@ -1,8 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { postData } from "../../../lib/helpers/getData";
-import Spinner from "../../../components/atoms/Spinner";
+import { postData } from "../../lib/helpers/getData";
+import Spinner from "../../components/atoms/Spinner";
 const MUTATION_GETQR = `mutation Mutation {
   getQR
 }`;
@@ -40,11 +40,13 @@ export default function LogInPhone({ setChecking, checking }) {
   };
 
   return (
-    <div>
+    <div className="flex flex-col flex-nowrap justify-center items-center">
       {loading && <Spinner />}
       {qr ? (
         <div className="flex flex-col flex-nowrap justify-center items-center max-w-xs border rounded text-center p-4 shadow-xl">
-          <div className="mb-4">Favor de scanear el codigo con tu whatsapp</div>
+          <div className="mb-4 font-bold">
+            Favor de scanear el codigo con tu whatsapp
+          </div>
           <QRCodeSVG
             bgColor="#FFFFFF"
             fgColor="#000000"

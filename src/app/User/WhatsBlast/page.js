@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import LogInPhone from "./LogInPhone";
 import GetContacts from "./GetContacts";
 import { getData } from "../../../lib/helpers/getData";
 
@@ -28,9 +27,7 @@ export default function Whatsblast() {
   return (
     <div className="flex flex-col flex-nowrap justify-start items-start">
       <h1 className="text-2xl font-bold mb-8">Whatsblast</h1>
-      {status !== "authenticated" && (
-        <LogInPhone setChecking={setChecking} checking={checking} />
-      )}
+
       {status === "authenticated" && (
         <>
           <GetContacts />

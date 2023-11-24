@@ -23,13 +23,14 @@ function LateralMenu({ toggled, setToggled, session }) {
         {user?.name && <p className="text-zinc-900 max-w-xs">{user.name}</p>}
       </div>
       <Link
-        href="/User/WhatsBlast"
+        href="/User"
         className="text-zinc-700 hover:text-zinc-950"
-        alt="WhatsBlast"
+        alt="User"
         onClick={() => setToggled(!toggled)}
       >
-        WhatsBlast
+        Inicio
       </Link>
+
       {session && (
         <button
           className="mt-12 text-white bg-zinc-700 hover:bg-zinc-950 focus:ring-4 focus:outline-none focus:ring-zinc-300  font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"

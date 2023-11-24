@@ -87,5 +87,27 @@ export const mensajesResolver = {
         return "Error";
       }
     },
+    getMe: async (_, __, { db }) => {
+      let url = `https://api.ultramsg.com/${
+        process.env.WA_INSTANCE
+      }/instance/me?token=${encodeURIComponent(process.env.WA_TOKEN)}`;
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
+        }
+        const responseData = await response.json();
+        return responseData;
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+        return "Error";
+      }
+    },
   },
 };

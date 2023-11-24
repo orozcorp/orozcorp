@@ -1,13 +1,11 @@
 "use client";
 import { useState } from "react";
-import { Flex, Spinner, Button, Heading, Text } from "@theme-ui/components";
+import { Flex, Spinner, Button, Text } from "@theme-ui/components";
 import Menu from "../components/atoms/Menu";
 import LateralMenu from "../components/atoms/LateralMenu";
-import useWindowSize from "../components/hooks/useWindowSize";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
 export default function Navbar() {
-  const size = useWindowSize();
   const { data: session, status } = useSession();
   const [toggled, setToggled] = useState(false);
   return (
