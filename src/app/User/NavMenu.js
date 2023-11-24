@@ -3,10 +3,20 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 import { useState, useEffect } from "react";
-import { getData } from "../../lib/helpers/getData";
+import { getData, postData } from "../../lib/helpers/getData";
 const QUERY_CHECK_STATUS = `query Query {
   getStatus
 }`;
+
+const MUTATION = `
+mutation Mutation {
+  wa_logOut {
+    code
+    message
+    success
+  }
+}
+`;
 
 export default function NavMenu({}) {
   const [status, setStatus] = useState("gettingStatus");
@@ -20,7 +30,20 @@ export default function NavMenu({}) {
       console.error("Error checking status:", error);
     }
   };
-
+  const logOut = async () => {
+    try {
+      const data = await postData({
+        query: MUTATION,
+      });
+      if (data.wa_logOut.success) {
+        setStatus("unauthenticated"); // Update status based on GraphQL response
+      } else {
+        console.error("Error logging out:", data.wa_logOut.message);
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
   useEffect(() => {
     checkStatus();
   }, [status]);
@@ -76,7 +99,10 @@ export default function NavMenu({}) {
           <li className="ml-auto">
             <button
               className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-zinc-900 hover:border-zinc-300"
-              onClick={signOut}
+              onClick={() => {
+                logOut();
+                signOut();
+              }}
             >
               Log Out
             </button>

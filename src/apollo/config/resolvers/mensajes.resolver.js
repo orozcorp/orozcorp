@@ -60,6 +60,41 @@ export const mensajesResolver = {
         return "Error";
       }
     },
+    wa_logOut: async (_, __, { db }) => {
+      const buildUrl = (action) =>
+        `https://api.ultramsg.com/${
+          process.env.WA_INSTANCE
+        }/instance/${action}?token=${encodeURIComponent(process.env.WA_TOKEN)}`;
+
+      const url1 = buildUrl("logout");
+      const url2 = buildUrl("clear");
+
+      try {
+        const fetchOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          redirect: "follow",
+        };
+
+        const response1 = await fetch(url1, fetchOptions);
+        if (!response1.ok) throw new Error("Failed to log out.");
+
+        const responseData1 = await response1.json();
+
+        await fetch(url2, fetchOptions); // Assuming clear call doesn't need response validation
+
+        return responseData1.status === "success"
+          ? {
+              code: 200,
+              success: true,
+              message: "Sesión cerrada correctamente",
+            }
+          : { code: 400, success: false, message: "Error al cerrar sesión" };
+      } catch (error) {
+        console.error("Fetch operation error:", error);
+        return { code: 400, success: false, message: "Error al cerrar sesión" };
+      }
+    },
   },
   Query: {
     getStatus: async (_, __, { db }) => {
@@ -103,6 +138,57 @@ export const mensajesResolver = {
         if (!response.ok) {
           throw new Error("Network response was not ok.");
         }
+        const responseData = await response.json();
+        return responseData;
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+        return "Error";
+      }
+    },
+    getChats: async (_, __, { db }) => {
+      let url = `https://api.ultramsg.com/${
+        process.env.WA_INSTANCE
+      }/chats?token=${encodeURIComponent(process.env.WA_TOKEN)}`;
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
+        }
+        const responseData = await response.json();
+        return responseData;
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+        return "Error";
+      }
+    },
+    getMessages: async (_, { chatId }, { db }) => {
+      const token = encodeURIComponent(process.env.WA_TOKEN);
+      const limit = "1000"; // or any other value you want to set
+
+      let url = `https://api.ultramsg.com/${
+        process.env.WA_INSTANCE
+      }/chats/messages?token=${token}&chatId=${encodeURIComponent(
+        chatId
+      )}&limit=${limit}`;
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
+        }
+
         const responseData = await response.json();
         return responseData;
       } catch (error) {

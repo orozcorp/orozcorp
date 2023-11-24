@@ -9,13 +9,13 @@
     "@apollo/client": "^3.7.4",
     "@apollo/react-ssr": "^4.0.0",
     "@apollo/server": "^4.3.1",
-    "@as-integrations/next": "^1.2.0",
+    "@as-integrations/next": "^3.0.0",
     "@auth/mongodb-adapter": "^2.0.6",
     "@emotion/react": "^11.10.5",
-    "@mdx-js/react": "1",
+    "@mdx-js/react": "3.0.0",
     "@next-auth/mongodb-adapter": "^1.1.1",
     "@types/html-pdf": "^3.0.0",
-    "@vercel/og": "^0.4.0",
+    "@vercel/og": "^0.5.20",
     "add": "^2.0.6",
     "autoprefixer": "^10.4.14",
     "axios": "^1.6.2",
@@ -32,7 +32,7 @@
     "mongodb": "^6.3.0",
     "next": "^14.0.3",
     "next-auth": "^4.24.5",
-    "next-seo": "^5.15.0",
+    "next-seo": "^6.4.0",
     "next-with-apollo": "^5.3.0",
     "node-fetch": "^3.3.0",
     "nodemailer": "^6.9.1",
@@ -50,14 +50,14 @@
     "s3up-client": "^2.0.0",
     "s3up-server": "^2.0.0",
     "tailwindcss": "^3.3.2",
-    "theme-ui": "^0.15.4",
+    "theme-ui": "^0.16.1",
     "uuid": "^9.0.0",
     "yarn": "^1.22.19"
   },
   "devDependencies": {
-    "@types/node": "18.11.3",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "typescript": "4.8.4"
+    "@types/node": "20.10.0",
+    "@types/react": "18.2.38",
+    "@types/react-dom": "18.2.17",
+    "typescript": "5.3.2"
   }
 }
