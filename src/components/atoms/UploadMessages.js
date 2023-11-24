@@ -4,14 +4,15 @@ import { useRef, useState, useEffect } from "react";
 import ProgressBar from "./ProgressBar";
 import { uploadFiles } from "s3up-client";
 
-export default function Upload({
-  setUrl,
+export default function UploadMessages({
+  setForm,
   percent,
   setPercent,
   user,
   location,
   heading,
-  accept,
+  messageType,
+  resetUpload,
 }) {
   const [key, setKey] = useState("");
 
@@ -66,30 +67,46 @@ export default function Upload({
       uploadFiles(inputFile.current.files, {
         signer: Sign,
         onProgress: (state) => {
-          setUrl(state.list[0].url);
+          if (messageType === "Imagen") {
+            setForm({ ...form, image: state.list[0].url });
+          } else if (messageType === "Documento") {
+            setForm({
+              ...form,
+              document: state.list[0].url,
+              documentName: Ogfile.name,
+            });
+          }
           setPercent(state.percent());
         },
       });
     }
-  }, [key, setPercent, setUrl]);
+  }, [key, setPercent, setForm]);
 
   function uploadImage() {
     const Ogfile = inputFile.current.files[0];
     setKey(`orozcorp/${user}/${location}/${Date.now()}-${Ogfile.name}`);
   }
+  const reset = () => {
+    if (resetUpload) {
+      inputFile.current.value = null;
+      setPercent(0);
+    }
+  };
+  useEffect(() => {
+    reset();
+  }, [resetUpload]);
   return (
-    <div className="w-full">
-      <label htmlFor={heading} className="text-sm">
+    <div className="flex flex-col flex-nowrap flex-1">
+      <label htmlFor={heading} className="text-md">
         {heading}
       </label>
       <input
-        className="border border-zinc-300 rounded-md bg-zinc-500 p-2 w-full mt-2"
+        className="border border-zinc-700 rounded-md bg-zinc-100 p-2 w-full"
         type="file"
         ref={inputFile}
-        onChange={uploadImage} // Uncomment this line
-        accept={accept}
+        onChange={uploadImage}
       />
-      <ProgressBar completed={percent} />
+      {percent > 0 && <ProgressBar completed={percent} />}
     </div>
   );
 }
