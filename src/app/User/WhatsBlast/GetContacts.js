@@ -32,16 +32,26 @@ export default function GetContacts() {
   };
   return (
     <>
-      {contacts.length < 1 && (
-        <button
-          onClick={getContacts}
-          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2"
-        >
-          Get Contacts
-        </button>
-      )}
-
-      <h2 className="text-lg my-2">Contacts {format_qty(contacts.length)}</h2>
+      <div className="flex flex-row flex-wrap gap-8 justify-between items-center w-full">
+        {contacts.length < 1 && (
+          <button
+            onClick={getContacts}
+            className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2"
+          >
+            Get Contacts
+          </button>
+        )}
+        {contacts.length > 0 && (
+          <>
+            <h2 className="text-lg my-2">
+              Contacts {format_qty(contacts.length)}
+            </h2>
+            <button className="text-white bg-zinc-700 hover:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2">
+              Generar Mensaje
+            </button>
+          </>
+        )}
+      </div>
       {loading && <Spinner />}
       {!loading && contacts.length > 0 && (
         <div className="relative overflow-x-auto rounded-xl">

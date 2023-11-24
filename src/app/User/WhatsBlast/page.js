@@ -24,10 +24,9 @@ export default function Whatsblast() {
   useEffect(() => {
     checkStatus();
   }, [checking]);
+
   return (
     <div className="flex flex-col flex-nowrap justify-start items-start">
-      <h1 className="text-2xl font-bold mb-8">Whatsblast</h1>
-
       {status === "authenticated" && (
         <>
           <GetContacts />

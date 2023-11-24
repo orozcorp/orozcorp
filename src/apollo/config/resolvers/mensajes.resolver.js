@@ -50,7 +50,8 @@ export const mensajesResolver = {
           (contact) =>
             (contact.name || contact.pushname) &&
             !contact.isGroup &&
-            !contact.isBlocked
+            !contact.isBlocked &&
+            contact.number
         );
 
         return filteredContacts;

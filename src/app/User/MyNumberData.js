@@ -13,7 +13,11 @@ const QUERY = `query GetMe {
 const pattern = /@.*/;
 
 export default function MyNumberData() {
-  const [me, setMe] = useState("");
+  const [me, setMe] = useState({
+    id: "",
+    name: "",
+    profile_picture: "",
+  });
   useEffect(() => {
     const getMe = async () => {
       try {
@@ -29,16 +33,18 @@ export default function MyNumberData() {
   }, []);
   return (
     <div className="border border-zinc-800 shadow-xl rounded-xl p-4 self-start flex flex-col flex-nowrap justify-center items-center gap-4">
-      <Image
-        src={me?.profile_picture}
-        alt={me?.name}
-        width={50}
-        height={50}
-        className="rounded-full border"
-      />
+      {me?.profile_picture && (
+        <Image
+          src={me?.profile_picture}
+          alt={me?.name}
+          width={50}
+          height={50}
+          className="rounded-full border"
+        />
+      )}
       <div className="text-lg font-bold ">{me?.name}</div>
       <div className="text-sm font-bold ">
-        {formatPhoneNumber(me?.id.replace(pattern, ""))}
+        {formatPhoneNumber(me?.id?.replace(pattern, ""))}
       </div>
     </div>
   );

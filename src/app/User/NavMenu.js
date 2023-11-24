@@ -2,8 +2,28 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
+import { useState, useEffect } from "react";
+import { getData } from "../../lib/helpers/getData";
+const QUERY_CHECK_STATUS = `query Query {
+  getStatus
+}`;
 
-export default function NavMenu({ status }) {
+export default function NavMenu({}) {
+  const [status, setStatus] = useState("gettingStatus");
+  const checkStatus = async () => {
+    try {
+      const data = await getData({
+        query: QUERY_CHECK_STATUS,
+      });
+      setStatus(data.getStatus); // Update status based on GraphQL response
+    } catch (error) {
+      console.error("Error checking status:", error);
+    }
+  };
+
+  useEffect(() => {
+    checkStatus();
+  }, [status]);
   const pathname = usePathname();
   const active =
     "inline-block p-4 text-zinc-900 border-b-2 border-zinc-900 rounded-t-lg active";

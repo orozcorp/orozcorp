@@ -27,7 +27,7 @@ export default function page() {
   }, [checking]);
   return (
     <>
-      <NavMenu status={status} />
+      <NavMenu />
       <div className="flex flex-col min-h-screen flex-nowrap items-center my-8">
         <div className="flex flex-col flex-nowrap w-full lg:w-[95%] p-2">
           {status !== "authenticated" && status !== "gettingStatus" && (
