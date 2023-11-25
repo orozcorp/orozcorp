@@ -4,46 +4,17 @@ import { motion } from "framer-motion";
 import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "./ProductInformation";
 import Contactanos from "../../(landing)/Contactanos";
-import { NextSeo, ProductJsonLd } from "next-seo";
+import { ProductJsonLd } from "next-seo";
 import ImagesCarousel from "./ImagesCarousel";
 import Products from "../../(landing)/Products";
+
 export default function WhatsBlast() {
   return (
     <>
-      <NextSeo
-        title="WhatsBlast: Tu Asistente de Mensajería Masiva en WhatsApp"
-        description="WhatsBlast te permite enviar mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Ofrece estadísticas en tiempo real, segmentación de clientes, y más."
-        canonical="https://orozcorp.live/Products/WhatsBlast"
-        keywords="Envío Masivo de WhatsApp, Mensajería Masiva en WhatsApp, WhatsApp para Empresas, Programar Mensajes en WhatsApp, Automatización de WhatsApp"
-        additionalMetaTags={[
-          {
-            name: "keywords",
-            content:
-              "Mensajería Masiva, WhatsApp, Estadísticas en Tiempo Real, Segmentación de Clientes, Programación de Mensajes",
-          },
-        ]}
-        openGraph={{
-          url: "https://orozcorp.live/Products/WhatsBlast",
-          title: "WhatsBlast: Tu Asistente de Mensajería Masiva en WhatsApp",
-          description:
-            "WhatsBlast te permite enviar mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Ofrece estadísticas en tiempo real, segmentación de clientes, y más.",
-          images: [
-            {
-              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
-              alt: "Logo de WhatsBlast",
-            },
-          ],
-          siteName: "Orozcorp",
-        }}
-        twitter={{
-          handle: "@orozcorp_io",
-          site: "@orozcorp_io",
-          cardType: "summary_large_image",
-        }}
-      />
       <ProductJsonLd
         productName="WhatsBlast: Tu Asistente de Mensajería Masiva en WhatsApp"
         images={[
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.16.02%E2%80%AFPM.png",
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+4.21.58%E2%80%AFPM.png",
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.28.05%E2%80%AFPM.png",

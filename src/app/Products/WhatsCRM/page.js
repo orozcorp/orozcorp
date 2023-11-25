@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Contactanos from "../../(landing)/Contactanos";
-import { NextSeo, ProductJsonLd } from "next-seo";
+import { ProductJsonLd } from "next-seo";
 import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "../WhatsBlast/ProductInformation";
 import ImagesCarousel from "../WhatsBlast/ImagesCarousel";
@@ -10,37 +10,6 @@ import Products from "../../(landing)/Products";
 export default function index() {
   return (
     <>
-      <NextSeo
-        title="WhatsCRM: Integra WhatsApp en Tu CRM y Aumenta Tus Ventas"
-        description="WhatsCRM integra WhatsApp con tu CRM para una comunicación fluida y eficiente. Envía y recibe mensajes, accede al inventario en tiempo real, y más."
-        canonical="https://orozcorp.live/Products/WhatsCRM"
-        keywords="Integración de WhatsApp y CRM, Gestión de Conversaciones en WhatsApp, Inventario en Tiempo Real, CRM para WhatsApp,Ventas a través de WhatsApp "
-        additionalMetaTags={[
-          {
-            name: "keywords",
-            content:
-              "Integración de CRM, WhatsApp, Historial de Conversaciones, Inventario en Tiempo Real, Registro de Ventas, Seguridad End-to-End, Asignación de Agentes, Etiquetas de Conversación",
-          },
-        ]}
-        openGraph={{
-          url: "https://orozcorp.live/Products/WhatsCRM",
-          title: "WhatsCRM: Integra WhatsApp en Tu CRM y Aumenta Tus Ventas",
-          description:
-            "WhatsCRM integra WhatsApp con tu CRM para una comunicación fluida y eficiente. Envía y recibe mensajes, accede al inventario en tiempo real, y más.",
-          images: [
-            {
-              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
-              alt: "Logo de WhatsCRM",
-            },
-          ],
-          siteName: "Orozcorp",
-        }}
-        twitter={{
-          handle: "@orozcorp_io",
-          site: "@orozcorp_io",
-          cardType: "summary_large_image",
-        }}
-      />
       <ProductJsonLd
         productName="WhatsCRM: Integra WhatsApp en Tu CRM y Aumenta Tus Ventas"
         images={[

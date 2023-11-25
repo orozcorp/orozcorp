@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Contactanos from "../../(landing)/Contactanos";
-import { NextSeo, ProductJsonLd } from "next-seo";
+import { ProductJsonLd } from "next-seo";
 import ProductFeatures from "./ProductFeatures";
 import ProductInformation from "../WhatsBlast/ProductInformation";
 import ImagesCarousel from "../WhatsBlast/ImagesCarousel";
@@ -10,37 +10,6 @@ import Products from "../../(landing)/Products";
 export default function index() {
   return (
     <>
-      <NextSeo
-        title="ChatDigest: Tu Resumen Diario de Conversaciones en WhatsApp"
-        description="Con ChatDigest, recibe un resumen diario de todas tus interacciones con los clientes en WhatsApp. Identifica oportunidades, analiza el tono de la conversación y toma decisiones más inteligentes."
-        canonical="https://orozcorp.live/Products/ChatDigest"
-        keywords="Resumen Diario de WhatsApp, Resumen de Conversaciones en WhatsApp, Análisis de Tono, Programación de Resúmenes, Exportación de Datos, Integración con WhatsCRM"
-        additionalMetaTags={[
-          {
-            name: "keywords",
-            content:
-              "Resumen Diario, WhatsApp, Inteligencia Artificial, Análisis de Tono, Métricas Personalizadas, Programación de Resúmenes, Exportación de Datos, Integración con WhatsCRM",
-          },
-        ]}
-        openGraph={{
-          url: "https://orozcorp.live/Products/ChatDigest",
-          title: "ChatDigest: Tu Resumen Diario de Conversaciones en WhatsApp",
-          description:
-            "Con ChatDigest, recibe un resumen diario de todas tus interacciones con los clientes en WhatsApp. Identifica oportunidades, analiza el tono de la conversación y toma decisiones más inteligentes.",
-          images: [
-            {
-              url: "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/botreading2.png",
-              alt: "Logo de ChatDigest",
-            },
-          ],
-          siteName: "Orozcorp",
-        }}
-        twitter={{
-          handle: "@orozcorp_io",
-          site: "@orozcorp_io",
-          cardType: "summary_large_image",
-        }}
-      />
       <ProductJsonLd
         productName="ChatDigest: Tu Resumen Diario de Conversaciones en WhatsApp"
         images={[
