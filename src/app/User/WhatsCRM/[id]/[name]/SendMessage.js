@@ -1,10 +1,10 @@
 export default function SendMessage() {
   return (
-    <form>
-      <label for="chat" className="sr-only">
+    <form className="bg-zinc-400">
+      <label htmlFor="chat" className="sr-only">
         Your message
       </label>
-      <div className="flex items-center px-3 py-2  bg-gray-50 ">
+      <div className="flex items-center px-3 py-2  bg-zinc-300 ">
         <button
           type="button"
           className="inline-flex justify-center p-2 text-gray-500 rounded-lg cursor-pointer hover:text-gray-900 hover:bg-gray-100 "
