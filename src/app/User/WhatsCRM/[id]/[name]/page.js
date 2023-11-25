@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import { AiOutlineLeft } from "react-icons/ai";
+import Link from "next/link";
 const QUERY = `
   query GetMessages($getMessagesId: ID!) {
     getMessages(id: $getMessagesId) {
@@ -66,8 +68,11 @@ export default function page({ params }) {
       onMouseLeave={() => setIsActive(false)}
       className="flex flex-col flex-nowrap flex-1 h-[85vh] gap-2"
     >
-      <div className="bg-zinc-300 p-2 text-xl text-center">
-        {decodeURIComponent(params.name)}
+      <div className="bg-zinc-300 p-2 flex flex-row flex-wrap justify-start items-center gap-4">
+        <Link href="/User/WhatsCRM" aria-label="back">
+          <AiOutlineLeft />
+        </Link>
+        <div>{decodeURIComponent(params.name)}</div>
       </div>
       {messages.length === 0 ? (
         <LoadingMensajes />
