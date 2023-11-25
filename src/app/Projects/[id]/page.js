@@ -48,6 +48,24 @@ export async function generateMetadata({ params }) {
     type: "article",
     url: `https://www.orozcorp.live/Projects/${id}`,
     keywords: keywords,
+    twitter: {
+      card: "summary_large_image",
+      title: portfolio?.project,
+      creator: "@orozcorp_io",
+    },
+    robots: {
+      index: false,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       title: portfolio?.project,
       description: portfolio?.descriptionMeta,
@@ -75,7 +93,7 @@ export default async function Project({ params }) {
   const portfolio = portfolioQuery?.getPortfolioById;
   return (
     <>
-        <ScrollTop />
+      <ScrollTop />
       <main className="flex flex-col flex-nowrap w-full justify-center items-center">
         <div className="flex flex-row flex-wrap p-4 w-full md:w-3/4 items-center justify-center">
           <div className="flex flex-col flex-nowrap w-full justify-start items-start">

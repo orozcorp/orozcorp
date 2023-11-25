@@ -34,6 +34,24 @@ export async function generateMetadata({ params }) {
     title: blog?.title,
     description: blog?.description,
     metadataBase: new URL(`https://orozcorp.live/Articles/${id}`),
+    twitter: {
+      card: "summary_large_image",
+      title: blog?.title,
+      creator: "@orozcorp_io",
+    },
+    robots: {
+      index: false,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     openGraph: {
       images: blog?.images?.map((image) => image.url),
       title: blog?.title,
