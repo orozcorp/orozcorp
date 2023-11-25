@@ -22,7 +22,7 @@ async function generateSiteMap({ projects, articles }) {
        .map(({ _id }) => {
          return `
        <url>
-           <loc>${`${EXTERNAL_DATA_URL}/Projects/${_id.toString()}`}</loc>
+           <loc>${`${EXTERNAL_DATA_URL}Projects/${_id.toString()}`}</loc>
        </url>
      `;
        })
@@ -31,7 +31,7 @@ async function generateSiteMap({ projects, articles }) {
         .map(({ _id }) => {
           return `
           <url>
-              <loc>${`${EXTERNAL_DATA_URL}/Articles/${_id.toString()}`}</loc>
+              <loc>${`${EXTERNAL_DATA_URL}Articles/${_id.toString()}`}</loc>
           </url>
         `;
         })
