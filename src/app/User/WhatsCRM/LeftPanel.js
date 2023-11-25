@@ -15,12 +15,12 @@ export default async function LeftPanel() {
   const data = await getData({ query: QUERY });
   const chats = data.getChats;
   return (
-    <div className="flex flex-col flex-nowrap bg-zinc-300 p-4 text-bg-zinc-900 h-[83vh] w-60 overflow-y-auto">
+    <div className="flex flex-col flex-nowrap bg-zinc-300 p-4 text-bg-zinc-900 h-[83vh] w-60 overflow-y-auto shadow-2xl border-separateder-zinc-300">
       <div>Crear Mensaje</div>
       <div className="flex flex-col flex-nowrap gap-1 mt-4">
         {chats?.map((chat) => (
           <Link
-            href={`/User/WhatsCRM/${chat.id}`}
+            href={`/User/WhatsCRM/${chat.id}/${chat.name}`}
             key={chat.id}
             className="
             flex flex-row flex-wrap justify-between items-center w-full border border-zinc-400 rounded shadow-md p-2

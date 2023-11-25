@@ -167,14 +167,15 @@ export const mensajesResolver = {
         return "Error";
       }
     },
-    getMessages: async (_, { chatId }, { db }) => {
+    getMessages: async (_, { id }, { db }) => {
+      const result = id.replace("%40", "@");
       const token = encodeURIComponent(process.env.WA_TOKEN);
       const limit = "1000"; // or any other value you want to set
 
       let url = `https://api.ultramsg.com/${
         process.env.WA_INSTANCE
       }/chats/messages?token=${token}&chatId=${encodeURIComponent(
-        chatId
+        result
       )}&limit=${limit}`;
 
       try {

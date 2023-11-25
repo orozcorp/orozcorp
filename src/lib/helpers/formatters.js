@@ -65,6 +65,9 @@ export function dateInputFormatUnix(value) {
 export function format_dateHr(value) {
   return moment(value).format("DD/MMM/YY - HH:mm");
 }
+export function format_dateHrUnix(value) {
+  return moment.unix(value).format("DD/MMM/YY - HH:mm");
+}
 export function format_hour(value) {
   return moment(value).format("HH:mm");
 }
