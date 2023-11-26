@@ -53,10 +53,23 @@ export default function Contactanos({ bgColor }) {
           Ya recibimos tu información estaremos contactándonos pronto
         </h2>
       ) : (
-        <>
-          <h2 className="text-2xl lg:text-4xl mt-8 mb-4 ">Contáctanos</h2>
+        <div className="flex flex-col flex-nowrap lg:flex-row lg:flex-wrap justify-between items-center lg:items-start w-full my-12">
+          <div className="flex-1 flex flex-col flex-nowrap justify-center items-center gap-8">
+            <h2 className="text-4xl lg:text-6xl max-w-xl text-center">
+              ¡Transforma Tu Negocio Hoy!
+            </h2>
+            <h3 className="text-lg lg:text-2xl  max-w-md text-center">
+              Reserva Tu Consultoría Gratuita Ahora!
+            </h3>
+            <div className="text-center max-w-md">
+              ¡No dejes pasar esta oportunidad! Las plazas para estas
+              consultorías gratuitas son limitadas y se asignan por orden de
+              llegada. Reserva tu sesión hoy mismo y da el primer paso hacia el
+              éxito sostenido de tu empresa.
+            </div>
+          </div>
           <form
-            className="flex flex-col flex-nowrap justify-center items-center content-center lg:content-stretch gap-8 w-full"
+            className="flex flex-col flex-nowrap justify-center items-center content-center lg:content-stretch gap-8 flex-1 mt-12 lg:mt-0"
             onSubmit={sendReport}
           >
             <div className="w-full lg:w-96">
@@ -114,10 +127,10 @@ export default function Contactanos({ bgColor }) {
                 bgColor ? "white" : "black"
               } border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2`}
             >
-              Enviar
+              Reserva tu espacio hoy
             </button>
           </form>
-        </>
+        </div>
       )}
     </div>
   );
