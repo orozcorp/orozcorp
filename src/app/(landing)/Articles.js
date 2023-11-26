@@ -17,7 +17,7 @@ export default async function Articles() {
     <div className="bg-[#121212] text-white p-8">
       <div className="flex flex-col flex-nowrap justify-center items-center gap-4">
         <div className="text-3xl">Tips para mejorar tu </div>
-        <h1 className="text-6xl font-bold mb-8 text-center">Negocio</h1>
+        <h2 className="text-6xl font-bold mb-8 text-center">Negocio</h2>
       </div>
       <div className="flex flex-col lg:flex-row flex-nowrap lg:flex-wrap gap-4 w-full my-8 justify-center lg:justify-between items-center lg:items-stretch">
         {blogs.map((blog) => (

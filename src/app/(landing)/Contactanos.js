@@ -44,7 +44,7 @@ export default function Contactanos({ bgColor }) {
 
   return (
     <div
-      className={`p-8 flex flex-col flex-nowrap justify-center items-center bg-${
+      className={`p-2 w-full  flex flex-col flex-nowrap justify-center items-center bg-${
         bgColor || "white"
       } text-${bgColor ? "white" : "black"}`}
     >
@@ -125,7 +125,7 @@ export default function Contactanos({ bgColor }) {
               disabled={loading}
               className={`text-zinc-100 bg-${
                 bgColor ? "white" : "black"
-              } border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2`}
+              } border border-gray-300 focus:outline-none hover:bg-gray-100 hover:text-black focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-10 py-3 me-2 mb-2`}
             >
               Reserva tu espacio hoy
             </button>
