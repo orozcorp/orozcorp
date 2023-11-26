@@ -53,7 +53,7 @@ export default function Contactanos({ bgColor }) {
           Ya recibimos tu información estaremos contactándonos pronto
         </h2>
       ) : (
-        <div className="flex flex-col flex-nowrap lg:flex-row lg:flex-wrap justify-between items-center lg:items-start w-full my-12">
+        <div className="flex flex-col flex-nowrap lg:flex-row lg:flex-wrap justify-between items-center lg:items-start w-full p-4 lg:p-0 my-12">
           <div className="flex-1 flex flex-col flex-nowrap justify-center items-center gap-8">
             <h2 className="text-4xl lg:text-6xl max-w-xl text-center">
               ¡Transforma Tu Negocio Hoy!
