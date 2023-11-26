@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', 'G-H6EDP81J4D');
+          gtag('config', 'G-4SWYYHWMYH');
         `}
       </Script>
       <body>

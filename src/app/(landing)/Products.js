@@ -1,5 +1,4 @@
 "use client";
-import { ProductJsonLd } from "next-seo";
 import ProductsSingle from "./ProductsSingle";
 
 const products = [
@@ -11,19 +10,6 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
     url: "/Products/WhatsBlast",
-    offers: [
-      {
-        price: "3000",
-        priceCurrency: "USD",
-        priceValidUntil: "2020-11-05",
-        itemCondition: "https://schema.org/NewCondition",
-        availability: "https://schema.org/InStock",
-        url: "https://orozcorp.live/Products/WhatsBlast",
-        seller: {
-          name: "Orozcorp",
-        },
-      },
-    ],
   },
   {
     id: 1,
@@ -33,19 +19,6 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
     url: "/Products/WhatsCRM",
-    offers: [
-      {
-        price: "3000",
-        priceCurrency: "USD",
-        priceValidUntil: "2024-01-01",
-        itemCondition: "https://schema.org/NewCondition",
-        availability: "https://schema.org/InStock",
-        url: "https://orozcorp.live/Products/WhatsCRM",
-        seller: {
-          name: "Orozcorp",
-        },
-      },
-    ],
   },
   {
     id: 2,
@@ -55,19 +28,6 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/botreading2.png",
     url: "/Products/ChatDigest",
-    offers: [
-      {
-        price: "3000",
-        priceCurrency: "USD",
-        priceValidUntil: "2024-01-01",
-        itemCondition: "https://schema.org/NewCondition",
-        availability: "https://schema.org/InStock",
-        url: "https://orozcorp.live/Products/ChatDigest",
-        seller: {
-          name: "Orozcorp",
-        },
-      },
-    ],
   },
 ];
 
@@ -81,13 +41,6 @@ export default function Products() {
         <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap gap-8 my-16 w-full justify-center items-center lg:justify-around p-4 ">
           {products.map((product) => (
             <div key={product.id}>
-              <ProductJsonLd
-                productName={product.name}
-                description={product.descripcion}
-                brand="Orozcorp"
-                images={[product.image]}
-                offers={product.offers}
-              />
               <ProductsSingle product={product} />
             </div>
           ))}
