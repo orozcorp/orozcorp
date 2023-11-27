@@ -38,7 +38,10 @@ export default function GetContacts() {
       <SendMessage
         display={display}
         setDisplay={setDisplay}
-        contacts={contacts}
+        contacts={contacts.map((contact) => ({
+          value: contact.number,
+          label: contact.name || contact.pushname,
+        }))}
       />
       <div className="flex flex-row flex-wrap gap-8 justify-between items-center w-full">
         {contacts.length < 1 && (

@@ -1,10 +1,13 @@
-import { ObjectId } from "mongodb";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
 import { format_dateHrUnix } from "../../../lib/helpers/formatters";
 const instance = process.env.WA_INSTANCE;
 const token = process.env.WA_TOKEN;
-
+import {
+  sendImagesParallel,
+  sendDocumentsParallel,
+  sendTextMessagesParallel,
+} from "../../helpers/messages";
 export const mensajesResolver = {
   Mutation: {
     getQR: async (_, __, { db }) => {
@@ -191,8 +194,6 @@ export const mensajesResolver = {
         objToInsert[type] = input.document;
         objToInsert["filename"] = input.documentName;
       }
-
-      console.log("objToInsert", objToInsert);
       var raw = JSON.stringify(objToInsert);
       var requestOptions = {
         method: "POST",
@@ -280,6 +281,26 @@ export const mensajesResolver = {
       } catch (error) {
         console.error("There was a problem with the fetch operation:", error);
         return "Error";
+      }
+    },
+    wa_sendMassiveMessage: async (root, { input }, { db }) => {
+      const { clientsSent, message, image, document, documentName } = input;
+      const type = image ? "image" : document ? "document" : "text";
+      switch (type) {
+        case "image":
+          await sendImagesParallel({ clientsSent, message, image });
+          break;
+        case "document":
+          await sendDocumentsParallel({
+            clientsSent,
+            message,
+            document,
+            documentName,
+          });
+          break;
+        default:
+          await sendTextMessagesParallel({ clientsSent, message });
+          break;
       }
     },
   },

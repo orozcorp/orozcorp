@@ -2,7 +2,18 @@
 import { useState } from "react";
 import Modal from "../../../components/atoms/Modal";
 import SearcheableSelect from "../../../components/atoms/SearchableSelect";
+import SearchableSelectMultiple from "../../../components/atoms/SearchableSelectMultiple";
 import UploadMessages from "../../../components/atoms/UploadMessages";
+import { postData } from "../../../lib/helpers/getData";
+const MUTATION = `
+  mutation Wa_sendMassiveMessage($input: MassiveMessageInput!) {
+    wa_sendMassiveMessage(input: $input) {
+      code
+      message
+      success
+    }
+  }
+`;
 const typesOfMessages = [
   { label: "Texto", value: "Texto" },
   { label: "Imagen", value: "Imagen" },
@@ -10,17 +21,17 @@ const typesOfMessages = [
 ];
 export default function SendMessage({ display, setDisplay, contacts }) {
   const [percent, setPercent] = useState(0);
+  const [contactsToSend, setContactsToSend] = useState([]);
   const [resetUpload, setResetUpload] = useState(false);
+  const [loading, setLoading] = useState(false);
   const initial = {
     message: "",
     image: "",
     document: "",
     documentName: "",
-    clientsSent: contacts,
+    clientsSent: [],
   };
-  const [form, setForm] = useState({
-    message: "",
-  });
+  const [form, setForm] = useState(initial);
   const [messageType, setMessageType] = useState({
     label: "Texto",
     value: "Texto",
@@ -37,10 +48,37 @@ export default function SendMessage({ display, setDisplay, contacts }) {
         return false;
     }
   };
+  const submit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const sendMessages = await postData({
+        query: MUTATION,
+        variables: {
+          input: {
+            ...form,
+            clientsSent: contactsToSend.map((contact) => contact.value),
+          },
+        },
+      });
+      setLoading(false);
+      setResetUpload(true);
+      setForm(initial);
+      setDisplay("none");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <Modal display={display} setDisplay={setDisplay}>
       <h2>Enviar Mensajes</h2>
-      <form>
+      <form onSubmit={submit}>
+        <SearchableSelectMultiple
+          options={contacts}
+          value={contactsToSend}
+          onChange={(e) => setContactsToSend(e)}
+          title="Selecciona a que contactos se le enviará esta prueba"
+        />
         <div className="form-group w-full">
           <label htmlFor="message">
             Mensaje{" "}
