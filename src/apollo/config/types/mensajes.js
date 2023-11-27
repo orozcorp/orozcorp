@@ -77,6 +77,11 @@ export const mensajes = gql`
     documentName: String
     image: String
   }
+  input ResumenInput {
+    contactId: String!
+    startDate: Date!
+    endDate: Date!
+  }
   type Mutation {
     getQR: String
     getContacts: [Contacts]
@@ -84,6 +89,7 @@ export const mensajes = gql`
     wa_sendTextMessage(msgId: ID!, body: String!): GeneralResponse!
     readMessages(chatId: String!): GeneralResponse!
     uploadMessage(input: UploadMessageInput!): GeneralResponse!
+    wa_getResumen(input: ResumenInput!): String
   }
   type Query {
     getStatus: String

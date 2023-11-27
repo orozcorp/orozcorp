@@ -1,5 +1,7 @@
 import { ObjectId } from "mongodb";
 import { v4 as uuidv4 } from "uuid";
+import moment from "moment";
+import { format_dateHrUnix } from "../../../lib/helpers/formatters";
 const instance = process.env.WA_INSTANCE;
 const token = process.env.WA_TOKEN;
 
@@ -230,6 +232,54 @@ export const mensajesResolver = {
           success: false,
           message: "Error al enviar el mensaje",
         };
+      }
+    },
+    wa_getResumen: async (root, { input }, { db }) => {
+      const { contactId, startDate, endDate } = input;
+      const start = moment(startDate).unix();
+      const end = moment(endDate).unix();
+      const token = encodeURIComponent(process.env.WA_TOKEN);
+      const limit = "1000"; // or any other value you want to set
+
+      let url = `https://api.ultramsg.com/${
+        process.env.WA_INSTANCE
+      }/chats/messages?token=${token}&chatId=${encodeURIComponent(
+        contactId
+      )}&limit=${limit}`;
+
+      try {
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+        });
+        if (!response.ok) {
+          throw new Error("Network response was not ok.");
+        }
+        const responseData = await response.json();
+        const filteredMessages = responseData.filter(
+          (message) =>
+            message.timestamp >= start && message.timestamp <= end && message
+        );
+        const messageString = filteredMessages
+          .map((msg) => {
+            if (msg.type !== "chat") {
+              return `Se mandó ${msg.type} - ${format_dateHrUnix(
+                msg.timestamp
+              )}`;
+            } else {
+              const prefix = msg.fromMe ? "Yo dije: " : "El cliente dijo: ";
+              return `${prefix}${msg.body} - ${format_dateHrUnix(
+                msg.timestamp
+              )}`;
+            }
+          })
+          .join("\n");
+        return messageString;
+      } catch (error) {
+        console.error("There was a problem with the fetch operation:", error);
+        return "Error";
       }
     },
   },

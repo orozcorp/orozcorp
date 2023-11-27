@@ -21,8 +21,8 @@ const SearchableSelect = ({ options = [], value, onChange, label }) => {
     <div className="relative">
       {label && (
         <label
-          htmlFor={inputId}
-          className="block text-sm font-medium text-gray-700"
+          htmlFor={label}
+          className="block text-xs font-medium text-zinc-400"
         >
           {label}
         </label>
@@ -36,7 +36,7 @@ const SearchableSelect = ({ options = [], value, onChange, label }) => {
             setSearch("");
           }}
           onBlur={() => setTimeout(() => setIsOpen(false), 200)}
-          className="flex-1 bg-white border border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-zinc-500 focus:border-zinc-500 block p-2.5"
+          className="flex-1 bg-white border-b border-zinc-300 text-zinc-900 text-sm rounded-lg focus:ring-zinc-500 focus:border-zinc-500 block p-2.5"
         />
         <span onClick={() => setSearch("")}>
           <AiOutlineDelete
@@ -53,7 +53,7 @@ const SearchableSelect = ({ options = [], value, onChange, label }) => {
           {filteredOptions.map((option, index) => (
             <div
               key={index}
-              className="p-2 border-b border-zinc-100 hover:bg-zinc-200 cursor-pointer"
+              className="p-2.5 border-b border-zinc-100 hover:bg-zinc-200 cursor-pointer"
               onClick={() => handleOptionClick(option)}
             >
               {option.label}
