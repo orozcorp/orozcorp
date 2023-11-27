@@ -68,6 +68,7 @@ export default function SendMessage({ display, setDisplay, contacts }) {
           {messageType.value !== "Texto" && (
             <UploadMessages
               setForm={setForm}
+              form={form}
               percent={percent}
               setPercent={setPercent}
               user="orozcorp"

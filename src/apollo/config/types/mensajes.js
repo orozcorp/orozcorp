@@ -74,7 +74,8 @@ export const mensajes = gql`
     type: String!
     phone: String!
     document: String
-    fileName: String!
+    documentName: String
+    image: String
   }
   type Mutation {
     getQR: String

@@ -6,6 +6,7 @@ import { uploadFiles } from "s3up-client";
 
 export default function UploadMessages({
   setForm,
+  form,
   percent,
   setPercent,
   user,
@@ -67,13 +68,16 @@ export default function UploadMessages({
       uploadFiles(inputFile.current.files, {
         signer: Sign,
         onProgress: (state) => {
-          if (messageType === "Imagen") {
+          if (messageType === "image") {
             setForm({ ...form, image: state.list[0].url });
-          } else if (messageType === "Documento") {
+          } else if (messageType === "document") {
             setForm({
               ...form,
               document: state.list[0].url,
-              documentName: Ogfile.name,
+              documentName: state.list[0].key.replace(
+                "orozcorp/Msgs/Messages/",
+                ""
+              ),
             });
           }
           setPercent(state.percent());
@@ -101,7 +105,7 @@ export default function UploadMessages({
         {heading}
       </label>
       <input
-        className="border border-zinc-700 rounded-md bg-zinc-100 p-2 w-full"
+        className="border border-zinc-700 rounded-md bg-zinc-100 p-2 w-full mb-2"
         type="file"
         ref={inputFile}
         onChange={uploadImage}

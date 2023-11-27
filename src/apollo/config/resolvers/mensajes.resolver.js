@@ -174,18 +174,23 @@ export const mensajesResolver = {
       }
     },
     uploadMessage: async (root, { input }, { db }) => {
-      const { type, phone, document, filename } = input;
+      const { type, phone } = input;
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
+
       const objToInsert = {
         token,
-        to: phone,
-        priority: 5,
-        referenceId: uuidv4(),
-        body: `Adjunto ${type}`,
+        to: phone.replace("%40", "@"),
+        caption: `Adjunto ${type}`,
       };
-      objToInsert[type] = document;
-      if (type === "document") objToInsert["filename"] = filename;
+
+      if (type === "image") objToInsert[type] = input.image;
+      if (type === "document") {
+        objToInsert[type] = input.document;
+        objToInsert["filename"] = input.documentName;
+      }
+
+      console.log("objToInsert", objToInsert);
       var raw = JSON.stringify(objToInsert);
       var requestOptions = {
         method: "POST",
@@ -193,36 +198,31 @@ export const mensajesResolver = {
         body: raw,
         redirect: "follow",
       };
+
       try {
-        fetch(
+        const response = await fetch(
           `https://api.ultramsg.com/${instance}/messages/${type}`,
           requestOptions
-        )
-          .then((response) => response.text())
-          .then(async (result) => {
-            if (result.error) {
-              return {
-                code: 400,
-                success: false,
-                message: "Error al enviar el mensaje",
-              };
-            }
-            const res = JSON.parse(result);
-          })
-          .catch((error) => {
-            console.log("error", error);
-            return {
-              code: 400,
-              success: false,
-              message: "Error al enviar el mensaje",
-            };
-          });
-        return {
-          code: 200,
-          success: true,
-          message: "Mensaje enviado",
-          data: "insertedId",
-        };
+        );
+
+        const result = await response.text();
+
+        console.log("result", result);
+        if (response.ok) {
+          return {
+            code: 200,
+            success: true,
+            message: "Mensaje enviado",
+            data: result, // Adjust as needed
+          };
+        } else {
+          const errorResponse = JSON.parse(result);
+          return {
+            code: errorResponse.code || 400,
+            success: false,
+            message: errorResponse.message || "Error al enviar el mensaje",
+          };
+        }
       } catch (error) {
         console.log("error", error);
         return {
@@ -322,11 +322,9 @@ export const mensajesResolver = {
             "Content-Type": "application/x-www-form-urlencoded",
           },
         });
-
         if (!response.ok) {
           throw new Error("Network response was not ok.");
         }
-
         const responseData = await response.json();
         return responseData;
       } catch (error) {
