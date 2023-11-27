@@ -38,10 +38,8 @@ export default function page({ params }) {
   const [messages, setMessages] = useState([]);
   const [isActive, setIsActive] = useState(true);
   const [recheck, setRecheck] = useState(false);
-
   useEffect(() => {
     if (!isActive && !recheck) return;
-
     const fetchMessages = async () => {
       try {
         const response = await getData({
@@ -61,7 +59,6 @@ export default function page({ params }) {
       return () => clearInterval(interval);
     }
   }, [isActive, recheck, params.id]);
-
   return (
     <div
       onMouseEnter={() => setIsActive(true)}
@@ -79,7 +76,7 @@ export default function page({ params }) {
       ) : (
         <Mensajes messages={messages} />
       )}
-      <SendMessage setRecheck={setRecheck} />
+      <SendMessage setRecheck={setRecheck} idMessage={params.id} />
     </div>
   );
 }

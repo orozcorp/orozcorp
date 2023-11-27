@@ -1,4 +1,7 @@
 import { ObjectId } from "mongodb";
+import { v4 as uuidv4 } from "uuid";
+const instance = process.env.WA_INSTANCE;
+const token = process.env.WA_TOKEN;
 
 export const mensajesResolver = {
   Mutation: {
@@ -93,6 +96,140 @@ export const mensajesResolver = {
       } catch (error) {
         console.error("Fetch operation error:", error);
         return { code: 400, success: false, message: "Error al cerrar sesión" };
+      }
+    },
+    wa_sendTextMessage: async (_, { msgId, body }, { db }) => {
+      let myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+      let urlencoded = new URLSearchParams();
+      urlencoded.append("token", process.env.WA_TOKEN);
+      urlencoded.append("to", msgId.replace("%40", "@"));
+      urlencoded.append("body", body);
+      let requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: urlencoded,
+        redirect: "follow",
+      };
+
+      try {
+        const response = await fetch(
+          `https://api.ultramsg.com/${process.env.WA_INSTANCE}/messages/chat`,
+          requestOptions
+        );
+        const responseData = await response.json();
+        if (responseData.message !== "ok") {
+          console.log("error", responseData);
+          return {
+            code: 400,
+            success: false,
+            message: "Error al enviar el mensaje",
+          };
+        }
+        return {
+          code: 200,
+          success: true,
+          message: "Mensaje enviado correctamente",
+        };
+      } catch (error) {
+        console.log("error", error);
+        return {
+          code: 400,
+          success: false,
+          message: "Error al enviar el mensaje",
+        };
+      }
+    },
+    readMessages: async (root, { chatId }, { db }) => {
+      try {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+        var raw = JSON.stringify({
+          token,
+          chatId,
+        });
+        var requestOptions = {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+          redirect: "follow",
+        };
+        const response = await fetch(
+          `https://api.ultramsg.com/${instance}/chats/read`,
+          requestOptions
+        );
+        const result = await response.text();
+        const answer = JSON.parse(result);
+        if (answer.error) {
+          throw new Error(answer.error);
+        }
+        return {
+          code: 200,
+          success: true,
+          message: "Mensajes leidos",
+        };
+      } catch (error) {
+        console.log("error", error);
+        throw new Error(error); // Optionally, you can throw the error to handle it at a higher level
+      }
+    },
+    uploadMessage: async (root, { input }, { db }) => {
+      const { type, phone, document, filename } = input;
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      const objToInsert = {
+        token,
+        to: phone,
+        priority: 5,
+        referenceId: uuidv4(),
+        body: `Adjunto ${type}`,
+      };
+      objToInsert[type] = document;
+      if (type === "document") objToInsert["filename"] = filename;
+      var raw = JSON.stringify(objToInsert);
+      var requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+      try {
+        fetch(
+          `https://api.ultramsg.com/${instance}/messages/${type}`,
+          requestOptions
+        )
+          .then((response) => response.text())
+          .then(async (result) => {
+            if (result.error) {
+              return {
+                code: 400,
+                success: false,
+                message: "Error al enviar el mensaje",
+              };
+            }
+            const res = JSON.parse(result);
+          })
+          .catch((error) => {
+            console.log("error", error);
+            return {
+              code: 400,
+              success: false,
+              message: "Error al enviar el mensaje",
+            };
+          });
+        return {
+          code: 200,
+          success: true,
+          message: "Mensaje enviado",
+          data: "insertedId",
+        };
+      } catch (error) {
+        console.log("error", error);
+        return {
+          code: 400,
+          success: false,
+          message: "Error al enviar el mensaje",
+        };
       }
     },
   },

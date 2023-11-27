@@ -24,8 +24,8 @@ export default function Modal({ children, display, setDisplay }) {
           border: "1px solid #888",
           width: "90%",
           maxWidth: "800px",
-          borderRadius: "2%",
         }}
+        className="rounded-xl shadow-xl"
       >
         <span
           onClick={() => setDisplay("none")}

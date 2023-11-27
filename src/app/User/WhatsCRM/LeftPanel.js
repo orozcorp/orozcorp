@@ -10,8 +10,17 @@ const QUERY = `
     }
   }
 `;
+const MUTATION = `
+  mutation ReadMessages($chatId: String!) {
+    readMessages(chatId: $chatId) {
+      code
+      message
+      success
+    }
+  }
+`;
 import Link from "next/link";
-import { getData } from "../../../lib/helpers/getData";
+import { getData, postData } from "../../../lib/helpers/getData";
 import { useState, useEffect } from "react";
 import useWindowSize from "../../../components/hooks/useWindowSize";
 import { usePathname } from "next/navigation";
@@ -52,6 +61,18 @@ export default function LeftPanel({}) {
         {chats?.map((chat) => (
           <Link
             href={`/User/WhatsCRM/${chat.id}/${chat.name.replace("/", "")}`}
+            onClick={async () => {
+              try {
+                const response = await postData({
+                  query: MUTATION,
+                  variables: {
+                    chatId: chat.id,
+                  },
+                });
+              } catch (error) {
+                console.log(error);
+              }
+            }}
             key={chat.id}
             className="
             flex flex-row flex-wrap justify-between items-center w-full border border-zinc-400 rounded shadow-md p-2

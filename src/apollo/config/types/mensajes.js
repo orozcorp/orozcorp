@@ -70,10 +70,19 @@ export const mensajes = gql`
     isBusiness: Boolean
     isBlocked: Boolean
   }
+  input UploadMessageInput {
+    type: String!
+    phone: String!
+    document: String
+    fileName: String!
+  }
   type Mutation {
     getQR: String
     getContacts: [Contacts]
     wa_logOut: GeneralResponse!
+    wa_sendTextMessage(msgId: ID!, body: String!): GeneralResponse!
+    readMessages(chatId: String!): GeneralResponse!
+    uploadMessage(input: UploadMessageInput!): GeneralResponse!
   }
   type Query {
     getStatus: String
