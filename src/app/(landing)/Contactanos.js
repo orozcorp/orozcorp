@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import InputSimple from "../../components/atoms/InputSimple";
-
+import { useRouter } from "next/navigation";
 const MUTATION = `
   mutation SendContact($email: String!, $name: String!, $message: String!) {
     sendContact(email: $email, name: $name, message: $message) {
@@ -17,6 +17,7 @@ export default function Contactanos({ bgColor }) {
   const [enviadoMensaje, setEnviadoMensaje] = useState(false);
   const [loading, setLoading] = useState(false);
   const [sentMessage, setSentMessage] = useState(false);
+  const router = useRouter();
   const initial = {
     name: "",
     email: "",
@@ -31,12 +32,16 @@ export default function Contactanos({ bgColor }) {
   const [values, setValues] = useState(initial);
   const sendReport = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     try {
       await postData({ query: MUTATION, variables: { ...values } });
       setValues(initial);
       setSentMessage(true);
       setLoading(false);
+      router.push(
+        "https://wa.me/525536554893?text=Hola%quisiera%20hablar%20con%20un%20experto%20de%20Orozcorp"
+      );
     } catch (error) {
       console.log(error);
     }
