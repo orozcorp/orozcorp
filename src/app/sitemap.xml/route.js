@@ -1,22 +1,22 @@
 import { connectToDatabase } from "../../lib/mongodb";
 
-const EXTERNAL_DATA_URL = "https://www.orozcorp.live/";
+const EXTERNAL_DATA_URL = "https://orozcorp.live/";
 
 async function generateSiteMap({ projects, articles }) {
   return `<?xml version="1.0" encoding="UTF-8"?>
       <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
       <url>
-        <loc>https://www.orozcorp.live</loc>
+        <loc>https://orozcorp.live</loc>
       </url>
             <url>
-        <loc>https://www.orozcorp.live/Products/ChatDigest</loc>
+        <loc>https://orozcorp.live/Products/ChatDigest</loc>
       </url>
             <url>
-        <loc>https://www.orozcorp.live/Products/WhatsBlast</loc>
+        <loc>https://orozcorp.live/Products/WhatsBlast</loc>
       </url>
             <url>
-        <loc>https://www.orozcorp.live/Products/WhatsCRM</loc>
+        <loc>https://orozcorp.live/Products/WhatsCRM</loc>
       </url>
      ${projects
        .map(({ _id }) => {
