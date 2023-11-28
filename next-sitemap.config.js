@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://www.orozcorp.live",
+  siteUrl: "https://orozcorp.live",
   generateRobotsTxt: true, // (optional)
   // ...other options
 };
