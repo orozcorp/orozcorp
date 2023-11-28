@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import InputSimple from "../../components/atoms/InputSimple";
 import { useRouter } from "next/navigation";
+import { postData } from "../../lib/helpers/getData";
 const MUTATION = `
   mutation SendContact($email: String!, $name: String!, $message: String!) {
     sendContact(email: $email, name: $name, message: $message) {
@@ -39,9 +40,15 @@ export default function Contactanos({ bgColor }) {
       setValues(initial);
       setSentMessage(true);
       setLoading(false);
-      router.push(
-        "https://wa.me/525536554893?text=Hola%quisiera%20hablar%20con%20un%20experto%20de%20Orozcorp"
-      );
+      if (typeof window !== "undefined") {
+        window.open(
+          "https://wa.me/525536554893?text=Hola%quisiera%20hablar%20con%20un%20experto%20de%20Orozcorp",
+          "_blank"
+        );
+      }
+
+      // Then redirect to /ContactReceived on the current page
+      router.push("/ContactReceived");
     } catch (error) {
       console.log(error);
     }
