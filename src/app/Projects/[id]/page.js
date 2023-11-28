@@ -46,7 +46,7 @@ export async function generateMetadata({ params }) {
     image: portfolio?.images[0],
     date: portfolio?.date,
     type: "article",
-    url: `https://www.orozcorp.live/Projects/${id}`,
+    url: `https://orozcorp.live/Projects/${id}`,
     keywords: keywords,
     twitter: {
       card: "summary_large_image",
@@ -72,7 +72,7 @@ export async function generateMetadata({ params }) {
       image: portfolio?.images[0],
       date: portfolio?.date,
       type: "article",
-      url: `https://www.orozcorp.live/Projects/${id}`,
+      url: `https://orozcorp.live/Projects/${id}`,
       keywords: keywords,
       article: {
         publishedTime: portfolio?.date,
