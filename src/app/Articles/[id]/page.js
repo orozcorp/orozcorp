@@ -60,7 +60,7 @@ export async function generateMetadata({ params }) {
       image: blog?.images?.[0]?.url,
       date: blog?.article?.publishedTime,
       type: "article",
-      url: `https://www.orozcorp.live/Articles/${id}`,
+      url: `https://orozcorp.live/Articles/${id}`,
       keywords: blog?.article?.tags,
       article: {
         publishedTime: blog?.article?.publishedTime,
