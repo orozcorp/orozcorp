@@ -21,9 +21,9 @@ export default function Section0() {
         </div>
       </div>
       <div className="flex flex-row flex-wrap w-full lg:w-3/4 justify-center items-center">
-        <div className="text-zinc-800 text-center text-5xl">
+        <h1 className="text-zinc-800 text-center text-5xl">
           Tú lo imaginas, nosotros lo creamos
-        </div>
+        </h1>
       </div>
 
       <motion.button
