@@ -13,6 +13,7 @@ export default function index() {
       <ProductJsonLd
         productName="WhatsCRM: Integra WhatsApp en Tu CRM y Aumenta Tus Ventas"
         images={[
+          "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+7.22.18%E2%80%AFAM.png",
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+7.31.08%E2%80%AFAM.png",
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+7.22.00%E2%80%AFAM.png",
