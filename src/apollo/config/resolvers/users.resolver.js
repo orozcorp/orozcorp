@@ -14,7 +14,6 @@ function isYoungerThan18(birthdate) {
 
   return age < 18;
 }
-import nodemailer from "nodemailer";
 
 export const usersResolvers = {
   Query: {

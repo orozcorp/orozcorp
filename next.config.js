@@ -43,7 +43,6 @@ module.exports = {
     ],
     unoptimized: false,
   },
-
   async headers() {
     return [
       {
