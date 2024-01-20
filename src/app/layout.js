@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Script from "next/script";
 import NextAuthSessionProvider from "../providers/sessionProvider";
+import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -20,12 +21,9 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="es">
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-      />
-
-      <Script strategy="lazyOnload">
+      <GoogleTagManager id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+      <GoogleAnalytics id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+      {/* <Script strategy="lazyOnload">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
@@ -34,7 +32,7 @@ export default async function RootLayout({ children }) {
           page_path: window.location.pathname,
           });
         `}
-      </Script>
+      </Script> */}
       <body>
         <NextAuthSessionProvider>
           <main
