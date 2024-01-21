@@ -17,6 +17,7 @@ export const articleResolvers = {
         const data = await db
           .collection("Blog")
           .aggregate([{ $sample: { size: limit } }])
+          .sort({ "article.publishedTime": -1 })
           .toArray();
 
         return data;
