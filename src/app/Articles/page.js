@@ -14,7 +14,7 @@ export default async function Articles() {
   const data = await getData({ query: QUERY, variables: { limit: 100 } });
   const blogs = data?.blogGetAll || [];
   return (
-    <>
+    <div className="p-4 m-4">
       <h1 className="text-4xl font-bold">Artículos</h1>
       <div className="flex flex-col lg:flex-row flex-nowrap lg:flex-wrap gap-4 w-full my-8 justify-center lg:justify-between items-center lg:items-stretch">
         {blogs.map((blog) => (
@@ -28,6 +28,6 @@ export default async function Articles() {
           </Link>
         ))}
       </div>
-    </>
+    </div>
   );
 }

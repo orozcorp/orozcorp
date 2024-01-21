@@ -7,6 +7,8 @@ import { GoogleTagManager, GoogleAnalytics } from "@next/third-parties/google";
 export const viewport = {
   width: "device-width",
   initialScale: 1,
+  maximumScale: 1,
+  userScalable: 1,
 };
 export const metadata = {
   title: "Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles",
@@ -17,22 +19,13 @@ export const metadata = {
   charSet: "utf-8",
   "og:image": "https://orozcorp.live/api/og",
 };
+
 export default async function RootLayout({ children }) {
   return (
     <html lang="es">
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <GoogleTagManager id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
       <GoogleAnalytics id={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
-      {/* <Script strategy="lazyOnload">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-          page_path: window.location.pathname,
-          });
-        `}
-      </Script> */}
       <body>
         <NextAuthSessionProvider>
           <main

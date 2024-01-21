@@ -32,12 +32,13 @@ async function ArticlesComplete({}) {
 
 export default async function Articles() {
   return (
-    <div className="bg-[#121212] text-white p-8">
+    <div className="bg-[#121212] text-white p-8 flex flex-col flex-nowrap justify-center items-center">
       <div className="flex flex-col flex-nowrap justify-center items-center gap-4 text-center">
         <div className="text-3xl">Tips y lecturas para impulsar</div>
         <h2 className="text-6xl font-bold mb-8 text-center">tu Negocio</h2>
       </div>
       <ArticlesComplete />
+      <Link href="/Articles">TODOS LOS ARTÍCULOS</Link>
     </div>
   );
 }
