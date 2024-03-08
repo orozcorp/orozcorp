@@ -1,9 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 export default function ProductsSingle({ product }) {
-  const { name, descripcion, image, url } = product;
+  const { name, descripcion, image, url, schema } = product;
   return (
-    <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col flex-nowrap justify-center items-center">
+    <Section className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 flex flex-col flex-nowrap justify-center items-center">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
       {image && (
         <Image
           className="rounded-t-lg"
@@ -45,6 +50,6 @@ export default function ProductsSingle({ product }) {
           </svg>
         </Link>
       </div>
-    </div>
+    </Section>
   );
 }

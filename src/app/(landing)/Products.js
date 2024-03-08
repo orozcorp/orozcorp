@@ -10,6 +10,31 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
     url: "/Products/WhatsBlast",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "WhatsBlast",
+      image:
+        "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/orozcorp_envelopes.png",
+      description:
+        "WhatsBlast te permite enviar mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Ofrece estadísticas en tiempo real, segmentación de clientes, y más.",
+      brand: {
+        "@type": "Brand",
+        name: "Orozcorp",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://orozcorp.live/Products/WhatsBlast",
+        priceCurrency: "USD",
+        price: "9000.99",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: "Orozcorp",
+        },
+      },
+    },
   },
   {
     id: 1,
@@ -19,6 +44,31 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
     url: "/Products/WhatsCRM",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "WhatsCRM",
+      image:
+        "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/handshake2.png",
+      description:
+        "WhatsCRM integra WhatsApp con tu CRM para una comunicación fluida y eficiente. Envía y recibe mensajes, accede al inventario en tiempo real, y más.",
+      brand: {
+        "@type": "Brand",
+        name: "Orozcorp",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://orozcorp.live/Products/WhatsCRM",
+        priceCurrency: "USD",
+        price: "9000.99",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: "Orozcorp",
+        },
+      },
+    },
   },
   {
     id: 2,
@@ -28,6 +78,31 @@ const products = [
     image:
       "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/botreading2.png",
     url: "/Products/ChatDigest",
+    schema: {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: "ChatDigest",
+      image:
+        "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/botreading2.png",
+      description:
+        "Con ChatDigest, recibe un resumen diario de todas tus interacciones con los clientes en WhatsApp. Identifica oportunidades, analiza el tono de la conversación y toma decisiones más inteligentes.",
+      brand: {
+        "@type": "Brand",
+        name: "Orozcorp",
+      },
+      offers: {
+        "@type": "Offer",
+        url: "https://orozcorp.live/Products/ChatDigest",
+        priceCurrency: "USD",
+        price: "9000.99",
+        itemCondition: "https://schema.org/NewCondition",
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: "Orozcorp",
+        },
+      },
+    },
   },
 ];
 
