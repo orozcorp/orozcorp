@@ -1,4 +1,4 @@
-const { mergeResolvers } = require("@graphql-tools/merge");
+import { mergeResolvers } from "@graphql-tools/merge";
 
 import { articleResolvers } from "./resolvers/articles.resolver";
 import { portfolioResolvers } from "./resolvers/portfolio.resolver";

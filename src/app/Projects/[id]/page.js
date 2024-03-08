@@ -54,7 +54,7 @@ export async function generateMetadata({ params }) {
       creator: "@orozcorp_io",
     },
     robots: {
-      index: false,
+      index: true,
       follow: true,
       nocache: true,
       googleBot: {
