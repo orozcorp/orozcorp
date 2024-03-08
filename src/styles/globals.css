@@ -385,3 +385,18 @@ h2 {
   margin-bottom: 1rem;
   margin-top: 1rem;
 }
+
+p {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+ol li {
+  font-size: 1.125rem;
+  line-height: 1.75;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
