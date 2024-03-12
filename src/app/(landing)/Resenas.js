@@ -1,40 +1,13 @@
 "use client";
 import Mockup from "../../components/atoms/Mockup";
-import { getData } from "../../lib/helpers/getData";
+import { useQuery } from "@tanstack/react-query";
+import { getPortfolios } from "../../server/portfolio";
 import MockupLoading from "../../components/atoms/MockupLoading";
-import { Suspense } from "react";
-const QUERY = `
-  query GetPortfolios {
-    getPortfolios {
-      _id
-      company
-      images
-      project
-      description
-      date
-    }
-  }
-`;
-
-async function Projects({}) {
-  const data = await getData({ query: QUERY });
-  const portfolios = data?.getPortfolios || [];
-  return (
-    <>
-      {portfolios?.map((portfolio) => (
-        <Mockup
-          key={portfolio?._id}
-          img={portfolio?.images[0]}
-          title={portfolio?.project}
-          description={portfolio?.company}
-          link={`/Projects/${portfolio?._id}`}
-        />
-      ))}
-    </>
-  );
-}
-
 export default function Resenas() {
+  const { data, isFetched } = useQuery({
+    queryKey: ["getPortfolios"],
+    queryFn: () => getPortfolios(),
+  });
   return (
     <div
       className="mt-6 flex flex-col flex-nowrap justify-center items-center w-full py-16 px-2 md:px-8 bg-[#121212] text-white"
@@ -50,9 +23,19 @@ export default function Resenas() {
               flex-row flex-nowrap justify-start items-center content-end`}
             style={{ scrollBehavior: "smooth" }}
           >
-            <Suspense fallback={<MockupLoading />}>
-              <Projects />
-            </Suspense>
+            {isFetched ? (
+              data?.map((portfolio) => (
+                <Mockup
+                  key={portfolio?._id}
+                  img={portfolio?.images[0]}
+                  title={portfolio?.project}
+                  description={portfolio?.company}
+                  link={`/Projects/${portfolio?._id}`}
+                />
+              ))
+            ) : (
+              <MockupLoading />
+            )}
           </div>
         </div>
       </div>

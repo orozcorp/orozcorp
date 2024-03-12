@@ -1,9 +1,9 @@
 import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Script from "next/script";
 import NextAuthSessionProvider from "../providers/sessionProvider";
 import { GoogleTagManager } from "@next/third-parties/google";
+import QCProvider from "../config/QCProvider";
 export const viewport = {
   width: "device-width",
   initialScale: 1,
@@ -25,20 +25,22 @@ export default async function RootLayout({ children }) {
     <html lang="es">
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body>
-        <NextAuthSessionProvider>
-          <main
-            style={{
-              position: "relative",
-              display: "flex",
-              flexFlow: "column nowrap",
-              minHeight: "100vh",
-            }}
-          >
-            <Navbar />
-            <div style={{ flex: 1 }}>{children}</div>
-            <Footer />
-          </main>
-        </NextAuthSessionProvider>
+        <QCProvider>
+          <NextAuthSessionProvider>
+            <main
+              style={{
+                position: "relative",
+                display: "flex",
+                flexFlow: "column nowrap",
+                minHeight: "100vh",
+              }}
+            >
+              <Navbar />
+              <div style={{ flex: 1 }}>{children}</div>
+              <Footer />
+            </main>
+          </NextAuthSessionProvider>
+        </QCProvider>
       </body>
       <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
     </html>
