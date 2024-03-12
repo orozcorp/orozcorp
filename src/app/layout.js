@@ -17,7 +17,14 @@ export const metadata = {
   "apple-mobile-web-app-capable": "yes",
   fragment: "!",
   charSet: "utf-8",
-  "og:image": "https://orozcorp.live/api/og",
+  openGraph: {
+    type: "website",
+    url: "https://orozcorp.live",
+    title: "Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles",
+    description:
+      "Orozcorp es tu socio de confianza en el desarrollo de aplicaciones web y móviles. Especializados en Next JS, GraphQL, y JS, transformamos tu visión en soluciones digitales efectivas.",
+    image: "https://orozcorp.live/api/og",
+  },
 };
 
 export default async function RootLayout({ children }) {

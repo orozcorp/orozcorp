@@ -11,9 +11,26 @@ const Contactanos = dynamic(() => import("./(landing)/Contactanos"));
 const Articles = dynamic(() => import("./(landing)/Articles"), {
   loading: () => <Spinner />,
 });
+
 export default function index() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    name: "Orozcorp",
+    address: {
+      addressCountry: "MX",
+      addressLocality: "Ciudad de Mexico",
+      addressRegion: "CDMX",
+      postalCode: "06000",
+      streetAddress: "General Miguel Aleman 32 loc d y e",
+    },
+  };
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Section0 />
       <Section1 />
       <Section2 />
