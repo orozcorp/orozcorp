@@ -21,7 +21,7 @@ export default function Articles() {
             <Link
               href={`/Articles/${blog?._id}`}
               key={blog?._id}
-              className="border border-zinc-400 p-4 w-72 min-h-72 shadow-md rounded-md flex flex-col flex-nowrap justify-center items-start gap-4 hover:bg-zinc-100 hover:text-black"
+              className="border border-zinc-400 p-4 w-96 min-h-72 shadow-md rounded-md flex flex-col flex-nowrap justify-center items-start gap-4 hover:bg-zinc-100 hover:text-black"
             >
               <h2 className="text-2xl font-bold">{blog?.title}</h2>
               <p>{blog?.description}</p>
@@ -33,7 +33,9 @@ export default function Articles() {
           </div>
         )}
       </div>
-      <Link href="/Articles">TODOS LOS ARTÍCULOS</Link>
+      <Link href="/Articles" className="text-2xl my-12">
+        VE TODOS LOS ARTÍCULOS
+      </Link>
     </div>
   );
 }

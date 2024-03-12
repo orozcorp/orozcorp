@@ -7,8 +7,6 @@ import QCProvider from "../config/QCProvider";
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
 };
 export const metadata = {
   title: "Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles",

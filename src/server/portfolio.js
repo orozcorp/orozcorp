@@ -8,3 +8,11 @@ export async function getPortfolios() {
   const portfolios = await db.collection("Portfolio").find({}).toArray();
   return mongoDBtoJS(portfolios);
 }
+
+export async function getPortfolioById({ id }) {
+  const { db } = await createContext();
+  const portfolio = await db
+    .collection("Portfolio")
+    .findOne({ _id: new ObjectId(id) });
+  return mongoDBtoJS(portfolio);
+}
