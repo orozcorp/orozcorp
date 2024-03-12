@@ -2,13 +2,13 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NextAuthSessionProvider from "../providers/sessionProvider";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import QCProvider from "../config/QCProvider";
 export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
-  userScalable: 1,
+  userScalable: false,
 };
 export const metadata = {
   title: "Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles",
@@ -42,7 +42,7 @@ export default async function RootLayout({ children }) {
           </NextAuthSessionProvider>
         </QCProvider>
       </body>
-      <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+      <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
     </html>
   );
 }

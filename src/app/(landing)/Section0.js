@@ -2,7 +2,6 @@
 import React, { memo } from "react";
 import Link from "next/link";
 import ReactRotatingText from "react-rotating-text";
-import { motion } from "framer-motion";
 
 const RotatingText = memo(() => (
   <ReactRotatingText
@@ -26,15 +25,11 @@ export default function Section0() {
         </h1>
       </div>
 
-      <motion.button
-        className="my-8 text-white bg-red-700 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
+      <button className="my-8 text-white bg-red-700 hover:bg-red-900 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-2xl px-5 py-2.5 me-2 mb-2">
         <Link href="#crearProductos" passHref>
           Averigua cómo
         </Link>
-      </motion.button>
+      </button>
     </div>
   );
 }
