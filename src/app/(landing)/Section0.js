@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 export default function Section0() {
   return (
     <div className="flex flex-col flex-nowrap min-h-screen items-center justify-center p-4 gap-20">
