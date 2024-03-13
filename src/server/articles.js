@@ -17,3 +17,13 @@ export async function blogGetAll({ limit }) {
     return [];
   }
 }
+
+export async function blogGetById({ id }) {
+  try {
+    const { db } = await createContext();
+    const data = await db.collection("Blog").findOne({ _id: new ObjectId(id) });
+    return mongoDBtoJS(data);
+  } catch (error) {
+    return {};
+  }
+}

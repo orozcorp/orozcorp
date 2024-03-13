@@ -1,26 +1,15 @@
-"use client";
 import Carousel from "./Carousel";
 import { format_date } from "../../../lib/helpers/formatters";
 import dynamic from "next/dynamic";
 import ScrollTop from "../../../components/atoms/ScrollTop";
 
 const Resenas = dynamic(() => import("../../(landing)/Resenas"));
-
-import { useQuery } from "@tanstack/react-query";
 import { getPortfolioById } from "../../../server/portfolio";
 
-export default function Project({ params }) {
+export default async function Project({ params }) {
   const { id } = params;
-  const { data, isFetched } = useQuery({
-    queryKey: ["blogGetAll"],
-    queryFn: () => getPortfolioById({ id }),
-  });
-  if (!isFetched)
-    return (
-      <div className="w-40 h-32 border border-white animate-pulse text-white">
-        Cargando...
-      </div>
-    );
+
+  const data = await getPortfolioById({ id });
   return (
     <>
       <ScrollTop />

@@ -1,36 +1,13 @@
 import parse from "html-react-parser";
 import ScrollTop from "../../../components/atoms/ScrollTop";
-import { getData } from "../../../lib/helpers/getData";
+
 import OtherArticles from "./OtherArticles";
 import Contactanos from "../../(landing)/Contactanos";
-const QUERY = `
-  query BlogGetById($id: ID!) {
-    blogGetById(_id: $id) {
-      _id
-      article {
-        tags
-        publishedTime
-        modifiedTime
-        expirationTime
-        authors
-      }
-      content
-      description
-      images {
-        alt
-        height
-        url
-        width
-      }
-      title
-    }
-  }
-`;
+import { blogGetById } from "../../../server/articles";
 
 export async function generateMetadata({ params }) {
   const { id } = params;
-  const data = await getData({ query: QUERY, variables: { id } });
-  const blog = data?.blogGetById || {};
+  const blog = await blogGetById({ id });
   return {
     title: blog?.title,
     description: blog?.description,
@@ -75,8 +52,7 @@ export async function generateMetadata({ params }) {
 
 export default async function Article({ params }) {
   const { id } = params;
-  const data = await getData({ query: QUERY, variables: { id } });
-  const blog = data?.blogGetById || {};
+  const blog = await blogGetById({ id });
   return (
     <>
       <main className="flex flex-col flex-nowrap w-full justify-center items-center">
