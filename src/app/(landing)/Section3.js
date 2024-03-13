@@ -1,5 +1,3 @@
-import { Flex, Heading, Box } from "@theme-ui/components";
-
 export default function Section3() {
   return (
     <div className="mt-8 p-8 flex flex-col flex-nowrap justify-center lg:justify-start items-center lg:items-start w-full">

@@ -1,70 +1,36 @@
 "use client";
 import { useState } from "react";
-import { Flex, Spinner, Button, Text } from "@theme-ui/components";
 import Menu from "../components/atoms/Menu";
 import LateralMenu from "../components/atoms/LateralMenu";
 import Link from "next/link";
 import { signIn, useSession } from "next-auth/react";
+import Spinner from "../components/atoms/Spinner";
 export default function Navbar() {
   const { data: session, status } = useSession();
   const [toggled, setToggled] = useState(false);
   return (
-    <Flex
+    <nav
       as="nav"
-      sx={{
-        justifyContent: "space-between",
-        alignContent: "center",
-        alignItems: "center",
-        backgroundColor: "#fff",
-        width: "100%",
-      }}
+      className="flex flex-row flex-wrap justify-between items-center p-2 bg-white shadow-md z-50 w-full"
     >
       <LateralMenu
         toggled={toggled}
         setToggled={setToggled}
         session={session}
       />
-      <Flex sx={{ flexFlow: "row wrap" }}>
-        <Flex
-          m={[1, 2]}
-          sx={{
-            justifyContent: "center",
-            alignContent: "center",
-            alignItems: "flex-end",
-          }}
-        >
+      <div className="flex flex-row flex-wrap">
+        <div className="m-2 md:m-4 flex flex-row flex-wrap justify-center items-end content-center">
           <Link href="/" style={{ textDecoration: "none" }}>
-            <Text
-              ml={2}
-              sx={{
-                color: "#000",
-                fontSize: "30px",
-                fontWeight: "bold",
-                textDecoration: "none",
-              }}
-            >
-              Orozcorp
-            </Text>
+            <div className="ml-2 text-black text-3xl font-bold">Orozcorp</div>
           </Link>
-        </Flex>
-      </Flex>
-      <Flex
-        sx={{
-          justifyContent: "right",
-          alignContent: "center",
-          alignItems: "center",
-        }}
-        mr={2}
-      >
+        </div>
+      </div>
+      <div className="flex flex-row flex-wrap justify-right items-center mr-2">
         {!session && status !== "loading" && (
           <>
-            <Button
-              onClick={signIn}
-              m={1}
-              sx={{ backgroundColor: "#fff", color: "#000" }}
-            >
+            <button onClick={signIn} className="m-2 ">
               Sign In
-            </Button>
+            </button>
           </>
         )}
 
@@ -73,7 +39,7 @@ export default function Navbar() {
         )}
 
         {status === "loading" && <Spinner />}
-      </Flex>
-    </Flex>
+      </div>
+    </nav>
   );
 }
