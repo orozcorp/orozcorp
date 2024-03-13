@@ -4,16 +4,9 @@ import Modal from "../../../components/atoms/Modal";
 import SearcheableSelect from "../../../components/atoms/SearchableSelect";
 import SearchableSelectMultiple from "../../../components/atoms/SearchableSelectMultiple";
 import UploadMessages from "../../../components/atoms/UploadMessages";
-import { postData } from "../../../lib/helpers/getData";
-const MUTATION = `
-  mutation Wa_sendMassiveMessage($input: MassiveMessageInput!) {
-    wa_sendMassiveMessage(input: $input) {
-      code
-      message
-      success
-    }
-  }
-`;
+import { useMutation } from "@tanstack/react-query";
+import { wa_sendMassiveMessage } from "../../../server/userInteraction";
+
 const typesOfMessages = [
   { label: "Texto", value: "Texto" },
   { label: "Imagen", value: "Imagen" },
@@ -48,26 +41,25 @@ export default function SendMessage({ display, setDisplay, contacts }) {
         return false;
     }
   };
-  const submit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      const sendMessages = await postData({
-        query: MUTATION,
-        variables: {
-          input: {
-            ...form,
-            clientsSent: contactsToSend.map((contact) => contact.value),
-          },
-        },
-      });
+  const sendMessagesMutation = useMutation({
+    async mutationFn({ input }) {
+      const { data, errors } = await wa_sendMassiveMessage({ input });
       setLoading(false);
       setResetUpload(true);
       setForm(initial);
       setDisplay("none");
-    } catch (error) {
-      console.log(error);
-    }
+    },
+  });
+  const submit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const input = {
+      input: {
+        ...form,
+        clientsSent: contactsToSend.map((contact) => contact.value),
+      },
+    };
+    sendMessagesMutation.mutate({ input });
   };
   return (
     <Modal display={display} setDisplay={setDisplay}>
@@ -120,6 +112,7 @@ export default function SendMessage({ display, setDisplay, contacts }) {
         {shouldShowButton() && (
           <button
             type="submit"
+            disabled={loading}
             className="text-white bg-zinc-700 hover:bg-zinc-800 focus:outline-none focus:ring-4 focus:ring-zinc-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2"
           >
             Enviar

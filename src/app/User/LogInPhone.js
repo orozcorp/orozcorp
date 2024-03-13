@@ -1,13 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { QRCodeSVG } from "qrcode.react";
-import { postData } from "../../lib/helpers/getData";
+import { getQR } from "../../server/userInteraction";
 import Spinner from "../../components/atoms/Spinner";
-const MUTATION_GETQR = `mutation Mutation {
-  getQR
-}`;
 
-export default function LogInPhone({ setChecking, checking }) {
+export default function LogInPhone({}) {
   const [qr, setQR] = useState("");
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(45);
@@ -17,25 +14,26 @@ export default function LogInPhone({ setChecking, checking }) {
       interval = setInterval(() => {
         setTimer((prevTimer) => prevTimer - 1);
       }, 1000);
-      setChecking(!checking);
     } else if (timer === 0) {
       setQR("");
       setTimer(45);
-      setChecking(!checking);
     }
     return () => clearInterval(interval); // Clean up interval
   }, [qr, timer]);
-  const getQR = async () => {
-    setLoading(true);
-    setChecking(!checking);
-    try {
-      const data = await postData({ query: MUTATION_GETQR });
-      if (data.getQR === "Error") throw new Error("Error fetching QR code");
-      setQR(data.getQR || "");
+  const getQRMutation = useMutation({
+    async mutationFn() {
+      const { data, errors } = await getQR();
+      if (errors) throw errors;
+      setQR(data || "");
       setLoading(false);
+    },
+  });
+  const getQRFn = async () => {
+    setLoading(true);
+    try {
+      getQRMutation.mutate();
     } catch (error) {
       console.error("Error fetching QR code:", error);
-      // Optionally set an error state here and display it in the UI
     }
   };
 
@@ -58,7 +56,7 @@ export default function LogInPhone({ setChecking, checking }) {
         </div>
       ) : (
         <button
-          onClick={getQR}
+          onClick={getQRFn}
           disabled={loading}
           className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 my-2"
         >

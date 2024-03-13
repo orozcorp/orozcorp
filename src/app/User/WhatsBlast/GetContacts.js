@@ -2,36 +2,34 @@
 import { AiOutlineDelete } from "react-icons/ai";
 import { useState } from "react";
 import Spinner from "../../../components/atoms/Spinner";
-import { postData } from "../../../lib/helpers/getData";
 import SendMessage from "./SendMessage";
 import { formatPhoneNumber, format_qty } from "../../../lib/helpers/formatters";
+import { getContacts as getCtc } from "../../../server/userInteraction";
+import { useMutation } from "@tanstack/react-query";
+
 export default function GetContacts() {
   const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [display, setDisplay] = useState("none");
-
+  const getContactsMutation = useMutation({
+    async mutationFn() {
+      const data = await getCtc();
+      setContacts(data);
+      setLoading(false);
+      console.log(data);
+      if (errors) throw errors;
+      return data;
+    },
+  });
   const removeContact = (id) => {
     const filteredContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(filteredContacts);
   };
-  const [loading, setLoading] = useState(false);
-  const getContacts = async () => {
+
+  const getContacts = () => {
     setLoading(true);
-    try {
-      const data = await postData({
-        query: `mutation Mutation {
-          getContacts {
-            id
-            name
-            number
-            pushname
-          }
-        }`,
-      });
-      setContacts(data.getContacts);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error getting contacts:", error);
-    }
+
+    getContactsMutation.mutate();
   };
   return (
     <>

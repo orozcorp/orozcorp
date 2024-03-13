@@ -1,58 +1,28 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { getData, postData } from "../../lib/helpers/getData";
+import { useState } from "react";
 import { formatPhoneNumber } from "../../lib/helpers/formatters";
-const QUERY = `query GetMe {
-  getMe {
-    id
-    name
-    profile_picture
-  }
-}`;
-const pattern = /@.*/;
+import { wa_logOut, getMe } from "../../server/userInteraction";
+import { useQuery, useMutation } from "@tanstack/react-query";
 
-const MUTATION = `
-mutation Mutation {
-  wa_logOut {
-    code
-    message
-    success
-  }
-}
-`;
+const pattern = /@.*/;
 
 export default function MyNumberData() {
   const initial = { id: "", name: "", profile_picture: "" };
-  const [me, setMe] = useState(initial);
+  const mequery = useQuery({
+    queryKey: ["me"],
+    queryFn: () => getMe(),
+    inictialData: initial,
+  });
+  const me = mequery.data;
   const [hover, setHovered] = useState(false);
-  useEffect(() => {
-    const getMe = async () => {
-      try {
-        const data = await getData({ query: QUERY });
-        setMe(data.getMe);
-      } catch (error) {
-        console.error("Error fetching QR code:", error);
-        // Optionally set an error state here and display it in the UI
-      }
-    };
-    getMe();
-  }, []);
-  const logOut = async () => {
-    try {
-      const data = await postData({
-        query: MUTATION,
-      });
-      if (data.wa_logOut.success) {
-        setStatus("unauthenticated");
-        setMe(initial);
-      } else {
-        console.error("Error logging out:", data.wa_logOut.message);
-      }
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
-  };
+  const logoutMutation = useMutation({
+    async mutationFn() {
+      const { data, errors } = await wa_logOut();
+      if (errors) throw errors;
+    },
+  });
+
   return (
     <div
       onMouseEnter={() => setHovered(true)}
@@ -63,7 +33,7 @@ export default function MyNumberData() {
     >
       {hover ? (
         <button
-          onClick={logOut}
+          onClick={() => logoutMutation.mutate()}
           className="focus:outline-none text-white bg-zinc-700 hover:bg-zinc-800 focus:ring-4 focus:ring-zinc-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2"
         >
           Log Out

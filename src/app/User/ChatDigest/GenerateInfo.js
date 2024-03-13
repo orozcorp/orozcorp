@@ -1,11 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { postData } from "../../../lib/helpers/getData";
 import SearchableSelect from "../../../components/atoms/SearchableSelect";
 import InputSimple from "../../../components/atoms/InputSimple";
 import { dateInputFormat } from "../../../lib/helpers/formatters";
 import Chat from "./Chat";
+import { wa_getResumen } from "../../../server/userInteraction";
+import { useMutation } from "@tanstack/react-query";
 const getEndOfDay = (now) => {
   return new Date(
     now.getFullYear(),
@@ -17,15 +18,10 @@ const getEndOfDay = (now) => {
     999
   );
 };
+
 const getStartOfDay = (now) => {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
 };
-
-const MUTATION = `
-  mutation Wa_getResumen($input: ResumenInput!) {
-    wa_getResumen(input: $input)
-  }
-`;
 
 const languages = [
   { value: "spanish", label: "Español" },
@@ -44,20 +40,23 @@ export default function GenerateInfo({ contactos }) {
     label: "Español",
   });
   const [conversaciones, setConversaciones] = useState("");
+
+  const getConversationsMutation = useMutation({
+    async mutationFn({ input }) {
+      const { data, errors } = await wa_getResumen({ input });
+      if (errors) throw errors;
+      setConversaciones(data || "");
+    },
+  });
   const getConversations = async (e) => {
     e.preventDefault();
     setConversaciones("");
-    const data = await postData({
-      query: MUTATION,
-      variables: {
-        input: {
-          contactId: contacto.value,
-          startDate: fechaInicio,
-          endDate: fechaFin,
-        },
-      },
-    });
-    setConversaciones(data.wa_getResumen || "");
+    const input = {
+      contactId: contacto.value,
+      startDate: fechaInicio,
+      endDate: fechaFin,
+    };
+    getConversationsMutation.mutate(input);
   };
   return (
     <>
