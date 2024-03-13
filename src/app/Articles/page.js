@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { format_date } from "../../lib/helpers/formatters";
 import { blogGetAll } from "../../server/articles";
+
 export default async function Articles() {
   const data = await blogGetAll({ limit: 100 });
   return (
