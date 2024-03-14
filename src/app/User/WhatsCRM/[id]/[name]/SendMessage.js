@@ -1,36 +1,33 @@
 "use client";
 import { useState } from "react";
-const MUTATION = `
-  mutation Mutation($msgId: ID!, $body: String!) {
-    wa_sendTextMessage(msgId: $msgId, body: $body) {
-      code
-      message
-      success
-    }
-  }
-`;
-import { postData } from "../../../../../lib/helpers/getData";
+import { useMutation } from "@tanstack/react-query";
+import { wa_sendTextMessage } from "../../../../../server/userInteraction";
+
 import Spinner from "../../../../../components/atoms/Spinner";
 import UploadMessage from "./UploadMessage";
-export default function SendMessage({ idMessage, setRecheck }) {
+export default function SendMessage({ idMessage }) {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [display, setDisplay] = useState("none");
+  const mutation = useMutation({
+    async mutationFn({ msgId, body }) {
+      const response = await wa_sendTextMessage({ msgId, body });
+      return response;
+    },
+  });
   const sendMessage = async (e) => {
     e.preventDefault();
-    console.log("called");
     if (!message) return;
     setLoading(true);
-    const response = await postData({
-      query: MUTATION,
-      variables: {
-        msgId: idMessage,
-        body: message,
-      },
-    });
-    setLoading(false);
-    setMessage("");
-    setRecheck(true);
+    mutation.mutate(
+      { msgId: idMessage, body: message },
+      {
+        onSuccess: (response) => {
+          setLoading(false);
+          setMessage("");
+        },
+      }
+    );
   };
   return (
     <>

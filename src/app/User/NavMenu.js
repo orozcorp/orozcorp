@@ -2,48 +2,23 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
-import { useState, useEffect } from "react";
-import { getData, postData } from "../../lib/helpers/getData";
-const QUERY_CHECK_STATUS = `query Query {
-  getStatus
-}`;
-
-const MUTATION = `
-mutation Mutation {
-  wa_logOut {
-    code
-    message
-    success
-  }
-}
-`;
+import { useEffect } from "react";
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { getStatus, wa_logOut } from "../../server/userInteraction";
 
 export default function NavMenu({}) {
-  const [status, setStatus] = useState("gettingStatus");
-  const checkStatus = async () => {
-    try {
-      const data = await getData({
-        query: QUERY_CHECK_STATUS,
-      });
-      setStatus(data.getStatus); // Update status based on GraphQL response
-    } catch (error) {
-      console.error("Error checking status:", error);
-    }
-  };
-  const logOut = async () => {
-    try {
-      const data = await postData({
-        query: MUTATION,
-      });
-      if (data.wa_logOut.success) {
-        setStatus("unauthenticated"); // Update status based on GraphQL response
-      } else {
-        console.error("Error logging out:", data.wa_logOut.message);
-      }
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
-  };
+  const { data: status } = useQuery({
+    queryKey: ["status"],
+    queryFn: () => getStatus(),
+    inictialData: "gettingStatus",
+    refetchInterval: 5000,
+  });
+  const logoutMutation = useMutation({
+    async mutationFn() {
+      const { data, errors } = await wa_logOut();
+      if (errors) throw errors;
+    },
+  });
   useEffect(() => {
     checkStatus();
   }, [status]);
@@ -100,7 +75,7 @@ export default function NavMenu({}) {
             <button
               className="inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-zinc-900 hover:border-zinc-300"
               onClick={() => {
-                logOut();
+                logoutMutation.mutate();
                 signOut();
               }}
             >

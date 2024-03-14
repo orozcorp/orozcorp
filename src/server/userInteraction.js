@@ -284,3 +284,134 @@ export async function readMessages({ chatId }) {
     throw new Error(error); // Optionally, you can throw the error to handle it at a higher level
   }
 }
+export async function uploadMessage({ input }) {
+  const { session } = await createContext();
+  if (!session) return "Error";
+  const { type, phone } = input;
+  var myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+  const objToInsert = {
+    token,
+    to: phone.replace("%40", "@"),
+    caption: `Adjunto ${type}`,
+  };
+
+  if (type === "image") objToInsert[type] = input.image;
+  if (type === "document") {
+    objToInsert[type] = input.document;
+    objToInsert["filename"] = input.documentName;
+  }
+  var raw = JSON.stringify(objToInsert);
+  var requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  try {
+    const response = await fetch(
+      `https://api.ultramsg.com/${instance}/messages/${type}`,
+      requestOptions
+    );
+
+    const result = await response.text();
+    if (response.ok) {
+      return {
+        code: 200,
+        success: true,
+        message: "Mensaje enviado",
+        data: result, // Adjust as needed
+      };
+    } else {
+      const errorResponse = JSON.parse(result);
+      return {
+        code: errorResponse.code || 400,
+        success: false,
+        message: errorResponse.message || "Error al enviar el mensaje",
+      };
+    }
+  } catch (error) {
+    console.log("error", error);
+    return {
+      code: 400,
+      success: false,
+      message: "Error al enviar el mensaje",
+    };
+  }
+}
+export async function wa_sendTextMessage({ msgId, body }) {
+  const { session } = await createContext();
+  if (!session) return "Error";
+  let myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+  let urlencoded = new URLSearchParams();
+  urlencoded.append("token", process.env.WA_TOKEN);
+  urlencoded.append("to", msgId.replace("%40", "@"));
+  urlencoded.append("body", body);
+  let requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: urlencoded,
+    redirect: "follow",
+  };
+
+  try {
+    const response = await fetch(
+      `https://api.ultramsg.com/${process.env.WA_INSTANCE}/messages/chat`,
+      requestOptions
+    );
+    const responseData = await response.json();
+    if (responseData.message !== "ok") {
+      console.log("error", responseData);
+      return {
+        code: 400,
+        success: false,
+        message: "Error al enviar el mensaje",
+      };
+    }
+    return {
+      code: 200,
+      success: true,
+      message: "Mensaje enviado correctamente",
+    };
+  } catch (error) {
+    console.log("error", error);
+    return {
+      code: 400,
+      success: false,
+      message: "Error al enviar el mensaje",
+    };
+  }
+}
+export async function getMessages({ id }) {
+  const { session } = await createContext();
+  if (!session) return "Error";
+  const result = id.replace("%40", "@");
+  const token = encodeURIComponent(process.env.WA_TOKEN);
+  const limit = "1000"; // or any other value you want to set
+
+  let url = `https://api.ultramsg.com/${
+    process.env.WA_INSTANCE
+  }/chats/messages?token=${token}&chatId=${encodeURIComponent(
+    result
+  )}&limit=${limit}`;
+
+  try {
+    const response = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+    });
+    if (!response.ok) {
+      throw new Error("Network response was not ok.");
+    }
+    const responseData = await response.json();
+    return responseData;
+  } catch (error) {
+    console.error("There was a problem with the fetch operation:", error);
+    return "Error";
+  }
+}

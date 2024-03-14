@@ -7,16 +7,9 @@ const typesOfMessages = [
   { label: "Imagen", value: "image" },
   { label: "Documento", value: "document" },
 ];
-const MUTATION = `
-  mutation UploadMessage($input: UploadMessageInput!) {
-    uploadMessage(input: $input) {
-      code
-      message
-      success
-    }
-  }
-`;
-import { postData } from "../../../../../lib/helpers/getData";
+import { useMutation } from "@tanstack/react-query";
+import { uploadMessage } from "../../../../../server/userInteraction";
+
 import Spinner from "../../../../../components/atoms/Spinner";
 export default function UploadMessage({ display, setDisplay, chatId }) {
   const [form, setForm] = useState({
@@ -30,29 +23,38 @@ export default function UploadMessage({ display, setDisplay, chatId }) {
     label: "image",
     value: "Imagen",
   });
+  const mutation = useMutation({
+    async mutationFn({ input }) {
+      const response = await uploadMessage({ input });
+      return response;
+    },
+  });
   const enviarMensaje = async (e) => {
     e.preventDefault();
     if (!form.document && !form.image) return;
     setLoading(true);
-    const response = await postData({
-      query: MUTATION,
-      variables: {
+    mutation.mutate(
+      {
         input: {
           ...form,
           type: messageType.value,
         },
       },
-    });
-    if (response.uploadMessage.success) {
-      setForm({
-        type: "image",
-        phone: chatId,
-      });
-      setLoading(false);
-      setPercent(0);
-      setResetUpload(true);
-      setDisplay("none");
-    }
+      {
+        onSuccess: (response) => {
+          if (response.uploadMessage.success) {
+            setForm({
+              type: "image",
+              phone: chatId,
+            });
+            setLoading(false);
+            setPercent(0);
+            setResetUpload(true);
+            setDisplay("none");
+          }
+        },
+      }
+    );
   };
   return (
     <Modal display={display} setDisplay={setDisplay}>

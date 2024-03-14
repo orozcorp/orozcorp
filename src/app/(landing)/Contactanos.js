@@ -2,17 +2,8 @@
 import { useEffect, useState } from "react";
 import InputSimple from "../../components/atoms/InputSimple";
 import { useRouter } from "next/navigation";
-import { postData } from "../../lib/helpers/getData";
-const MUTATION = `
-  mutation SendContact($email: String!, $name: String!, $message: String!) {
-    sendContact(email: $email, name: $name, message: $message) {
-      code
-      message
-      success
-      data
-    }
-  }
-`;
+import { useMutation } from "@tanstack/react-query";
+import { sendContact } from "../../server/user";
 
 export default function Contactanos({ bgColor }) {
   const [enviadoMensaje, setEnviadoMensaje] = useState(false);
@@ -31,24 +22,36 @@ export default function Contactanos({ bgColor }) {
     setEnviadoMensaje(true);
   }, [sentMessage]);
   const [values, setValues] = useState(initial);
+  const mutation = useMutation({
+    async mutationFn({ email, name, message }) {
+      const response = await sendContact({ email, name, message });
+      return response;
+    },
+  });
   const sendReport = async (e) => {
     e.preventDefault();
 
     setLoading(true);
     try {
-      await postData({ query: MUTATION, variables: { ...values } });
-      setValues(initial);
-      setSentMessage(true);
-      setLoading(false);
-      if (typeof window !== "undefined") {
-        window.open(
-          "https://wa.me/525536554893?text=Hola%quisiera%20hablar%20con%20un%20experto%20de%20Orozcorp",
-          "_blank"
-        );
-      }
+      mutation.mutate(
+        { ...values },
+        {
+          onSuccess: () => {
+            setValues(initial);
+            setSentMessage(true);
+            setLoading(false);
+            if (typeof window !== "undefined") {
+              window.open(
+                "https://wa.me/525536554893?text=Hola%quisiera%20hablar%20con%20un%20experto%20de%20Orozcorp",
+                "_blank"
+              );
+            }
 
-      // Then redirect to /ContactReceived on the current page
-      router.push("/ContactReceived");
+            // Then redirect to /ContactReceived on the current page
+            router.push("/ContactReceived");
+          },
+        }
+      );
     } catch (error) {
       console.log(error);
     }

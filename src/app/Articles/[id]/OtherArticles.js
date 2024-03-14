@@ -1,18 +1,8 @@
-import { getData } from "../../../lib/helpers/getData";
+import { blogGetAll } from "../../../server/articles";
 import Link from "next/link";
-const QUERY = `
-query BlogGetAll($limit: Int!) {
-  blogGetAll(limit: $limit) {
-    _id
-    description
-    title
-  }
-}
-`;
 
 export default async function OtherArticles() {
-  const data = await getData({ query: QUERY, variables: { limit: 3 } });
-  const blogs = data?.blogGetAll || [];
+  const { data: blogs } = await blogGetAll({ limit: 4 });
   return (
     <div className="w-full bg-black text-white mt-12 p-12 flex flex-col flex-nowrap">
       <div className="text-3xl text-center">Tips para mejorar tu </div>
