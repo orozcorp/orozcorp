@@ -3,7 +3,7 @@ const Sec2Box = dynamic(() => import("./Sec2Box"), { ssr: false });
 export default function Section2() {
   return (
     <div
-      className="mt-8 flex flex-col flex-nowrap justify-center items-center"
+      className="pt-8 flex flex-col flex-nowrap justify-center items-center lightBackground"
       id="crearProductos"
     >
       <h2 className="text-5xl text-center w-3/4 my-8">

@@ -1,7 +1,7 @@
 import Sec1Box from "./Sec1Box";
 export default function Section1() {
   return (
-    <div className="flex flex-col flex-nowrap bg-zinc-900 pt-12 pb-20">
+    <div className="flex flex-col flex-nowrap bg-zinc-900 pt-12 pb-20 darkBackground">
       <div className="p-8 w-full">
         <h2 className="my-8 text-4xl text-zinc-300 w-full text-center lg:text-left">
           Creamos apps, webs y catálogos digitales que impulsan tu negocio.

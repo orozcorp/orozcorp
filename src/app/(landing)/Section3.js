@@ -1,6 +1,6 @@
 export default function Section3() {
   return (
-    <div className="mt-8 p-8 flex flex-col flex-nowrap justify-center lg:justify-start items-center lg:items-start w-full">
+    <div className="p-8 flex flex-col flex-nowrap justify-center lg:justify-start items-center lg:items-start w-full lightBackground">
       <h2 className="text-6xl text-zinc-600 text-center lg:text-left">
         Habilidades y capacidades
       </h2>

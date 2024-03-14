@@ -77,7 +77,7 @@ export default function WhatsBlast() {
           },
         ]}
       />
-      <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20 mb-12 py-12">
+      <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap h-[70vh] items-center justify-center gap-8 md:gap-20  py-12 lightBackground">
         <motion.button
           initial={{ scale: 0, opacity: 0.3 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -113,7 +113,7 @@ export default function WhatsBlast() {
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-10+at+5.28.05%E2%80%AFPM.png",
         ]}
       />
-      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap bg-black justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
+      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap darkBackground justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
         <ProductInformation
           head="🌟 Haz que cada cliente se sienta único"
           description="Con WhatsBlast, olvídate de enviar mensajes uno por uno. Envía mensajes de WhatsApp personalizados a todos tus clientes en un solo clic. Haz que cada cliente se sienta especial y único, mejorando así la relación con ellos."

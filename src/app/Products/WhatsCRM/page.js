@@ -60,7 +60,7 @@ export default function index() {
           },
         ]}
       />
-      <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20 mb-12 py-12">
+      <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center h-[70vh] gap-8 md:gap-20 lightBackground py-12">
         <motion.button
           initial={{ scale: 0, opacity: 0.3 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -96,7 +96,7 @@ export default function index() {
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+7.22.00%E2%80%AFAM.png",
         ]}
       />
-      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap bg-black justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
+      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap darkBackground justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
         <ProductInformation
           head="🛠️ Integración Flexible"
           description="¿Ya tienes un CRM? ¡Perfecto! WhatsCRM se integra fácilmente con cualquier CRM que tenga un API. Si no, no te preocupes, también funciona de maravilla como una solución independiente."

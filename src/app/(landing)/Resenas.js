@@ -4,7 +4,7 @@ export default async function Resenas() {
   const data = await getPortfolios();
   return (
     <div
-      className="mt-6 flex flex-col flex-nowrap justify-center items-center w-full py-16 px-2 md:px-8 bg-[#121212] text-white"
+      className="mt-6 flex flex-col flex-nowrap justify-center items-center w-full py-16 px-2 md:px-8 bg-[#121212] text-white darkBackground"
       id="portfolio"
     >
       <h2 className={`text-6xl font-bold mb-4 text-center`}>CASOS DE ÉXITO</h2>

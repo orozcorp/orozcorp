@@ -108,7 +108,7 @@ const products = [
 
 export default function Products() {
   return (
-    <div className="bg-[#121212] py-20 flex flex-row flex-wrap justify-center items-center">
+    <div className=" py-20 flex flex-row flex-wrap justify-center items-center darkBackground">
       <div className="flex flex-col flex-nowrap w-full md:w-[95%]">
         <h2 className="text-white text-center text-6xl font-bold">
           Nuestros productos clave

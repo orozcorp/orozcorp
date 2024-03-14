@@ -60,7 +60,7 @@ export default function index() {
         ]}
       />
 
-      <div className="flex flex-col md:flex-row flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20 mb-12 py-12">
+      <div className="flex flex-col md:flex-row  h-[70vh] flex-nowrap md:flex-wrap items-center justify-center gap-8 md:gap-20  py-12 lightBackground">
         <motion.button
           initial={{ scale: 0, opacity: 0.3 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -95,7 +95,7 @@ export default function index() {
           "https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/Screenshot+2023-10-11+at+12.03.55%E2%80%AFPM.png",
         ]}
       />
-      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap bg-black justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
+      <div className="flex flex-col flex-nowrap md:flex-row md:flex-wrap darkBackground justify-around items-stretch gap-16 mt-8 p-8 md:p-20">
         <ProductInformation
           head="📑 Resumen Diario Personalizado"
           description="¿Te sientes abrumado con la cantidad de chats que tienes que revisar cada día? No te preocupes. ChatDigest te envía un resumen diario directamente a tu bandeja de entrada. Y no es cualquier resumen; es un resumen que puedes personalizar para que se ajuste a tus necesidades. Elige las métricas que más te importan y recibe solo la información que realmente necesitas."

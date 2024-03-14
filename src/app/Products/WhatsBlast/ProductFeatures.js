@@ -39,7 +39,7 @@ export default function ProductFeatures() {
     },
   ];
   return (
-    <div className="bg-[#121212] py-16">
+    <div className="darkBackground py-16">
       <div className="w-full p-4   rounded-lg shadow sm:p-8 ">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-5xl font-bold leading-none text-white my-12 pl-2 md:pl-8">

@@ -61,7 +61,10 @@ export default function Contactanos({ bgColor }) {
     <div
       className={`p-2 w-full  flex flex-col flex-nowrap justify-center items-center bg-${
         bgColor || "white"
-      } text-${bgColor ? "white" : "black"}`}
+      } text-${bgColor ? "white" : "black"}
+        ${bgColor ? "darkBackground" : "lightBackground"}
+
+      `}
     >
       {enviadoMensaje ? (
         <h2 className="text-center text-4xl font-bold mt-8 mb-4 w-full lg:w-3/4">

@@ -4,7 +4,7 @@ import { blogGetAll } from "../../server/articles";
 export default async function Articles() {
   const data = await blogGetAll({ limit: 8 });
   return (
-    <div className="bg-[#121212] text-white p-8 flex flex-col flex-nowrap justify-center items-center">
+    <div className="bg-[#121212] text-white p-8 flex flex-col flex-nowrap justify-center items-center darkBackground">
       <div className="flex flex-col flex-nowrap justify-center items-center gap-4 text-center">
         <div className="text-3xl">Tips y lecturas para impulsar</div>
         <h2 className="text-6xl font-bold mb-8 text-center">tu Negocio</h2>
