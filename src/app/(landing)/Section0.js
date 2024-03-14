@@ -3,7 +3,7 @@ export default function Section0() {
   return (
     <div className="flex flex-col flex-nowrap min-h-screen items-center justify-center p-4 gap-20 lightBackground">
       <div className="flex flex-row flex-wrap w-full lg:w-3/4 justify-center items-center">
-        <h1 className="text-zinc-800 text-center text-8xl">
+        <h1 className="text-zinc-800 text-center text-8xl py-24">
           Tú lo imaginas, nosotros lo creamos
         </h1>
       </div>
