@@ -22,11 +22,50 @@ const products = [
         "@type": "Brand",
         name: "Orozcorp",
       },
+      reviews: [
+        {
+          author: "Brandon",
+          datePublished: "2023-03-06T03:37:40Z",
+          reviewBody:
+            "He estado utilizando WhatsBlast durante varios meses para las necesidades de comunicación de mi empresa y ha sido una experiencia transformadora. La capacidad de enviar mensajes personalizados a gran escala ha mejorado significativamente nuestra interacción con los clientes. Lo que más destaco es la facilidad de uso; configurar y enviar campañas es intuitivo y rápido. La función de programación de mensajes nos permite organizar nuestras campañas de marketing con anticipación, lo que es una gran ventaja. Además, las estadísticas en tiempo real nos ofrecen una visión clara del rendimiento de nuestros mensajes, ayudándonos a ajustar nuestras estrategias en consecuencia. Otro punto a favor es la capacidad de segmentar a los clientes, lo que nos ha permitido dirigir nuestros mensajes de manera más efectiva. En general, WhatsBlast ha sido una herramienta invaluable para mejorar la comunicación y el compromiso con nuestros clientes. Definitivamente lo recomendaría a cualquier negocio que busque optimizar su estrategia de mensajería masiva en WhatsApp.",
+          name: "Comunicación Masiva Eficaz y Fácil con WhatsBlast",
+          reviewRating: {
+            bestRating: "5",
+            ratingValue: "5",
+            worstRating: "1",
+          },
+          publisher: {
+            type: "Organization",
+            name: "Sterling Fashion",
+          },
+        },
+        {
+          author: "Alan",
+          datePublished: "2023-03-06T03:37:40Z",
+          reviewBody:
+            "Utilizo WhatsBlast desde hace meses para gestionar los mensajes masivos de mi empresa, y la experiencia ha sido excepcional. La capacidad de enviar mensajes personalizados a una gran audiencia ha revolucionado nuestra forma de comunicarnos con los clientes. Destaco sobre todo la facilidad de uso; configurar y lanzar campañas es increíblemente intuitivo y rápido. La programación de mensajes nos permite planificar nuestras estrategias de marketing con antelación, lo que representa una ventaja considerable. Las estadísticas en tiempo real proporcionan una visión detallada del impacto de nuestros mensajes, ayudándonos a optimizar nuestras tácticas. La segmentación de clientes es otra gran ventaja, permitiéndonos dirigir nuestros esfuerzos de forma más efectiva. WhatsBlast se ha convertido en una herramienta fundamental para mejorar nuestra comunicación y relación con los clientes. Sin duda, lo recomendaría a cualquier empresa que busque mejorar su estrategia de mensajería masiva en WhatsApp.",
+          name: "Comunicación Masiva Eficaz y Fácil con WhatsBlast",
+          reviewRating: {
+            bestRating: "5",
+            ratingValue: "5",
+            worstRating: "1",
+          },
+          publisher: {
+            type: "Organization",
+            name: "Club Ac",
+          },
+        },
+      ],
+      aggregateRating: {
+        ratingValue: "5",
+        reviewCount: "2",
+      },
       offers: {
         "@type": "Offer",
         url: "https://orozcorp.live/Products/WhatsBlast",
         priceCurrency: "USD",
         price: "9000.99",
+        priceValidUntil: "2032-12-31",
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller: {
@@ -56,11 +95,34 @@ const products = [
         "@type": "Brand",
         name: "Orozcorp",
       },
+      reviews: [
+        {
+          author: "Elena",
+          datePublished: "2023-04-10T12:00:00Z",
+          reviewBody:
+            "WhatsCRM ha revolucionado la forma en que gestionamos nuestras relaciones con clientes. La integración con nuestro CRM existente fue sencilla y nos ha permitido una comunicación más fluida y eficiente. El cifrado de extremo a extremo nos da la tranquilidad que necesitábamos respecto a la seguridad de las conversaciones.",
+          name: "Transformación en la Gestión de Clientes con WhatsCRM",
+          reviewRating: {
+            bestRating: "5",
+            ratingValue: "5",
+            worstRating: "1",
+          },
+          publisher: {
+            type: "Organization",
+            name: "TechReviews",
+          },
+        },
+      ],
+      aggregateRating: {
+        ratingValue: "5",
+        reviewCount: "1",
+      },
       offers: {
         "@type": "Offer",
         url: "https://orozcorp.live/Products/WhatsCRM",
         priceCurrency: "USD",
         price: "9000.99",
+        priceValidUntil: "2032-12-31",
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller: {
@@ -90,11 +152,34 @@ const products = [
         "@type": "Brand",
         name: "Orozcorp",
       },
+      reviews: [
+        {
+          author: "Carlos",
+          datePublished: "2023-04-20T15:00:00Z",
+          reviewBody:
+            "ChatDigest me ha ayudado a mantenerme al día con todas mis conversaciones de WhatsApp. La personalización de los resúmenes es fantástica, y el análisis del tono de las conversaciones me ha permitido entender mejor a mis clientes.",
+          name: "Eficiencia y Claridad en la Comunicación con ChatDigest",
+          reviewRating: {
+            bestRating: "5",
+            ratingValue: "5",
+            worstRating: "1",
+          },
+          publisher: {
+            type: "Organization",
+            name: "Comunicaciones Modernas",
+          },
+        },
+      ],
+      aggregateRating: {
+        ratingValue: "5",
+        reviewCount: "1",
+      },
       offers: {
         "@type": "Offer",
         url: "https://orozcorp.live/Products/ChatDigest",
         priceCurrency: "USD",
         price: "9000.99",
+        priceValidUntil: "2032-12-31",
         itemCondition: "https://schema.org/NewCondition",
         availability: "https://schema.org/InStock",
         seller: {
