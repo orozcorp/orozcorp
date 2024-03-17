@@ -73,6 +73,36 @@ const products = [
           name: "Orozcorp",
         },
       },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicySeasonalOverride: {
+          "@type": "MerchantReturnPolicySeasonalOverride",
+          startDate: "2023-11-01",
+          endDate: "2032-12-31",
+          returnPolicyCategory: "HolidayReturnsPolicy",
+        },
+        returnPolicyCategory: "StandardReturn",
+        refundType: "FullRefund",
+        returnMethod: "ByMail",
+        returnShippingCosts: "Customer",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          currency: "USD",
+          value: "10.00",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          businessDays: {
+            "@type": "QuantitativeValue",
+            minValue: 3,
+            maxValue: 5,
+          },
+          cutOffTime: "15:00:00-05:00",
+        },
+      },
     },
   },
   {
@@ -130,6 +160,36 @@ const products = [
           name: "Orozcorp",
         },
       },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicySeasonalOverride: {
+          "@type": "MerchantReturnPolicySeasonalOverride",
+          startDate: "2023-11-01",
+          endDate: "2032-12-31",
+          returnPolicyCategory: "HolidayReturnsPolicy",
+        },
+        returnPolicyCategory: "StandardReturn",
+        refundType: "FullRefund",
+        returnMethod: "ByMail",
+        returnShippingCosts: "Customer",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          currency: "USD",
+          value: "10.00",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          businessDays: {
+            "@type": "QuantitativeValue",
+            minValue: 3,
+            maxValue: 5,
+          },
+          cutOffTime: "15:00:00-05:00",
+        },
+      },
     },
   },
   {
@@ -185,6 +245,36 @@ const products = [
         seller: {
           "@type": "Organization",
           name: "Orozcorp",
+        },
+      },
+      hasMerchantReturnPolicy: {
+        "@type": "MerchantReturnPolicy",
+        returnPolicySeasonalOverride: {
+          "@type": "MerchantReturnPolicySeasonalOverride",
+          startDate: "2023-11-01",
+          endDate: "2032-12-31",
+          returnPolicyCategory: "HolidayReturnsPolicy",
+        },
+        returnPolicyCategory: "StandardReturn",
+        refundType: "FullRefund",
+        returnMethod: "ByMail",
+        returnShippingCosts: "Customer",
+      },
+      shippingDetails: {
+        "@type": "OfferShippingDetails",
+        shippingRate: {
+          "@type": "MonetaryAmount",
+          currency: "USD",
+          value: "10.00",
+        },
+        deliveryTime: {
+          "@type": "ShippingDeliveryTime",
+          businessDays: {
+            "@type": "QuantitativeValue",
+            minValue: 3,
+            maxValue: 5,
+          },
+          cutOffTime: "15:00:00-05:00",
         },
       },
     },
