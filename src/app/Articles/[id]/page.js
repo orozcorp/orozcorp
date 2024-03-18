@@ -35,6 +35,7 @@ export async function generateMetadata({ params }) {
       title: blog?.title,
       description: blog?.description,
       image: blog?.images?.[0]?.url,
+      images: blog?.images?.map((image) => image.url),
       date: blog?.article?.publishedTime,
       type: "article",
       url: `https://orozcorp.live/Articles/${id}`,
