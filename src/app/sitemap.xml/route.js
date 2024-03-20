@@ -1,4 +1,5 @@
-import { connectToDatabase } from "../../lib/mongodb";
+import { getPortfolios } from "../server/portfolio";
+import { blogGetAll } from "../server/articles";
 
 const EXTERNAL_DATA_URL = "https://orozcorp.live/";
 
@@ -43,15 +44,8 @@ function SiteMap() {
   // getServerSideProps will do the heavy lifting
 }
 export async function GET() {
-  const { db } = await connectToDatabase();
-  const projects = await db
-    .collection("Portfolio")
-    .find({}, { projection: { _id: 1 } })
-    .toArray();
-  const articles = await db
-    .collection("Blog")
-    .find({}, { projection: { _id: 1 } })
-    .toArray();
+  const projects = await getPortfolios();
+  const articles = await blogGetAll({ limit: 10000 });
   const body = await generateSiteMap({ projects, articles });
   return new Response(body, {
     status: 200,

@@ -24,7 +24,6 @@ export const metadata = {
     image: "https://orozcorp.live/api/og",
   },
 };
-
 export default async function RootLayout({ children }) {
   return (
     <html lang="es">

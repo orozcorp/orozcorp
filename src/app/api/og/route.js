@@ -4,7 +4,7 @@ export const config = {
   runtime: "edge",
 };
 
-export default async function handler() {
+export async function GET() {
   return new ImageResponse(
     (
       <div
@@ -24,6 +24,7 @@ export default async function handler() {
           src="https://orozcorp.s3.us-east-2.amazonaws.com/orozcorp/TECBOY+FACE.svg"
           width="256"
           height="256"
+          alt="Orzcorp"
         />
         <p>Orozcorp</p>
       </div>
