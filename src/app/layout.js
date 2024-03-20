@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import NextAuthSessionProvider from "../providers/sessionProvider";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 import QCProvider from "../config/QCProvider";
 export const viewport = {
   width: "device-width",
@@ -30,6 +30,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="es">
       <link rel="icon" href="/favicon.ico" sizes="any" />
+      <GoogleTagManager gtmId="GTM-MQLZBH69" />
       <body>
         <QCProvider>
           <NextAuthSessionProvider>
