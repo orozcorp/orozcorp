@@ -1,5 +1,5 @@
-import { getPortfolios } from "@/server/portfolio";
-import { blogGetAll } from "@/server/articles";
+import { getPortfolios } from "../../server/portfolio";
+import { blogGetAll } from "../../server/articles";
 
 const EXTERNAL_DATA_URL = "https://orozcorp.live/";
 
