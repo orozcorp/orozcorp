@@ -8,6 +8,8 @@ export const viewport = {
   width: "device-width",
   initialScale: 1,
 };
+import { Analytics } from "@vercel/analytics/react";
+
 export const metadata = {
   title: "Orozcorp: Tu Partner en Desarrollo Web y Aplicaciones Móviles",
   description:
@@ -45,6 +47,7 @@ export default async function RootLayout({ children }) {
             </main>
           </NextAuthSessionProvider>
         </QCProvider>
+        <Analytics />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
     </html>
