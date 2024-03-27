@@ -1,11 +1,15 @@
 "use server";
 import createContext from "../config/createContext";
+import { fetchFromMongo } from "../lib/mongoAPI";
+
 export async function sendContact({ email, name, message }) {
-  const { session, db } = await createContext();
+  const { session } = await createContext();
   if (!session) return "Error";
   try {
     const input = { email, name, message, status: "Not checked" };
-    const insert = await db.collection("Prospectos").insertOne(input);
+    const insert = await fetchFromMongo("Prospectos", "insertOne", {
+      document: { ...input },
+    });
     return {
       code: 200,
       success: true,

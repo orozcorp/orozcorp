@@ -1,29 +1,40 @@
 "use server";
 import { ObjectId } from "mongodb";
-import mongoDBtoJS from "../utils/mongodbReplacer";
-import createContext from "../config/createContext";
+import { fetchFromMongo } from "../lib/mongoAPI";
 
 export async function blogGetAll({ limit }) {
   try {
-    const { db } = await createContext();
-    const data = await db
-      .collection("Blog")
-      .aggregate([{ $sample: { size: limit } }])
-      .sort({ "article.publishedTime": -1 })
-      .toArray();
-
-    return mongoDBtoJS(data);
+    const props = {
+      pipeline: [
+        { $sample: { size: limit } },
+        { $sort: { "article.publishedTime": -1 } },
+      ],
+    };
+    const { documents: blogs } = await fetchFromMongo(
+      "Blog",
+      "aggregate",
+      props
+    );
+    return blogs;
   } catch (error) {
-    return [];
+    console.error(error);
+    return {
+      code: 400,
+      message: "Error al obtener Resume",
+      success: false,
+      data: null,
+    };
   }
 }
 
 export async function blogGetById({ id }) {
   try {
-    const { db } = await createContext();
-    const data = await db.collection("Blog").findOne({ _id: new ObjectId(id) });
-    return mongoDBtoJS(data);
+    const { document: blog } = await fetchFromMongo("Blog", "findOne", {
+      filter: { _id: new ObjectId(id) },
+    });
+    return blog;
   } catch (error) {
-    return {};
+    console.log(error);
+    throw error;
   }
 }

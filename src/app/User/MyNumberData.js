@@ -12,7 +12,7 @@ export default function MyNumberData() {
   const mequery = useQuery({
     queryKey: ["me"],
     queryFn: () => getMe(),
-    inictialData: initial,
+    initialData: initial,
   });
   const me = mequery.data;
   const [hover, setHovered] = useState(false);

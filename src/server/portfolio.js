@@ -1,18 +1,36 @@
 "use server";
+import { fetchFromMongo } from "../lib/mongoAPI";
 import { ObjectId } from "mongodb";
-import mongoDBtoJS from "../utils/mongodbReplacer";
-import createContext from "../config/createContext";
 
 export async function getPortfolios() {
-  const { db } = await createContext();
-  const portfolios = await db.collection("Portfolio").find({}).toArray();
-  return mongoDBtoJS(portfolios);
+  try {
+    const { documents: resume } = await fetchFromMongo("Portfolio", "find", {
+      filter: {},
+    });
+    return resume;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 }
 
 export async function getPortfolioById({ id }) {
-  const { db } = await createContext();
-  const portfolio = await db
-    .collection("Portfolio")
-    .findOne({ _id: new ObjectId(id) });
-  return mongoDBtoJS(portfolio);
+  try {
+    const { document: portfolio } = await fetchFromMongo(
+      "Portfolio",
+      "findOne",
+      {
+        filter: { _id: new ObjectId(id) },
+      }
+    );
+    return portfolio;
+  } catch (error) {
+    console.error(error);
+    return {
+      code: 400,
+      message: "Error al obtener Portfolio",
+      success: false,
+      data: null,
+    };
+  }
 }
