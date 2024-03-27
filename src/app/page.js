@@ -11,6 +11,7 @@ const Contactanos = dynamic(() => import("./(landing)/Contactanos"));
 const Articles = dynamic(() => import("./(landing)/Articles"), {
   loading: () => <Spinner />,
 });
+const Quienes = dynamic(() => import("./(landing)/Quienes"));
 
 export default function index() {
   const jsonLd = {
@@ -39,6 +40,7 @@ export default function index() {
       <Resenas />
       <Contactanos />
       <Articles />
+      <Quienes />
     </>
   );
 }
